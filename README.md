@@ -45,24 +45,16 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 
 1. Create a Supabase project.
 2. Run `supabase/migrations/202610210001_initial_schema.sql` with the Supabase CLI or SQL editor.
-3. Copy the project URL, anon key, and service-role key into `.env.local`.
-4. Create an account through `/login`.
-5. To grant admin access, update that profile from the SQL editor:
+3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
+4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
+5. Restart the development server, then create an account through `/login`.
+6. To grant admin access, update that profile from the SQL editor:
 
 ```sql
 update public.profiles set role = 'admin' where id = '<user uuid>';
 ```
 
 The service-role key is server-only. Never prefix it with `NEXT_PUBLIC_` or expose it to client code. Public/authenticated access is constrained with row-level security. Hidden test cases have no student read policy.
-
-### Google sign-in
-
-1. Create a Web OAuth client in Google Auth Platform.
-2. Add the Supabase callback URL shown on Supabase's Google provider page to Google's authorized redirect URIs.
-3. Enable Google under Supabase **Authentication → Providers** and enter the Google client ID and secret.
-4. Add `http://localhost:3000/auth/callback` and the production `https://<your-domain>/auth/callback` URL to Supabase's redirect allow list.
-
-Google credentials stay in Supabase and must not be committed to this repository.
 
 ## Adding problems
 
