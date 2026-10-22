@@ -2,6 +2,7 @@
 
 import Editor from "@monaco-editor/react";
 import { AlertCircle, CheckCircle2, ChevronDown, ChevronLeft, Clock3, Code2, Loader2, LockKeyhole, MemoryStick, Play, Send, Terminal, XCircle } from "lucide-react";
+import type { editor as MonacoEditor } from "monaco-editor";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ProblemStatement } from "@/components/problem-statement";
@@ -35,6 +36,8 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   const [dark, setDark] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const codesRef = useRef<Record<Language, string>>({ ...initialBodies });
+  const editorRef = useRef<MonacoEditor.IStandaloneCodeEditor | null>(null);
+  const internalClipboardRef = useRef("");
 
   useEffect(() => {
     const key = `acsl-function-v3:${problem.slug}`;
@@ -46,30 +49,42 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   }, [problem.slug, language]);
 
   useEffect(() => {
-    const blockClipboard = (event: ClipboardEvent) => event.preventDefault();
-    const blockDrop = (event: DragEvent) => event.preventDefault();
-    const blockClipboardShortcut = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && ["c", "v", "x"].includes(event.key.toLowerCase())) {
-        event.preventDefault();
-        event.stopPropagation();
+    const handleClipboard = (event: ClipboardEvent) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const target = event.target;
+      const insideEditor = target instanceof Element && Boolean(target.closest(".acsl-code-cell"));
+      if (!insideEditor) return;
+
+      const editor = editorRef.current;
+      const model = editor?.getModel();
+      const selection = editor?.getSelection();
+      if (!editor || !model || !selection) return;
+
+      if (event.type === "copy" || event.type === "cut") {
+        if (selection.isEmpty()) return;
+        internalClipboardRef.current = model.getValueInRange(selection);
+        if (event.type === "cut") {
+          editor.executeEdits("acsl-internal-cut", [{ range: selection, text: "", forceMoveMarkers: true }]);
+        }
+        return;
+      }
+
+      if (event.type === "paste" && internalClipboardRef.current) {
+        editor.executeEdits("acsl-internal-paste", [{ range: selection, text: internalClipboardRef.current, forceMoveMarkers: true }]);
       }
     };
-    const blockPasteInput = (event: InputEvent) => {
-      if (event.inputType === "insertFromPaste" || event.inputType === "insertFromDrop") event.preventDefault();
-    };
-    document.addEventListener("copy", blockClipboard, true);
-    document.addEventListener("cut", blockClipboard, true);
-    document.addEventListener("paste", blockClipboard, true);
+    const blockDrop = (event: DragEvent) => event.preventDefault();
+    document.addEventListener("copy", handleClipboard, true);
+    document.addEventListener("cut", handleClipboard, true);
+    document.addEventListener("paste", handleClipboard, true);
     document.addEventListener("drop", blockDrop, true);
-    document.addEventListener("keydown", blockClipboardShortcut, true);
-    document.addEventListener("beforeinput", blockPasteInput, true);
     return () => {
-      document.removeEventListener("copy", blockClipboard, true);
-      document.removeEventListener("cut", blockClipboard, true);
-      document.removeEventListener("paste", blockClipboard, true);
+      document.removeEventListener("copy", handleClipboard, true);
+      document.removeEventListener("cut", handleClipboard, true);
+      document.removeEventListener("paste", handleClipboard, true);
       document.removeEventListener("drop", blockDrop, true);
-      document.removeEventListener("keydown", blockClipboardShortcut, true);
-      document.removeEventListener("beforeinput", blockPasteInput, true);
     };
   }, []);
 
@@ -127,6 +142,8 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   const firstTest = result?.tests[0];
   const passed = result?.verdict === "Accepted";
   const activeTemplate = templates[language];
+  const prefixLineCount = getCodeLines(activeTemplate.prefix).length;
+  const editableLineCount = code.split("\n").length;
 
   return (
     <main className="bg-muted/45 p-2 sm:p-3">
@@ -139,16 +156,18 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
         <button className="desktop-resizer cursor-col-resize bg-border transition-colors hover:bg-primary" onPointerDown={beginResize} aria-label="Resize problem and editor panels" />
         <section className="flex min-w-0 flex-col bg-card">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-3 py-2">
-            <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><span className="relative"><select value={language} onChange={(event) => changeLanguage(event.target.value as Language)} className="block h-8 appearance-none rounded-md border border-border bg-background py-0 pl-2 pr-7 text-xs font-semibold leading-[1.875rem] outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></span><span className="hidden text-xs text-muted-foreground sm:inline">Complete the function · Copy/paste disabled</span></div>
+            <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><span className="relative"><select value={language} onChange={(event) => changeLanguage(event.target.value as Language)} className="block h-8 appearance-none rounded-md border border-border bg-background py-0 pl-2 pr-7 text-xs font-semibold leading-[1.875rem] outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></span><span className="hidden text-xs text-muted-foreground sm:inline">Complete the function · Clipboard stays in editor</span></div>
             <div className="flex gap-2"><Button size="sm" variant="secondary" onClick={() => execute("run")} disabled={Boolean(running)}>{running === "run" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />} Run</Button><Button size="sm" onClick={() => execute("submit")} disabled={Boolean(running)}>{running === "submit" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />} Submit</Button></div>
           </div>
-          <div className="h-[58vh] min-h-[420px] overflow-y-auto border-b border-border md:flex-1">
-            <LockedCode label="Locked setup" code={activeTemplate.prefix} />
-            <div className="flex items-center justify-between border-y border-primary/20 bg-primary/5 px-3 py-2 text-xs"><span className="font-bold text-primary">Your function body</span><span className="text-muted-foreground">Editable</span></div>
-            <div className="h-[300px] min-h-[240px]">
-              <Editor height="100%" language={monacoLanguages[language]} value={code} onChange={saveCode} theme={dark ? "vs-dark" : "light"} onMount={(editor, monaco) => editor.onKeyDown((event) => { if ((event.ctrlKey || event.metaKey) && [monaco.KeyCode.KeyC, monaco.KeyCode.KeyV, monaco.KeyCode.KeyX].includes(event.keyCode)) { event.preventDefault(); event.stopPropagation(); } })} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, padding: { top: 14, bottom: 14 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: false, dragAndDrop: false, scrollbar: { alwaysConsumeMouseWheel: false } }} />
+          <div className="h-[58vh] min-h-[420px] overflow-y-auto border-b border-border p-2 md:flex-1">
+            <div className="overflow-hidden rounded-lg border border-border bg-background shadow-inner">
+              <LockedCode label="Setup · locked" code={activeTemplate.prefix} startLine={1} />
+              <div className="acsl-code-cell relative h-[300px] min-h-[240px] border-y border-border">
+                <span className="pointer-events-none absolute right-3 top-2 z-10 rounded bg-primary/10 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-primary">Editable</span>
+                <Editor height="100%" language={monacoLanguages[language]} value={code} onChange={saveCode} theme={dark ? "vs-dark" : "light"} onMount={(editor) => { editorRef.current = editor; }} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, lineNumbers: (line) => String(line + prefixLineCount), lineNumbersMinChars: 3, padding: { top: 14, bottom: 14 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: false, dragAndDrop: false, scrollbar: { alwaysConsumeMouseWheel: false } }} />
+              </div>
+              <LockedCode label="Runner · locked" code={activeTemplate.suffix} startLine={prefixLineCount + editableLineCount + 1} />
             </div>
-            <LockedCode label="Locked runner" code={activeTemplate.suffix} />
           </div>
           <div className="min-h-[260px] max-h-[40vh] overflow-y-auto">
             <div className="flex border-b border-border px-3 pt-2"><button onClick={() => setMode("sample")} className={cn("border-b-2 px-3 py-2 text-xs font-semibold", mode === "sample" ? "border-primary text-primary" : "border-transparent text-muted-foreground")}>Sample case</button><button onClick={() => setMode("custom")} className={cn("border-b-2 px-3 py-2 text-xs font-semibold", mode === "custom" ? "border-primary text-primary" : "border-transparent text-muted-foreground")}>Custom input</button></div>
@@ -170,9 +189,16 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   );
 }
 
-function LockedCode({ label, code }: { label: string; code: string }) {
+function getCodeLines(code: string) {
+  return code.replace(/\n$/, "").split("\n");
+}
+
+function LockedCode({ label, code, startLine }: { label: string; code: string; startLine: number }) {
   if (!code.trim()) return null;
-  return <div className="select-none bg-muted/35"><div className="flex items-center gap-2 border-b border-border/70 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground"><LockKeyhole className="h-3.5 w-3.5" />{label}<span className="ml-auto normal-case tracking-normal">Read only</span></div><pre className="overflow-x-auto p-3 font-mono text-xs leading-[22px] text-muted-foreground">{code}</pre></div>;
+  return <div className="relative select-none overflow-x-auto bg-muted/65 py-3 text-muted-foreground/70">
+    <span className="pointer-events-none absolute right-3 top-2 flex items-center gap-1.5 rounded border border-border bg-background/80 px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground"><LockKeyhole className="h-3 w-3" />{label}</span>
+    <div className="min-w-max font-mono text-sm leading-[22px]">{getCodeLines(code).map((line, index) => <div key={`${startLine + index}-${line}`} className="flex"><span className="mr-3 w-11 shrink-0 border-r border-border/70 pr-3 text-right text-muted-foreground/50">{startLine + index}</span><code className="whitespace-pre pl-3 pr-28">{line || " "}</code></div>)}</div>
+  </div>;
 }
 
 function OutputBlock({ label, value, danger }: { label: string; value: string; danger?: boolean }) {
