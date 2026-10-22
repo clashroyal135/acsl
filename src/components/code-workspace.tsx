@@ -1,7 +1,7 @@
 "use client";
 
 import Editor from "@monaco-editor/react";
-import { AlertCircle, CheckCircle2, ChevronLeft, Clock3, Code2, Loader2, MemoryStick, Play, Send, Terminal, XCircle } from "lucide-react";
+import { AlertCircle, CheckCircle2, ChevronDown, ChevronLeft, Clock3, Code2, Loader2, MemoryStick, Play, Send, Terminal, XCircle } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ProblemStatement } from "@/components/problem-statement";
@@ -97,7 +97,7 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
         <button className="desktop-resizer cursor-col-resize bg-border transition-colors hover:bg-primary" onPointerDown={beginResize} aria-label="Resize problem and editor panels" />
         <section className="flex min-w-0 flex-col bg-card">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-3 py-2">
-            <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><select value={language} onChange={(event) => changeLanguage(event.target.value as Language)} className="h-8 rounded-md border border-border bg-background px-2 text-xs font-semibold outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><span className="hidden text-xs text-muted-foreground sm:inline">Draft saved locally</span></div>
+            <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><span className="relative"><select value={language} onChange={(event) => changeLanguage(event.target.value as Language)} className="block h-8 appearance-none rounded-md border border-border bg-background py-0 pl-2 pr-7 text-xs font-semibold leading-[1.875rem] outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></span><span className="hidden text-xs text-muted-foreground sm:inline">Draft saved locally</span></div>
             <div className="flex gap-2"><Button size="sm" variant="secondary" onClick={() => execute("run")} disabled={Boolean(running)}>{running === "run" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />} Run</Button><Button size="sm" onClick={() => execute("submit")} disabled={Boolean(running)}>{running === "submit" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />} Submit</Button></div>
           </div>
           <div className="h-[52vh] min-h-[360px] border-b border-border md:flex-1">

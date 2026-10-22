@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CheckCircle2, Search, SlidersHorizontal } from "lucide-react";
+import { CheckCircle2, ChevronDown, Search, SlidersHorizontal } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import type { Difficulty, Division, Problem } from "@/lib/types";
@@ -27,7 +27,7 @@ export function ProblemBrowser({ problems, solved }: { problems: Problem[]; solv
     return matchesText && (division === "All" || problem.division === division) && (difficulty === "All" || problem.difficulty === difficulty) && (topic === "All" || problem.topic === topic) && (completion === "All" || (completion === "Solved" ? isSolved : !isSolved));
   });
 
-  const selectClass = "h-10 w-full min-w-0 max-w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary lg:w-auto lg:min-w-36";
+  const selectClass = "block h-10 w-full min-w-0 max-w-full appearance-none rounded-lg border border-border bg-background py-0 pl-3 pr-9 text-sm leading-[2.375rem] outline-none focus:ring-2 focus:ring-primary lg:min-w-36";
 
   return (
     <div>
@@ -35,10 +35,10 @@ export function ProblemBrowser({ problems, solved }: { problems: Problem[]; solv
         <div className="flex flex-col gap-3 lg:flex-row">
           <label className="relative flex-1"><Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by title or topic…" className="h-10 w-full rounded-lg border border-border bg-background pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary" /></label>
           <div className="grid min-w-0 grid-cols-1 gap-2 min-[440px]:grid-cols-2 lg:flex lg:w-auto lg:flex-wrap">
-            <select aria-label="Division" value={division} onChange={(event) => setDivision(event.target.value as Division | "All")} className={selectClass}>{["All", "Junior", "Intermediate", "Senior"].map((item) => <option key={item} value={item}>{item === "All" ? "All divisions" : item}</option>)}</select>
-            <select aria-label="Difficulty" value={difficulty} onChange={(event) => setDifficulty(event.target.value as Difficulty | "All")} className={selectClass}>{["All", "Easy", "Medium", "Hard"].map((item) => <option key={item} value={item}>{item === "All" ? "All difficulties" : item}</option>)}</select>
-            <select aria-label="Topic" value={topic} onChange={(event) => setTopic(event.target.value)} className={selectClass}>{topics.map((item) => <option key={item} value={item}>{item === "All" ? "All topics" : item}</option>)}</select>
-            <select aria-label="Completion" value={completion} onChange={(event) => setCompletion(event.target.value)} className={selectClass}>{["All", "Solved", "Unsolved"].map((item) => <option key={item}>{item}</option>)}</select>
+            <FilterSelect><select aria-label="Division" value={division} onChange={(event) => setDivision(event.target.value as Division | "All")} className={selectClass}>{["All", "Junior", "Intermediate", "Senior"].map((item) => <option key={item} value={item}>{item === "All" ? "All divisions" : item}</option>)}</select></FilterSelect>
+            <FilterSelect><select aria-label="Difficulty" value={difficulty} onChange={(event) => setDifficulty(event.target.value as Difficulty | "All")} className={selectClass}>{["All", "Easy", "Medium", "Hard"].map((item) => <option key={item} value={item}>{item === "All" ? "All difficulties" : item}</option>)}</select></FilterSelect>
+            <FilterSelect><select aria-label="Topic" value={topic} onChange={(event) => setTopic(event.target.value)} className={selectClass}>{topics.map((item) => <option key={item} value={item}>{item === "All" ? "All topics" : item}</option>)}</select></FilterSelect>
+            <FilterSelect><select aria-label="Completion" value={completion} onChange={(event) => setCompletion(event.target.value)} className={selectClass}>{["All", "Solved", "Unsolved"].map((item) => <option key={item}>{item}</option>)}</select></FilterSelect>
           </div>
         </div>
       </div>
@@ -58,4 +58,8 @@ export function ProblemBrowser({ problems, solved }: { problems: Problem[]; solv
       <p className="mt-4 text-sm text-muted-foreground">Showing {visible.length} of {problems.length} problems</p>
     </div>
   );
+}
+
+function FilterSelect({ children }: { children: React.ReactNode }) {
+  return <span className="relative block min-w-0 lg:min-w-36">{children}<ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" /></span>;
 }
