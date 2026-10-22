@@ -4,6 +4,7 @@ import { FileJson, Loader2, Save, Trash2, Upload } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { defaultStarter } from "@/lib/starters";
 
 const template = {
   slug: "new-problem",
@@ -20,7 +21,7 @@ const template = {
   constraints: ["1 ≤ N ≤ 100"],
   samples: [{ input: "", output: "", explanation: "" }],
   hints: [],
-  starterCode: { python: "", cpp: "", java: "" },
+  starterCode: defaultStarter,
   timeLimitMs: 2000,
   memoryLimitKb: 128000,
   isPublished: false,
