@@ -16,6 +16,10 @@ export function LoginForm() {
   const router = useRouter();
   const configured = isSupabaseConfigured();
 
+  if (!configured) {
+    return <div className="w-full max-w-md rounded-2xl border border-border bg-card p-7 text-center shadow-soft"><span className="mx-auto mb-4 grid h-11 w-11 place-items-center rounded-xl bg-muted text-muted-foreground"><LockKeyhole className="h-5 w-5" /></span><h1 className="text-xl font-bold">Sign-in unavailable</h1><p className="mt-2 text-sm text-muted-foreground">You can still browse and solve problems.</p></div>;
+  }
+
   async function submit(event: React.FormEvent) {
     event.preventDefault(); setLoading(true); setMessage("");
     const supabase = createSupabaseBrowserClient();
@@ -30,9 +34,8 @@ export function LoginForm() {
     setLoading(false);
   }
 
-  return <div className="w-full max-w-md rounded-2xl border border-border bg-card p-7 shadow-soft"><span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><LockKeyhole className="h-5 w-5" /></span><h1 className="text-2xl font-black">{mode === "login" ? "Welcome back" : "Create your account"}</h1><p className="mt-2 text-sm text-muted-foreground">Save code, track accepted solutions, and join the leaderboard.</p>
-    {!configured && <div className="mt-5 rounded-lg border border-warning/25 bg-warning/10 p-3 text-sm text-warning">Authentication needs the Supabase variables in <code>.env.local</code>.</div>}
-    <form onSubmit={submit} className="mt-6 space-y-4">{mode === "register" && <Field label="Display name" value={name} onChange={setName} type="text" autoComplete="name" />}<Field label="Email" value={email} onChange={setEmail} type="email" autoComplete="email" /><Field label="Password" value={password} onChange={setPassword} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} /><Button className="w-full" disabled={loading || !configured}>{loading && <Loader2 className="h-4 w-4 animate-spin" />}{mode === "login" ? "Sign in" : "Register"}</Button></form>
+  return <div className="w-full max-w-md rounded-2xl border border-border bg-card p-7 shadow-soft"><span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><LockKeyhole className="h-5 w-5" /></span><h1 className="text-2xl font-black">{mode === "login" ? "Sign in" : "Create account"}</h1>
+    <form onSubmit={submit} className="mt-6 space-y-4">{mode === "register" && <Field label="Display name" value={name} onChange={setName} type="text" autoComplete="name" />}<Field label="Email" value={email} onChange={setEmail} type="email" autoComplete="email" /><Field label="Password" value={password} onChange={setPassword} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} /><Button className="w-full" disabled={loading}>{loading && <Loader2 className="h-4 w-4 animate-spin" />}{mode === "login" ? "Sign in" : "Register"}</Button></form>
     {message && <p className="mt-4 rounded-lg bg-muted p-3 text-sm text-muted-foreground">{message}</p>}
     <button onClick={() => { setMode(mode === "login" ? "register" : "login"); setMessage(""); }} className="mt-5 text-sm font-semibold text-primary hover:underline">{mode === "login" ? "Need an account? Register" : "Already registered? Sign in"}</button>
   </div>;

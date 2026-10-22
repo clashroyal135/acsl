@@ -1,4 +1,4 @@
--- ACSL Arena initial schema. Run with `supabase db push` or in the Supabase SQL editor.
+-- ACSL Practice initial schema. Run with `supabase db push` or in the Supabase SQL editor.
 create extension if not exists pgcrypto;
 
 create table if not exists public.profiles (

@@ -1,4 +1,4 @@
-# ACSL Arena
+# ACSL Practice
 
 A full-stack ACSL-style programming practice platform built with Next.js, TypeScript, Tailwind CSS, Monaco Editor, Supabase, and a Judge0-compatible execution service.
 
@@ -89,4 +89,4 @@ src/lib/                 Problems, Judge0 integration, Supabase, and grading
 supabase/migrations/     Database schema and RLS policies
 ```
 
-ACSL Arena is an independent practice project. ACSL is a trademark of its respective owner. The bundled problems are original and do not reproduce competition materials.
+ACSL Practice is an independent practice project. ACSL is a trademark of its respective owner. The bundled problems are original and do not reproduce competition materials.

@@ -27,14 +27,14 @@ export function ProblemBrowser({ problems, solved }: { problems: Problem[]; solv
     return matchesText && (division === "All" || problem.division === division) && (difficulty === "All" || problem.difficulty === difficulty) && (topic === "All" || problem.topic === topic) && (completion === "All" || (completion === "Solved" ? isSolved : !isSolved));
   });
 
-  const selectClass = "h-10 rounded-lg border border-border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary";
+  const selectClass = "h-10 w-full min-w-0 max-w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-primary lg:w-auto lg:min-w-36";
 
   return (
     <div>
       <div className="rounded-2xl border border-border bg-card p-4 shadow-soft">
         <div className="flex flex-col gap-3 lg:flex-row">
           <label className="relative flex-1"><Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search by title or topic…" className="h-10 w-full rounded-lg border border-border bg-background pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary" /></label>
-          <div className="flex flex-wrap gap-2">
+          <div className="grid min-w-0 grid-cols-1 gap-2 min-[440px]:grid-cols-2 lg:flex lg:w-auto lg:flex-wrap">
             <select aria-label="Division" value={division} onChange={(event) => setDivision(event.target.value as Division | "All")} className={selectClass}>{["All", "Junior", "Intermediate", "Senior"].map((item) => <option key={item} value={item}>{item === "All" ? "All divisions" : item}</option>)}</select>
             <select aria-label="Difficulty" value={difficulty} onChange={(event) => setDifficulty(event.target.value as Difficulty | "All")} className={selectClass}>{["All", "Easy", "Medium", "Hard"].map((item) => <option key={item} value={item}>{item === "All" ? "All difficulties" : item}</option>)}</select>
             <select aria-label="Topic" value={topic} onChange={(event) => setTopic(event.target.value)} className={selectClass}>{topics.map((item) => <option key={item} value={item}>{item === "All" ? "All topics" : item}</option>)}</select>
