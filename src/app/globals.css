@@ -41,6 +41,8 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 .prose-acsl p { margin: 0 0 1rem; line-height: 1.75; color: hsl(var(--muted-foreground)); }
 .prose-acsl code { border-radius: .35rem; background: hsl(var(--muted)); padding: .12rem .35rem; font-family: var(--font-mono); font-size: .9em; color: hsl(var(--foreground)); }
 .code-block { white-space: pre-wrap; overflow-x: auto; border-radius: .75rem; background: hsl(224 35% 8%); padding: 1rem; font: .82rem/1.6 var(--font-mono); color: hsl(215 28% 92%); }
+.monaco-editor .acsl-locked-line { background: hsl(var(--muted) / .38); }
+.monaco-editor .acsl-locked-text { opacity: .48; }
 
 @media (max-width: 767px) {
   .desktop-split { display: block !important; }

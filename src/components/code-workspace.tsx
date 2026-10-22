@@ -1,7 +1,7 @@
 "use client";
 
 import Editor from "@monaco-editor/react";
-import { AlertCircle, CheckCircle2, ChevronDown, ChevronLeft, Clock3, Code2, Loader2, LockKeyhole, MemoryStick, Play, Send, Terminal, XCircle } from "lucide-react";
+import { AlertCircle, CheckCircle2, ChevronDown, ChevronLeft, Clock3, Code2, Loader2, MemoryStick, Play, Send, Terminal, XCircle } from "lucide-react";
 import type { editor as MonacoEditor } from "monaco-editor";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -37,6 +37,7 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const codesRef = useRef<Record<Language, string>>({ ...initialBodies });
   const editorRef = useRef<MonacoEditor.IStandaloneCodeEditor | null>(null);
+  const lockedDecorationsRef = useRef<MonacoEditor.IEditorDecorationsCollection | null>(null);
   const internalClipboardRef = useRef("");
 
   useEffect(() => {
@@ -142,8 +143,48 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   const firstTest = result?.tests[0];
   const passed = result?.verdict === "Accepted";
   const activeTemplate = templates[language];
-  const prefixLineCount = getCodeLines(activeTemplate.prefix).length;
-  const editableLineCount = code.split("\n").length;
+  const fullCode = `${activeTemplate.prefix}${code}${activeTemplate.suffix}`;
+
+  const decorateLockedCode = useCallback((editor: MonacoEditor.IStandaloneCodeEditor) => {
+    const model = editor.getModel();
+    if (!model) return;
+
+    const decorations: MonacoEditor.IModelDeltaDecoration[] = [];
+    if (activeTemplate.prefix) {
+      const prefixEnd = model.getPositionAt(Math.max(0, activeTemplate.prefix.length - 1));
+      decorations.push({
+        range: { startLineNumber: 1, startColumn: 1, endLineNumber: prefixEnd.lineNumber, endColumn: prefixEnd.column },
+        options: { isWholeLine: true, className: "acsl-locked-line", inlineClassName: "acsl-locked-text" },
+      });
+    }
+    if (activeTemplate.suffix) {
+      const suffixStart = model.getPositionAt(activeTemplate.prefix.length + code.length);
+      const lastLine = model.getLineCount();
+      decorations.push({
+        range: { startLineNumber: suffixStart.lineNumber, startColumn: suffixStart.column, endLineNumber: lastLine, endColumn: model.getLineMaxColumn(lastLine) },
+        options: { isWholeLine: true, className: "acsl-locked-line", inlineClassName: "acsl-locked-text" },
+      });
+    }
+    lockedDecorationsRef.current?.clear();
+    lockedDecorationsRef.current = editor.createDecorationsCollection(decorations);
+  }, [activeTemplate.prefix, activeTemplate.suffix, code.length]);
+
+  useEffect(() => {
+    if (editorRef.current) decorateLockedCode(editorRef.current);
+  }, [decorateLockedCode]);
+
+  const handleEditorChange = useCallback((value: string | undefined) => {
+    const next = value ?? "";
+    const { prefix, suffix } = templates[language];
+    if (next.startsWith(prefix) && next.endsWith(suffix)) {
+      const bodyEnd = suffix ? next.length - suffix.length : next.length;
+      saveCode(next.slice(prefix.length, bodyEnd));
+      return;
+    }
+
+    const editor = editorRef.current;
+    if (editor && editor.getValue() !== fullCode) editor.setValue(fullCode);
+  }, [fullCode, language, saveCode, templates]);
 
   return (
     <main className="bg-muted/45 p-2 sm:p-3">
@@ -159,13 +200,9 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
             <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><span className="relative"><select value={language} onChange={(event) => changeLanguage(event.target.value as Language)} className="block h-8 appearance-none rounded-md border border-border bg-background py-0 pl-2 pr-7 text-xs font-semibold leading-[1.875rem] outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></span></div>
             <div className="flex gap-2"><Button size="sm" variant="secondary" onClick={() => execute("run")} disabled={Boolean(running)}>{running === "run" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />} Run</Button><Button size="sm" onClick={() => execute("submit")} disabled={Boolean(running)}>{running === "submit" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />} Submit</Button></div>
           </div>
-          <div className="h-[58vh] min-h-[420px] overflow-y-auto border-b border-border p-2 md:flex-1">
-            <div className="overflow-hidden rounded-lg border border-border bg-background shadow-inner">
-              <LockedCode code={activeTemplate.prefix} startLine={1} />
-              <div className="acsl-code-cell" style={{ height: Math.max(66, Math.min(352, editableLineCount * 22)) }}>
-                <Editor height="100%" language={monacoLanguages[language]} value={code} onChange={saveCode} theme={dark ? "vs-dark" : "light"} onMount={(editor) => { editorRef.current = editor; }} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, lineNumbers: (line) => String(line + prefixLineCount), lineNumbersMinChars: 3, padding: { top: 0, bottom: 0 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: false, dragAndDrop: false, scrollbar: { alwaysConsumeMouseWheel: false } }} />
-              </div>
-              <LockedCode code={activeTemplate.suffix} startLine={prefixLineCount + editableLineCount + 1} />
+          <div className="h-[58vh] min-h-[420px] border-b border-border p-2 md:flex-1">
+            <div className="acsl-code-cell h-full overflow-hidden rounded-lg border border-border bg-background shadow-inner">
+              <Editor height="100%" language={monacoLanguages[language]} value={fullCode} onChange={handleEditorChange} theme={dark ? "vs-dark" : "light"} onMount={(editor) => { editorRef.current = editor; decorateLockedCode(editor); }} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, lineNumbersMinChars: 3, padding: { top: 12, bottom: 12 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: false, dragAndDrop: false, stickyScroll: { enabled: false }, scrollbar: { alwaysConsumeMouseWheel: false } }} />
             </div>
           </div>
           <div className="min-h-[260px] max-h-[40vh] overflow-y-auto">
@@ -186,18 +223,6 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
       </div>
     </main>
   );
-}
-
-function getCodeLines(code: string) {
-  return code.replace(/\n$/, "").split("\n");
-}
-
-function LockedCode({ code, startLine }: { code: string; startLine: number }) {
-  if (!code.trim()) return null;
-  return <div className="relative select-none overflow-x-auto bg-muted/55 text-muted-foreground/55" aria-label="Read-only code">
-    <LockKeyhole aria-hidden="true" className="pointer-events-none absolute right-3 top-1 h-3.5 w-3.5 text-muted-foreground/45" />
-    <div className="min-w-max font-mono text-sm leading-[22px]">{getCodeLines(code).map((line, index) => <div key={`${startLine + index}-${line}`} className="flex"><span className="mr-3 w-11 shrink-0 border-r border-border/50 pr-3 text-right text-muted-foreground/40">{startLine + index}</span><code className="whitespace-pre pl-3 pr-10">{line || " "}</code></div>)}</div>
-  </div>;
 }
 
 function OutputBlock({ label, value, danger }: { label: string; value: string; danger?: boolean }) {
