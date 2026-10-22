@@ -1,0 +1,171 @@
+import "server-only";
+
+import { defaultStarter } from "@/lib/starters";
+import type { Problem } from "@/lib/types";
+
+export const problems: Problem[] = [
+  {
+    id: "letter-relay",
+    slug: "letter-relay",
+    title: "Letter Relay",
+    division: "Junior",
+    difficulty: "Easy",
+    topic: "Strings",
+    year: 2026,
+    acceptanceRate: 78.4,
+    summary: "Rotate uppercase letters through the alphabet.",
+    statement: "A relay station encodes each message by moving every letter forward by a fixed number of positions. The alphabet wraps, so shifting `Z` by 1 produces `A`. Encode every message independently.",
+    inputSpec: "The first line contains `N`. Each of the next `N` lines contains an uppercase word `W` and an integer shift `K`, separated by one space.",
+    outputSpec: "Print the encoded word for each message on its own line.",
+    constraints: ["1 ≤ N ≤ 50", "1 ≤ |W| ≤ 100", "0 ≤ K ≤ 25", "W contains only A–Z"],
+    samples: [
+      {
+        input: "3\nACSL 2\nZOO 1\nCODE 25\n",
+        output: "CEUN\nAPP\nBNCD\n",
+        explanation: "Each character moves forward by the shift for its line; wrapping is applied after Z.",
+      },
+    ],
+    hints: ["Convert each character to a value from 0 through 25.", "Use modulo 26 before converting back to a letter."],
+    starterCode: defaultStarter,
+    timeLimitMs: 2000,
+    memoryLimitKb: 128000,
+  },
+  {
+    id: "shared-signal",
+    slug: "shared-signal",
+    title: "Shared Signal",
+    division: "Junior",
+    difficulty: "Medium",
+    topic: "Intervals",
+    year: 2026,
+    acceptanceRate: 62.7,
+    summary: "Count the integer channels shared by two inclusive ranges.",
+    statement: "Two radios can each receive every integer channel in an inclusive range. For each pair of radios, determine how many channels both can receive. If the ranges do not overlap, report `NONE`.",
+    inputSpec: "The first line contains `N`. Each of the next `N` lines contains four integers `A B C D`, describing inclusive ranges `[A, B]` and `[C, D]`.",
+    outputSpec: "For each pair, print the number of shared integer channels, or `NONE` when there are none.",
+    constraints: ["1 ≤ N ≤ 100", "0 ≤ A ≤ B ≤ 10⁹", "0 ≤ C ≤ D ≤ 10⁹"],
+    samples: [
+      {
+        input: "3\n1 5 3 7\n1 2 3 4\n5 10 10 12\n",
+        output: "3\nNONE\n1\n",
+        explanation: "The first pair shares channels 3, 4, and 5. Inclusive endpoints make channel 10 shared in the last pair.",
+      },
+    ],
+    hints: ["The overlap starts at the larger left endpoint.", "Remember to add one when counting integers in an inclusive range."],
+    starterCode: defaultStarter,
+    timeLimitMs: 2000,
+    memoryLimitKb: 128000,
+  },
+  {
+    id: "run-recorder",
+    slug: "run-recorder",
+    title: "Run Recorder",
+    division: "Intermediate",
+    difficulty: "Medium",
+    topic: "Strings",
+    year: 2026,
+    acceptanceRate: 55.8,
+    summary: "Encode maximal runs of equal characters.",
+    statement: "A compact recorder stores a maximal run of equal letters as the letter followed by the run length. Encode each telemetry string from left to right. Adjacent runs are never merged after encoding.",
+    inputSpec: "The first line contains `N`. Each of the next `N` lines contains one non-empty uppercase string.",
+    outputSpec: "Print the run-length encoding of each input string on its own line.",
+    constraints: ["1 ≤ N ≤ 50", "1 ≤ string length ≤ 10,000", "Strings contain only A–Z"],
+    samples: [
+      {
+        input: "3\nAAABBCCCC\nABCD\nZZZZZZ\n",
+        output: "A3B2C4\nA1B1C1D1\nZ6\n",
+        explanation: "AAABBCCCC contains three A characters, two B characters, and four C characters.",
+      },
+    ],
+    hints: ["Track the current character and the length of its run.", "Flush the final run after the loop ends."],
+    starterCode: defaultStarter,
+    timeLimitMs: 2000,
+    memoryLimitKb: 128000,
+  },
+  {
+    id: "logic-stack",
+    slug: "logic-stack",
+    title: "Logic Stack",
+    division: "Intermediate",
+    difficulty: "Medium",
+    topic: "Boolean Algebra",
+    year: 2026,
+    acceptanceRate: 49.3,
+    summary: "Evaluate Boolean expressions written in postfix notation.",
+    statement: "Evaluate postfix Boolean expressions. Operands are `0` and `1`. Operator `!` negates the top value. Operators `&`, `|`, and `^` pop the right operand and then the left operand, apply AND, OR, or XOR, and push the result. Every expression is valid and finishes with exactly one value.",
+    inputSpec: "The first line contains `N`. Each of the next `N` lines contains one postfix expression with no spaces.",
+    outputSpec: "Print `0` or `1` for each expression.",
+    constraints: ["1 ≤ N ≤ 100", "1 ≤ expression length ≤ 10,000", "Expressions contain only 0, 1, !, &, |, and ^"],
+    samples: [
+      {
+        input: "3\n10&1|\n11^0|\n10|!\n",
+        output: "1\n0\n0\n",
+        explanation: "In postfix order, `10&1|` computes `(1 AND 0) OR 1`.",
+      },
+    ],
+    hints: ["A stack mirrors the definition exactly.", "For binary operators, the first value popped is the right operand."],
+    starterCode: defaultStarter,
+    timeLimitMs: 2000,
+    memoryLimitKb: 128000,
+  },
+  {
+    id: "beacon-distance",
+    slug: "beacon-distance",
+    title: "Beacon Distance",
+    division: "Senior",
+    difficulty: "Medium",
+    topic: "Grids",
+    year: 2026,
+    acceptanceRate: 41.6,
+    summary: "Find the nearest beacon for many grid cells.",
+    statement: "A rectangular map contains open cells (`.`) and beacon cells (`#`). Movement is allowed one cell up, down, left, or right. For every query, report the minimum number of moves needed to reach any beacon. Beacons do not block movement, and at least one beacon exists.",
+    inputSpec: "The first line contains `R C`. The next `R` lines contain the grid. The next line contains `Q`, followed by `Q` lines with 1-indexed coordinates `row column`.",
+    outputSpec: "Print the distance to the nearest beacon for each query.",
+    constraints: ["1 ≤ R, C ≤ 1,000", "1 ≤ R × C ≤ 200,000", "1 ≤ Q ≤ 200,000"],
+    samples: [
+      {
+        input: "4 5\n.....\n.#...\n....#\n.....\n4\n1 1\n2 2\n4 5\n1 5\n",
+        output: "2\n0\n1\n2\n",
+        explanation: "The query at row 2, column 2 is already on a beacon. Row 1, column 5 is two moves from the beacon at row 3, column 5.",
+      },
+    ],
+    hints: ["Start a breadth-first search from every beacon at once.", "Compute all distances once, then answer each query in O(1)."],
+    starterCode: defaultStarter,
+    timeLimitMs: 3000,
+    memoryLimitKb: 256000,
+  },
+  {
+    id: "route-ledger",
+    slug: "route-ledger",
+    title: "Route Ledger",
+    division: "Senior",
+    difficulty: "Hard",
+    topic: "Graphs",
+    year: 2026,
+    acceptanceRate: 29.9,
+    summary: "Answer shortest-path queries in a weighted network.",
+    statement: "A contest network has undirected links with positive travel costs. For each request, report the least total cost between two stations. If no route connects the stations, print `UNREACHABLE`.",
+    inputSpec: "The first line contains `V E`. The next `E` lines contain `A B W` for an undirected edge. The next line contains `Q`, followed by `Q` lines containing source and destination stations.",
+    outputSpec: "For each query, print the minimum total cost or `UNREACHABLE`.",
+    constraints: ["1 ≤ V ≤ 2,000", "0 ≤ E ≤ 10,000", "1 ≤ W ≤ 10⁹", "1 ≤ Q ≤ 100", "Stations are numbered 1 through V"],
+    samples: [
+      {
+        input: "5 5\n1 2 4\n2 3 1\n1 3 10\n3 4 2\n2 4 8\n3\n1 4\n4 1\n1 5\n",
+        output: "7\n7\nUNREACHABLE\n",
+        explanation: "The cheapest route from 1 to 4 is 1→2→3→4 with cost 4+1+2=7. Station 5 is isolated.",
+      },
+    ],
+    hints: ["Dijkstra's algorithm handles non-negative edge weights.", "Cache results when several queries have the same source."],
+    starterCode: defaultStarter,
+    timeLimitMs: 4000,
+    memoryLimitKb: 256000,
+  },
+];
+
+export function getProblem(slug: string) {
+  return problems.find((problem) => problem.slug === slug);
+}
+
+export function toPublicProblem(problem: Problem): Problem {
+  return problem;
+}

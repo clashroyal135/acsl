@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound() { return <main className="mx-auto max-w-xl px-4 py-24 text-center"><p className="font-mono text-sm text-primary">404</p><h1 className="mt-2 text-3xl font-black">That problem wandered off.</h1><p className="mt-3 text-muted-foreground">Return to the library and choose another challenge.</p><Link href="/problems" className="mt-6 inline-flex rounded-lg bg-primary px-4 py-2 font-semibold text-primary-foreground">Browse problems</Link></main>; }
