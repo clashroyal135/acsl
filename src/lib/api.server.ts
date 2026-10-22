@@ -10,12 +10,18 @@ export function requestKey(request: NextRequest) {
 export function isAllowedOrigin(request: NextRequest) {
   const origin = request.headers.get("origin");
   if (!origin) return true;
-  const ownOrigin = request.nextUrl.origin;
-  const allowed = (process.env.ALLOWED_ORIGINS ?? "")
+
+  const allowed = new Set((process.env.ALLOWED_ORIGINS ?? "")
     .split(",")
     .map((value) => value.trim())
-    .filter(Boolean);
-  return origin === ownOrigin || allowed.includes(origin);
+    .filter(Boolean));
+  allowed.add(request.nextUrl.origin);
+
+  if (process.env.URL) {
+    try { allowed.add(new URL(process.env.URL).origin); } catch { /* Ignore a malformed canonical site URL. */ }
+  }
+
+  return allowed.has(origin);
 }
 
 export function errorResponse(message: string, status = 400, headers?: HeadersInit) {
