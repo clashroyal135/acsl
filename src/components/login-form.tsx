@@ -4,7 +4,7 @@ import { Loader2, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { createSupabaseBrowserClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export function LoginForm() {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -14,16 +14,10 @@ export function LoginForm() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const configured = isSupabaseConfigured();
-
-  if (!configured) {
-    return <div className="w-full max-w-md rounded-2xl border border-border bg-card p-7 text-center shadow-soft"><span className="mx-auto mb-4 grid h-11 w-11 place-items-center rounded-xl bg-muted text-muted-foreground"><LockKeyhole className="h-5 w-5" /></span><h1 className="text-xl font-bold">Sign-in unavailable</h1><p className="mt-2 text-sm text-muted-foreground">You can still browse and solve problems.</p></div>;
-  }
-
   async function submit(event: React.FormEvent) {
     event.preventDefault(); setLoading(true); setMessage("");
     const supabase = createSupabaseBrowserClient();
-    if (!supabase) { setMessage("Supabase is not configured for this deployment."); setLoading(false); return; }
+    if (!supabase) { setMessage("Sign-in is not available yet."); setLoading(false); return; }
     if (mode === "login") {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) setMessage(error.message); else { router.push("/problems"); router.refresh(); }
