@@ -1,14 +1,14 @@
 # ACSL Practice
 
-A full-stack ACSL-style programming practice platform built with Next.js, TypeScript, Tailwind CSS, Monaco Editor, Supabase, and a Judge0-compatible execution service.
+A full-stack ACSL-style programming practice platform built with Next.js, TypeScript, Tailwind CSS, Monaco Editor, Supabase, and server-side code execution.
 
-The six bundled challenges are original practice problems across Junior, Intermediate, and Senior divisions. The application never returns fake compiler output: Run and Submit call a real Judge0 backend, or return a clear configuration error if no judge is configured.
+The six bundled challenges are original practice problems across Junior, Intermediate, and Senior divisions. The application never returns fake compiler output: Run and Submit call a real execution service.
 
 ## Included
 
 - Searchable/filterable problem library with division, difficulty, topic, completion, and acceptance metadata
 - Resizable problem/editor workspace with Monaco, language-specific autosave, light/dark mode, samples, custom input, and collapsible hints
-- Python 3, C++17, and Java execution through server-only Judge0 API routes
+- Python 3, C++17, and Java execution through server-only API routes
 - Automatic grading with hidden cases, trailing-whitespace normalization, verdicts, time, memory, compiler errors, and runtime errors
 - Per-IP in-process limits of 20 runs and 8 submissions per minute (use a shared Redis-backed limiter for multi-instance production deployments)
 - Supabase email/password authentication, submission history, profile statistics, and leaderboard
@@ -25,9 +25,11 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open `http://localhost:3000`. The problem library and editor UI work immediately. Code execution needs Judge0; accounts and persisted progress need Supabase.
+Open `http://localhost:3000`. The problem library, editor, and fallback code execution work immediately. Accounts and persisted progress need Supabase.
 
 ## Judge0 configuration
+
+Without any judge variables, the app uses Wandbox as a convenient fallback. Wandbox is a public third-party service with rate limits and no SLA, so self-hosted Judge0 is recommended for dependable production use.
 
 Deploy a Judge0-compatible service in an isolated environment and set:
 

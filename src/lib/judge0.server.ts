@@ -3,6 +3,7 @@ import "server-only";
 import { normalizeOutput } from "@/lib/utils";
 import type { JudgeVerdict, Language, SubmissionResult, TestResult } from "@/lib/types";
 import type { StoredTestCase } from "@/lib/test-cases.server";
+import { executeWithWandbox } from "@/lib/wandbox.server";
 
 const LANGUAGE_IDS: Record<Language, number> = {
   python: Number(process.env.JUDGE0_PYTHON_LANGUAGE_ID ?? 71),
@@ -55,7 +56,9 @@ async function executeOne(
   compareOutput: boolean,
 ): Promise<TestResult> {
   const baseUrl = process.env.JUDGE0_URL?.replace(/\/$/, "");
-  if (!baseUrl) throw new Error("Judge0 is not configured. Set JUDGE0_URL on the server.");
+  if (!baseUrl) {
+    return executeWithWandbox(sourceCode, language, test, index, timeLimitMs, compareOutput);
+  }
 
   const createResponse = await fetch(`${baseUrl}/submissions?base64_encoded=true&wait=false`, {
     method: "POST",
