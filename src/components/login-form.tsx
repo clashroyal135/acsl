@@ -69,8 +69,8 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       <form onSubmit={submit} className="mt-6 space-y-4">
         <fieldset disabled={loading} className="space-y-4">
           {mode === "register" && <>
-            <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} description="Your public name on leaderboards and around the site." />
-            <Field label="Name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile. Admins can always see it." />
+            <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} />
+            <Field label="Name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile." />
           </>}
           <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}
