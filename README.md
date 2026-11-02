@@ -12,7 +12,8 @@ The six bundled challenges are original practice problems across Junior, Interme
 - Automatic grading with hidden cases, trailing-whitespace normalization, verdicts, time, memory, compiler errors, and runtime errors
 - Per-IP in-process limits of 20 runs and 8 submissions per minute (use a shared Redis-backed limiter for multi-instance production deployments)
 - Supabase email/password authentication, submission history, profile statistics, and leaderboard
-- Admin-only JSON editor, file import, bulk import, publishing, test-case management, and deletion
+- Admin dashboard with a problem form, JSON/file imports, publish/unpublish controls, and test-case management
+- Admin-only account directory, complete progress totals, paginated submission history, and submitted source-code review
 - Row-level security migration that prevents students from reading hidden tests or writing their own verdicts
 
 ## Quick start
@@ -46,7 +47,7 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 ## Supabase setup
 
 1. Create a Supabase project.
-2. Run `supabase/migrations/202610210001_initial_schema.sql` with the Supabase CLI or SQL editor.
+2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`.
 3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
 4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
 5. Restart the development server, then create an account through `/login`.
@@ -70,9 +71,21 @@ Bundled problems live in `src/lib/problems.ts`; their hidden cases live in the s
 
 Database problems remain drafts until `isPublished` is `true`. Test cases are stored in the separate protected table. At least one test should be marked public if you want it available as a visible sample.
 
+## Administration
+
+Sign in with the administrator’s email, or use `admin` as the username shortcut. The shortcut resolves to `NEXT_PUBLIC_ADMIN_EMAIL` (defaults to `chrisgaorb@gmail.com`); it never grants permissions by itself. Authorization always checks the signed-in user’s `profiles.role` on the server. Passwords are stored by Supabase Auth and are never built into the app. Sign-in accepts existing six-character passwords, while registration and password resets require at least eight characters.
+
+An administrator lands on `/admin` and has an **Admin** navigation link. The dashboard includes:
+
+- **Problems:** add or edit a problem through the form, manage samples and hidden grading cases, edit starter code, import JSON, and publish or unpublish with one button. New problems start as drafts. Bundled problems can be edited and unpublished; database overrides take precedence over bundled copies. Added problems can also be deleted.
+- **Accounts & progress:** browse every registered account, including those with no submissions; inspect signup and last sign-in times; see all-time submission counts, solved and attempted problems, and progress by problem; page through submission history and open each saved source file.
+
+Problem content and grading cases save in one database transaction. Account and submission APIs require an administrator session and return private, non-cacheable responses. Student code is loaded only when selected. The code viewer shows submitted solutions; drafts saved only in a student’s browser are not uploaded or visible to administrators.
+
 ## Quality checks
 
 ```bash
+npm test
 npm run typecheck
 npm run build
 ```

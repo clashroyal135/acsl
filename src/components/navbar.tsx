@@ -15,6 +15,7 @@ const links = [
 export async function Navbar() {
   const supabase = await createSupabaseServerClient();
   const { data } = (await supabase?.auth.getUser()) ?? { data: { user: null } };
+  const { data: profile } = supabase && data.user ? await supabase.from("profiles").select("role").eq("id", data.user.id).maybeSingle() : { data: null };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-xl">
@@ -31,6 +32,7 @@ export async function Navbar() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2">
+          {profile?.role === "admin" && <Link href="/admin" className={cn(buttonVariants({ variant: "outline", size: "sm" }))}>Admin</Link>}
           <ThemeToggle />
           {data.user ? (
             <form action="/api/auth/signout" method="post">

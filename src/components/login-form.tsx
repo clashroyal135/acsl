@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { loginEmail } from "@/lib/login-identity";
 
 type Mode = "login" | "register" | "forgot";
 
@@ -36,8 +37,13 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
         });
         setMessage(error ? error.message : "If an account exists for this email, you’ll receive a password reset link. Check your inbox and spam folder.");
       } else if (mode === "login") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) setMessage(error.message); else { router.push("/problems"); router.refresh(); }
+        const { data, error } = await supabase.auth.signInWithPassword({ email: loginEmail(email), password });
+        if (error) setMessage(error.message);
+        else {
+          const { data: profile } = await supabase.from("profiles").select("role").eq("id", data.user.id).maybeSingle();
+          router.push(profile?.role === "admin" ? "/admin" : "/problems");
+          router.refresh();
+        }
       } else {
         const { error } = await supabase.auth.signUp({ email, password, options: { data: { display_name: name } } });
         setMessage(error ? error.message : "Account created. Check your email if confirmation is enabled.");
@@ -59,8 +65,8 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       <form onSubmit={submit} className="mt-6 space-y-4">
         <fieldset disabled={loading} className="space-y-4">
           {mode === "register" && <Field label="Display name" value={name} onChange={setName} type="text" autoComplete="name" />}
-          <Field label="Email" value={email} onChange={setEmail} type="email" autoComplete="email" />
-          {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" autoComplete={mode === "login" ? "current-password" : "new-password"} />}
+          <Field label={mode === "login" ? "Email or admin username" : "Email"} value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
+          {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}
           {mode === "login" && <div className="text-right"><button type="button" onClick={() => changeMode("forgot")} className="rounded text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Forgot password?</button></div>}
           <Button type="submit" className="w-full" disabled={loading}>{loading && <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" />}{action}</Button>
         </fieldset>
@@ -71,6 +77,6 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
   );
 }
 
-function Field({ label, value, onChange, type, autoComplete }: { label: string; value: string; onChange: (value: string) => void; type: string; autoComplete: string }) {
-  return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span><input required minLength={type === "password" ? 8 : undefined} type={type} autoComplete={autoComplete} value={value} onChange={(event) => onChange(event.target.value)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary" /></label>;
+function Field({ label, value, onChange, type, autoComplete, minLength }: { label: string; value: string; onChange: (value: string) => void; type: string; autoComplete: string; minLength?: number }) {
+  return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span><input required minLength={minLength} type={type} autoComplete={autoComplete} value={value} onChange={(event) => onChange(event.target.value)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary" /></label>;
 }

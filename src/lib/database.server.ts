@@ -1,4 +1,5 @@
 import "server-only";
+import { unstable_noStore as noStore } from "next/cache";
 
 import { problems as bundledProblems, getProblem as getBundledProblem } from "@/lib/problems";
 import { createSupabaseAdminClient } from "@/lib/supabase/server";
@@ -12,7 +13,7 @@ type ProblemRow = Omit<Problem, "starterCode" | "samples" | "constraints" | "hin
   hints: string[];
 };
 
-function fromRow(row: Record<string, unknown>): Problem {
+export function fromRow(row: Record<string, unknown>): Problem {
   return {
     id: String(row.id),
     slug: String(row.slug),
@@ -36,35 +37,36 @@ function fromRow(row: Record<string, unknown>): Problem {
 }
 
 export async function getAllProblems(): Promise<Problem[]> {
+  noStore();
   const admin = createSupabaseAdminClient();
   if (!admin) return bundledProblems;
 
-  const { data, error } = await admin.from("problems").select("*").eq("is_published", true).order("created_at");
-  if (error || !data) return bundledProblems;
+  const { data, error } = await admin.from("problems").select("*").order("created_at");
+  if (error) throw new Error("Unable to load problem availability.");
 
-  const dbProblems = data.map((row) => fromRow(row));
-  const bundledSlugs = new Set(bundledProblems.map((problem) => problem.slug));
-  return [...bundledProblems, ...dbProblems.filter((problem) => !bundledSlugs.has(problem.slug))];
+  const storedSlugs = new Set((data ?? []).map((row) => row.slug));
+  return [...bundledProblems.filter((problem) => !storedSlugs.has(problem.slug)), ...(data ?? []).filter((row) => row.is_published).map((row) => fromRow(row))];
 }
 
 export async function getProblemBySlug(slug: string): Promise<Problem | undefined> {
-  const bundled = getBundledProblem(slug);
-  if (bundled) return bundled;
-
+  noStore();
   const admin = createSupabaseAdminClient();
-  if (!admin) return undefined;
-  const { data } = await admin.from("problems").select("*").eq("slug", slug).eq("is_published", true).maybeSingle();
-  return data ? fromRow(data) : undefined;
+  if (!admin) return getBundledProblem(slug);
+  const { data, error } = await admin.from("problems").select("*").eq("slug", slug).maybeSingle();
+  if (error) throw new Error("Unable to load problem availability.");
+  if (data) return data.is_published ? fromRow(data) : undefined;
+  return getBundledProblem(slug);
 }
 
 export async function getDatabaseTests(problemId: string): Promise<StoredTestCase[]> {
   const admin = createSupabaseAdminClient();
   if (!admin) return [];
-  const { data } = await admin
+  const { data, error } = await admin
     .from("test_cases")
     .select("input, expected_output, is_hidden")
     .eq("problem_id", problemId)
     .order("position");
+  if (error) throw new Error("Unable to load grading cases.");
   return (data ?? []).map((row) => ({
     input: row.input,
     expectedOutput: row.expected_output,

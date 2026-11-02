@@ -4,6 +4,8 @@ import { CodeWorkspace } from "@/components/code-workspace";
 import { getProblemBySlug } from "@/lib/database.server";
 import { problems } from "@/lib/problems";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return problems.map((problem) => ({ slug: problem.slug }));
 }
