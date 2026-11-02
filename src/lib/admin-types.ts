@@ -13,6 +13,8 @@ export type AdminStudent = {
   id: string;
   email: string;
   displayName: string;
+  aboutMe: string;
+  avatarUrl?: string | null;
   role: string;
   createdAt: string;
   lastSignInAt: string | null;

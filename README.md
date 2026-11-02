@@ -12,6 +12,7 @@ The six bundled challenges are original practice problems across Junior, Interme
 - Automatic grading with hidden cases, trailing-whitespace normalization, verdicts, time, memory, compiler errors, and runtime errors
 - Per-IP in-process limits of 20 runs and 8 submissions per minute (use a shared Redis-backed limiter for multi-instance production deployments)
 - Supabase email/password authentication, submission history, profile statistics, and leaderboard
+- Profile pictures, editable names, and an About me field with an explicit Save profile button
 - Admin dashboard with a problem form, JSON/file imports, publish/unpublish controls, and test-case management
 - Admin-only account directory, complete progress totals, paginated submission history, and submitted source-code review
 - Row-level security migration that prevents students from reading hidden tests or writing their own verdicts
@@ -47,7 +48,7 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 ## Supabase setup
 
 1. Create a Supabase project.
-2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`.
+2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql` and `20261102202949_profile_settings.sql`.
 3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
 4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
 5. Restart the development server, then create an account through `/login`.
@@ -70,6 +71,12 @@ Users must open the email link in the same browser that requested it. The callba
 Bundled problems live in `src/lib/problems.ts`; their hidden cases live in the server-only `src/lib/test-cases.server.ts`. Database-authored problems can be managed at `/admin` by an admin user. The JSON editor accepts one problem object or an array of up to 100 objects and can import `.json` files.
 
 Database problems remain drafts until `isPublished` is `true`. Test cases are stored in the separate protected table. At least one test should be marked public if you want it available as a visible sample.
+
+## Profiles
+
+Registration asks for a required **Name** (up to 60 characters). Signed-in users can edit their name and **About me** (up to 1,000 characters) on `/profile`, select or remove a profile picture, then choose **Save profile**. Changes remain unsaved until that button is selected, and the form shows success or error feedback.
+
+Pictures accept JPG, PNG, and WebP files up to 2 MB. The `profile-pictures` Storage bucket is private; account folders isolate uploads, and temporary signed URLs display images to their owner or an administrator. Replacement pictures are uploaded to a new path, saved to the profile, and only then is the previous image removed. Failed saves discard the new upload. Database permissions let students and administrators update their own profile fields while protecting account IDs and roles. Administrators can see saved biographies and pictures in account review.
 
 ## Administration
 

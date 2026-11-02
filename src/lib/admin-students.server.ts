@@ -8,7 +8,7 @@ export async function studentSummaries(admin: NonNullable<Awaited<ReturnType<typ
   if (!users.length) return [];
   const ids = users.map((user) => user.id);
   const [profiles, progress] = await Promise.all([
-    admin.from("profiles").select("id, display_name, role").in("id", ids),
+    admin.from("profiles").select("id, display_name, about_me, role").in("id", ids),
     admin.rpc("admin_student_progress", { p_user_ids: ids }),
   ]);
   if (profiles.error) throw new Error(profiles.error.message);
@@ -17,6 +17,7 @@ export async function studentSummaries(admin: NonNullable<Awaited<ReturnType<typ
   const progressMap = new Map(((progress.data ?? []) as StudentProgress[]).map((item) => [item.user_id, item]));
   return users.map((user) => ({
     id: user.id, email: user.email ?? "", displayName: profileMap.get(user.id)?.display_name ?? "Coder",
+    aboutMe: profileMap.get(user.id)?.about_me ?? "",
     role: profileMap.get(user.id)?.role ?? "student", createdAt: user.created_at, lastSignInAt: user.last_sign_in_at ?? null,
     progress: progressMap.get(user.id) ?? { user_id: user.id, submission_count: 0, solved_problem_ids: [], attempted_problem_ids: [], last_submission_at: null },
   }));
