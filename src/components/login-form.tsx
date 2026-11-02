@@ -65,7 +65,7 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       <form onSubmit={submit} className="mt-6 space-y-4">
         <fieldset disabled={loading} className="space-y-4">
           {mode === "register" && <Field label="Display name" value={name} onChange={setName} type="text" autoComplete="name" />}
-          <Field label={mode === "login" ? "Email or admin username" : "Email"} value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
+          <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}
           {mode === "login" && <div className="text-right"><button type="button" onClick={() => changeMode("forgot")} className="rounded text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Forgot password?</button></div>}
           <Button type="submit" className="w-full" disabled={loading}>{loading && <Loader2 aria-hidden="true" className="h-4 w-4 animate-spin" />}{action}</Button>
