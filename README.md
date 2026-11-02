@@ -58,6 +58,12 @@ update public.profiles set role = 'admin' where id = '<user uuid>';
 
 The service-role key is server-only. Never prefix it with `NEXT_PUBLIC_` or expose it to client code. Public/authenticated access is constrained with row-level security. Hidden test cases have no student read policy.
 
+### Password reset
+
+The **Forgot password?** button on `/login` sends a Supabase recovery email. Under **Authentication → URL Configuration → Redirect URLs**, allow `http://localhost:3000/api/auth/reset-password` for development and `https://<your-domain>/api/auth/reset-password` for production. Keep the recovery email template's confirmation link pointed at `{{ .ConfirmationURL }}` so Supabase verifies the link before redirecting back to the app.
+
+Users must open the email link in the same browser that requested it. The callback exchanges the recovery code for a session, then `/reset-password` lets them save and confirm a new password. Invalid or expired links offer a way to request another email. See the [Supabase password recovery guide](https://supabase.com/docs/guides/auth/passwords#resetting-a-password).
+
 ## Adding problems
 
 Bundled problems live in `src/lib/problems.ts`; their hidden cases live in the server-only `src/lib/test-cases.server.ts`. Database-authored problems can be managed at `/admin` by an admin user. The JSON editor accepts one problem object or an array of up to 100 objects and can import `.json` files.
