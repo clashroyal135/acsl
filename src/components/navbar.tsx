@@ -9,7 +9,6 @@ const links = [
   ["Problems", "/problems"],
   ["Submissions", "/submissions"],
   ["Leaderboard", "/leaderboard"],
-  ["Profile", "/profile"],
 ];
 
 export async function Navbar() {
@@ -33,6 +32,7 @@ export async function Navbar() {
         </nav>
         <div className="ml-auto flex items-center gap-2">
           {profile?.role === "admin" && <Link href="/admin" className={cn(buttonVariants({ variant: "outline", size: "sm" }))}>Admin</Link>}
+          <Link href="/profile" className={cn(buttonVariants({ variant: "outline", size: "sm" }))}>Profile</Link>
           <ThemeToggle />
           {data.user ? (
             <form action="/api/auth/signout" method="post">
