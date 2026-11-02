@@ -1,11 +1,12 @@
 "use client";
 
-import { Camera, Loader2, Save, Trash2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Loader2, Save, Trash2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MAX_ABOUT_ME_LENGTH, MAX_AVATAR_BYTES, type EditableProfile } from "@/lib/profile";
+import { AvatarPicker } from "@/components/avatar-picker";
+import { MAX_ABOUT_ME_LENGTH, type EditableProfile } from "@/lib/profile";
 
 export function ProfileEditor({ initialProfile, email }: { initialProfile: EditableProfile; email: string }) {
   const [saved, setSaved] = useState(initialProfile);
@@ -18,7 +19,6 @@ export function ProfileEditor({ initialProfile, email }: { initialProfile: Edita
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const input = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,14 +31,6 @@ export function ProfileEditor({ initialProfile, email }: { initialProfile: Edita
   useEffect(() => { setImageFailed(false); }, [avatarUrl]);
   const dirty = name !== saved.displayName || aboutMe !== saved.aboutMe || Boolean(file) || removeAvatar;
 
-  function choosePicture(selected?: File) {
-    setError(""); setMessage("");
-    if (!selected) return;
-    if (!["image/jpeg", "image/png", "image/webp"].includes(selected.type)) { setError("Choose a JPG, PNG, or WebP image."); if (input.current) input.current.value = ""; return; }
-    if (!selected.size || selected.size > MAX_AVATAR_BYTES) { setError("Choose a profile picture up to 2 MB."); if (input.current) input.current.value = ""; return; }
-    setFile(selected); setRemoveAvatar(false);
-  }
-
   async function save(event: React.FormEvent) {
     event.preventDefault(); setLoading(true); setMessage(""); setError("");
     try {
@@ -50,7 +42,6 @@ export function ProfileEditor({ initialProfile, email }: { initialProfile: Edita
       if (!response.ok) throw new Error(result.error || "Unable to save your profile.");
       setSaved(result); setName(result.displayName); setAboutMe(result.aboutMe);
       setFile(null); setRemoveAvatar(false);
-      if (input.current) input.current.value = "";
       setMessage("Profile saved."); router.refresh();
     } catch (error) { setError(error instanceof Error ? error.message : "Unable to save your profile. Please try again."); }
     finally { setLoading(false); }
@@ -64,9 +55,9 @@ export function ProfileEditor({ initialProfile, email }: { initialProfile: Edita
             {avatarUrl && !imageFailed ? <img src={avatarUrl} alt={`${saved.displayName}'s profile picture`} className="h-full w-full object-cover" onError={() => setImageFailed(true)} /> : (name.trim()[0] || "?").toUpperCase()}
           </div>
           <div className="min-w-0 flex-1"><h1 className="break-words text-3xl font-black">{saved.displayName}</h1><p className="mt-1 break-all text-sm text-muted-foreground">{email}</p>
-            <div className="mt-3 flex flex-wrap gap-2"><label className={`inline-flex h-8 cursor-pointer items-center gap-2 rounded-md border border-border px-3 text-xs font-semibold hover:bg-muted focus-within:ring-2 focus-within:ring-primary ${loading ? "pointer-events-none opacity-50" : ""}`}><Camera className="h-3.5 w-3.5" /> {saved.hasAvatar || file ? "Change picture" : "Add profile picture"}<input ref={input} type="file" accept="image/jpeg,image/png,image/webp" aria-label="Profile picture" className="sr-only" onChange={(event) => choosePicture(event.target.files?.[0])} /></label>
-              {(file || saved.hasAvatar) && !removeAvatar && <Button type="button" size="sm" variant="ghost" onClick={() => { setFile(null); setRemoveAvatar(true); setError(""); setMessage(""); if (input.current) input.current.value = ""; }}><Trash2 className="h-3.5 w-3.5" /> Remove</Button>}
-            </div><p className="mt-2 text-xs text-muted-foreground">JPG, PNG, or WebP · Up to 2 MB</p>
+            <div className="mt-3 flex flex-wrap gap-2"><AvatarPicker disabled={loading} hasAvatar={Boolean(saved.hasAvatar || file)} onApply={(picture) => { setFile(picture); setRemoveAvatar(false); setError(""); setMessage(""); }} />
+              {(file || saved.hasAvatar) && !removeAvatar && <Button type="button" size="sm" variant="ghost" onClick={() => { setFile(null); setRemoveAvatar(true); setError(""); setMessage(""); }}><Trash2 className="h-3.5 w-3.5" /> Remove</Button>}
+            </div>
           </div>
         </div>
         <div className="border-t border-border pt-6"><h2 className="font-bold">Edit profile</h2><p className="mt-1 text-sm text-muted-foreground">Add a picture and tell us a little about yourself.</p></div>

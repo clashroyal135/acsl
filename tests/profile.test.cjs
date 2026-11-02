@@ -119,7 +119,8 @@ test("removing a picture clears its profile reference before cleanup", async () 
 test("profile has a labeled biography field and explicit Save profile button", () => {
   const { ProfileEditor } = loader({ "next/navigation": { useRouter: () => ({ refresh() {} }) } })("src/components/profile-editor.tsx");
   const html = renderToStaticMarkup(createElement(ProfileEditor, { email: "learner@example.com", initialProfile: { displayName: "Learner", aboutMe: "Learning Python", avatarUrl: null, hasAvatar: false } }));
-  assert.match(html, /About me/); assert.match(html, /Learning Python/); assert.match(html, /Save profile/); assert.match(html, /type="file"/);
+  assert.match(html, /About me/); assert.match(html, /Learning Python/); assert.match(html, /Save profile/); assert.match(html, /Add profile picture/);
+  assert.doesNotMatch(html, /JPG, PNG, or WebP · Up to 2 MB/);
 });
 
 test("registration shows a required Name text box with the profile length limit", () => {

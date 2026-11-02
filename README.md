@@ -74,7 +74,7 @@ Database problems remain drafts until `isPublished` is `true`. Test cases are st
 
 ## Profiles
 
-Registration asks for a required **Name** (up to 60 characters). Signed-in users can edit their name and **About me** (up to 1,000 characters) on `/profile`, select or remove a profile picture, then choose **Save profile**. Changes remain unsaved until that button is selected, and the form shows success or error feedback.
+Registration asks for a required **Name** (up to 60 characters). Signed-in users can edit their name and **About me** (up to 1,000 characters) on `/profile`, select or remove a profile picture, then choose **Save profile**. **Add profile picture** opens a floating window with the file requirements and an **Upload from computer** button. Dropping a file anywhere on the profile screen opens the same window. Pictures can be repositioned by dragging (or arrow keys), zoomed, and cropped to a square before choosing **Use picture**. Cropping happens in the browser and exports a 512 × 512 PNG. Changes remain unsaved until **Save profile** is selected, and the form shows success or error feedback.
 
 Pictures accept JPG, PNG, and WebP files up to 2 MB. The `profile-pictures` Storage bucket is private; account folders isolate uploads, and temporary signed URLs display images to their owner or an administrator. Replacement pictures are uploaded to a new path, saved to the profile, and only then is the previous image removed. Failed saves discard the new upload. Database permissions let students and administrators update their own profile fields while protecting account IDs and roles. Administrators can see saved biographies and pictures in account review.
 

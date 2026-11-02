@@ -4,7 +4,7 @@ const vm = require("node:vm");
 const ts = require("typescript");
 const root = path.resolve(__dirname, "..");
 
-function loader(mocks = {}, env = {}) {
+function loader(mocks = {}, env = {}, globals = {}) {
   const cache = new Map();
   function load(file) {
     const absolute = path.resolve(root, file);
@@ -13,7 +13,7 @@ function loader(mocks = {}, env = {}) {
     cache.set(absolute, exports);
     const code = ts.transpileModule(fs.readFileSync(absolute, "utf8"), { compilerOptions: { target: ts.ScriptTarget.ES2017, module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true } }).outputText;
     vm.runInNewContext(code, {
-      exports, process: { env }, URL, Date, console, File, FormData, Blob,
+      exports, process: { env }, URL, Date, console, File, FormData, Blob, ...globals,
       require(name) {
         if (name in mocks) return mocks[name];
         if (name === "server-only") return {};
