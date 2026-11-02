@@ -48,7 +48,7 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 ## Supabase setup
 
 1. Create a Supabase project.
-2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql` and `20261102202949_profile_settings.sql`.
+2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`, `20261102202949_profile_settings.sql`, and `20261102230901_profile_names.sql`.
 3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
 4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
 5. Restart the development server, then create an account through `/login`.
@@ -74,9 +74,13 @@ Database problems remain drafts until `isPublished` is `true`. Test cases are st
 
 ## Profiles
 
-Registration asks for a required **Name** (up to 60 characters). Signed-in users can edit their name and **About me** (up to 1,000 characters) on `/profile`, select or remove a profile picture, then choose **Save profile**. **Add profile picture** opens a floating window with the file requirements and an **Upload from computer** button. Dropping a file anywhere on the profile screen opens the same window. Pictures can be repositioned by dragging (or arrow keys), zoomed, and cropped to a square before choosing **Use picture**. Cropping happens in the browser and exports a 512 × 512 PNG. Changes remain unsaved until **Save profile** is selected, and the form shows success or error feedback.
+Registration asks for a required **Display name** and **Name** (each up to 60 characters). Display name is the public identity used on leaderboards and around the site. Name is stored separately, hidden from other users by default, and always available to administrators. On `/profile`, users can edit both fields and choose **Show my name on my profile**; a name is required when enabling that option. Existing accounts keep their display names and can add a name in profile settings.
 
-Pictures accept JPG, PNG, and WebP files up to 2 MB. The `profile-pictures` Storage bucket is private; account folders isolate uploads, and temporary signed URLs display images to their owner or an administrator. Replacement pictures are uploaded to a new path, saved to the profile, and only then is the previous image removed. Failed saves discard the new upload. Database permissions let students and administrators update their own profile fields while protecting account IDs and roles. Administrators can see saved biographies and pictures in account review.
+Leaderboard display names link to read-only `/profile/<user-id>` pages showing the display name, picture, About me, and progress on published problems. Name appears only when enabled, or when an administrator is viewing the profile. The server omits hidden names from the data sent to other users. Email addresses and submitted code are not included in public profiles. Raw profile rows remain restricted to their owner and administrators.
+
+Signed-in users can also edit **About me** (up to 1,000 characters), select or remove a profile picture, then choose **Save profile**. **Add profile picture** opens a floating window with the file requirements and an **Upload from computer** button. Dropping a file anywhere on the profile screen opens the same window. Pictures can be repositioned by dragging (or arrow keys), zoomed, and cropped to a square before choosing **Use picture**. Cropping happens in the browser and exports a 512 × 512 PNG. Changes remain unsaved until **Save profile** is selected, and the form shows success or error feedback.
+
+Pictures accept JPG, PNG, and WebP files up to 2 MB. The `profile-pictures` Storage bucket is private; account folders isolate uploads, and the server issues temporary signed URLs to display pictures on profiles. Replacement pictures are uploaded to a new path, saved to the profile, and only then is the previous image removed. Failed saves discard the new upload. Database permissions let students and administrators update their own profile fields while protecting account IDs and roles. Administrators can see saved names, biographies, and pictures in account review, regardless of the name visibility toggle.
 
 ## Administration
 

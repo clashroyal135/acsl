@@ -111,10 +111,11 @@ test("student summaries include empty accounts and do not depend on truncated su
   const stats = { user_id: uuid, submission_count: 2400, solved_problem_ids: ["one"], attempted_problem_ids: ["one", "two"], last_submission_at: "2026-11-02T12:00:00Z" };
   const module = loader()("src/lib/admin-students.server.ts");
   const result = await module.studentSummaries({
-    from: table => { assert.equal(table, "profiles"); return { select: () => ({ in: async () => ({ data: [{ id: uuid, display_name: "Learner", role: "student" }], error: null }) }) }; },
+    from: table => { assert.equal(table, "profiles"); return { select: () => ({ in: async () => ({ data: [{ id: uuid, display_name: "Learner", full_name: "Private Name", show_name: false, role: "student" }], error: null }) }) }; },
     rpc: async (name, args) => { assert.equal(name, "admin_student_progress"); assert.equal(args.p_user_ids.length, 2); return { data: [stats], error: null }; },
   }, [{ id: uuid, email: "learner@example.com", created_at: "2026-01-01" }, { id: "new-user", email: "new@example.com", created_at: "2026-11-02" }]);
   assert.equal(result[0].progress.submission_count, 2400);
+  assert.equal(result[0].fullName, "Private Name"); assert.equal(result[0].showName, false);
   assert.equal(result[1].progress.submission_count, 0);
   assert.equal(result[1].progress.solved_problem_ids.length, 0);
 });

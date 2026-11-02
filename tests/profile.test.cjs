@@ -30,17 +30,17 @@ function setup(options = {}) {
     "@/lib/supabase/server": { createSupabaseServerClient: async () => supabase },
     "@/lib/rate-limit.server": { checkRateLimit: () => ({ allowed: true }) },
   })("src/app/api/profile/route.ts");
-  const form = new FormData(); form.set("name", " Learner "); form.set("aboutMe", " I like Python. ");
+  const form = new FormData(); form.set("displayName", " Learner "); form.set("name", " Personal Name "); form.set("showName", "false"); form.set("aboutMe", " I like Python. ");
   const request = { headers: new Headers({ origin: "https://practice.example" }), nextUrl: new URL("https://practice.example/api/profile"), formData: async () => form };
   return { calls, form, request, post: () => module.POST(request) };
 }
 
 test("profile text allows clearing a biography and rejects empty or oversized names", () => {
   const { validateProfileText } = loader()("src/lib/profile.ts");
-  assert.equal(validateProfileText(" Name ", "").aboutMe, "");
-  assert.equal(validateProfileText(" Name ", " Hi ").displayName, "Name");
-  for (const name of [" ", "a".repeat(61), null]) assert.throws(() => validateProfileText(name, ""), /Name must/);
-  assert.throws(() => validateProfileText("Name", "a".repeat(1001)), /About me/);
+  assert.equal(validateProfileText(" Handle ", " Name ", false, "").aboutMe, "");
+  assert.equal(validateProfileText(" Handle ", " Name ", false, " Hi ").displayName, "Handle");
+  for (const name of [" ", "a".repeat(61), null]) assert.throws(() => validateProfileText(name, "Name", false, ""), /Display name must/);
+  assert.throws(() => validateProfileText("Handle", "Name", false, "a".repeat(1001)), /About me/);
 });
 
 test("picture validation checks file bytes, size, and ownership rather than filenames", async () => {
@@ -66,8 +66,9 @@ test("saving name and biography updates only the authenticated account and edita
   const { post, form, calls } = setup();
   form.set("role", "admin"); form.set("userId", other); form.set("avatar_path", `${other}/not-mine.png`);
   const response = await post(); assert.equal(response.status, 200);
-  const result = await response.json(); assert.equal(result.displayName, "Learner"); assert.equal(result.aboutMe, "I like Python.");
+  const result = await response.json(); assert.equal(result.displayName, "Learner"); assert.equal(result.fullName, "Personal Name"); assert.equal(result.showName, false); assert.equal(result.aboutMe, "I like Python.");
   const values = calls.find(call => call[0] === "update")[1];
+  assert.equal(values.display_name, "Learner"); assert.equal(values.full_name, "Personal Name"); assert.equal(values.show_name, false);
   assert.equal("role" in values, false); assert.equal("userId" in values, false); assert.equal(values.avatar_path, null);
   assert.equal(response.headers.get("cache-control"), "private, no-store");
 });
@@ -118,7 +119,7 @@ test("removing a picture clears its profile reference before cleanup", async () 
 
 test("profile has a labeled biography field and explicit Save profile button", () => {
   const { ProfileEditor } = loader({ "next/navigation": { useRouter: () => ({ refresh() {} }) } })("src/components/profile-editor.tsx");
-  const html = renderToStaticMarkup(createElement(ProfileEditor, { email: "learner@example.com", initialProfile: { displayName: "Learner", aboutMe: "Learning Python", avatarUrl: null, hasAvatar: false } }));
+  const html = renderToStaticMarkup(createElement(ProfileEditor, { email: "learner@example.com", initialProfile: { displayName: "Learner", fullName: "Personal Name", showName: false, aboutMe: "Learning Python", avatarUrl: null, hasAvatar: false } }));
   assert.match(html, /About me/); assert.match(html, /Learning Python/); assert.match(html, /Save profile/); assert.match(html, /Add profile picture/);
   assert.doesNotMatch(html, /JPG, PNG, or WebP · Up to 2 MB/);
 });
@@ -126,5 +127,5 @@ test("profile has a labeled biography field and explicit Save profile button", (
 test("registration shows a required Name text box with the profile length limit", () => {
   const { LoginForm } = loader({ "next/navigation": { useRouter: () => ({}) } })("src/components/login-form.tsx");
   const html = renderToStaticMarkup(createElement(LoginForm, { initialMode: "register" }));
-  assert.match(html, />Name<\/span>/); assert.match(html, /maxLength="60"/); assert.match(html, /autoComplete="name"/);
+  assert.match(html, />Name<\/span>/); assert.match(html, />Display name<\/span>/); assert.match(html, /autoComplete="nickname"/); assert.match(html, /maxLength="60"/); assert.match(html, /autoComplete="name"/);
 });

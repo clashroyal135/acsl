@@ -14,6 +14,7 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -45,8 +46,9 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
           router.refresh();
         }
       } else {
+        if (!displayName.trim() || displayName.trim().length > 60) { setMessage("Display name must be between 1 and 60 characters."); return; }
         if (!name.trim() || name.trim().length > 60) { setMessage("Name must be between 1 and 60 characters."); return; }
-        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: name.trim() } } });
+        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim() } } });
         setMessage(error ? error.message : "Account created. Check your email if confirmation is enabled.");
       }
     } catch {
@@ -65,7 +67,10 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       {mode === "forgot" && <p className="mt-2 text-sm text-muted-foreground">Enter your account email and we’ll send you a password reset link. Open it in this browser.</p>}
       <form onSubmit={submit} className="mt-6 space-y-4">
         <fieldset disabled={loading} className="space-y-4">
-          {mode === "register" && <Field label="Name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} />}
+          {mode === "register" && <>
+            <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} description="Your public name on leaderboards and around the site." />
+            <Field label="Name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile. Admins can always see it." />
+          </>}
           <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}
           {mode === "login" && <div className="text-right"><button type="button" onClick={() => changeMode("forgot")} className="rounded text-sm font-semibold text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">Forgot password?</button></div>}
@@ -78,6 +83,6 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
   );
 }
 
-function Field({ label, value, onChange, type, autoComplete, minLength, maxLength }: { label: string; value: string; onChange: (value: string) => void; type: string; autoComplete: string; minLength?: number; maxLength?: number }) {
-  return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span><input required minLength={minLength} maxLength={maxLength} type={type} autoComplete={autoComplete} value={value} onChange={(event) => onChange(event.target.value)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary" /></label>;
+function Field({ label, value, onChange, type, autoComplete, minLength, maxLength, description }: { label: string; value: string; onChange: (value: string) => void; type: string; autoComplete: string; minLength?: number; maxLength?: number; description?: string }) {
+  return <label className="block"><span className="mb-1.5 block text-sm font-semibold">{label}</span><input required minLength={minLength} maxLength={maxLength} type={type} autoComplete={autoComplete} value={value} onChange={(event) => onChange(event.target.value)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary" />{description && <span className="mt-1.5 block text-xs leading-5 text-muted-foreground">{description}</span>}</label>;
 }
