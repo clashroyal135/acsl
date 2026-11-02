@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { SITE_ORIGIN } from "@/lib/site-url";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
   title: { default: "ACSL Practice", template: "%s · ACSL Practice" },
   description: "ACSL-style programming problems with code execution and automatic grading.",
 };

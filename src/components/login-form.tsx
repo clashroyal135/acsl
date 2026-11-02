@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { loginEmail } from "@/lib/login-identity";
+import { siteOrigin } from "@/lib/site-url";
 
 type Mode = "login" | "register" | "forgot";
 
@@ -34,7 +35,7 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       if (!supabase) { setMessage("Sign-in is not available yet."); return; }
       if (mode === "forgot") {
         const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-          redirectTo: `${window.location.origin}/api/auth/reset-password`,
+          redirectTo: `${siteOrigin(window.location.origin)}/api/auth/reset-password`,
         });
         setMessage(error ? error.message : "If an account exists for this email, you’ll receive a password reset link. Check your inbox and spam folder.");
       } else if (mode === "login") {
@@ -48,7 +49,7 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
       } else {
         if (!displayName.trim() || displayName.trim().length > 60) { setMessage("Display name must be between 1 and 60 characters."); return; }
         if (!name.trim() || name.trim().length > 60) { setMessage("Name must be between 1 and 60 characters."); return; }
-        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim() } } });
+        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim() }, emailRedirectTo: `${siteOrigin(window.location.origin)}/login` } });
         setMessage(error ? error.message : "Account created. Check your email if confirmation is enabled.");
       }
     } catch {

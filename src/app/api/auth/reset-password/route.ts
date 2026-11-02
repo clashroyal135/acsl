@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { requestSiteOrigin } from "@/lib/site-url";
 
 export async function GET(request: NextRequest) {
-  const destination = new URL("/reset-password", request.url);
+  const destination = new URL("/reset-password", requestSiteOrigin(request.url, request.headers.get("host")));
   const code = request.nextUrl.searchParams.get("code");
 
   try {

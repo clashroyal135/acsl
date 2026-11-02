@@ -72,7 +72,7 @@ test("profile validation keeps display name independent of private name and reje
 test("registration sends separate display and personal names to the signup trigger", async () => {
   let state = [], index = 0, payload;
   const mockReact = { ...React, useState(initial) { const i = index++; if (!(i in state)) state[i] = initial; return [state[i], value => { state[i] = value; }]; } };
-  const { LoginForm } = loader({ react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: { signUp: async value => { payload = value; return { error: null }; } } }) } })("src/components/login-form.tsx");
+  const { LoginForm } = loader({ react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: { signUp: async value => { payload = value; return { error: null }; } } }) } }, {}, { window: { location: { origin: "http://localhost:3000" } } })("src/components/login-form.tsx");
   let tree;
   function render() { index = 0; tree = LoginForm({ initialMode: "register" }); }
   function find(predicate) { let found; function walk(node) { if (!node || typeof node !== "object") return; if (Array.isArray(node)) return node.forEach(walk); if (predicate(node)) found = node; walk(node.props?.children); } walk(tree); return found; }

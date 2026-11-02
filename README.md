@@ -51,8 +51,9 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`, `20261102202949_profile_settings.sql`, and `20261102230901_profile_names.sql`.
 3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
 4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
-5. Restart the development server, then create an account through `/login`.
-6. To grant admin access, update that profile from the SQL editor:
+5. Under **Authentication → URL Configuration**, set **Site URL** to `https://acsl.netlify.app`. Allow `https://acsl.netlify.app/login` and `https://acsl.netlify.app/api/auth/reset-password` in **Redirect URLs**. For local development, also allow the equivalent `http://localhost:3000` URLs.
+6. Restart the development server, then create an account through `/login`.
+7. To grant admin access, update that profile from the SQL editor:
 
 ```sql
 update public.profiles set role = 'admin' where id = '<user uuid>';
@@ -62,7 +63,7 @@ The service-role key is server-only. Never prefix it with `NEXT_PUBLIC_` or expo
 
 ### Password reset
 
-The **Forgot password?** button on `/login` sends a Supabase recovery email. Under **Authentication → URL Configuration → Redirect URLs**, allow `http://localhost:3000/api/auth/reset-password` for development and `https://<your-domain>/api/auth/reset-password` for production. Keep the recovery email template's confirmation link pointed at `{{ .ConfirmationURL }}` so Supabase verifies the link before redirecting back to the app.
+The **Forgot password?** button on `/login` sends a Supabase recovery email. Under **Authentication → URL Configuration → Redirect URLs**, allow `http://localhost:3000/api/auth/reset-password` for development and `https://acsl.netlify.app/api/auth/reset-password` for production. Keep the recovery email template's confirmation link pointed at `{{ .ConfirmationURL }}` so Supabase verifies the link before redirecting back to the app.
 
 Users must open the email link in the same browser that requested it. The callback exchanges the recovery code for a session, then `/reset-password` lets them save and confirm a new password. Invalid or expired links offer a way to request another email. See the [Supabase password recovery guide](https://supabase.com/docs/guides/auth/passwords#resetting-a-password).
 
@@ -102,6 +103,8 @@ npm run build
 ```
 
 ## Deployment
+
+Use `https://acsl.netlify.app` as the public address and `https://acsl.netlify.app/login` for sign-in. The application redirects Netlify deploy permalinks, branch URLs, and deploy-preview URLs ending in `--acsl.netlify.app` to that address before rendering pages or creating auth cookies, preserving paths and query parameters. Signup confirmations, password recovery, and sign-out redirects use the stable domain. Local development keeps its local origin. Netlify's historical deploy permalinks contain immutable copies of older code; redirects added in a new commit apply to deployments built with that commit or later.
 
 Deploy the Next.js app to Vercel or another Node-compatible platform and configure all production environment variables there. The grading routes request a 60-second function duration; choose a plan/runtime that supports the time required by your complete test suite.
 

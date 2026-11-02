@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { LoginForm } from "@/components/login-form";
+import { SITE_ORIGIN } from "@/lib/site-url";
 
-export const metadata: Metadata = { title: "Sign in" };
+export const metadata: Metadata = { title: "Sign in", alternates: { canonical: `${SITE_ORIGIN}/login` } };
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ mode?: string }> }) {
   const { mode } = await searchParams;
   return <main className="grid min-h-[calc(100vh-4rem)] place-items-center px-4 py-12"><LoginForm initialMode={mode === "forgot" ? "forgot" : "login"} /></main>;
