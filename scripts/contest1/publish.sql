@@ -74,7 +74,7 @@ begin
   if exists(select 1 from public.problems where is_published and not(slug=any(expected)) and not(slug=any(retired))) then
     raise exception 'An unexpected published problem needs review before replacement';
   end if;
-  delete from public.problems where slug=any(retired);
+  update public.problems set is_published=false,updated_at=now() where slug=any(retired);
   update public.problems set is_published=true,updated_at=now() where slug=any(expected);
   if (select count(*) from public.problems where is_published)<>53 then
     raise exception 'Published catalog count differs from the reviewed import';
