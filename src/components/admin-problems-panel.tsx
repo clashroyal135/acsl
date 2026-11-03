@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AdminProblemEditor } from "@/components/admin-problem-editor";
+import { seasonLabel } from "@/lib/problem-groups";
 import { defaultStarter } from "@/lib/starters";
 import type { AdminProblem } from "@/lib/admin-types";
 
@@ -89,7 +90,7 @@ export function AdminProblemsPanel() {
           catch { /* Keep unsaved JSON text when toggling a stored problem. */ }
         }
       }
-      setMessage(`${problem.title} ${result.isPublished ? "published" : "unpublished"}.`);
+      setMessage(`${problem.title} (${problem.division}) ${result.isPublished ? "published" : "unpublished"}.`);
     } catch (error) { setError(error instanceof Error ? error.message : "Unable to change publication status."); }
     finally { setBusy(false); }
   }
@@ -123,8 +124,8 @@ export function AdminProblemsPanel() {
       <Card className="overflow-hidden">
         <h2 className="border-b border-border px-5 py-4 font-bold">Problem library</h2>
         {loading ? <p role="status" className="p-6 text-sm text-muted-foreground">Loading problems…</p> : !problems.length ? <p className="p-6 text-sm text-muted-foreground">No problems yet.</p> : problems.map((problem) => <div key={problem.id} className={`border-b border-border p-4 last:border-0 ${draft.id === problem.id ? "bg-primary/5" : ""}`}>
-          <button disabled={busy} className="w-full text-left hover:text-primary" onClick={() => edit(problem)}><span className="block font-semibold">{problem.title}</span><span className="text-xs text-muted-foreground">{problem.division} · {problem.difficulty}</span></button>
-          <div className="mt-3 flex flex-wrap items-center gap-2"><Badge className={problem.isPublished ? "border-success/25 bg-success/10 text-success" : ""}>{problem.isPublished ? "Published" : "Draft"}</Badge><Button size="sm" variant="outline" disabled={busy} onClick={() => toggle(problem)} aria-label={`${problem.isPublished ? "Unpublish" : "Publish"} ${problem.title}`}>{problem.isPublished ? "Unpublish" : "Publish"}</Button>{!problem.isBundled && <Button variant="ghost" size="icon" className="h-8 w-8 text-danger" disabled={busy} onClick={() => remove(problem)} aria-label={`Delete ${problem.title}`}><Trash2 className="h-4 w-4" /></Button>}</div>
+          <button disabled={busy} className="w-full text-left hover:text-primary" onClick={() => edit(problem)}><span className="block font-semibold">{problem.title}</span><span className="text-xs text-muted-foreground">{seasonLabel(problem.year)} · {problem.division} · {problem.difficulty}</span></button>
+          <div className="mt-3 flex flex-wrap items-center gap-2"><Badge className={problem.isPublished ? "border-success/25 bg-success/10 text-success" : ""}>{problem.isPublished ? "Published" : "Draft"}</Badge><Button size="sm" variant="outline" disabled={busy} onClick={() => toggle(problem)} aria-label={`${problem.isPublished ? "Unpublish" : "Publish"} ${problem.title} ${problem.division} ${seasonLabel(problem.year)}`}>{problem.isPublished ? "Unpublish" : "Publish"}</Button>{!problem.isBundled && <Button variant="ghost" size="icon" className="h-8 w-8 text-danger" disabled={busy} onClick={() => remove(problem)} aria-label={`Delete ${problem.title} ${problem.division} ${seasonLabel(problem.year)}`}><Trash2 className="h-4 w-4" /></Button>}</div>
         </div>)}
       </Card>
       <Card className="min-w-0 overflow-hidden">

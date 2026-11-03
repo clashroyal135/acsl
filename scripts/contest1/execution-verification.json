@@ -1,0 +1,23 @@
+{
+  "runs": [
+    {
+      "language": "python",
+      "verdict": "Accepted"
+    },
+    {
+      "language": "cpp",
+      "verdict": "Accepted"
+    },
+    {
+      "language": "java",
+      "verdict": "Accepted"
+    }
+  ],
+  "submission": {
+    "problem": "next-base-2022-senior",
+    "language": "cpp",
+    "passed": 13,
+    "total": 13,
+    "hiddenDetailsRedacted": true
+  }
+}

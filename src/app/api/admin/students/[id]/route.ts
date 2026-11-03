@@ -28,7 +28,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
       avatarUrl = data?.signedUrl ?? null;
     }
     return NextResponse.json({ student: { ...students[0], avatarUrl }, submissions: submissions.data, total: submissions.count, page, pageSize,
-      problems: problems.map(({ id, title, division, isPublished }) => ({ id, title, division, isPublished })),
+      problems: problems.map(({ id, title, division, year, isPublished }) => ({ id, title, division, year, isPublished })),
     }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     return errorResponse(error instanceof Error ? error.message : "Unable to load student.", 500);

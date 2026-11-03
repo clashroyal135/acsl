@@ -4,6 +4,7 @@ import { normalizeOutput } from "@/lib/utils";
 import type { JudgeVerdict, Language, SubmissionResult, TestResult } from "@/lib/types";
 import type { StoredTestCase } from "@/lib/test-cases.server";
 import { executeWithWandbox } from "@/lib/wandbox.server";
+import { buildWandboxBatch, readWandboxBatch } from "@/lib/wandbox-batch.server";
 
 const LANGUAGE_IDS: Record<Language, number> = {
   python: Number(process.env.JUDGE0_PYTHON_LANGUAGE_ID ?? 71),
@@ -54,10 +55,11 @@ async function executeOne(
   timeLimitMs: number,
   memoryLimitKb: number,
   compareOutput: boolean,
+  deadline: number,
 ): Promise<TestResult> {
   const baseUrl = process.env.JUDGE0_URL?.replace(/\/$/, "");
   if (!baseUrl) {
-    return executeWithWandbox(sourceCode, language, test, index, timeLimitMs, compareOutput);
+    return executeWithWandbox(sourceCode, language, test, index, timeLimitMs, compareOutput, deadline - Date.now());
   }
 
   const createResponse = await fetch(`${baseUrl}/submissions?base64_encoded=true&wait=false`, {
@@ -124,20 +126,41 @@ export async function gradeSubmission(options: {
   memoryLimitKb: number;
   compareOutput?: boolean;
 }): Promise<SubmissionResult> {
-  const results: TestResult[] = [];
-  for (let index = 0; index < options.tests.length; index += 1) {
-    const result = await executeOne(
-      options.sourceCode,
-      options.language,
-      options.tests[index],
-      index,
-      options.timeLimitMs,
-      options.memoryLimitKb,
-      options.compareOutput ?? true,
-    );
-    results.push(result);
-    if (["Compilation Error", "Runtime Error", "Time Limit Exceeded", "Internal Error"].includes(result.verdict)) break;
+  const batch = !process.env.JUDGE0_URL ? buildWandboxBatch(options.sourceCode, options.language, options.tests) : null;
+  if (batch) {
+    const execution = await executeWithWandbox(batch.sourceCode, options.language,
+      { input: batch.input, expectedOutput: "", hidden: true }, 0, options.timeLimitMs, false, 50_000);
+    return readWandboxBatch(batch, execution, options.tests);
   }
+  const completed: (TestResult | undefined)[] = new Array(options.tests.length);
+  const deadline = Date.now() + 50_000;
+  let nextIndex = 0;
+  let stopped = false;
+  async function worker() {
+    while (!stopped && nextIndex < options.tests.length) {
+      if (Date.now() >= deadline) throw new Error("The execution service could not finish grading in time. Please try again.");
+      const index = nextIndex++;
+      const result = await executeOne(
+        options.sourceCode,
+        options.language,
+        options.tests[index],
+        index,
+        options.timeLimitMs,
+        options.memoryLimitKb,
+        options.compareOutput ?? true,
+        deadline,
+      );
+      // Submitted programs can print stdin or include it in runtime errors.
+      // Keep every hidden execution detail on the server, including those outputs.
+      completed[index] = options.tests[index].hidden
+        ? { ...result, stdout: null, expectedOutput: undefined, stderr: null, compileOutput: null }
+        : result;
+      if (["Compilation Error", "Runtime Error", "Time Limit Exceeded", "Internal Error"].includes(result.verdict)) stopped = true;
+    }
+  }
+  // Bound remote execution concurrency so a 12-case suite does not compile serially.
+  await Promise.all(Array.from({ length: Math.min(3, options.tests.length) }, () => worker()));
+  const results = completed.filter((result): result is TestResult => result !== undefined);
 
   const failed = results.find((test) => test.verdict !== "Accepted");
   return {

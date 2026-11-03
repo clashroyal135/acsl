@@ -39,5 +39,5 @@ export type StudentDetail = {
   total: number;
   page: number;
   pageSize: number;
-  problems: { id: string; title: string; division: string; isPublished: boolean }[];
+  problems: { id: string; title: string; division: string; year: number; isPublished: boolean }[];
 };

@@ -1,0 +1,43 @@
+const assert=require('node:assert/strict');
+const { chromium }=require('playwright');
+(async()=>{
+ const browser=await chromium.launch({channel:process.env.ACSL_BROWSER_CHANNEL||'chrome',headless:true});
+ try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000}});
+  const base=process.env.ACSL_CHECK_URL||'http://localhost:3100';
+  await page.goto(base+'/problems');
+  await page.getByRole('link',{name:/Next Base/}).waitFor();
+  assert.equal(await page.locator('a[href^="/problems/"]').count(),18);
+  await page.getByLabel('Year',{exact:true}).selectOption('2022');
+  await page.getByLabel('Division',{exact:true}).selectOption('Senior');
+  assert.equal(await page.locator('a[href^="/problems/"]').count(),1);
+  await page.getByRole('link',{name:/Next Base/}).click();
+  await page.getByRole('heading',{name:'Next Base',exact:true}).waitFor();
+  assert.equal(await page.getByLabel('Problem division').inputValue(),'next-base-2022-senior');
+  await page.getByText('Return the largest occurrence COUNT',{exact:false}).waitFor();
+  await page.getByLabel('Problem division').selectOption('next-base-2022-junior');
+  await page.waitForURL('**/next-base-2022-junior');
+  await page.getByText('Find the sum of all digit VALUES',{exact:false}).waitFor();
+  await page.getByLabel('Problem division').selectOption('next-base-2022-intermediate');
+  await page.waitForURL('**/next-base-2022-intermediate');
+  await page.getByText('Count occurrences of the largest allowed digit',{exact:false}).waitFor();
+  await page.locator('.monaco-editor').waitFor({timeout:30000});
+  await page.screenshot({path:'/private/tmp/acsl-next-base-desktop.png',fullPage:true});
+  await page.goto(base+'/problems/acsl-tiles-2023-intermediate');
+  await page.getByRole('heading',{name:'ACSL Tiles',exact:true}).waitFor();
+  await page.waitForFunction(()=>document.querySelector('select[aria-label="Problem division"] option[value="unavailable-Junior"]')?.disabled===true);
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(base+'/problems');
+  await page.getByRole('link',{name:/Next Base/}).waitFor();
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth),false);
+  await page.screenshot({path:'/private/tmp/acsl-problems-mobile.png',fullPage:true});
+  await page.goto(base+'/problems/next-base-2022-junior');
+  await page.getByLabel('Problem division').waitFor();
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth),false);
+  await page.screenshot({path:'/private/tmp/acsl-workspace-mobile.png',fullPage:true});
+  await page.goto(base+'/problems/letter-relay');
+  await page.getByRole('heading',{name:'That problem wandered off.'}).waitFor();
+  const old=await page.request.post(base+'/api/run',{headers:{origin:base},data:{problemSlug:'letter-relay',language:'python',code:'print(1)'}});assert.equal(old.status(),404);
+  console.log('Browser checks passed: 18 groups, year/division filters, all Next Base divisions, unavailable Tiles Junior, mobile layouts, retired route.');
+ }finally{await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

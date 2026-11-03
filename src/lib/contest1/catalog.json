@@ -1,0 +1,1630 @@
+[
+  {
+    "id": "triangles-2007-junior",
+    "slug": "triangles-2007-junior",
+    "title": "Triangles",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Geometry",
+    "year": 2007,
+    "acceptanceRate": 0,
+    "summary": "2007-2008 · Contest 1 · Geometry",
+    "statement": "Each data line describes two sets of side lengths. Consider every one-to-one pairing of their sides. Find the largest number of equal side pairs. Each side can be used only once.",
+    "inputSpec": "Five lines, each containing six positive decimal numbers. The first three describe the first triangle; the final three describe the second. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "One integer from 0 to 3 per input line.",
+    "constraints": [
+      "Side lengths are positive decimals, at most 1000000.",
+      "Do not reject invalid triangles in the Junior or Intermediate version; only Senior requests validation."
+    ],
+    "samples": [
+      {
+        "input": "2 3 4 4 3 2\n3 4 5 5 2 3\n2 3 4 2 3 4.5\n2 2 3 3.5 2 2\n2 2 2 1 2 2.5\n",
+        "output": "3\n2\n2\n2\n1\n"
+      }
+    ],
+    "hints": [
+      "Try all vertex permutations; compare exact decimal values or cross-products."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "triangles-2007-intermediate",
+    "slug": "triangles-2007-intermediate",
+    "title": "Triangles",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Geometry",
+    "year": 2007,
+    "acceptanceRate": 0,
+    "summary": "2007-2008 · Contest 1 · Geometry",
+    "statement": "Each data line describes two sets of side lengths. Consider every one-to-one pairing of their sides. The first triangle has vertices ABC and its sides are given in order AB, BC, AC. The second has vertices DEF and its sides are given in order DE, EF, DF. A name such as EFD means A corresponds to E, B to F, and C to D. Find a correspondence making all three paired side lengths equal.",
+    "inputSpec": "Five lines, each containing six positive decimal numbers. The first three describe the first triangle; the final three describe the second. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the corresponding three-letter name, or NONE if no correspondence makes all sides equal. If several names satisfy the rules, print the alphabetically first name. Print one answer per input line.",
+    "constraints": [
+      "Side lengths are positive decimals, at most 1000000.",
+      "Do not reject invalid triangles in the Junior or Intermediate version; only Senior requests validation."
+    ],
+    "samples": [
+      {
+        "input": "2 3 4 2 3 4\n2 3 4 4 3 2\n2 3 4 3 2 4\n2 3 4 2 3 5\n2 3.5 4 2 4 3.5\n",
+        "output": "DEF\nDFE\nFED\nNONE\nEDF\n"
+      }
+    ],
+    "hints": [
+      "Try all vertex permutations; compare exact decimal values or cross-products."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "triangles-2007-senior",
+    "slug": "triangles-2007-senior",
+    "title": "Triangles",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Geometry",
+    "year": 2007,
+    "acceptanceRate": 0,
+    "summary": "2007-2008 · Contest 1 · Geometry",
+    "statement": "Each data line describes two sets of side lengths. Consider every one-to-one pairing of their sides. The first triangle has vertices ABC and its sides are given in order AB, BC, AC. The second has vertices DEF and its sides are given in order DE, EF, DF. A name such as EFD means A corresponds to E, B to F, and C to D. First check both sets with the strict triangle inequality: the sum of any two sides must exceed the third. Then find a correspondence for which all three ratios of corresponding side lengths are equal.",
+    "inputSpec": "Five lines, each containing six positive decimal numbers. The first three describe the first triangle; the final three describe the second. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print NOT VALID if either set fails the triangle inequality; otherwise print the corresponding three-letter name, or NONE if no proportional correspondence exists. If several names satisfy the rules, print the alphabetically first name. Print one answer per input line.",
+    "constraints": [
+      "Side lengths are positive decimals, at most 1000000.",
+      "Do not reject invalid triangles in the Junior or Intermediate version; only Senior requests validation."
+    ],
+    "samples": [
+      {
+        "input": "2 3 4 8 6 4\n2 3 4 4 6 8\n2 3 4 8 4 6\n2 3 4 8 4 5\n2 3 1 9 3 6\n",
+        "output": "DFE\nDEF\nEFD\nNONE\nNOT VALID\n"
+      }
+    ],
+    "hints": [
+      "Try all vertex permutations; compare exact decimal values or cross-products."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-bridge-2008-junior",
+    "slug": "acsl-bridge-2008-junior",
+    "title": "ACSL Bridge",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Simulation",
+    "year": 2008,
+    "acceptanceRate": 0,
+    "summary": "2008-2009 · Contest 1 · Simulation",
+    "statement": "A bridge bid b promises b + 6 tricks. Clubs (C) and diamonds (D) score 20 points per contracted trick; hearts (H) and spades (S) score 30. No trump scores 40 for the first contracted trick and 30 for each remaining one. If the contract is made, these contracted points go below the line. Every extra trick scores above the line at 20 points for C/D and 30 for H/S/no trump.",
+    "inputSpec": "Five lines: bid, tricks won, suit. The suit is C, D, H, S, or N (no trump). All contracts are made. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each line, print the below-line points and above-line points, separated by one space.",
+    "constraints": [
+      "1 ≤ bid ≤ 7; 0 ≤ tricks won ≤ 13."
+    ],
+    "samples": [
+      {
+        "input": "2 8 H\n3 10 S\n4 11 D\n3 10 N\n5 13 C\n",
+        "output": "60 0\n90 30\n80 20\n100 30\n100 40\n"
+      }
+    ],
+    "hints": [
+      "Track contracted points separately from overtricks and penalties."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-bridge-2008-intermediate",
+    "slug": "acsl-bridge-2008-intermediate",
+    "title": "ACSL Bridge",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Simulation",
+    "year": 2008,
+    "acceptanceRate": 0,
+    "summary": "2008-2009 · Contest 1 · Simulation",
+    "statement": "A bridge bid b promises b + 6 tricks. Clubs (C) and diamonds (D) score 20 points per contracted trick; hearts (H) and spades (S) score 30. No trump scores 40 for the first contracted trick and 30 for each remaining one. If the contract is made, these contracted points go below the line. Every extra trick scores above the line at 20 points for C/D and 30 for H/S/no trump. If the contract fails, the bidding team scores nothing and its opponent receives above-line points for each missing trick: 50 when the bidding team is not vulnerable, or 100 when vulnerable.",
+    "inputSpec": "Five lines: bid, tricks won, suit, vulnerability. Suit T means no trump; vulnerability is V or N. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each line, print below-line and above-line points for the team receiving points. A failed contract therefore prints 0 followed by the penalty.",
+    "constraints": [
+      "1 ≤ bid ≤ 7; 0 ≤ tricks won ≤ 13."
+    ],
+    "samples": [
+      {
+        "input": "2 8 H V\n2 9 C N\n4 11 T V\n2 6 H V\n5 13 C N\n",
+        "output": "60 0\n40 20\n130 30\n0 200\n100 40\n"
+      }
+    ],
+    "hints": [
+      "Track contracted points separately from overtricks and penalties."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-bridge-2008-senior",
+    "slug": "acsl-bridge-2008-senior",
+    "title": "ACSL Bridge",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Simulation",
+    "year": 2008,
+    "acceptanceRate": 0,
+    "summary": "2008-2009 · Contest 1 · Simulation",
+    "statement": "A bridge bid b promises b + 6 tricks. Clubs (C) and diamonds (D) score 20 points per contracted trick; hearts (H) and spades (S) score 30. No trump scores 40 for the first contracted trick and 30 for each remaining one. If the contract is made, these contracted points go below the line. Every extra trick scores above the line at 20 points for C/D and 30 for H/S/no trump. If the contract fails, the bidding team scores nothing and its opponent receives above-line points for each missing trick: 50 when the bidding team is not vulnerable, or 100 when vulnerable. Start both teams at zero, not vulnerable. Add each successful contract to that team’s totals. After printing a line, if a team has reached at least 100 below-line points, reset both below-line totals to zero. The winning team becomes vulnerable and stays vulnerable for the remaining lines. Above-line totals are never reset.",
+    "inputSpec": "Five lines: bidding team (1 or 2), bid, tricks won, suit. Suit T means no trump. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "After each deal, before any reset, print team 1 below, team 1 above, team 2 below, team 2 above, separated by spaces.",
+    "constraints": [
+      "1 ≤ bid ≤ 7; 0 ≤ tricks won ≤ 13."
+    ],
+    "samples": [
+      {
+        "input": "1 2 8 C\n1 1 9 H\n2 4 10 H\n2 2 11 T\n2 3 6 S\n",
+        "output": "40 0 0 0\n70 60 0 0\n70 60 120 0\n0 60 70 90\n0 360 70 90\n"
+      }
+    ],
+    "hints": [
+      "Track contracted points separately from overtricks and penalties."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-golf-2009-junior",
+    "slug": "acsl-golf-2009-junior",
+    "title": "ACSL Golf",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Statistics",
+    "year": 2009,
+    "acceptanceRate": 0,
+    "summary": "2009-2010 · Contest 1 · Statistics",
+    "statement": "Golf scores are better when smaller. Report a cumulative score relative to the sum of the par values: use par for zero difference, x under par for a negative difference, and x over par for a positive difference. A hole is won only by a player whose score is strictly lower than every opponent’s score on that hole; ties do not win holes. The names of scores relative to one hole’s par are: -2 eagle, -1 birdie, 0 par, +1 bogey, +2 double bogey.",
+    "inputSpec": "Four lines, each containing par and the player’s score. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print each hole’s score name on its own line, then a fifth line giving the four-hole total relative to par.",
+    "constraints": [
+      "Par is 3, 4, or 5. Scores are positive and differ from par by at most 2."
+    ],
+    "samples": [
+      {
+        "input": "5 4\n3 5\n4 5\n3 2\n",
+        "output": "birdie\ndouble bogey\nbogey\nbirdie\n1 over par\n"
+      }
+    ],
+    "hints": [
+      "Keep per-hole comparisons separate from cumulative totals."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-golf-2009-intermediate",
+    "slug": "acsl-golf-2009-intermediate",
+    "title": "ACSL Golf",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Statistics",
+    "year": 2009,
+    "acceptanceRate": 0,
+    "summary": "2009-2010 · Contest 1 · Statistics",
+    "statement": "Golf scores are better when smaller. Report a cumulative score relative to the sum of the par values: use par for zero difference, x under par for a negative difference, and x over par for a positive difference. A hole is won only by a player whose score is strictly lower than every opponent’s score on that hole; ties do not win holes.",
+    "inputSpec": "Nine lines, each containing par, player A’s score, and player B’s score. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print five lines: (1) the two cumulative scores, smaller first, separated by a space; (2) the better player’s total relative to par; (3) the other total relative to par; (4) holes won by the better player; (5) the largest combined A+B score on one hole.",
+    "constraints": [
+      "Par is 3, 4, or 5; scores are positive integers. The cumulative totals are different."
+    ],
+    "samples": [
+      {
+        "input": "3 2 3\n4 5 5\n5 6 6\n4 3 4\n4 3 4\n4 4 5\n5 5 6\n3 3 3\n4 4 5\n",
+        "output": "35 41\n1 under par\n5 over par\n6\n12\n"
+      }
+    ],
+    "hints": [
+      "Keep per-hole comparisons separate from cumulative totals."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-golf-2009-senior",
+    "slug": "acsl-golf-2009-senior",
+    "title": "ACSL Golf",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Statistics",
+    "year": 2009,
+    "acceptanceRate": 0,
+    "summary": "2009-2010 · Contest 1 · Statistics",
+    "statement": "Golf scores are better when smaller. Report a cumulative score relative to the sum of the par values: use par for zero difference, x under par for a negative difference, and x over par for a positive difference. A hole is won only by a player whose score is strictly lower than every opponent’s score on that hole; ties do not win holes. The par values for the nine holes are 3, 4, 5, 4, 4, 4, 5, 3, 4. The median of 36 scores is the average of the 18th and 19th values after sorting.",
+    "inputSpec": "Nine lines, each containing the scores for A, B, C, D in that order. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print five lines: (1) B’s total relative to par; (2) A’s total relative to par; (3) holes won by the player with the smallest cumulative total; (4) player letters from best to worst, separated by spaces; (5) the median of all 36 scores, as an integer or a number ending in .5.",
+    "constraints": [
+      "Scores are positive integers. All four cumulative totals are distinct."
+    ],
+    "samples": [
+      {
+        "input": "3 2 3 3\n4 5 5 6\n5 6 6 4\n4 3 4 4\n4 3 4 4\n4 4 5 4\n5 5 6 6\n3 3 3 4\n4 4 5 5\n",
+        "output": "1 under par\npar\n3\nB A D C\n4\n"
+      }
+    ],
+    "hints": [
+      "Keep per-hole comparisons separate from cumulative totals."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-prints-2010-junior",
+    "slug": "acsl-prints-2010-junior",
+    "title": "ACSL Prints",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Systems",
+    "year": 2010,
+    "acceptanceRate": 0,
+    "summary": "2010-2011 · Contest 1 · Number Systems",
+    "statement": "The Henry fingerprint system assigns weights to fingers 1 through 10: 16, 16, 8, 8, 4, 4, 2, 2, 1, 1. The primary group ratio is (1 + weights of whorls on even-numbered fingers) / (1 + weights of whorls on odd-numbered fingers). Do not reduce this fraction.",
+    "inputSpec": "Up to five lines listing the distinct finger numbers with whorls, followed by 0. A line containing only 0 means no whorls. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "One unreduced ratio per line, written numerator/denominator without spaces.",
+    "constraints": [
+      "Finger numbers are 1–10; ratio components are 1–32."
+    ],
+    "samples": [
+      {
+        "input": "8 7 2 0\n0\n",
+        "output": "19/3\n1/1\n"
+      }
+    ],
+    "hints": [
+      "Each sum is a bit mask plus one; do not simplify the ratio."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-prints-2010-intermediate",
+    "slug": "acsl-prints-2010-intermediate",
+    "title": "ACSL Prints",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Systems",
+    "year": 2010,
+    "acceptanceRate": 0,
+    "summary": "2010-2011 · Contest 1 · Number Systems",
+    "statement": "The Henry fingerprint system assigns weights to fingers 1 through 10: 16, 16, 8, 8, 4, 4, 2, 2, 1, 1. The primary group ratio is (1 + weights of whorls on even-numbered fingers) / (1 + weights of whorls on odd-numbered fingers). Do not reduce this fraction. The alternative AFCS system uses fingers 1–5 for the right hand and 6–10 for the left. Their weights are 16, 8, 4, 2, 1 on each hand. Its numerator is 1 plus the right-hand whorl weights, and its denominator is 1 plus the left-hand whorl weights.",
+    "inputSpec": "Up to five lines: system H or A, distinct finger numbers with whorls, then 0. H selects Henry and A selects AFCS. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "One unreduced ratio per line, written numerator/denominator without spaces.",
+    "constraints": [
+      "Finger numbers are 1–10; ratio components are 1–32."
+    ],
+    "samples": [
+      {
+        "input": "H 2 7 8 0\nA 2 7 8 0\nA 0\n",
+        "output": "19/3\n9/13\n1/1\n"
+      }
+    ],
+    "hints": [
+      "Each sum is a bit mask plus one; do not simplify the ratio."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-prints-2010-senior",
+    "slug": "acsl-prints-2010-senior",
+    "title": "ACSL Prints",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Systems",
+    "year": 2010,
+    "acceptanceRate": 0,
+    "summary": "2010-2011 · Contest 1 · Number Systems",
+    "statement": "The Henry fingerprint system assigns weights to fingers 1 through 10: 16, 16, 8, 8, 4, 4, 2, 2, 1, 1. The primary group ratio is (1 + weights of whorls on even-numbered fingers) / (1 + weights of whorls on odd-numbered fingers). Do not reduce this fraction. Reverse the Henry calculation to identify the fingers with whorls. The numerator and denominator are supplied separately, before any reduction.",
+    "inputSpec": "Up to five lines, each containing the Henry numerator and denominator. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each line print the finger numbers in ascending order, separated by spaces. If there are no whorls, print None.",
+    "constraints": [
+      "Finger numbers are 1–10; ratio components are 1–32."
+    ],
+    "samples": [
+      {
+        "input": "19 3\n1 1\n",
+        "output": "2 7 8\nNone\n"
+      }
+    ],
+    "hints": [
+      "Each sum is a bit mask plus one; do not simplify the ratio."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "draft-picks-2011-junior",
+    "slug": "draft-picks-2011-junior",
+    "title": "Draft Picks",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Statistics",
+    "year": 2011,
+    "acceptanceRate": 0,
+    "summary": "2011-2012 · Contest 1 · Statistics",
+    "statement": "Each contract gives its length in years and total value in millions of dollars. The annual salary is total value divided by contract length. Salary per game is annual salary divided by the number of games in a season. Use the unrounded values in every calculation; round only final answers. Round to the nearest whole number, with exact halves rounded up. Do not put thousands separators in output.",
+    "inputSpec": "Five lines: contract years and total contract value in millions. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print five lines: count of annual salaries strictly greater than $10 million; mean annual salary in dollars; smallest salary per game for 16 games; largest salary per game for 18 games; mean per-game salary for 16 games minus the mean for 18 games.",
+    "constraints": [
+      "Contract lengths are 1–10 years; total values are positive and at most 1000 million.",
+      "Guaranteed money, when supplied, is between 0 and the contract value.",
+      "If a reported maximum is tied, use the lowest pick number."
+    ],
+    "samples": [
+      {
+        "input": "5 57.5\n6 56.5\n6 72\n6 60\n5 51\n",
+        "output": "3\n10623333\n588542\n666667\n73773\n"
+      }
+    ],
+    "hints": [
+      "Keep precise rational or decimal values until the final rounding step."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "draft-picks-2011-intermediate",
+    "slug": "draft-picks-2011-intermediate",
+    "title": "Draft Picks",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Statistics",
+    "year": 2011,
+    "acceptanceRate": 0,
+    "summary": "2011-2012 · Contest 1 · Statistics",
+    "statement": "Each contract gives its length in years and total value in millions of dollars. The annual salary is total value divided by contract length. Salary per game is annual salary divided by the number of games in a season. Use the unrounded values in every calculation; round only final answers. Round to the nearest whole number, with exact halves rounded up. Do not put thousands separators in output.",
+    "inputSpec": "Ten lines: contract years and total contract value in millions. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print five lines: mean annual salary; largest annual salary followed by its 1-based draft-pick number (separated by a space); range of salaries per game for 16 games; midrange of salaries per game for 18 games; mean per-game salary for 16 games minus the mean for 18 games. Midrange means (minimum + maximum)/2.",
+    "constraints": [
+      "Contract lengths are 1–10 years; total values are positive and at most 1000 million.",
+      "Guaranteed money, when supplied, is between 0 and the contract value.",
+      "If a reported maximum is tied, use the lowest pick number."
+    ],
+    "samples": [
+      {
+        "input": "5 57.5\n6 56.5\n6 72\n6 60\n5 51\n5 50\n5 49\n5 33.4\n5 23\n5 18.9\n",
+        "output": "8797667\n12000000 3\n513750\n438333\n61095\n"
+      }
+    ],
+    "hints": [
+      "Keep precise rational or decimal values until the final rounding step."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "draft-picks-2011-senior",
+    "slug": "draft-picks-2011-senior",
+    "title": "Draft Picks",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Statistics",
+    "year": 2011,
+    "acceptanceRate": 0,
+    "summary": "2011-2012 · Contest 1 · Statistics",
+    "statement": "Each contract gives its length in years and total value in millions of dollars. The annual salary is total value divided by contract length. Salary per game is annual salary divided by the number of games in a season. Use the unrounded values in every calculation; round only final answers. Round to the nearest whole number, with exact halves rounded up. Do not put thousands separators in output. A third input value gives guaranteed money in millions. For injury chance p per year, expected contract value is (1 − years × p) × contract value + years × p × guaranteed money. Use p = 0.03 for 16-game seasons and p = 0.03375 for 18-game seasons.",
+    "inputSpec": "Ten lines: contract years, total contract value in millions, guaranteed money in millions. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print five lines, in dollars: range of per-game salaries for 16 games; midrange of per-game salaries for 18 games; highest entire-contract expected value for 16 games followed by its 1-based pick number; mean entire-contract expected value for 18 games; median annual salary (average of the 5th and 6th sorted annual salaries).",
+    "constraints": [
+      "Contract lengths are 1–10 years; total values are positive and at most 1000 million.",
+      "Guaranteed money, when supplied, is between 0 and the contract value.",
+      "If a reported maximum is tied, use the lowest pick number."
+    ],
+    "samples": [
+      {
+        "input": "5 57.5 30\n6 56.5 29\n6 72 34\n6 60 26\n5 51 23\n5 50 21\n5 49 19\n5 33.4 17.177\n5 23 15.6\n5 18.9 13.8\n",
+        "output": "513750\n438333\n65160000 3\n42698237\n9900000\n"
+      }
+    ],
+    "hints": [
+      "Keep precise rational or decimal values until the final rounding step."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "time-sheets-2012-junior",
+    "slug": "time-sheets-2012-junior",
+    "title": "Time Sheets",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Arithmetic",
+    "year": 2012,
+    "acceptanceRate": 0,
+    "summary": "2012-2013 · Contest 1 · Arithmetic",
+    "statement": "Time codes 1, 2, …, 9, A, B, C, D, E, F, G, H represent half-hour intervals from 9:00 AM to 5:00 PM: 1=9:00 AM, 2=9:30, 9=1:00 PM, A=1:30 PM, …, H=5:00 PM. Hours worked are half the difference between the end and start code positions. A zero-length shift is allowed. Print dollars with a dollar sign and exactly two decimals; round half cents up after summing the complete requested pay. Locations 1–9 pay $10/hour. Locations 10–19 pay $8/hour for the first 4 hours each day and $12/hour thereafter. Locations 20–29 pay $12/hour for the first 4 hours and $24/hour thereafter.",
+    "inputSpec": "Four lines: location, start code, end code. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the four daily pays, then their total on a fifth line.",
+    "constraints": [
+      "Start and end codes are 1–9 or A–H; start is no later than end.",
+      "Day numbers, when supplied, are 1–7."
+    ],
+    "samples": [
+      {
+        "input": "5 9 H\n11 1 7\n19 3 F\n25 2 B\n",
+        "output": "$40.00\n$24.00\n$56.00\n$60.00\n$180.00\n"
+      }
+    ],
+    "hints": [
+      "Convert time codes into counts of half-hours before calculating pay."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "time-sheets-2012-intermediate",
+    "slug": "time-sheets-2012-intermediate",
+    "title": "Time Sheets",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Arithmetic",
+    "year": 2012,
+    "acceptanceRate": 0,
+    "summary": "2012-2013 · Contest 1 · Arithmetic",
+    "statement": "Time codes 1, 2, …, 9, A, B, C, D, E, F, G, H represent half-hour intervals from 9:00 AM to 5:00 PM: 1=9:00 AM, 2=9:30, 9=1:00 PM, A=1:30 PM, …, H=5:00 PM. Hours worked are half the difference between the end and start code positions. A zero-length shift is allowed. Print dollars with a dollar sign and exactly two decimals; round half cents up after summing the complete requested pay. Locations 100–199 pay $10/hour, then $15/hour beyond the first 5 hours per day. Locations 200–299 pay $7.50/hour, then $15/hour beyond 6 hours per day. Locations 300–399 pay $9.25/hour for the first 4 hours per day and $10.50/hour thereafter. Locations 400–499 pay $13.50/hour on Sunday (day 1) and Saturday (day 7), otherwise $6.75/hour. Locations 500–599 pay $8/hour for the first 6 hours of EACH DAY and $12/hour thereafter.",
+    "inputSpec": "Five lines, each with two work-day records. Each record contains location, day number, start code, end code. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the combined pay for the two days on each input line.",
+    "constraints": [
+      "Start and end codes are 1–9 or A–H; start is no later than end.",
+      "Day numbers, when supplied, are 1–7."
+    ],
+    "samples": [
+      {
+        "input": "125 2 1 7 125 3 5 H\n214 4 1 H 314 5 5 H\n318 1 1 H 319 3 3 D\n423 1 1 7 500 2 5 H\n529 6 1 G 100 4 2 G\n",
+        "output": "$95.00\n$133.00\n$126.50\n$88.50\n$146.00\n"
+      }
+    ],
+    "hints": [
+      "Convert time codes into counts of half-hours before calculating pay."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "time-sheets-2012-senior",
+    "slug": "time-sheets-2012-senior",
+    "title": "Time Sheets",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Arithmetic",
+    "year": 2012,
+    "acceptanceRate": 0,
+    "summary": "2012-2013 · Contest 1 · Arithmetic",
+    "statement": "Time codes 1, 2, …, 9, A, B, C, D, E, F, G, H represent half-hour intervals from 9:00 AM to 5:00 PM: 1=9:00 AM, 2=9:30, 9=1:00 PM, A=1:30 PM, …, H=5:00 PM. Hours worked are half the difference between the end and start code positions. A zero-length shift is allowed. Print dollars with a dollar sign and exactly two decimals; round half cents up after summing the complete requested pay. Locations 100–199 pay $10/hour, then $15/hour beyond the first 30 hours for the week. Locations 200–299 pay $7.50/hour, then $15/hour beyond 40 hours for the week. Locations 300–399 pay $9.25/hour for the first 20 hours for the week and $10.50/hour thereafter. Locations 400–499 pay $13.50/hour on Sunday (day 1) and Saturday (day 7), otherwise $6.75/hour. Locations 500–599 pay $8/hour for the first 6 hours of EACH DAY and $12/hour thereafter.",
+    "inputSpec": "Five lines. Each contains one location followed by seven start/end code pairs, for Sunday through Saturday. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the total weekly pay for each line.",
+    "constraints": [
+      "Start and end codes are 1–9 or A–H; start is no later than end.",
+      "Day numbers, when supplied, are 1–7."
+    ],
+    "samples": [
+      {
+        "input": "125 1 7 5 H 3 G 4 E 2 F 1 B 4 A\n214 1 H 5 H 3 G 4 E 2 F 1 B 4 G\n318 1 H 3 D A G 9 E 3 3 1 B 4 A\n423 1 7 5 H 3 G 4 E 2 F 1 B 4 A\n529 1 G 5 H 2 G 4 E 2 F 1 B 2 A\n",
+        "output": "$375.00\n$345.00\n$253.25\n$276.75\n$340.00\n"
+      }
+    ],
+    "hints": [
+      "Convert time codes into counts of half-hours before calculating pay."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-scrabble-2013-junior",
+    "slug": "acsl-scrabble-2013-junior",
+    "title": "ACSL Scrabble",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Simulation",
+    "year": 2013,
+    "acceptanceRate": 0,
+    "summary": "2013-2014 · Contest 1 · Simulation",
+    "statement": "Score a four-letter word on a board with 4 rows and 10 columns, numbered 1–40 in row-major order. Horizontal placements move +1 per letter; vertical placements move +10. Letters score A/E=1, D/R=2, B/M=3, V/Y=4, J/X=8. Assign each square the first matching bonus in this priority order: numbers 3,9,15,… (square % 6 = 3) double the letter; otherwise multiples of 5 triple the letter; otherwise multiples of 7 double the word; otherwise multiples of 8 triple the word. All other squares have no bonus. Sum the modified letter values, then apply the word multipliers.",
+    "inputSpec": "First line: four letters separated by spaces. Next five lines: one horizontal starting square. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the word score for each placement.",
+    "constraints": [
+      "Words use only A, E, D, R, B, M, V, Y, J, X.",
+      "Every placement fits entirely on the board without wrapping a row.",
+      "A tested placement contains at most one word-multiplier square."
+    ],
+    "samples": [
+      {
+        "input": "J A V A\n1\n2\n4\n12\n21\n",
+        "output": "18\n17\n32\n30\n66\n"
+      }
+    ],
+    "hints": [
+      "Apply the first matching square rule before any word multipliers."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-scrabble-2013-intermediate",
+    "slug": "acsl-scrabble-2013-intermediate",
+    "title": "ACSL Scrabble",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Simulation",
+    "year": 2013,
+    "acceptanceRate": 0,
+    "summary": "2013-2014 · Contest 1 · Simulation",
+    "statement": "Score a four-letter word on a board with 4 rows and 10 columns, numbered 1–40 in row-major order. Horizontal placements move +1 per letter; vertical placements move +10. Letters score A/E=1, D/R=2, B/M=3, V/Y=4, J/X=8. Assign each square the first matching bonus in this priority order: numbers 3,9,15,… (square % 6 = 3) double the letter; otherwise multiples of 5 triple the letter; otherwise multiples of 7 double the word; otherwise multiples of 8 triple the word. All other squares have no bonus. Sum the modified letter values, then apply the word multipliers.",
+    "inputSpec": "First line: four letters separated by spaces. Next five lines: starting square and H or V. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "Print the word score for each placement.",
+    "constraints": [
+      "Words use only A, E, D, R, B, M, V, Y, J, X.",
+      "Every placement fits entirely on the board without wrapping a row.",
+      "A tested placement contains at most one word-multiplier square."
+    ],
+    "samples": [
+      {
+        "input": "J A V A\n1 V\n2 H\n6 V\n12 H\n21 H\n",
+        "output": "18\n17\n42\n30\n66\n"
+      }
+    ],
+    "hints": [
+      "Apply the first matching square rule before any word multipliers."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-scrabble-2013-senior",
+    "slug": "acsl-scrabble-2013-senior",
+    "title": "ACSL Scrabble",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Simulation",
+    "year": 2013,
+    "acceptanceRate": 0,
+    "summary": "2013-2014 · Contest 1 · Simulation",
+    "statement": "Score a four-letter word on a board with 4 rows and 10 columns, numbered 1–40 in row-major order. Horizontal placements move +1 per letter; vertical placements move +10. Letters score A/E=1, D/R=2, B/M=3, V/Y=4, J/X=8. Assign each square the first matching bonus in this priority order: numbers 3,9,15,… (square % 6 = 3) double the letter; otherwise multiples of 5 triple the letter; otherwise multiples of 7 double the word; otherwise multiples of 8 triple the word. All other squares have no bonus. Sum the modified letter values, then apply the word multipliers.",
+    "inputSpec": "First line: four letters separated by spaces. Next five lines: three starting-square/direction pairs; each direction is H or V. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each of the five lines, print the maximum score among its three candidate placements. Multiple word multipliers multiply together.",
+    "constraints": [
+      "Words use only A, E, D, R, B, M, V, Y, J, X.",
+      "Every placement fits entirely on the board without wrapping a row."
+    ],
+    "samples": [
+      {
+        "input": "J A V A\n1 H 11 H 21 H\n1 V 2 V 3 V\n2 H 12 H 22 H\n3 V 4 V 5 V\n7 H 6 V 17 H\n",
+        "output": "66\n42\n48\n84\n120\n"
+      }
+    ],
+    "hints": [
+      "Apply the first matching square rule before any word multipliers."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "navigating-acslland-2014-junior",
+    "slug": "navigating-acslland-2014-junior",
+    "title": "Navigating ACSLland",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Arithmetic",
+    "year": 2014,
+    "acceptanceRate": 0,
+    "summary": "2014-2015 · Contest 1 · Arithmetic",
+    "statement": "Travel along cities A, B, C, D, E, F, G, in that order. Adjacent distances in miles are AB=450, BC=140, CD=120, DE=320, EF=250, FG=80. Sum the intervening distances. Travel time is distance/speed and fuel cost is distance × price per gallon / miles per gallon. Round total minutes to the nearest minute (half up), then split into hours and minutes. Round fuel cost to the nearest cent (half up).",
+    "inputSpec": "First line: miles per gallon, price per gallon, speed in miles/hour. Next five lines: starting and ending city. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each trip print distance, time, and fuel cost separated by spaces, for example 590 09:50 $89.44. Hours and minutes use at least two digits each; minutes are 00–59.",
+    "constraints": [
+      "Starting city precedes ending city in the route order.",
+      "Speeds and fuel economy are positive; prices are positive decimal values.",
+      "Senior starting times differ by less than 12 hours, and both travelers depart before they meet."
+    ],
+    "samples": [
+      {
+        "input": "25 3.79 50\nA C\nE F\nC G\nB E\nA G\n",
+        "output": "590 11:48 $89.44\n250 05:00 $37.90\n770 15:24 $116.73\n580 11:36 $87.93\n1360 27:12 $206.18\n"
+      }
+    ],
+    "hints": [
+      "Round the total number of minutes, then split into hours and minutes."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "navigating-acslland-2014-intermediate",
+    "slug": "navigating-acslland-2014-intermediate",
+    "title": "Navigating ACSLland",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Arithmetic",
+    "year": 2014,
+    "acceptanceRate": 0,
+    "summary": "2014-2015 · Contest 1 · Arithmetic",
+    "statement": "Travel along cities A, B, C, D, E, F, G, in that order. Adjacent distances in miles are AB=450, BC=140, CD=120, DE=320, EF=250, FG=80. Sum the intervening distances. Travel time is distance/speed and fuel cost is distance × price per gallon / miles per gallon. Round total minutes to the nearest minute (half up), then split into hours and minutes. Round fuel cost to the nearest cent (half up). Vehicle fuel economy: C=28, M=25, F=22, V=20 miles/gallon. Road speeds: I=65, H=60, M=55, S=45 miles/hour.",
+    "inputSpec": "Five lines: starting city, ending city, vehicle code, road code, price per gallon. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "For each trip print distance, time, and fuel cost separated by spaces, for example 590 09:50 $89.44. Hours and minutes use at least two digits each; minutes are 00–59.",
+    "constraints": [
+      "Starting city precedes ending city in the route order.",
+      "Speeds and fuel economy are positive; prices are positive decimal values.",
+      "Senior starting times differ by less than 12 hours, and both travelers depart before they meet."
+    ],
+    "samples": [
+      {
+        "input": "A C M H 3.79\nE F C S 3.69\nB E F M 3.59\nF G V H 3.89\nA G C I 3.63\n",
+        "output": "590 09:50 $89.44\n250 05:33 $32.95\n580 10:33 $94.65\n80 01:20 $15.56\n1360 20:55 $176.31\n"
+      }
+    ],
+    "hints": [
+      "Round the total number of minutes, then split into hours and minutes."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "navigating-acslland-2014-senior",
+    "slug": "navigating-acslland-2014-senior",
+    "title": "Navigating ACSLland",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Arithmetic",
+    "year": 2014,
+    "acceptanceRate": 0,
+    "summary": "2014-2015 · Contest 1 · Arithmetic",
+    "statement": "Two travelers drive toward one another. Cities are A B C D E F G H J K, with adjacent distances 450, 140, 125, 365, 250, 160, 380, 235, 320 miles. Each traveler starts at the supplied clock time and speed. Interpret the difference between starting times as the smallest signed difference on a 24-hour clock; for example, 11 PM followed by 2 AM is a 3-hour delay, while 5 PM followed by 3 PM means the second traveler started 2 hours earlier. Find elapsed time from the FIRST traveler’s departure until they meet. Round total minutes half up before formatting.",
+    "inputSpec": "Five lines: city 1, city 2, hour 1, AM/PM, hour 2, AM/PM, speed 1, speed 2. Use spaces between input values. Do not include the paper worksheet’s numbered labels or commas.",
+    "outputSpec": "One elapsed time per line in h:mm format. Hours have no unnecessary leading zero; minutes have exactly two digits.",
+    "constraints": [
+      "Starting city precedes ending city in the route order.",
+      "Speeds and fuel economy are positive; prices are positive decimal values.",
+      "Senior starting times differ by less than 12 hours, and both travelers depart before they meet."
+    ],
+    "samples": [
+      {
+        "input": "A C 1 PM 2 PM 50 60\nA D 9 AM 1 PM 50 60\nB E 5 PM 3 PM 50 60\nC F 11 PM 2 AM 50 60\nE K 10 AM 12 PM 65 55\n",
+        "output": "5:55\n8:41\n4:38\n8:22\n12:08\n"
+      }
+    ],
+    "hints": [
+      "Round the total number of minutes, then split into hours and minutes."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-chmod-2015-junior",
+    "slug": "acsl-chmod-2015-junior",
+    "title": "ACSL CHMOD",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Systems",
+    "year": 2015,
+    "acceptanceRate": 0,
+    "summary": "2015-2016 · Contest 1 · Number Systems",
+    "statement": "The three permission digits describe owner, group, others, in that order. Each octal digit 0–7 becomes exactly three binary bits, including leading zeroes. Bits 4,2,1 mean read, write, execute, represented by r,w,x; absent permissions are -. Keep a space between each group. Separate the two requested representations with the literal word and.",
+    "inputSpec": "Five lines, each with three octal digits separated by spaces.",
+    "outputSpec": "For each line print the binary groups, then and, then the permission groups; for example 101 010 110 and r-x -w- rw-.",
+    "constraints": [
+      "Octal permission digits are 0–7.",
+      "Senior special digit is 0, 1, 2, or 4."
+    ],
+    "samples": [
+      {
+        "input": "5 2 6\n7 3 0\n4 1 5\n2 3 4\n5 6 7\n",
+        "output": "101 010 110 and r-x -w- rw-\n111 011 000 and rwx -wx ---\n100 001 101 and r-- --x r-x\n010 011 100 and -w- -wx r--\n101 110 111 and r-x rw- rwx\n"
+      }
+    ],
+    "hints": [
+      "Preserve leading zero bits when formatting each group."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-chmod-2015-intermediate",
+    "slug": "acsl-chmod-2015-intermediate",
+    "title": "ACSL CHMOD",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Systems",
+    "year": 2015,
+    "acceptanceRate": 0,
+    "summary": "2015-2016 · Contest 1 · Number Systems",
+    "statement": "The three permission digits describe owner, group, others, in that order. Each octal digit 0–7 becomes exactly three binary bits, including leading zeroes. Bits 4,2,1 mean read, write, execute, represented by r,w,x; absent permissions are -. Keep a space between each group. Separate the two requested representations with the literal word and.",
+    "inputSpec": "Five lines. Lines 1–2 contain three octal digits; lines 3–4 contain three 3-bit binary groups; line 5 contains three permission groups, such as r-x rw- rwx.",
+    "outputSpec": "For octal input, print binary and permissions. For binary input, print the three-digit octal string and permissions. For permission input, print the three-digit octal string and binary. Use and between forms, as in 415 and r-- --x r-x.",
+    "constraints": [
+      "Octal permission digits are 0–7.",
+      "Senior special digit is 0, 1, 2, or 4."
+    ],
+    "samples": [
+      {
+        "input": "5 2 6\n7 3 0\n100 001 101\n010 011 100\nr-x rw- rwx\n",
+        "output": "101 010 110 and r-x -w- rw-\n111 011 000 and rwx -wx ---\n415 and r-- --x r-x\n234 and -w- -wx r--\n567 and 101 110 111\n"
+      }
+    ],
+    "hints": [
+      "Preserve leading zero bits when formatting each group."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-chmod-2015-senior",
+    "slug": "acsl-chmod-2015-senior",
+    "title": "ACSL CHMOD",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Systems",
+    "year": 2015,
+    "acceptanceRate": 0,
+    "summary": "2015-2016 · Contest 1 · Number Systems",
+    "statement": "The three permission digits describe owner, group, others, in that order. Each octal digit 0–7 becomes exactly three binary bits, including leading zeroes. Bits 4,2,1 mean read, write, execute, represented by r,w,x; absent permissions are -. Keep a space between each group. Separate the two requested representations with the literal word and. A fourth digit comes BEFORE the three ordinary digits: 0=no special permission, 1=owner, 2=group, 4=others. Only if the affected class already has x, change that x to s for owner/group or t for others. This ACSL mapping is part of the problem; do not substitute a different operating-system convention.",
+    "inputSpec": "Five lines: special digit, owner digit, group digit, others digit, separated by spaces.",
+    "outputSpec": "Print the ordinary nine binary bits and the modified permission groups, separated by and. Do not print the special digit’s binary bits.",
+    "constraints": [
+      "Octal permission digits are 0–7.",
+      "Senior special digit is 0, 1, 2, or 4."
+    ],
+    "samples": [
+      {
+        "input": "0 5 2 6\n1 7 3 0\n2 4 1 5\n4 2 3 4\n4 5 6 7\n",
+        "output": "101 010 110 and r-x -w- rw-\n111 011 000 and rws -wx ---\n100 001 101 and r-- --s r-x\n010 011 100 and -w- -wx r--\n101 110 111 and r-x rw- rwt\n"
+      }
+    ],
+    "hints": [
+      "Preserve leading zero bits when formatting each group."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-agram-2016-junior",
+    "slug": "acsl-agram-2016-junior",
+    "title": "ACSL AGRAM",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Sorting",
+    "year": 2016,
+    "acceptanceRate": 0,
+    "summary": "2016-2017 · Contest 1 · Sorting",
+    "statement": "Given the opponent’s lead card and the dealer’s five-card hand, choose the dealer’s move. Follow the lead suit if possible. Among cards of that suit, choose the lowest rank strictly greater than the lead rank; if none wins, choose the lowest rank of that suit. If the dealer has no card of the lead suit, output NONE. Ranks are 1–9.",
+    "inputSpec": "Five lines. Each contains six rank/suit pairs: the lead card, then five dealer cards. For example, 5 D 2 D 6 H 9 D 9 S 6 H.",
+    "outputSpec": "One rank and suit separated by a space per line, or NONE.",
+    "constraints": [
+      "Suits are C, D, H, S.",
+      "Cards in different deals are independent."
+    ],
+    "samples": [
+      {
+        "input": "5 D 2 D 6 H 9 D 9 S 6 H\n4 C 1 C 6 C 7 H 5 S 4 D\n3 D 4 H 5 C 6 S 2 D 1 D\n9 S 8 H 7 C 7 D 9 H 3 H\n1 C 1 D 9 H 8 S 9 S 7 C\n",
+        "output": "9 D\n6 C\n1 D\nNONE\n7 C\n"
+      }
+    ],
+    "hints": [
+      "Filter by suit first, then choose by rank."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-agram-2016-intermediate",
+    "slug": "acsl-agram-2016-intermediate",
+    "title": "ACSL AGRAM",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Sorting",
+    "year": 2016,
+    "acceptanceRate": 0,
+    "summary": "2016-2017 · Contest 1 · Sorting",
+    "statement": "Given the opponent’s lead card and the dealer’s five-card hand, choose the dealer’s move. Follow the lead suit if possible. Among cards of that suit, choose the lowest rank strictly greater than the lead rank; if none wins, choose the lowest rank of that suit. Ranks, lowest first, are A 2 3 4 5 6 7 8 9 T J Q K. If the dealer cannot follow suit, choose the lowest-ranked card from the entire hand. In the no-matching-suit case, the lowest rank is unique.",
+    "inputSpec": "Five lines: lead card and five dealer cards, each a two-character rank/suit token, such as 5D 2D 6H 9D TD 6S.",
+    "outputSpec": "One two-character chosen card per line, with no space inside the card.",
+    "constraints": [
+      "Suits are C, D, H, S.",
+      "Cards in different deals are independent."
+    ],
+    "samples": [
+      {
+        "input": "5D 2D 6H 9D TD 6S\nTC AC KC QH JS TD\n3D 4H 5C 6S 2D 7H\nKS TH QC 7H 9H 3H\nAC AD KH JS KS QS\n",
+        "output": "9D\nKC\n2D\n3H\nAD\n"
+      }
+    ],
+    "hints": [
+      "Filter by suit first, then choose by rank."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-agram-2016-senior",
+    "slug": "acsl-agram-2016-senior",
+    "title": "ACSL AGRAM",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Sorting",
+    "year": 2016,
+    "acceptanceRate": 0,
+    "summary": "2016-2017 · Contest 1 · Sorting",
+    "statement": "Given the opponent’s lead card and the dealer’s five-card hand, choose the dealer’s move. Follow the lead suit if possible. Among cards of that suit, choose the lowest rank strictly greater than the lead rank; if none wins, choose the lowest rank of that suit. Ranks, lowest first, are A 2 3 4 5 6 7 8 9 T J Q K. If the dealer cannot follow suit, choose the lowest-ranked card from the entire hand. Break equal-rank ties by suit order C, D, H, S.",
+    "inputSpec": "Five lines: lead card and five dealer cards, each a two-character rank/suit token, such as 5D 2D 6H 9D TD 6S.",
+    "outputSpec": "One two-character chosen card per line, with no space inside the card.",
+    "constraints": [
+      "Suits are C, D, H, S.",
+      "Cards in different deals are independent."
+    ],
+    "samples": [
+      {
+        "input": "5D 2D 6H 9D TD 6H\nTC AC KC QH JS TD\n3D 4H 5C 6S 2D 7H\nKS TH QC 3D 9H 3H\nAC AD KH AS KS QS\n",
+        "output": "9D\nKC\n2D\n3D\nAD\n"
+      }
+    ],
+    "hints": [
+      "Filter by suit first, then choose by rank."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-ninety-nine-2017-junior",
+    "slug": "acsl-ninety-nine-2017-junior",
+    "title": "ACSL Ninety-Nine",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Simulation",
+    "year": 2017,
+    "acceptanceRate": 0,
+    "summary": "2017-2018 · Contest 1 · Simulation",
+    "statement": "Simulate the game until a card makes the running total exceed 99. The player who plays that card loses. Check for a loss immediately after applying a card; do not draw another card after the game ends. Unused supplied cards are ignored. Cards are 0–9. The player plays cards in arrival order (a queue). A 9 leaves the total unchanged; a 4 subtracts 10; a 0 adds 11 if that stays at most 99, otherwise adds 1. Other cards add their face value.",
+    "inputSpec": "Five lines: initial total, three cards initially held by the player, then seven cards alternating player draw, dealer play, player draw, dealer play, and so on. The player moves first.",
+    "outputSpec": "For each line print the final total and the winner: player or dealer, separated by a space.",
+    "constraints": [
+      "Initial totals are 0–99.",
+      "Each supplied game is guaranteed to produce a winner before the necessary cards run out."
+    ],
+    "samples": [
+      {
+        "input": "87 5 8 9 7 4 6 3 9 0 2\n78 2 4 8 3 8 5 0 6 9 8\n85 7 9 7 6 5 9 4 5 0 1\n84 8 4 2 7 9 0 1 9 8 3\n95 9 0 9 0 1 0 1 0 2 5\n",
+        "output": "101 dealer\n100 dealer\n101 dealer\n100 dealer\n100 player\n"
+      }
+    ],
+    "hints": [
+      "Keep hand order separate from a card’s effect on the total."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-ninety-nine-2017-intermediate",
+    "slug": "acsl-ninety-nine-2017-intermediate",
+    "title": "ACSL Ninety-Nine",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Simulation",
+    "year": 2017,
+    "acceptanceRate": 0,
+    "summary": "2017-2018 · Contest 1 · Simulation",
+    "statement": "Simulate the game until a card makes the running total exceed 99. The player who plays that card loses. Check for a loss immediately after applying a card; do not draw another card after the game ends. Unused supplied cards are ignored. Ranks 2–9,T,J,Q,K,A have face values 2–14. Play the highest FACE VALUE in the player’s hand, even when that card has a special effect. A 9 passes; T subtracts 10; A adds 14 if the result stays at most 99, otherwise adds 1. Other cards add their face value.",
+    "inputSpec": "Five lines: initial total, three player cards, then seven tokens alternating player draw and dealer play. The player moves first.",
+    "outputSpec": "For each line print the final total and winner, player or dealer, separated by a space.",
+    "constraints": [
+      "Initial totals are 0–99.",
+      "Each supplied game is guaranteed to produce a winner before the necessary cards run out."
+    ],
+    "samples": [
+      {
+        "input": "75 7 3 8 8 7 T 5 9 A 6\n80 9 T 7 8 K A 3 5 Q T\n94 4 2 2 7 T 3 A 5 J K\n80 6 6 4 T 9 8 6 5 Q K\n90 T 8 5 9 9 Q K A J 8\n",
+        "output": "103 player\n107 dealer\n110 player\n102 player\n105 dealer\n"
+      }
+    ],
+    "hints": [
+      "Keep hand order separate from a card’s effect on the total."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-ninety-nine-2017-senior",
+    "slug": "acsl-ninety-nine-2017-senior",
+    "title": "ACSL Ninety-Nine",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Simulation",
+    "year": 2017,
+    "acceptanceRate": 0,
+    "summary": "2017-2018 · Contest 1 · Simulation",
+    "statement": "Simulate the game until a card makes the running total exceed 99. The player who plays that card loses. Check for a loss immediately after applying a card; do not draw another card after the game ends. Unused supplied cards are ignored. Ranks 2–9,T,J,Q,K,A have face values 2–14. Each player holds five cards and plays the middle (third) card when sorted by FACE VALUE. A 9 passes; T subtracts 10; a 7 adds 7 if the result is at most 99, otherwise 1. A adds 14. After applying the card, add 5 for every border 33/34, 55/56, or 77/78 crossed in either direction by that card’s change. Determine crossings from the totals before and just after the card effect; do not count crossings caused by the bonus itself.",
+    "inputSpec": "First line: five initial cards for Player #1 and five for Player #2. Next five lines: initial total followed by ten draw cards, alternating Player #1 and Player #2. Reset both hands to the first line before each game. Player #1 always moves first.",
+    "outputSpec": "For each game print final total followed by Player #1 or Player #2, naming the winner, for example 109 Player #1.",
+    "constraints": [
+      "Initial totals are 0–99.",
+      "Each supplied game is guaranteed to produce a winner before the necessary cards run out."
+    ],
+    "samples": [
+      {
+        "input": "8 9 Q 6 7 K A 5 9 8\n75 J 7 Q T A 6 2 3 4 5\n50 7 K T 8 3 Q 9 7 2 3\n63 3 6 8 T 7 7 T 3 5 8\n79 A 9 7 T A 9 T A 6 4\n50 A T Q A T K J T A 7\n",
+        "output": "107 Player #2\n109 Player #1\n103 Player #1\n100 Player #2\n102 Player #2\n"
+      }
+    ],
+    "hints": [
+      "Keep hand order separate from a card’s effect on the total."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "digit-reassembly-2018-junior",
+    "slug": "digit-reassembly-2018-junior",
+    "title": "Digit Reassembly",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Strings",
+    "year": 2018,
+    "acceptanceRate": 0,
+    "summary": "2018-2019 · Contest 1 · Strings",
+    "statement": "Answer five different questions about decimal integers: line 1 asks for the number of digits; line 2 for the digit sum; line 3 for the sum at odd 1-based positions from the LEFT; line 4 for the count of digit 4; line 5 for the middle digit. For an even length choose the left of the two middle digits.",
+    "inputSpec": "Exactly five positive decimal integers, one per line.",
+    "outputSpec": "Print the five answers, one per line.",
+    "constraints": [
+      "Integers have 1–50 digits and no leading zero.",
+      "Intermediate: 1 ≤ n ≤ number of digits. Senior: 1 ≤ n ≤ 50; n may exceed the number’s length.",
+      "Use arithmetic that preserves all digits."
+    ],
+    "samples": [
+      {
+        "input": "1325678945\n987654\n456160\n143295823976154\n123456\n",
+        "output": "10\n39\n16\n2\n3\n"
+      }
+    ],
+    "hints": [
+      "Treat the input as a digit string so no digits are lost."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "digit-reassembly-2018-intermediate",
+    "slug": "digit-reassembly-2018-intermediate",
+    "title": "Digit Reassembly",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Strings",
+    "year": 2018,
+    "acceptanceRate": 0,
+    "summary": "2018-2019 · Contest 1 · Strings",
+    "statement": "Read each integer as a decimal digit string; leading zeroes inside a selected group contribute normally. Starting at every position where n digits remain, take a consecutive length-n window. Windows overlap. Add the numeric values of all windows.",
+    "inputSpec": "Five lines, each containing a positive decimal integer and a window length n.",
+    "outputSpec": "Print the sum of the overlapping groups for each line.",
+    "constraints": [
+      "Integers have 1–50 digits and no leading zero.",
+      "Intermediate: 1 ≤ n ≤ number of digits. Senior: 1 ≤ n ≤ 50; n may exceed the number’s length.",
+      "Use arithmetic that preserves all digits."
+    ],
+    "samples": [
+      {
+        "input": "1325678905 2\n54981230845791 5\n4837261529387456 3\n385018427388713440 4\n623387770165388734 11\n",
+        "output": "455\n489210\n7668\n75610\n471035012254\n"
+      }
+    ],
+    "hints": [
+      "Treat the input as a digit string so no digits are lost."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "digit-reassembly-2018-senior",
+    "slug": "digit-reassembly-2018-senior",
+    "title": "Digit Reassembly",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Strings",
+    "year": 2018,
+    "acceptanceRate": 0,
+    "summary": "2018-2019 · Contest 1 · Strings",
+    "statement": "Read each integer as a decimal digit string; leading zeroes inside a selected group contribute normally. Split left to right into NON-overlapping groups of n digits. Pad the final short group with trailing zeroes to reach n digits, then add all group values.",
+    "inputSpec": "Five lines, each containing a positive decimal integer and a group length n.",
+    "outputSpec": "Print the sum of the padded groups for each line.",
+    "constraints": [
+      "Integers have 1–50 digits and no leading zero.",
+      "Intermediate: 1 ≤ n ≤ number of digits. Senior: 1 ≤ n ≤ 50; n may exceed the number’s length.",
+      "Use arithmetic that preserves all digits."
+    ],
+    "samples": [
+      {
+        "input": "13256709 3\n3587612098 1\n265472 5\n3126854901231 4\n25768437216701562 7\n",
+        "output": "789\n49\n46547\n12798\n15413544\n"
+      }
+    ],
+    "hints": [
+      "Treat the input as a digit string so no digits are lost."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "number-transformation-2019-junior",
+    "slug": "number-transformation-2019-junior",
+    "title": "Number Transformation",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Theory",
+    "year": 2019,
+    "acceptanceRate": 0,
+    "summary": "2019-2020 · Contest 1 · Number Theory",
+    "statement": "Positions are counted from the RIGHT starting at 1. Let x be the original digit at position P. All changes are based on the original digits, not on digits already changed. If x is 0–4, replace it by the units digit of x+D. If x is 5–9, replace it by the LEFTMOST digit of |x−D| (the value 0 has digit 0). Replace every digit to its right by 0; leave digits to the left unchanged.",
+    "inputSpec": "Five lines: positive integer N, position P, positive transition integer D.",
+    "outputSpec": "One transformed digit string per line, without spaces.",
+    "constraints": [
+      "1 ≤ N < 10^15; P is a valid digit position.",
+      "Junior and Intermediate inputs do not produce a leading zero. Junior D is positive and at most 10^9."
+    ],
+    "samples": [
+      {
+        "input": "124987 2 3\n540670 3 9\n7145042 2 8\n124987 2 523\n4386709 1 2\n",
+        "output": "124950\n540300\n7145020\n124950\n4386707\n"
+      }
+    ],
+    "hints": [
+      "Use the original position digit for every replacement."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "number-transformation-2019-intermediate",
+    "slug": "number-transformation-2019-intermediate",
+    "title": "Number Transformation",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Theory",
+    "year": 2019,
+    "acceptanceRate": 0,
+    "summary": "2019-2020 · Contest 1 · Number Theory",
+    "statement": "Positions are counted from the RIGHT starting at 1. Let x be the original digit at position P. All changes are based on the original digits, not on digits already changed. Replace every digit to the left of x with the units digit of its sum with x. Leave x unchanged. Replace every digit to its right with its absolute difference from x.",
+    "inputSpec": "Five lines: positive integer N and position P.",
+    "outputSpec": "One transformed digit string per line, without spaces.",
+    "constraints": [
+      "1 ≤ N < 10^15; P is a valid digit position.",
+      "Junior and Intermediate inputs do not produce a leading zero. Junior D is positive and at most 10^9."
+    ],
+    "samples": [
+      {
+        "input": "296351 5\n762184 3\n45873216 7\n19750418 6\n386257914 5\n",
+        "output": "193648\n873173\n95322341\n86727361\n831752441\n"
+      }
+    ],
+    "hints": [
+      "Use the original position digit for every replacement."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "number-transformation-2019-senior",
+    "slug": "number-transformation-2019-senior",
+    "title": "Number Transformation",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Theory",
+    "year": 2019,
+    "acceptanceRate": 0,
+    "summary": "2019-2020 · Contest 1 · Number Theory",
+    "statement": "Positions are counted from the RIGHT starting at 1. Let x be the original digit at position P. All changes are based on the original digits, not on digits already changed. Replace every digit to the left of x with its full sum with x, which can have two digits. Replace x with the number of DISTINCT prime factors of the original N. The number 1 has zero prime factors. Replace every digit to the right with its absolute difference from x. Concatenate the resulting pieces without separators.",
+    "inputSpec": "Five lines: positive integer N and position P.",
+    "outputSpec": "One transformed digit string per line, without spaces.",
+    "constraints": [
+      "1 ≤ N < 10^15; P is a valid digit position.",
+      "Junior and Intermediate inputs do not produce a leading zero. Junior D is positive and at most 10^9."
+    ],
+    "samples": [
+      {
+        "input": "102438 3\n4329 1\n6710 2\n16807 1\n60098065452 7\n",
+        "output": "546414\n1312113\n7841\n8131571\n1488173823436\n"
+      }
+    ],
+    "hints": [
+      "Use the original position digit for every replacement."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "numeral-triangles-2020-junior",
+    "slug": "numeral-triangles-2020-junior",
+    "title": "Numeral Triangles",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Systems",
+    "year": 2020,
+    "acceptanceRate": 0,
+    "summary": "2020-2021 · Contest 1 · Number Systems",
+    "statement": "Fill a triangle row by row: row 1 has one term, row 2 two, and row r has r. The untransformed sequence starts at s and increases by d for every position. Before displaying each term, repeatedly add its decimal digits until one digit remains. Do not use a displayed digit as the starting value for the next term.",
+    "inputSpec": "Five lines: decimal s, d, r.",
+    "outputSpec": "For each line print the sum of the r single digits displayed in row r.",
+    "constraints": [
+      "1 ≤ s,d,r < 100000."
+    ],
+    "samples": [
+      {
+        "input": "2 3 5\n221 2 4\n184 231 35\n71 5 27\n1 24 100\n",
+        "output": "28\n17\n140\n135\n397\n"
+      }
+    ],
+    "hints": [
+      "There are r(r−1)/2 terms before row r."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "numeral-triangles-2020-intermediate",
+    "slug": "numeral-triangles-2020-intermediate",
+    "title": "Numeral Triangles",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Systems",
+    "year": 2020,
+    "acceptanceRate": 0,
+    "summary": "2020-2021 · Contest 1 · Number Systems",
+    "statement": "Fill a triangle row by row: row 1 has one term, row 2 two, and row r has r. The untransformed sequence starts at s and increases by d for every position. Write every full term in octal. Do NOT repeatedly reduce terms to one digit. Add all the individual octal digits appearing on row r.",
+    "inputSpec": "Five lines: octal s, octal d, decimal r.",
+    "outputSpec": "For each line print the sum of the row’s octal digits as a decimal integer.",
+    "constraints": [
+      "1 ≤ s,d,r < 262144; s and d use only digits 0–7."
+    ],
+    "samples": [
+      {
+        "input": "2 3 5\n221 2 4\n1 4 20\n10 10 10\n3245 5 11\n",
+        "output": "36\n38\n230\n99\n178\n"
+      }
+    ],
+    "hints": [
+      "There are r(r−1)/2 terms before row r."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "numeral-triangles-2020-senior",
+    "slug": "numeral-triangles-2020-senior",
+    "title": "Numeral Triangles",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Systems",
+    "year": 2020,
+    "acceptanceRate": 0,
+    "summary": "2020-2021 · Contest 1 · Number Systems",
+    "statement": "Fill a triangle row by row: row 1 has one term, row 2 two, and row r has r. The untransformed sequence starts at s and increases by d for every position. Write terms in hexadecimal. First add the full numeric values on row r. Then repeatedly sum the hexadecimal digits of THAT SUM until one hexadecimal digit remains.",
+    "inputSpec": "Five lines: hexadecimal s, hexadecimal d, decimal r.",
+    "outputSpec": "One uppercase hexadecimal digit per line.",
+    "constraints": [
+      "1 ≤ s,d,r < 16777216; s and d use 0–9 and uppercase A–F."
+    ],
+    "samples": [
+      {
+        "input": "A 9 5\nABC F 4\nBAD 50 10\nFED ABC 25\n184 231 35\n",
+        "output": "5\nC\nA\nF\n5\n"
+      }
+    ],
+    "hints": [
+      "There are r(r−1)/2 terms before row r."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "fibonacci-clock-2021-junior",
+    "slug": "fibonacci-clock-2021-junior",
+    "title": "Fibonacci Clock",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Systems",
+    "year": 2021,
+    "acceptanceRate": 0,
+    "summary": "2021-2022 · Contest 1 · Number Systems",
+    "statement": "The five Fibonacci clock squares have weights 1, 1, 2, 3, 5, in that order (lower 1×1, upper 1×1, 2×2, 3×3, 5×5). White (W) contributes nothing. Red (R) contributes its weight to hours, green (G) to minutes, and blue (B) to BOTH hours and minutes. Multiply the minute-weight sum by 5.",
+    "inputSpec": "Five lines, each containing five color letters separated by spaces.",
+    "outputSpec": "One zero-padded hh:mm time per line.",
+    "constraints": [
+      "Each data set contains exactly five squares.",
+      "Junior inputs already represent hours 0–11 and minutes 0–55 without carrying."
+    ],
+    "samples": [
+      {
+        "input": "R W G B G\nW B B G R\nB G B B R\nW W W B B\nW R G G G\n",
+        "output": "04:50\n08:30\n11:35\n08:40\n01:50\n"
+      }
+    ],
+    "hints": [
+      "Compute contributions separately, then apply the carries required for your division."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "fibonacci-clock-2021-intermediate",
+    "slug": "fibonacci-clock-2021-intermediate",
+    "title": "Fibonacci Clock",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Systems",
+    "year": 2021,
+    "acceptanceRate": 0,
+    "summary": "2021-2022 · Contest 1 · Number Systems",
+    "statement": "The five Fibonacci clock squares have weights 1, 1, 2, 3, 5, in that order (lower 1×1, upper 1×1, 2×2, 3×3, 5×5). White (W) contributes nothing. Red (R) contributes its weight to hours, green (G) to minutes, and blue (B) to BOTH hours and minutes. Multiply the minute-weight sum by 5. Carry 60 minutes to one hour, and wrap hours modulo 12.",
+    "inputSpec": "Five lines, each containing five color letters separated by spaces.",
+    "outputSpec": "One zero-padded hh:mm time per line.",
+    "constraints": [
+      "Each data set contains exactly five squares."
+    ],
+    "samples": [
+      {
+        "input": "R W G B G\nW B B G R\nW G B R B\nG G B B B\nW R G G G\n",
+        "output": "04:50\n08:30\n10:40\n11:00\n01:50\n"
+      }
+    ],
+    "hints": [
+      "Compute contributions separately, then apply the carries required for your division."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "fibonacci-clock-2021-senior",
+    "slug": "fibonacci-clock-2021-senior",
+    "title": "Fibonacci Clock",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Systems",
+    "year": 2021,
+    "acceptanceRate": 0,
+    "summary": "2021-2022 · Contest 1 · Number Systems",
+    "statement": "The five Fibonacci clock squares have weights 1, 1, 2, 3, 5, in that order (lower 1×1, upper 1×1, 2×2, 3×3, 5×5). White (W) contributes nothing. Red (R) contributes to hours; green (G) to minutes; blue (B) to seconds. Yellow (Y) contributes to hours AND minutes, magenta (M) to hours AND seconds, cyan (C) to minutes AND seconds. Multiply both minute- and second-weight sums by 5. Carry seconds into minutes and minutes into hours, then wrap hours modulo 12.",
+    "inputSpec": "Five lines, each containing one five-character string using R,G,B,C,M,Y,W.",
+    "outputSpec": "One zero-padded hh:mm:ss time per line.",
+    "constraints": [
+      "Each data set contains exactly five squares."
+    ],
+    "samples": [
+      {
+        "input": "RWGBG\nRCMGB\nBYYGR\nMRGBW\nYYYYY\n",
+        "output": "01:35:15\n03:20:40\n08:30:05\n02:10:20\n01:00:00\n"
+      }
+    ],
+    "hints": [
+      "Compute contributions separately, then apply the carries required for your division."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "next-base-2022-junior",
+    "slug": "next-base-2022-junior",
+    "title": "Next Base",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Number Systems",
+    "year": 2022,
+    "acceptanceRate": 0,
+    "summary": "2022-2023 · Contest 1 · Number Systems",
+    "statement": "Generate n consecutive integers starting with s, inclusive. The starting value is written in base b. Subsequent values also use base b, with no leading zeroes. Count digits in these base-b representations, but report the requested answer in decimal. Find the sum of all digit VALUES across the generated numbers.",
+    "inputSpec": "One or more lines, each containing n, decimal base b, and starting digit string s. There is no test-count prefix.",
+    "outputSpec": "One decimal answer for each input line.",
+    "constraints": [
+      "1 ≤ n ≤ 100000; 2 ≤ b ≤ 9.",
+      "s is positive, valid in base b, and has at most 16 digits.",
+      "Generated numbers may grow beyond 16 digits; do not overflow a fixed-width integer."
+    ],
+    "samples": [
+      {
+        "input": "15 8 2\n20 3 12\n25 5 324\n13 9 1652\n45 2 1111011\n",
+        "output": "65\n64\n189\n212\n170\n"
+      }
+    ],
+    "hints": [
+      "Increment a digit array in the given base, or count digit occurrences over a numeric range."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "next-base-2022-intermediate",
+    "slug": "next-base-2022-intermediate",
+    "title": "Next Base",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Number Systems",
+    "year": 2022,
+    "acceptanceRate": 0,
+    "summary": "2022-2023 · Contest 1 · Number Systems",
+    "statement": "Generate n consecutive integers starting with s, inclusive. The starting value is written in base b. Subsequent values also use base b, with no leading zeroes. Count digits in these base-b representations, but report the requested answer in decimal. Count occurrences of the largest allowed digit, b−1, across the generated numbers, even if that digit does not appear at all.",
+    "inputSpec": "One or more lines, each containing n, decimal base b, and starting digit string s. There is no test-count prefix.",
+    "outputSpec": "One decimal answer for each input line.",
+    "constraints": [
+      "1 ≤ n ≤ 100000; 2 ≤ b ≤ 9.",
+      "s is positive, valid in base b, and has at most 16 digits.",
+      "Generated numbers may grow beyond 16 digits; do not overflow a fixed-width integer."
+    ],
+    "samples": [
+      {
+        "input": "15 8 2\n20 3 12\n25 5 324\n13 9 1652\n45 2 1111011\n",
+        "output": "2\n21\n24\n1\n170\n"
+      }
+    ],
+    "hints": [
+      "Increment a digit array in the given base, or count digit occurrences over a numeric range."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "next-base-2022-senior",
+    "slug": "next-base-2022-senior",
+    "title": "Next Base",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Number Systems",
+    "year": 2022,
+    "acceptanceRate": 0,
+    "summary": "2022-2023 · Contest 1 · Number Systems",
+    "statement": "Generate n consecutive integers starting with s, inclusive. The starting value is written in base b. Subsequent values also use base b, with no leading zeroes. Count digits in these base-b representations, but report the requested answer in decimal. Count occurrences of each digit across the generated numbers. Return the largest occurrence COUNT, not the identity of the digit. For bases over 10, A=10, B=11, …, F=15.",
+    "inputSpec": "One or more lines, each containing n, decimal base b, and starting digit string s. There is no test-count prefix.",
+    "outputSpec": "One decimal answer for each input line.",
+    "constraints": [
+      "1 ≤ n ≤ 100000; 2 ≤ b ≤ 16.",
+      "s is positive, valid in base b, and has at most 16 digits.",
+      "Generated numbers may grow beyond 16 digits; do not overflow a fixed-width integer."
+    ],
+    "samples": [
+      {
+        "input": "15 8 2\n25 2 1111011\n20 12 9AB\n10 16 ABCDEF\n1000 2 1\n",
+        "output": "9\n105\n14\n10\n4938\n"
+      }
+    ],
+    "hints": [
+      "Increment a digit array in the given base, or count digit occurrences over a numeric range."
+    ],
+    "timeLimitMs": 5000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-tiles-2023-intermediate",
+    "slug": "acsl-tiles-2023-intermediate",
+    "title": "ACSL Tiles",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Simulation",
+    "year": 2023,
+    "acceptanceRate": 0,
+    "summary": "2023-2024 · Contest 1 · Simulation",
+    "statement": "Four rows begin with the four digits of originalRows, padding with leading zeroes when needed. A two-digit tile can be reversed. It matches a row when one end equals the row’s last digit; append the tile so the matching end touches the row. Start checking at row 1. After a placement, start the next search at the row AFTER the row just used, wrapping from row 4 to row 1. If the placed tile is a double, the next placement MUST be on that same row; this lock remains until a non-double is placed there. Process tiles once, in input order. For each tile, try rows in the prescribed cyclic order, or only the locked row. If it cannot be placed, discard it without changing the next-search position or lock. Add the two digits of every discarded tile.",
+    "inputSpec": "Two lines: originalRows, then a space-separated list of tiles.",
+    "outputSpec": "The sum of all individual digits on discarded tiles.",
+    "constraints": [
+      "originalRows contains four digits 1–9.",
+      "The hand has 1–50 tiles; each tile has two digits from 1–9."
+    ],
+    "samples": [
+      {
+        "input": "5923\n56 27 73 34 99 45 32 19 64 57 18\n",
+        "output": "21\n"
+      },
+      {
+        "input": "4687\n81 72 15 89 36 21 13 67 42 93 48 83 45 47 52 94 62\n",
+        "output": "86\n"
+      },
+      {
+        "input": "1932\n94 81 13 43 21 31 89 69 18 28 86 88 29 89 92\n",
+        "output": "11\n"
+      },
+      {
+        "input": "1957\n32 69 87 73 31 88 62\n",
+        "output": "23\n"
+      },
+      {
+        "input": "1542\n24 44 39 32 92 63 47 76 37 78 38\n",
+        "output": "46\n"
+      }
+    ],
+    "hints": [
+      "Keep the next row and any double lock as explicit state."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "acsl-tiles-2023-senior",
+    "slug": "acsl-tiles-2023-senior",
+    "title": "ACSL Tiles",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Simulation",
+    "year": 2023,
+    "acceptanceRate": 0,
+    "summary": "2023-2024 · Contest 1 · Simulation",
+    "statement": "Four rows begin with the four digits of originalRows, padding with leading zeroes when needed. A two-digit tile can be reversed. It matches a row when one end equals the row’s last digit; append the tile so the matching end touches the row. Start checking at row 1. After a placement, start the next search at the row AFTER the row just used, wrapping from row 4 to row 1. If the placed tile is a double, the next placement MUST be on that same row; this lock remains until a non-double is placed there. On each turn, scan the hand from its FIRST tile, trying each against rows in the prescribed order. Place the first tile that fits and restart scanning the remaining hand from the beginning. If no hand tile fits, draw tiles one at a time, appending them to the hand, until one can be placed. Stop as soon as the hand is empty, even if the draw pile is not; also stop when no hand tile fits and the draw pile is empty. Sum the individual digits remaining in the HAND, excluding undrawn tiles.",
+    "inputSpec": "Three lines: originalRows, hand tiles separated by spaces, draw-pile tiles separated by spaces. An empty third line means no draw tiles. A token 0 is the tile 00, not an empty draw pile.",
+    "outputSpec": "The sum of all individual digits on tiles left in the hand.",
+    "constraints": [
+      "0 ≤ originalRows ≤ 9999; use leading zero padding to obtain four row digits.",
+      "Each tile is 0–99; one-digit tiles are padded with a leading zero.",
+      "The hand has 1–50 tiles; the draw pile has 0–50 tiles."
+    ],
+    "samples": [
+      {
+        "input": "5923\n56 27 73 34 99 45 32 17 64 57 18 11\n36 92 22 50 82\n",
+        "output": "16\n"
+      },
+      {
+        "input": "1324\n85 31 32 96 25 1 68\n30 35 42 11 78 39 19 9 81\n",
+        "output": "0\n"
+      },
+      {
+        "input": "7836\n57 62 19 97 3 11 28 92 66 87 45\n68 55 58 98 38 14 53 88 44 94 81 76 74 99 27 20\n",
+        "output": "102\n"
+      },
+      {
+        "input": "4\n50 0 39 98 2 99 63 46 92 74 14 58 68 33 37\n51 42 95 60 67 77 84 7 96 8 35 10 19 22 11 82 40\n",
+        "output": "16\n"
+      },
+      {
+        "input": "8937\n63 84 6 57 8 2 30 9 87 52 5\n58 40 62 54 27 96 35 99 61 56 14 51 88 13\n",
+        "output": "71\n"
+      }
+    ],
+    "hints": [
+      "Keep the next row and any double lock as explicit state."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "rings-2024-junior",
+    "slug": "rings-2024-junior",
+    "title": "Rings",
+    "division": "Junior",
+    "difficulty": "Easy",
+    "topic": "Sorting",
+    "year": 2024,
+    "acceptanceRate": 0,
+    "summary": "2024-2025 · Contest 1 · Sorting",
+    "statement": "ACSL Rings awards points for ring colors: aqua A=1, red R=1, orange O=3, green G=3, black B=6.",
+    "inputSpec": "Two lines, each a string of color letters representing one player’s tosses.",
+    "outputSpec": "The two scores in descending order, separated by a space.",
+    "constraints": [
+      "Each string has 1–100 letters from A,R,O,G,B."
+    ],
+    "samples": [
+      {
+        "input": "BRAG\nBOB\n",
+        "output": "15 11\n"
+      },
+      {
+        "input": "AABBOOGG\nBAROBA\n",
+        "output": "26 18\n"
+      },
+      {
+        "input": "GBORABORBA\nBAAAAOORGGGB\n",
+        "output": "32 31\n"
+      },
+      {
+        "input": "OORRRGRBBRRAAABB\nAAAAGRRRRGRRRBBOO\n",
+        "output": "42 35\n"
+      },
+      {
+        "input": "BARROGGBBGO\nBBAAAARRRGGGOOOO\n",
+        "output": "40 36\n"
+      },
+      {
+        "input": "AAAABBBOOGGGRRR\nRRBBOOOGGGAAAA\n",
+        "output": "40 36\n"
+      }
+    ],
+    "hints": [
+      "Compute scores before sorting; Senior also needs the toss count."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "rings-2024-intermediate",
+    "slug": "rings-2024-intermediate",
+    "title": "Rings",
+    "division": "Intermediate",
+    "difficulty": "Medium",
+    "topic": "Sorting",
+    "year": 2024,
+    "acceptanceRate": 0,
+    "summary": "2024-2025 · Contest 1 · Sorting",
+    "statement": "ACSL Rings awards points for ring colors: aqua A=1, red R=1, orange O=3, green G=3, black B=6. A toss through an overlap scores the sum of its two colors PLUS 1. The permitted overlapping pairs are AO, OB, BG, GR.",
+    "inputSpec": "Three lines, one per player. Tosses are separated by single spaces; each token is A,R,O,G,B,AO,OB,BG,or GR.",
+    "outputSpec": "The three scores in descending order, separated by single spaces.",
+    "constraints": [
+      "Each line is nonempty and has at most 100 characters."
+    ],
+    "samples": [
+      {
+        "input": "GR A B\nOB BG AO O\nR G\n",
+        "output": "28 12 4\n"
+      },
+      {
+        "input": "A R O G B\nA A B B\nR O B\n",
+        "output": "14 14 10\n"
+      },
+      {
+        "input": "AO OB B G A B BG GR\nR R G G AO AO BG BG B\nAO GR A B R G O BG OB\n",
+        "output": "46 44 44\n"
+      },
+      {
+        "input": "A A A B B R O O O O\nBG BG GR GR O O O A B\nBG BG GR GR O O O B B G\n",
+        "output": "54 46 28\n"
+      },
+      {
+        "input": "A B B O O G AO OB GR BG\nGR GR BG BG OB AO AO\nB B B G G G A A A GR AO\n",
+        "output": "52 50 40\n"
+      },
+      {
+        "input": "GR BG OB AO A G B\nA O B AO GR GR BG O GR AO\nO O B G A A GR OB AO BG\n",
+        "output": "48 47 40\n"
+      }
+    ],
+    "hints": [
+      "Compute scores before sorting; Senior also needs the toss count."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  },
+  {
+    "id": "rings-2024-senior",
+    "slug": "rings-2024-senior",
+    "title": "Rings",
+    "division": "Senior",
+    "difficulty": "Hard",
+    "topic": "Sorting",
+    "year": 2024,
+    "acceptanceRate": 0,
+    "summary": "2024-2025 · Contest 1 · Sorting",
+    "statement": "ACSL Rings awards points for ring colors: aqua A=1, red R=1, orange O=3, green G=3, black B=6. A toss through an overlap scores the sum of its two colors PLUS 1. The permitted overlapping pairs are AO, OB, BG, GR. The overlap letters may also be reversed (OA, BO, GB, RG). A + at the END of a token adds 2 long-distance bonus points for that toss. Sort players by descending score; for equal scores, the player with FEWER tosses comes first. The input guarantees no remaining ties.",
+    "inputSpec": "First line: number of players n. Next n nonempty lines: one player’s toss tokens separated by spaces.",
+    "outputSpec": "One line of playerNumber-score tokens, separated by spaces, in ranked order. Player numbers start at 1.",
+    "constraints": [
+      "1 ≤ n ≤ 100; each player has 1–100 tosses.",
+      "No two players have both the same score and same toss count."
+    ],
+    "samples": [
+      {
+        "input": "3\nA R AO+\nB+ GR OA B\nG OB+\n",
+        "output": "2-24 3-15 1-9\n"
+      },
+      {
+        "input": "3\nA B R G O\nAO OA BO OB GR RG BG GB\nA AO B OB R GR B GB\n",
+        "output": "2-60 3-44 1-14\n"
+      },
+      {
+        "input": "5\nA+ B R+ G O+\nAO OB+ GB RG\nA AO B R GR G GB O BO\nB R A G GR A BG OA R\nBG+ B+ G+ OA+ R+ A+ O+\n",
+        "output": "3-44 5-43 4-33 2-32 1-20\n"
+      },
+      {
+        "input": "3\nA+ R+ AO+ B+ BG+ R+\nB+ GR+ AO+ B+\nGR+ OB+ R+ AO+ G+ R+\n",
+        "output": "3-37 1-36 2-30\n"
+      },
+      {
+        "input": "4\nA R+ OA B AO OB BG GR B+\nAO OB B+ G BG BG+ GR+\nB+ G AO+ OB GR O+ B\nB+ B G AO+ AO BG GR G O+ G\n",
+        "output": "2-55 4-55 1-53 3-44\n"
+      },
+      {
+        "input": "6\nR R G G AO BG GB B\nAO GR+ A B AO+ BG BG BO\nA A R R G G O O\nBG GB GR+ RG O O+ O A+ B\nGR RG A+ A O O+ B G\nA B+ B O G+ G G AO OB GR BG\n",
+        "output": "6-59 2-56 4-52 1-39 5-31 3-16\n"
+      }
+    ],
+    "hints": [
+      "Compute scores before sorting; Senior also needs the toss count."
+    ],
+    "timeLimitMs": 2000,
+    "memoryLimitKb": 256000
+  }
+]

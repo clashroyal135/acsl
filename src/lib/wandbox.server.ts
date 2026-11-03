@@ -32,9 +32,11 @@ export async function executeWithWandbox(
   index: number,
   timeLimitMs: number,
   compareOutput: boolean,
+  requestBudgetMs = 45_000,
 ): Promise<TestResult> {
   const baseUrl = (process.env.WANDBOX_URL ?? "https://wandbox.org/api").replace(/\/$/, "");
-  const timeoutMs = Math.min(15_000, Math.max(10_000, timeLimitMs + 5_000));
+  // This includes the provider's queue and compiler startup, not just program CPU.
+  const timeoutMs = Math.max(1, Math.min(45_000, requestBudgetMs));
 
   let response: Response;
   try {
@@ -43,7 +45,9 @@ export async function executeWithWandbox(
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         compiler: COMPILERS[language],
-        code: sourceCode,
+        // Wandbox compiles prog.java and discovers its main class after compilation.
+        // Keep Main and its references intact, but remove the filename-dependent modifier.
+        code: language === "java" ? sourceCode.replace(/^(\s*)public(?=\s+class\s+Main\b)/m, "$1      ") : sourceCode,
         stdin: test.input,
         options: language === "cpp" ? "warning,gnu++17" : "",
       }),
@@ -51,19 +55,7 @@ export async function executeWithWandbox(
       signal: AbortSignal.timeout(timeoutMs),
     });
   } catch (error) {
-    if (error instanceof DOMException && error.name === "TimeoutError") {
-      return {
-        index,
-        verdict: "Time Limit Exceeded",
-        stdout: null,
-        expectedOutput: test.hidden || !compareOutput ? undefined : test.expectedOutput,
-        stderr: "The execution service did not finish before the time limit.",
-        compileOutput: null,
-        time: null,
-        memory: null,
-        hidden: test.hidden,
-      };
-    }
+    if (error instanceof Error && error.name === "TimeoutError") throw new Error("The execution service timed out while compiling or running. Please try again.");
     throw error;
   }
 

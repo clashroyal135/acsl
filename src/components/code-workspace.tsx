@@ -5,6 +5,8 @@ import { AlertCircle, CheckCircle2, ChevronDown, ChevronLeft, Clock3, Code2, Loa
 import type { editor as MonacoEditor } from "monaco-editor";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { DivisionSelector } from "@/components/division-selector";
+import { seasonLabel, type ProblemVersion } from "@/lib/problem-groups";
 import { ProblemStatement } from "@/components/problem-statement";
 import { Button } from "@/components/ui/button";
 import { splitStarterCode } from "@/lib/starters";
@@ -14,7 +16,7 @@ import { cn } from "@/lib/utils";
 const languageLabels: Record<Language, string> = { python: "Python 3", cpp: "C++17", java: "Java 17" };
 const monacoLanguages: Record<Language, string> = { python: "python", cpp: "cpp", java: "java" };
 
-export function CodeWorkspace({ problem, isAdmin = false }: { problem: Problem; isAdmin?: boolean }) {
+export function CodeWorkspace({ problem, isAdmin = false, versions = [problem] }: { problem: Problem; isAdmin?: boolean; versions?: ProblemVersion[] }) {
   const templates = useMemo(() => ({
     python: splitStarterCode(problem.starterCode.python),
     cpp: splitStarterCode(problem.starterCode.cpp),
@@ -190,8 +192,8 @@ export function CodeWorkspace({ problem, isAdmin = false }: { problem: Problem; 
   return (
     <main className="bg-muted/45 p-2 sm:p-3">
       <div className="mb-2 flex items-center justify-between rounded-xl border border-border bg-card px-3 py-2">
-        <div className="flex min-w-0 items-center gap-3"><Link href="/problems" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg hover:bg-muted" aria-label="Back to problems"><ChevronLeft className="h-4 w-4" /></Link><div className="min-w-0"><h1 className="truncate text-sm font-bold sm:text-base">{problem.title}</h1><p className="text-xs text-muted-foreground">{problem.division} · {problem.difficulty} · {problem.topic}</p></div></div>
-        <div className="hidden items-center gap-4 text-xs text-muted-foreground sm:flex"><span>{problem.timeLimitMs / 1000}s</span><span>{Math.round(problem.memoryLimitKb / 1000)} MB</span></div>
+        <div className="flex min-w-0 items-center gap-3"><Link href="/problems" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg hover:bg-muted" aria-label="Back to problems"><ChevronLeft className="h-4 w-4" /></Link><div className="min-w-0"><h1 className="truncate text-sm font-bold sm:text-base">{problem.title}</h1><p className="text-xs text-muted-foreground">{seasonLabel(problem.year)} · Contest 1 · {problem.topic}</p></div></div>
+        <DivisionSelector currentSlug={problem.slug} versions={versions} /><div className="hidden items-center gap-4 text-xs text-muted-foreground lg:flex"><span>{problem.timeLimitMs / 1000}s</span><span>{Math.round(problem.memoryLimitKb / 1000)} MB</span></div>
       </div>
       <div ref={containerRef} className="desktop-split grid min-h-[calc(100vh-9.25rem)] overflow-hidden rounded-xl border border-border bg-card" style={{ gridTemplateColumns: `${leftWidth}% 6px minmax(0, 1fr)` }}>
         <section className="min-w-0 overflow-y-auto border-b border-border md:border-b-0"><ProblemStatement problem={problem} /></section>

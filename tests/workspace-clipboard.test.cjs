@@ -35,7 +35,7 @@ test('students retain external clipboard blocking and listeners are removed on c
 
 test('problem workspace clipboard access follows the verified server admin role', async () => {
   for (const admin of [null, {}]) {
-    const Page = loader({ '@/lib/admin.server': { requireAdmin: async () => admin }, '@/lib/database.server': { getProblemBySlug: async () => ({ slug: 'test' }) }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
+    const Page = loader({ '@/lib/admin.server': { requireAdmin: async () => admin }, '@/lib/database.server': { getAllProblems: async () => [], getProblemBySlug: async () => ({ slug: 'test' }) }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
     const page = await Page({ params: Promise.resolve({ slug: 'test' }) }); assert.equal(page.props.isAdmin, Boolean(admin));
   }
 });

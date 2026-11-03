@@ -1,11 +1,12 @@
 import ReactMarkdown from "react-markdown";
+import { seasonLabel } from "@/lib/problem-groups";
 import { Badge } from "@/components/ui/badge";
 import type { Problem } from "@/lib/types";
 
 export function ProblemStatement({ problem }: { problem: Problem }) {
   return (
     <article className="prose-acsl px-5 py-6 sm:px-7">
-      <div className="mb-6 flex flex-wrap gap-2"><Badge>{problem.division}</Badge><Badge>{problem.difficulty}</Badge><Badge>{problem.topic}</Badge><Badge>{problem.year}</Badge></div>
+      <div className="mb-6 flex flex-wrap gap-2"><Badge>{problem.division}</Badge><Badge>{problem.difficulty}</Badge><Badge>{problem.topic}</Badge><Badge>{seasonLabel(problem.year)}</Badge><Badge>Contest 1</Badge></div>
       <ReactMarkdown>{problem.statement}</ReactMarkdown>
       <Section title="Input"><ReactMarkdown>{problem.inputSpec}</ReactMarkdown></Section>
       <Section title="Output"><ReactMarkdown>{problem.outputSpec}</ReactMarkdown></Section>

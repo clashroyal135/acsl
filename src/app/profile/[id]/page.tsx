@@ -1,3 +1,4 @@
+import { seasonLabel } from "@/lib/problem-groups";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -26,6 +27,6 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
       { label: "Problems attempted", value: profile.attemptedCount, Icon: Layers3 },
       { label: "Submissions", value: profile.submissionCount, Icon: Code2 },
     ].map(({ label, value, Icon }) => <Card key={label} className="p-5"><Icon className="h-5 w-5 text-primary" /><p className="mt-4 text-3xl font-black">{value}</p><p className="mt-1 text-sm text-muted-foreground">{label}</p></Card>)}</div>
-    <Card className="mt-6 p-6"><h2 className="font-bold">Progress by problem</h2><div className="mt-4 grid gap-3 md:grid-cols-2">{profile.problems.map((problem) => <div key={problem.id} className="flex items-center justify-between gap-3 rounded-xl border border-border p-4"><div><Link href={`/problems/${problem.slug}`} className="text-sm font-semibold hover:text-primary">{problem.title}</Link><p className="mt-1 text-xs text-muted-foreground">{problem.division}</p></div><Badge className={problem.status === "Solved" ? "border-success/25 bg-success/10 text-success" : ""}>{problem.status}</Badge></div>)}</div>{!profile.problems.length && <p className="mt-4 text-sm text-muted-foreground">No published problems yet.</p>}</Card>
+    <Card className="mt-6 p-6"><h2 className="font-bold">Progress by problem</h2><div className="mt-4 grid gap-3 md:grid-cols-2">{profile.problems.map((problem) => <div key={problem.id} className="flex items-center justify-between gap-3 rounded-xl border border-border p-4"><div><Link href={`/problems/${problem.slug}`} className="text-sm font-semibold hover:text-primary">{problem.title}</Link><p className="mt-1 text-xs text-muted-foreground">{seasonLabel(problem.year)} · {problem.division}</p></div><Badge className={problem.status === "Solved" ? "border-success/25 bg-success/10 text-success" : ""}>{problem.status}</Badge></div>)}</div>{!profile.problems.length && <p className="mt-4 text-sm text-muted-foreground">No published problems yet.</p>}</Card>
   </main>;
 }

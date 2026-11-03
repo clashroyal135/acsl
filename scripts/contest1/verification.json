@@ -1,0 +1,10 @@
+{
+  "problemGroups": 18,
+  "divisionVersions": 53,
+  "sourceFixtures": 161,
+  "publicSamples": 76,
+  "hiddenCases": 636,
+  "independentNumericChecks": 180,
+  "invalidInputs": 0,
+  "outputMismatches": 0
+}

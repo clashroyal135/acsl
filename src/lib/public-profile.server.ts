@@ -43,7 +43,7 @@ export async function getPublicProfile(id: string) {
     solvedCount: problems.filter((problem) => solved.has(problem.id)).length,
     attemptedCount: problems.filter((problem) => attempted.has(problem.id)).length,
     problems: problems.map((problem) => ({
-      id: problem.id, slug: problem.slug, title: problem.title, division: problem.division,
+      id: problem.id, slug: problem.slug, title: problem.title, division: problem.division, year: problem.year,
       status: solved.has(problem.id) ? "Solved" : attempted.has(problem.id) ? "Attempted" : "Not started",
     })),
   };

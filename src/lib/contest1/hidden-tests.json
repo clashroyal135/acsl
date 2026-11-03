@@ -1,0 +1,3288 @@
+{
+  "triangles-2007-junior": [
+    {
+      "input": "2 3 4 3 4 2\n2 2 3 2 3 2\n1 1 1 1.75 1 1\n1 2 3 2 1 3\n1.25 2.5 3.25 1.25 3.25 2.5\n",
+      "expectedOutput": "3\n3\n2\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 2 3 2\n1 1 1 1.75 1 1\n1 2 3 1 3 2\n1.25 2.5 3.25 3.25 2.5 1.25\n3 4 5 4 3 5\n",
+      "expectedOutput": "3\n2\n3\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1.75 1 1\n1 2 3 2 3 1\n1.25 2.5 3.25 2.5 1.25 3.25\n3 4 5 4 3 5\n300000 400000 500000 400000.75 300000 500000\n",
+      "expectedOutput": "2\n3\n3\n3\n2\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 2 1 3\n1.25 2.5 3.25 3.25 2.5 1.25\n3 4 5 4 3 5\n300000 400000 500000 400000.75 500000 300000\n0.1 0.2 0.2999 0.2 0.2999 0.1\n",
+      "expectedOutput": "3\n3\n3\n2\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "1.25 2.5 3.25 3.25 1.25 2.5\n3 4 5 4 5 3\n300000 400000 500000 400000.75 300000 500000\n0.1 0.2 0.2999 0.2999 0.1 0.2\n2 3 4 2 4 3\n",
+      "expectedOutput": "3\n3\n2\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "3 4 5 3 5 4\n300000 400000 500000 500000.75 300000 400000\n0.1 0.2 0.2999 0.2 0.1 0.2999\n2 3 4 4 3 2\n2 2 3 2 2 3\n",
+      "expectedOutput": "3\n2\n3\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "300000 400000 500000 400000.75 300000 500000\n0.1 0.2 0.2999 0.2 0.2999 0.1\n2 3 4 4 2 3\n2 2 3 2 3 2\n1 1 1 1.75 1 1\n",
+      "expectedOutput": "2\n3\n3\n3\n2\n",
+      "hidden": true
+    },
+    {
+      "input": "0.1 0.2 0.2999 0.2999 0.1 0.2\n2 3 4 2 4 3\n2 2 3 3 2 2\n1 1 1 1.75 1 1\n1 2 3 3 1 2\n",
+      "expectedOutput": "3\n3\n3\n2\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "2 3 4 3 4 2\n2 2 3 3 2 2\n1 1 1 1.75 1 1\n1 2 3 2 1 3\n1.25 2.5 3.25 3.25 1.25 2.5\n",
+      "expectedOutput": "3\n3\n2\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 2 3 2\n1 1 1 1.75 1 1\n1 2 3 3 2 1\n1.25 2.5 3.25 3.25 2.5 1.25\n3 4 5 3 4 5\n",
+      "expectedOutput": "3\n2\n3\n3\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1.75 1 1\n1 2 3 1 2 3\n1.25 2.5 3.25 2.5 3.25 1.25\n3 4 5 4 5 3\n300000 400000 500000 400000.75 500000 300000\n",
+      "expectedOutput": "2\n3\n3\n3\n2\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 2 1 3\n1.25 2.5 3.25 1.25 3.25 2.5\n3 4 5 4 5 3\n300000 400000 500000 300000.75 500000 400000\n0.1 0.2 0.2999 0.1 0.2999 0.2\n",
+      "expectedOutput": "3\n3\n3\n2\n3\n",
+      "hidden": true
+    }
+  ],
+  "triangles-2007-intermediate": [
+    {
+      "input": "2 3 4 2 4 3\n2 2 3 2 2 3\n1 1 1 1.75 1 1\n1 2 3 2 1 3\n1.25 2.5 3.25 1.25 3.25 2.5\n",
+      "expectedOutput": "EDF\nDEF\nNONE\nFED\nEDF\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 3 2 2\n1 1 1 1.75 1 1\n1 2 3 1 2 3\n1.25 2.5 3.25 1.25 2.5 3.25\n3 4 5 4 5 3\n",
+      "expectedOutput": "DFE\nNONE\nDEF\nDEF\nFDE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1.75 1 1\n1 2 3 2 1 3\n1.25 2.5 3.25 3.25 1.25 2.5\n3 4 5 4 3 5\n300000 400000 500000 500000.75 300000 400000\n",
+      "expectedOutput": "NONE\nFED\nEFD\nFED\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 2 3 1\n1.25 2.5 3.25 1.25 2.5 3.25\n3 4 5 5 4 3\n300000 400000 500000 400000.75 300000 500000\n0.1 0.2 0.2999 0.2 0.2999 0.1\n",
+      "expectedOutput": "FDE\nDEF\nDFE\nNONE\nFDE\n",
+      "hidden": true
+    },
+    {
+      "input": "1.25 2.5 3.25 1.25 3.25 2.5\n3 4 5 4 5 3\n300000 400000 500000 300000.75 500000 400000\n0.1 0.2 0.2999 0.2999 0.2 0.1\n2 3 4 4 3 2\n",
+      "expectedOutput": "EDF\nFDE\nNONE\nDFE\nDFE\n",
+      "hidden": true
+    },
+    {
+      "input": "3 4 5 4 3 5\n300000 400000 500000 300000.75 500000 400000\n0.1 0.2 0.2999 0.2999 0.1 0.2\n2 3 4 4 2 3\n2 2 3 2 3 2\n",
+      "expectedOutput": "FED\nNONE\nEFD\nEFD\nEDF\n",
+      "hidden": true
+    },
+    {
+      "input": "300000 400000 500000 300000.75 500000 400000\n0.1 0.2 0.2999 0.1 0.2 0.2999\n2 3 4 4 3 2\n2 2 3 3 2 2\n1 1 1 1.75 1 1\n",
+      "expectedOutput": "NONE\nDEF\nDFE\nDFE\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "0.1 0.2 0.2999 0.1 0.2999 0.2\n2 3 4 2 4 3\n2 2 3 2 3 2\n1 1 1 1.75 1 1\n1 2 3 3 2 1\n",
+      "expectedOutput": "EDF\nEDF\nEDF\nNONE\nDFE\n",
+      "hidden": true
+    },
+    {
+      "input": "2 3 4 3 4 2\n2 2 3 2 2 3\n1 1 1 1.75 1 1\n1 2 3 1 3 2\n1.25 2.5 3.25 3.25 1.25 2.5\n",
+      "expectedOutput": "FDE\nDEF\nNONE\nEDF\nEFD\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 3 2 2\n1 1 1 1.75 1 1\n1 2 3 2 3 1\n1.25 2.5 3.25 1.25 3.25 2.5\n3 4 5 5 3 4\n",
+      "expectedOutput": "DFE\nNONE\nFDE\nEDF\nEFD\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1.75 1 1\n1 2 3 2 1 3\n1.25 2.5 3.25 2.5 1.25 3.25\n3 4 5 4 5 3\n300000 400000 500000 400000.75 500000 300000\n",
+      "expectedOutput": "NONE\nFED\nFED\nFDE\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 1 2 3\n1.25 2.5 3.25 3.25 2.5 1.25\n3 4 5 3 5 4\n300000 400000 500000 300000.75 400000 500000\n0.1 0.2 0.2999 0.2999 0.2 0.1\n",
+      "expectedOutput": "DEF\nDFE\nEDF\nNONE\nDFE\n",
+      "hidden": true
+    }
+  ],
+  "triangles-2007-senior": [
+    {
+      "input": "2 3 4 2.0 1.0 1.5\n2 2 3 4.0 6.0 4.0\n1 1 1 3.75 3.0 3.0\n1 2 3 9.0 3.0 6.0\n1.25 2.5 3.25 3.75 9.75 7.5\n",
+      "expectedOutput": "EFD\nEDF\nNONE\nNOT VALID\nEDF\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 1.0 1.0 1.5\n1 1 1 3.75 3.0 3.0\n1 2 3 4.0 6.0 2.0\n1.25 2.5 3.25 12.5 25.0 32.5\n3 4 5 2.5 2.0 1.5\n",
+      "expectedOutput": "DEF\nNONE\nNOT VALID\nDEF\nDFE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 2.75 2.0 2.0\n1 2 3 2.0 6.0 4.0\n1.25 2.5 3.25 32.5 12.5 25.0\n3 4 5 12.0 15.0 9.0\n300000 400000 500000 300000.75 500000.0 400000.0\n",
+      "expectedOutput": "NONE\nNOT VALID\nEFD\nFDE\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 0.5 1.5 1.0\n1.25 2.5 3.25 9.75 7.5 3.75\n3 4 5 15.0 12.0 9.0\n300000 400000 500000 250000.75 200000.0 150000.0\n0.1 0.2 0.2999 0.1 0.14995 0.05\n",
+      "expectedOutput": "NOT VALID\nDFE\nDFE\nNONE\nFDE\n",
+      "hidden": true
+    },
+    {
+      "input": "1.25 2.5 3.25 32.5 12.5 25.0\n3 4 5 12.0 15.0 9.0\n300000 400000 500000 300000.75 500000.0 400000.0\n0.1 0.2 0.2999 2.999 1.0 2.0\n2 3 4 30.0 40.0 20.0\n",
+      "expectedOutput": "EFD\nFDE\nNONE\nEFD\nFDE\n",
+      "hidden": true
+    },
+    {
+      "input": "3 4 5 9.0 12.0 15.0\n300000 400000 500000 150000.75 250000.0 200000.0\n0.1 0.2 0.2999 2.0 1.0 2.999\n2 3 4 12.0 9.0 6.0\n2 2 3 6.0 4.0 4.0\n",
+      "expectedOutput": "DEF\nNONE\nFED\nDFE\nDFE\n",
+      "hidden": true
+    },
+    {
+      "input": "300000 400000 500000 250000.75 150000.0 200000.0\n0.1 0.2 0.2999 0.4 0.5998 0.2\n2 3 4 2.0 1.0 1.5\n2 2 3 1.0 1.0 1.5\n1 1 1 10.75 10.0 10.0\n",
+      "expectedOutput": "NONE\nFDE\nEFD\nDEF\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "0.1 0.2 0.2999 0.5998 0.2 0.4\n2 3 4 1.5 1.0 2.0\n2 2 3 9.0 6.0 6.0\n1 1 1 3.75 3.0 3.0\n1 2 3 6.0 2.0 4.0\n",
+      "expectedOutput": "EFD\nFED\nDFE\nNONE\nNOT VALID\n",
+      "hidden": true
+    },
+    {
+      "input": "2 3 4 4.0 6.0 8.0\n2 2 3 1.0 1.0 1.5\n1 1 1 3.75 3.0 3.0\n1 2 3 30.0 10.0 20.0\n1.25 2.5 3.25 6.5 2.5 5.0\n",
+      "expectedOutput": "DEF\nDEF\nNONE\nNOT VALID\nEFD\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 3 6.0 9.0 6.0\n1 1 1 2.75 2.0 2.0\n1 2 3 6.0 4.0 2.0\n1.25 2.5 3.25 25.0 12.5 32.5\n3 4 5 8.0 6.0 10.0\n",
+      "expectedOutput": "EDF\nNONE\nNOT VALID\nFED\nFED\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1.25 0.5 0.5\n1 2 3 0.5 1.0 1.5\n1.25 2.5 3.25 12.5 32.5 25.0\n3 4 5 50.0 30.0 40.0\n300000 400000 500000 150000.75 200000.0 250000.0\n",
+      "expectedOutput": "NOT VALID\nNOT VALID\nEDF\nEFD\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 6.0 9.0 3.0\n1.25 2.5 3.25 3.75 7.5 9.75\n3 4 5 8.0 10.0 6.0\n300000 400000 500000 400000.75 500000.0 300000.0\n0.1 0.2 0.2999 2.999 2.0 1.0\n",
+      "expectedOutput": "NOT VALID\nDEF\nFDE\nNONE\nDFE\n",
+      "hidden": true
+    }
+  ],
+  "acsl-bridge-2008-junior": [
+    {
+      "input": "1 12 C\n1 9 D\n1 13 H\n1 13 S\n1 11 N\n",
+      "expectedOutput": "20 100\n20 40\n30 180\n30 180\n40 120\n",
+      "hidden": true
+    },
+    {
+      "input": "7 13 C\n7 13 D\n7 13 H\n7 13 S\n7 13 N\n",
+      "expectedOutput": "140 0\n140 0\n210 0\n210 0\n220 0\n",
+      "hidden": true
+    },
+    {
+      "input": "4 10 C\n2 10 D\n5 11 H\n7 13 S\n2 8 N\n",
+      "expectedOutput": "80 0\n40 40\n150 0\n210 0\n70 0\n",
+      "hidden": true
+    },
+    {
+      "input": "6 13 C\n5 13 D\n5 12 H\n2 8 S\n4 10 N\n",
+      "expectedOutput": "120 20\n100 40\n150 30\n60 0\n130 0\n",
+      "hidden": true
+    },
+    {
+      "input": "7 13 C\n7 13 D\n4 11 H\n5 11 S\n3 11 N\n",
+      "expectedOutput": "140 0\n140 0\n120 30\n150 0\n100 60\n",
+      "hidden": true
+    },
+    {
+      "input": "4 11 C\n1 13 D\n1 8 H\n4 13 S\n4 11 N\n",
+      "expectedOutput": "80 20\n20 120\n30 30\n120 90\n130 30\n",
+      "hidden": true
+    },
+    {
+      "input": "7 13 C\n4 12 D\n3 11 H\n7 13 S\n1 10 N\n",
+      "expectedOutput": "140 0\n80 40\n90 60\n210 0\n40 90\n",
+      "hidden": true
+    },
+    {
+      "input": "1 10 C\n4 11 D\n7 13 H\n6 13 S\n4 12 N\n",
+      "expectedOutput": "20 60\n80 20\n210 0\n180 30\n130 60\n",
+      "hidden": true
+    },
+    {
+      "input": "1 12 C\n7 13 D\n6 12 H\n2 9 S\n2 11 N\n",
+      "expectedOutput": "20 100\n140 0\n180 0\n60 30\n70 90\n",
+      "hidden": true
+    },
+    {
+      "input": "5 11 C\n4 13 D\n2 12 H\n4 12 S\n2 9 N\n",
+      "expectedOutput": "100 0\n80 60\n60 120\n120 60\n70 30\n",
+      "hidden": true
+    },
+    {
+      "input": "3 9 C\n3 12 D\n1 12 H\n7 13 S\n5 12 N\n",
+      "expectedOutput": "60 0\n60 60\n30 150\n210 0\n160 30\n",
+      "hidden": true
+    },
+    {
+      "input": "6 12 C\n1 11 D\n2 12 H\n5 11 S\n1 9 N\n",
+      "expectedOutput": "120 0\n20 80\n60 120\n150 0\n40 60\n",
+      "hidden": true
+    }
+  ],
+  "acsl-bridge-2008-intermediate": [
+    {
+      "input": "1 7 C N\n1 13 D V\n1 7 H N\n1 6 S V\n1 7 T N\n",
+      "expectedOutput": "20 0\n20 120\n30 0\n0 100\n40 0\n",
+      "hidden": true
+    },
+    {
+      "input": "7 7 C V\n7 12 D N\n7 13 H V\n7 0 S N\n7 13 T V\n",
+      "expectedOutput": "0 600\n0 50\n210 0\n0 650\n220 0\n",
+      "hidden": true
+    },
+    {
+      "input": "5 11 C N\n6 7 D V\n5 10 H N\n5 0 S V\n5 0 T N\n",
+      "expectedOutput": "100 0\n0 500\n0 50\n0 1100\n0 550\n",
+      "hidden": true
+    },
+    {
+      "input": "4 6 C V\n5 11 D N\n5 11 H V\n7 13 S N\n2 8 T V\n",
+      "expectedOutput": "0 400\n100 0\n150 0\n210 0\n70 0\n",
+      "hidden": true
+    },
+    {
+      "input": "7 13 C N\n3 9 D V\n5 11 H N\n7 7 S V\n5 7 T N\n",
+      "expectedOutput": "140 0\n60 0\n150 0\n0 600\n0 200\n",
+      "hidden": true
+    },
+    {
+      "input": "3 9 C V\n5 11 D N\n5 10 H V\n1 7 S N\n2 0 T V\n",
+      "expectedOutput": "60 0\n100 0\n0 100\n30 0\n0 800\n",
+      "hidden": true
+    },
+    {
+      "input": "1 13 C N\n3 0 D V\n4 0 H N\n5 0 S V\n3 0 T N\n",
+      "expectedOutput": "20 120\n0 900\n0 500\n0 1100\n0 450\n",
+      "hidden": true
+    },
+    {
+      "input": "2 6 C V\n2 7 D N\n4 7 H V\n3 7 S N\n2 0 T V\n",
+      "expectedOutput": "0 200\n0 50\n0 300\n0 100\n0 800\n",
+      "hidden": true
+    },
+    {
+      "input": "6 0 C N\n2 13 D V\n2 8 H N\n1 6 S V\n6 7 T N\n",
+      "expectedOutput": "0 600\n40 100\n60 0\n0 100\n0 250\n",
+      "hidden": true
+    },
+    {
+      "input": "2 7 C V\n4 7 D N\n2 6 H V\n5 0 S N\n5 6 T V\n",
+      "expectedOutput": "0 100\n0 150\n0 200\n0 550\n0 500\n",
+      "hidden": true
+    },
+    {
+      "input": "3 6 C N\n1 6 D V\n5 6 H N\n7 7 S V\n4 6 T N\n",
+      "expectedOutput": "0 150\n0 100\n0 250\n0 600\n0 200\n",
+      "hidden": true
+    },
+    {
+      "input": "4 13 C V\n4 0 D N\n6 7 H V\n1 6 S N\n1 6 T V\n",
+      "expectedOutput": "80 60\n0 500\n0 500\n0 50\n0 100\n",
+      "hidden": true
+    }
+  ],
+  "acsl-bridge-2008-senior": [
+    {
+      "input": "1 1 6 C\n2 1 7 D\n1 1 6 H\n2 1 13 S\n1 1 6 T\n",
+      "expectedOutput": "0 0 0 50\n0 0 20 50\n0 0 20 100\n0 0 50 280\n0 0 50 330\n",
+      "hidden": true
+    },
+    {
+      "input": "2 7 7 C\n1 7 7 D\n2 7 13 H\n1 7 13 S\n2 7 0 T\n",
+      "expectedOutput": "0 300 0 0\n0 300 0 300\n0 300 210 300\n210 300 0 300\n0 1600 0 300\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 0 C\n2 7 6 D\n1 2 13 H\n2 5 7 S\n1 4 0 T\n",
+      "expectedOutput": "0 0 0 350\n0 350 0 350\n60 500 0 350\n60 700 0 350\n60 700 0 850\n",
+      "hidden": true
+    },
+    {
+      "input": "2 5 6 C\n1 6 6 D\n2 4 7 H\n1 6 13 S\n2 6 6 T\n",
+      "expectedOutput": "0 250 0 0\n0 250 0 300\n0 400 0 300\n180 430 0 300\n0 730 0 300\n",
+      "hidden": true
+    },
+    {
+      "input": "1 5 0 C\n2 4 10 D\n1 6 11 H\n2 1 6 S\n1 4 10 T\n",
+      "expectedOutput": "0 0 0 550\n0 0 80 550\n0 0 80 600\n0 50 80 600\n130 50 80 600\n",
+      "hidden": true
+    },
+    {
+      "input": "2 1 7 C\n1 5 13 D\n2 5 6 H\n1 1 6 S\n2 3 9 T\n",
+      "expectedOutput": "0 0 20 0\n100 40 20 0\n0 290 0 0\n0 290 0 100\n0 290 100 100\n",
+      "hidden": true
+    },
+    {
+      "input": "1 6 12 C\n2 7 6 D\n1 3 13 H\n2 3 0 S\n1 6 12 T\n",
+      "expectedOutput": "120 0 0 0\n0 350 0 0\n90 470 0 0\n90 920 0 0\n280 920 0 0\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 7 H\n1 3 9 H\n1 1 0 S\n2 7 13 T\n2 7 0 D\n",
+      "expectedOutput": "30 0 0 0\n120 0 0 0\n0 0 0 700\n0 0 220 700\n0 1300 0 700\n",
+      "hidden": true
+    },
+    {
+      "input": "2 7 0 D\n2 7 13 T\n1 1 0 S\n1 3 9 H\n1 1 7 H\n",
+      "expectedOutput": "0 650 0 0\n0 650 220 0\n0 650 0 350\n90 650 0 350\n120 650 0 350\n",
+      "hidden": true
+    },
+    {
+      "input": "2 1 13 C\n1 7 12 D\n2 2 6 H\n1 3 8 S\n2 6 13 T\n",
+      "expectedOutput": "0 0 20 120\n0 0 20 170\n0 100 20 170\n0 100 20 220\n0 100 210 250\n",
+      "hidden": true
+    },
+    {
+      "input": "1 4 0 C\n2 1 6 D\n1 1 6 H\n2 2 7 S\n1 2 0 T\n",
+      "expectedOutput": "0 0 0 500\n0 50 0 500\n0 50 0 550\n0 100 0 550\n0 100 0 950\n",
+      "hidden": true
+    },
+    {
+      "input": "2 4 10 H\n1 1 6 T\n2 1 6 T\n1 7 13 D\n1 7 0 H\n",
+      "expectedOutput": "0 0 120 0\n0 0 0 50\n0 100 0 50\n140 100 0 50\n0 100 0 1350\n",
+      "hidden": true
+    }
+  ],
+  "acsl-golf-2009-junior": [
+    {
+      "input": "5 3\n5 4\n3 3\n5 6\n",
+      "expectedOutput": "eagle\nbirdie\npar\nbogey\n2 under par\n",
+      "hidden": true
+    },
+    {
+      "input": "3 2\n4 4\n3 4\n3 5\n",
+      "expectedOutput": "birdie\npar\nbogey\ndouble bogey\n2 over par\n",
+      "hidden": true
+    },
+    {
+      "input": "5 5\n5 6\n5 7\n3 1\n",
+      "expectedOutput": "par\nbogey\ndouble bogey\neagle\n1 over par\n",
+      "hidden": true
+    },
+    {
+      "input": "4 5\n4 6\n5 3\n4 3\n",
+      "expectedOutput": "bogey\ndouble bogey\neagle\nbirdie\npar\n",
+      "hidden": true
+    },
+    {
+      "input": "5 7\n5 3\n5 4\n5 5\n",
+      "expectedOutput": "double bogey\neagle\nbirdie\npar\n1 under par\n",
+      "hidden": true
+    },
+    {
+      "input": "3 1\n5 4\n4 4\n3 4\n",
+      "expectedOutput": "eagle\nbirdie\npar\nbogey\n2 under par\n",
+      "hidden": true
+    },
+    {
+      "input": "5 4\n3 3\n4 5\n5 7\n",
+      "expectedOutput": "birdie\npar\nbogey\ndouble bogey\n2 over par\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4\n3 4\n4 6\n4 2\n",
+      "expectedOutput": "par\nbogey\ndouble bogey\neagle\n1 over par\n",
+      "hidden": true
+    },
+    {
+      "input": "3 4\n3 5\n3 1\n5 4\n",
+      "expectedOutput": "bogey\ndouble bogey\neagle\nbirdie\npar\n",
+      "hidden": true
+    },
+    {
+      "input": "5 7\n4 2\n3 2\n4 4\n",
+      "expectedOutput": "double bogey\neagle\nbirdie\npar\n1 under par\n",
+      "hidden": true
+    },
+    {
+      "input": "5 3\n3 2\n5 5\n3 4\n",
+      "expectedOutput": "eagle\nbirdie\npar\nbogey\n2 under par\n",
+      "hidden": true
+    },
+    {
+      "input": "4 3\n4 4\n3 4\n4 6\n",
+      "expectedOutput": "birdie\npar\nbogey\ndouble bogey\n2 over par\n",
+      "hidden": true
+    }
+  ],
+  "acsl-golf-2009-intermediate": [
+    {
+      "input": "4 1 2\n3 4 2\n3 2 3\n5 1 6\n5 1 10\n3 4 10\n3 1 6\n3 7 5\n4 1 4\n",
+      "expectedOutput": "22 48\n11 under par\n15 over par\n7\n14\n",
+      "hidden": true
+    },
+    {
+      "input": "5 2 10\n5 4 6\n5 7 6\n5 7 10\n5 10 10\n3 8 8\n4 4 2\n5 2 7\n3 3 9\n",
+      "expectedOutput": "47 68\n7 over par\n28 over par\n5\n20\n",
+      "hidden": true
+    },
+    {
+      "input": "4 6 5\n3 4 2\n3 4 3\n5 3 6\n3 5 1\n5 6 1\n3 1 1\n5 2 10\n4 8 7\n",
+      "expectedOutput": "36 39\n1 over par\n4 over par\n6\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4 4\n3 2 7\n3 2 9\n4 5 7\n5 6 8\n3 6 2\n4 7 3\n4 6 5\n4 2 5\n",
+      "expectedOutput": "40 50\n6 over par\n16 over par\n5\n14\n",
+      "hidden": true
+    },
+    {
+      "input": "3 2 6\n4 4 6\n3 7 2\n3 4 2\n5 2 6\n5 9 1\n3 5 4\n3 6 1\n5 10 3\n",
+      "expectedOutput": "31 49\n3 under par\n15 over par\n6\n13\n",
+      "hidden": true
+    },
+    {
+      "input": "5 9 6\n4 8 7\n5 1 2\n3 1 6\n3 5 10\n5 3 10\n3 1 7\n4 9 1\n3 4 1\n",
+      "expectedOutput": "41 50\n6 over par\n15 over par\n5\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "4 1 5\n4 7 7\n5 6 5\n4 10 9\n4 4 2\n4 6 6\n4 3 9\n5 3 5\n5 2 2\n",
+      "expectedOutput": "42 50\n3 over par\n11 over par\n3\n19\n",
+      "hidden": true
+    },
+    {
+      "input": "4 8 6\n3 4 6\n5 1 7\n3 9 3\n4 5 7\n4 8 7\n4 9 8\n3 10 2\n3 7 6\n",
+      "expectedOutput": "52 61\n19 over par\n28 over par\n6\n17\n",
+      "hidden": true
+    },
+    {
+      "input": "5 6 8\n4 2 1\n5 6 2\n4 5 7\n4 3 2\n4 5 2\n3 7 5\n5 10 5\n4 2 10\n",
+      "expectedOutput": "42 46\n4 over par\n8 over par\n6\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "4 10 6\n3 7 2\n3 2 1\n5 7 5\n5 7 4\n4 5 5\n5 6 6\n3 1 1\n3 1 1\n",
+      "expectedOutput": "31 46\n4 under par\n11 over par\n5\n16\n",
+      "hidden": true
+    },
+    {
+      "input": "4 1 9\n4 9 4\n4 1 4\n4 10 2\n3 3 9\n5 2 4\n5 3 9\n5 4 3\n5 7 3\n",
+      "expectedOutput": "40 47\n1 over par\n8 over par\n5\n13\n",
+      "hidden": true
+    },
+    {
+      "input": "4 3 3\n5 9 7\n5 4 8\n3 8 8\n4 5 10\n4 1 3\n3 3 7\n4 3 7\n5 8 7\n",
+      "expectedOutput": "44 60\n7 over par\n23 over par\n5\n16\n",
+      "hidden": true
+    }
+  ],
+  "acsl-golf-2009-senior": [
+    {
+      "input": "4 3 3 9\n2 4 10 2\n3 8 1 8\n2 1 1 10\n8 10 6 3\n4 6 2 9\n9 8 1 7\n4 6 5 2\n8 4 10 9\n",
+      "expectedOutput": "14 over par\n8 over par\n3\nC A B D\n4.5\n",
+      "hidden": true
+    },
+    {
+      "input": "10 10 4 2\n8 3 6 4\n8 1 10 2\n3 8 9 5\n6 7 5 2\n9 1 6 5\n5 7 8 4\n7 4 6 10\n1 2 10 3\n",
+      "expectedOutput": "7 over par\n21 over par\n3\nD B A C\n5.5\n",
+      "hidden": true
+    },
+    {
+      "input": "6 10 3 4\n7 2 1 8\n3 1 2 2\n5 3 7 2\n10 1 5 1\n5 8 9 6\n8 3 8 5\n10 3 6 7\n9 9 8 1\n",
+      "expectedOutput": "4 over par\n27 over par\n2\nD B C A\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4 4 4\n2 9 8 10\n5 10 7 10\n2 10 1 3\n10 8 4 9\n2 6 10 6\n3 8 3 10\n1 8 10 4\n4 3 3 6\n",
+      "expectedOutput": "30 over par\n3 under par\n4\nA C D B\n5.5\n",
+      "hidden": true
+    },
+    {
+      "input": "1 3 9 4\n2 9 2 3\n5 1 8 9\n8 6 9 2\n10 3 6 6\n3 4 5 4\n4 7 8 5\n9 7 1 6\n8 8 9 6\n",
+      "expectedOutput": "12 over par\n14 over par\n2\nD B A C\n6\n",
+      "hidden": true
+    },
+    {
+      "input": "5 6 7 10\n5 5 1 9\n6 7 3 4\n2 3 10 10\n8 8 1 1\n1 8 4 7\n1 4 2 2\n7 8 4 3\n9 3 1 9\n",
+      "expectedOutput": "16 over par\n8 over par\n3\nC A B D\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "6 1 3 2\n6 10 1 9\n7 7 4 5\n6 1 4 8\n2 7 3 1\n7 10 7 5\n9 6 3 7\n3 4 9 2\n6 1 2 6\n",
+      "expectedOutput": "11 over par\n16 over par\n3\nC D B A\n5.5\n",
+      "hidden": true
+    },
+    {
+      "input": "7 7 6 10\n8 3 10 1\n2 8 5 2\n4 6 8 1\n5 9 9 1\n6 2 3 3\n10 3 3 4\n9 1 7 3\n3 3 4 2\n",
+      "expectedOutput": "6 over par\n18 over par\n4\nD B A C\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "10 8 6 10\n1 6 10 6\n3 9 2 10\n6 5 1 5\n1 8 2 1\n3 8 3 8\n1 4 4 3\n7 2 4 10\n3 6 5 4\n",
+      "expectedOutput": "20 over par\n1 under par\n3\nA C B D\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "3 2 10 3\n2 1 1 9\n7 7 3 7\n4 9 6 3\n6 10 2 5\n5 1 6 9\n4 8 1 10\n2 10 3 4\n7 2 2 4\n",
+      "expectedOutput": "14 over par\n4 over par\n3\nC A B D\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "6 6 10 10\n3 3 3 3\n2 7 4 9\n8 10 5 7\n8 5 4 3\n6 1 7 2\n2 7 4 4\n7 3 8 7\n6 3 6 5\n",
+      "expectedOutput": "9 over par\n12 over par\n3\nB A D C\n5.5\n",
+      "hidden": true
+    },
+    {
+      "input": "7 5 3 6\n10 4 2 5\n6 2 3 2\n1 10 6 9\n8 5 6 7\n8 4 1 4\n10 8 6 6\n3 9 2 8\n8 8 9 10\n",
+      "expectedOutput": "19 over par\n25 over par\n4\nC B D A\n6\n",
+      "hidden": true
+    }
+  ],
+  "acsl-prints-2010-junior": [
+    {
+      "input": "0\n1 2 3 4 5 6 7 8 9 10 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n1 0\n",
+      "expectedOutput": "1/1\n32/32\n32/1\n1/32\n1/17\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 3 4 5 6 7 8 9 10 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n1 0\n10 0\n",
+      "expectedOutput": "32/32\n32/1\n1/32\n1/17\n2/1\n",
+      "hidden": true
+    },
+    {
+      "input": "2 4 6 8 10 0\n1 3 5 7 9 0\n1 0\n10 0\n1 2 0\n",
+      "expectedOutput": "32/1\n1/32\n1/17\n2/1\n17/17\n",
+      "hidden": true
+    },
+    {
+      "input": "1 3 5 7 9 0\n1 0\n10 0\n1 2 0\n2 7 8 0\n",
+      "expectedOutput": "1/32\n1/17\n2/1\n17/17\n19/3\n",
+      "hidden": true
+    },
+    {
+      "input": "1 0\n10 0\n1 2 0\n2 7 8 0\n2 3 7 0\n",
+      "expectedOutput": "1/17\n2/1\n17/17\n19/3\n17/11\n",
+      "hidden": true
+    },
+    {
+      "input": "10 0\n1 2 0\n2 7 8 0\n9 3 10 1 7 2 5 8 6 4 0\n2 4 6 8 10 0\n",
+      "expectedOutput": "2/1\n17/17\n19/3\n32/32\n32/1\n",
+      "hidden": true
+    },
+    {
+      "input": "1 2 0\n2 7 8 0\n2 7 3 1 10 4 9 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n",
+      "expectedOutput": "17/17\n19/3\n26/28\n32/1\n1/32\n",
+      "hidden": true
+    },
+    {
+      "input": "2 7 8 0\n6 3 4 9 2 8 5 7 1 10 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n8 2 6 5 3 0\n",
+      "expectedOutput": "19/3\n32/32\n32/1\n1/32\n23/13\n",
+      "hidden": true
+    },
+    {
+      "input": "3 6 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n10 7 4 3 8 0\n0\n",
+      "expectedOutput": "5/9\n32/1\n1/32\n12/11\n1/1\n",
+      "hidden": true
+    },
+    {
+      "input": "2 4 6 8 10 0\n1 3 5 7 9 0\n4 10 6 7 5 0\n0\n1 2 3 4 5 6 7 8 9 10 0\n",
+      "expectedOutput": "32/1\n1/32\n14/7\n1/1\n32/32\n",
+      "hidden": true
+    },
+    {
+      "input": "1 3 5 7 9 0\n7 4 10 3 8 0\n0\n1 2 3 4 5 6 7 8 9 10 0\n2 4 6 8 10 0\n",
+      "expectedOutput": "1/32\n12/11\n1/1\n32/32\n32/1\n",
+      "hidden": true
+    },
+    {
+      "input": "6 9 4 8 5 0\n0\n1 2 3 4 5 6 7 8 9 10 0\n2 4 6 8 10 0\n1 3 5 7 9 0\n",
+      "expectedOutput": "15/6\n1/1\n32/32\n32/1\n1/32\n",
+      "hidden": true
+    }
+  ],
+  "acsl-prints-2010-intermediate": [
+    {
+      "input": "A 0\nH 1 2 3 4 5 6 7 8 9 10 0\nA 2 4 6 8 10 0\nH 1 3 5 7 9 0\nA 1 0\n",
+      "expectedOutput": "1/1\n32/32\n11/22\n1/32\n17/1\n",
+      "hidden": true
+    },
+    {
+      "input": "H 1 2 3 4 5 6 7 8 9 10 0\nA 2 4 6 8 10 0\nH 1 3 5 7 9 0\nA 1 0\nH 10 0\n",
+      "expectedOutput": "32/32\n11/22\n1/32\n17/1\n2/1\n",
+      "hidden": true
+    },
+    {
+      "input": "A 2 4 6 8 10 0\nH 1 3 5 7 9 0\nA 1 0\nH 10 0\nA 1 2 0\n",
+      "expectedOutput": "11/22\n1/32\n17/1\n2/1\n25/1\n",
+      "hidden": true
+    },
+    {
+      "input": "H 1 3 5 7 9 0\nA 1 0\nH 10 0\nA 1 2 0\nH 2 7 8 0\n",
+      "expectedOutput": "1/32\n17/1\n2/1\n25/1\n19/3\n",
+      "hidden": true
+    },
+    {
+      "input": "A 1 0\nH 10 0\nA 1 2 0\nH 2 7 8 0\nA 6 5 1 4 3 2 7 10 8 9 0\n",
+      "expectedOutput": "17/1\n2/1\n25/1\n19/3\n32/32\n",
+      "hidden": true
+    },
+    {
+      "input": "H 10 0\nA 1 2 0\nH 2 7 8 0\nA 8 0\nH 2 4 6 8 10 0\n",
+      "expectedOutput": "2/1\n25/1\n19/3\n1/5\n32/1\n",
+      "hidden": true
+    },
+    {
+      "input": "A 1 2 0\nH 2 7 8 0\nA 5 7 9 2 8 4 3 10 6 0\nH 2 4 6 8 10 0\nA 1 3 5 7 9 0\n",
+      "expectedOutput": "25/1\n19/3\n16/32\n32/1\n22/11\n",
+      "hidden": true
+    },
+    {
+      "input": "H 2 7 8 0\nA 3 5 10 1 0\nH 2 4 6 8 10 0\nA 1 3 5 7 9 0\nH 9 10 7 5 4 0\n",
+      "expectedOutput": "19/3\n22/2\n32/1\n22/11\n10/8\n",
+      "hidden": true
+    },
+    {
+      "input": "A 3 4 7 1 6 0\nH 2 4 6 8 10 0\nA 1 3 5 7 9 0\nH 4 9 10 5 1 0\nA 0\n",
+      "expectedOutput": "23/25\n32/1\n22/11\n10/22\n1/1\n",
+      "hidden": true
+    },
+    {
+      "input": "H 2 4 6 8 10 0\nA 1 3 5 7 9 0\nH 3 1 5 9 8 0\nA 0\nH 1 2 3 4 5 6 7 8 9 10 0\n",
+      "expectedOutput": "32/1\n22/11\n3/30\n1/1\n32/32\n",
+      "hidden": true
+    },
+    {
+      "input": "A 1 3 5 7 9 0\nH 6 1 8 10 2 0\nA 0\nH 1 2 3 4 5 6 7 8 9 10 0\nA 2 4 6 8 10 0\n",
+      "expectedOutput": "22/11\n24/17\n1/1\n32/32\n11/22\n",
+      "hidden": true
+    },
+    {
+      "input": "H 3 8 9 7 6 0\nA 0\nH 1 2 3 4 5 6 7 8 9 10 0\nA 2 4 6 8 10 0\nH 1 3 5 7 9 0\n",
+      "expectedOutput": "7/12\n1/1\n32/32\n11/22\n1/32\n",
+      "hidden": true
+    }
+  ],
+  "acsl-prints-2010-senior": [
+    {
+      "input": "1 1\n32 32\n32 1\n1 32\n1 17\n",
+      "expectedOutput": "None\n1 2 3 4 5 6 7 8 9 10\n2 4 6 8 10\n1 3 5 7 9\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "32 32\n32 1\n1 32\n1 17\n2 1\n",
+      "expectedOutput": "1 2 3 4 5 6 7 8 9 10\n2 4 6 8 10\n1 3 5 7 9\n1\n10\n",
+      "hidden": true
+    },
+    {
+      "input": "32 1\n1 32\n1 17\n2 1\n17 17\n",
+      "expectedOutput": "2 4 6 8 10\n1 3 5 7 9\n1\n10\n1 2\n",
+      "hidden": true
+    },
+    {
+      "input": "1 32\n1 17\n2 1\n17 17\n19 3\n",
+      "expectedOutput": "1 3 5 7 9\n1\n10\n1 2\n2 7 8\n",
+      "hidden": true
+    },
+    {
+      "input": "1 17\n2 1\n17 17\n19 3\n25 21\n",
+      "expectedOutput": "1\n10\n1 2\n2 7 8\n1 2 4 5\n",
+      "hidden": true
+    },
+    {
+      "input": "2 1\n17 17\n19 3\n25 21\n32 13\n",
+      "expectedOutput": "10\n1 2\n2 7 8\n1 2 4 5\n2 3 4 5 6 8 10\n",
+      "hidden": true
+    },
+    {
+      "input": "17 17\n19 3\n25 21\n32 13\n9 32\n",
+      "expectedOutput": "1 2\n2 7 8\n1 2 4 5\n2 3 4 5 6 8 10\n1 3 4 5 7 9\n",
+      "hidden": true
+    },
+    {
+      "input": "19 3\n25 21\n32 13\n9 32\n10 27\n",
+      "expectedOutput": "2 7 8\n1 2 4 5\n2 3 4 5 6 8 10\n1 3 4 5 7 9\n1 3 4 7 10\n",
+      "hidden": true
+    },
+    {
+      "input": "25 21\n32 13\n9 32\n10 27\n1 1\n",
+      "expectedOutput": "1 2 4 5\n2 3 4 5 6 8 10\n1 3 4 5 7 9\n1 3 4 7 10\nNone\n",
+      "hidden": true
+    },
+    {
+      "input": "32 13\n9 32\n10 27\n1 1\n32 32\n",
+      "expectedOutput": "2 3 4 5 6 8 10\n1 3 4 5 7 9\n1 3 4 7 10\nNone\n1 2 3 4 5 6 7 8 9 10\n",
+      "hidden": true
+    },
+    {
+      "input": "9 32\n10 27\n1 1\n32 32\n32 1\n",
+      "expectedOutput": "1 3 4 5 7 9\n1 3 4 7 10\nNone\n1 2 3 4 5 6 7 8 9 10\n2 4 6 8 10\n",
+      "hidden": true
+    },
+    {
+      "input": "10 27\n1 1\n32 32\n32 1\n1 32\n",
+      "expectedOutput": "1 3 4 7 10\nNone\n1 2 3 4 5 6 7 8 9 10\n2 4 6 8 10\n1 3 5 7 9\n",
+      "hidden": true
+    }
+  ],
+  "draft-picks-2011-junior": [
+    {
+      "input": "7 322.453\n2 423.038\n10 973.160\n5 500.937\n7 396.388\n",
+      "expectedOutput": "5\n102342794\n2879045\n11751056\n710714\n",
+      "hidden": true
+    },
+    {
+      "input": "7 935.260\n10 100\n1 156.409\n10 100\n1 908.746\n",
+      "expectedOutput": "3\n243752714\n625000\n50485889\n1692727\n",
+      "hidden": true
+    },
+    {
+      "input": "8 523.714\n9 283.886\n7 370.892\n9 546.689\n1 990.826\n",
+      "expectedOutput": "5\n240312187\n1971431\n55045889\n1668835\n",
+      "hidden": true
+    },
+    {
+      "input": "1 420.651\n1 106.141\n1 183.621\n1 385.610\n1 967.579\n",
+      "expectedOutput": "5\n412720400\n6633813\n53754389\n2866114\n",
+      "hidden": true
+    },
+    {
+      "input": "10 688.199\n10 563.059\n10 850.905\n10 309.309\n10 733.259\n",
+      "expectedOutput": "5\n62894620\n1933181\n4727250\n436768\n",
+      "hidden": true
+    },
+    {
+      "input": "2 946.466\n1 812.647\n9 896.583\n1 689.414\n10 925.830\n",
+      "expectedOutput": "5\n433499467\n5786438\n45147056\n3010413\n",
+      "hidden": true
+    },
+    {
+      "input": "4 432.674\n10 681.991\n8 481.691\n7 200.178\n5 700.822\n",
+      "expectedOutput": "5\n81068046\n1787304\n7786911\n562973\n",
+      "hidden": true
+    },
+    {
+      "input": "2 969.489\n6 766.366\n4 656.301\n7 895.807\n1 824.053\n",
+      "expectedOutput": "5\n345714569\n7982979\n45780722\n2400796\n",
+      "hidden": true
+    },
+    {
+      "input": "9 1000\n9 1000\n9 1000\n9 1000\n7 1000\n",
+      "expectedOutput": "5\n117460317\n6944444\n7936508\n815697\n",
+      "hidden": true
+    },
+    {
+      "input": "9 77.371\n4 197.315\n9 650.402\n10 592.482\n4 327.534\n",
+      "expectedOutput": "4\n54264823\n537299\n4549083\n376839\n",
+      "hidden": true
+    },
+    {
+      "input": "4 486.679\n5 344.092\n6 326.637\n8 324.140\n4 450.191\n",
+      "expectedOutput": "5\n79598580\n2532344\n6759431\n552768\n",
+      "hidden": true
+    },
+    {
+      "input": "1 888.728\n2 981.707\n5 957.703\n2 859.415\n8 313.781\n",
+      "expectedOutput": "5\n408010445\n2451414\n49373778\n2833406\n",
+      "hidden": true
+    }
+  ],
+  "draft-picks-2011-intermediate": [
+    {
+      "input": "5 63.094\n10 433.758\n2 548.190\n4 599.743\n3 69.769\n2 234.667\n1 2.870\n7 534.606\n7 728.840\n1 706.247\n",
+      "expectedOutput": "151022447\n706247000 10\n43961063\n19697694\n1048767\n",
+      "hidden": true
+    },
+    {
+      "input": "6 382.265\n4 40\n8 810.181\n8 80\n2 943.745\n8 80\n5 663.864\n10 100\n9 141.241\n5 50\n",
+      "expectedOutput": "83532220\n471872500 5\n28867031\n13385347\n580085\n",
+      "hidden": true
+    },
+    {
+      "input": "10 565.845\n6 353.620\n3 456.883\n9 287.075\n10 494.795\n2 130.791\n1 848.824\n3 884.383\n2 37.181\n5 83.366\n",
+      "expectedOutput": "159346976\n848824000 7\n52009425\n24041589\n1106576\n",
+      "hidden": true
+    },
+    {
+      "input": "1 429.088\n1 270.138\n1 749.455\n1 204.965\n1 83.399\n1 232.214\n1 777.607\n1 581.434\n1 497.329\n1 673.066\n",
+      "expectedOutput": "449869500\n777607000 7\n43388000\n23916833\n3124094\n",
+      "hidden": true
+    },
+    {
+      "input": "10 872.506\n10 971.893\n10 202.613\n10 66.922\n10 973.633\n10 313.102\n10 949.138\n10 172.317\n10 666.268\n10 906.703\n",
+      "expectedOutput": "60950950\n97363300 5\n5666944\n2890431\n423270\n",
+      "hidden": true
+    },
+    {
+      "input": "5 234.096\n3 334.603\n7 663.810\n3 78.536\n2 586.078\n9 596.180\n6 123.672\n6 787.191\n5 406.188\n1 356.667\n",
+      "expectedOutput": "122835852\n356667000 10\n21003438\n10479972\n853027\n",
+      "hidden": true
+    },
+    {
+      "input": "9 201.921\n6 632.668\n3 101.942\n1 337.004\n4 853.586\n4 254.015\n2 673.492\n5 832.991\n6 895.357\n7 928.021\n",
+      "expectedOutput": "156091005\n337004000 4\n19660521\n9984435\n1083965\n",
+      "hidden": true
+    },
+    {
+      "input": "3 44.974\n8 952.970\n7 350.054\n4 529.447\n2 819.856\n7 77.941\n3 173.580\n9 992.938\n1 113.223\n5 948.172\n",
+      "expectedOutput": "120858832\n409928000 5\n24924598\n11696179\n839297\n",
+      "hidden": true
+    },
+    {
+      "input": "10 1000\n2 1000\n7 1000\n3 1000\n5 1000\n6 1000\n2 1000\n5 1000\n7 1000\n8 1000\n",
+      "expectedOutput": "241071429\n500000000 2\n25000000\n16666667\n1674107\n",
+      "hidden": true
+    },
+    {
+      "input": "4 109.775\n7 699.396\n1 512.411\n10 914.294\n7 216.431\n4 510.513\n9 888.709\n4 772.959\n1 862.393\n3 15.606\n",
+      "expectedOutput": "204932502\n862393000 9\n53574438\n24099861\n1423142\n",
+      "hidden": true
+    },
+    {
+      "input": "9 224.457\n7 13.443\n10 164.243\n9 816.664\n8 50.312\n3 204.369\n6 239.512\n3 836.839\n4 299.039\n3 437.809\n",
+      "expectedOutput": "74799792\n278946333 8\n17314119\n7801854\n519443\n",
+      "hidden": true
+    },
+    {
+      "input": "8 575.936\n1 456.481\n6 40.797\n1 566.931\n9 778.082\n4 117.834\n2 669.689\n4 507.877\n3 434.467\n6 648.381\n",
+      "expectedOutput": "193281514\n566931000 4\n35008219\n15936958\n1342233\n",
+      "hidden": true
+    }
+  ],
+  "draft-picks-2011-senior": [
+    {
+      "input": "9 148.390 14.522\n3 433.157 197.471\n4 20.906 13.141\n10 10.475 1.869\n1 652.350 20.235\n2 807.831 255.78\n9 961.475 857.155\n6 892.270 773.059\n1 242.557 55.011\n6 989.849 161.883\n",
+      "expectedOutput": "40706406\n18149931\n933308600 7\n480236404\n146548667\n",
+      "hidden": true
+    },
+    {
+      "input": "9 914.381 762.564\n9 90 6.462\n10 941.598 202.695\n9 90 19.993\n7 39.020 2.684\n2 20 7.038\n5 353.897 275.419\n2 20 2.054\n1 691.542 78.105\n1 10 8.847\n",
+      "expectedOutput": "42872982\n19364341\n873390410 1\n278364829\n10000000\n",
+      "hidden": true
+    },
+    {
+      "input": "8 95.088 23.33\n2 88.887 7.456\n8 887.157 279.046\n5 45.291 6.605\n8 914.121 518.373\n8 139.955 115.34\n7 440.117 201.71\n3 330.084 136.735\n10 960.051 934.192\n4 300.292 239.063\n",
+      "expectedOutput": "6575433\n3425648\n952293300 9\n379906194\n68973429\n",
+      "hidden": true
+    },
+    {
+      "input": "1 992.111 13.375\n1 879.720 545.148\n1 990.571 990.501\n1 153.567 75.477\n1 769.789 490.695\n1 160.353 128.492\n1 91.139 87.271\n1 41.050 5.68\n1 545.458 11.245\n1 501.036 449.862\n",
+      "expectedOutput": "59441313\n28698917\n990568900 3\n504625613\n523247000\n",
+      "hidden": true
+    },
+    {
+      "input": "10 938.576 829.519\n10 691.697 332.572\n10 527.146 61.25\n10 420.127 258.007\n10 341.152 56.592\n10 867.205 711.176\n10 68.356 64.679\n10 255.176 70.488\n10 650.153 173.474\n10 577.130 107.169\n",
+      "expectedOutput": "5438875\n2797033\n905858900 1\n443498820\n55213800\n",
+      "hidden": true
+    },
+    {
+      "input": "5 740.089 546.353\n1 798.105 339.505\n3 767.451 467.182\n2 672.207 99.786\n8 327.608 84.658\n10 344.437 65.945\n10 489.126 46.441\n1 217.354 105.67\n4 791.363 628.188\n6 845.529 529.48\n",
+      "expectedOutput": "47728831\n23126353\n788640180 10\n547726603\n172929275\n",
+      "hidden": true
+    },
+    {
+      "input": "1 523.667 0\n6 477.895 0\n5 316.763 0\n5 172.443 0\n5 385.289 0\n9 801.481 0\n1 957.551 0\n7 738.095 0\n7 166.176 0\n1 767.016 0\n",
+      "expectedOutput": "58363223\n27258067\n928824470 7\n452906946\n84351306\n",
+      "hidden": true
+    },
+    {
+      "input": "3 936.293 936.293\n9 620.767 620.767\n1 639.833 639.833\n5 72.052 72.052\n2 625.684 625.684\n4 926.858 926.858\n1 400.672 400.672\n2 66.537 66.537\n3 433.312 433.312\n3 724.549 724.549\n",
+      "expectedOutput": "39088913\n18173428\n936293000 1\n544655700\n236615417\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1000 643.341\n7 1000 866.891\n5 1000 782.437\n4 1000 51.382\n8 1000 77.793\n7 1000 700.143\n7 1000 470.573\n7 1000 202.771\n1 1000 634.179\n2 1000 262.738\n",
+      "expectedOutput": "54687500\n31250000\n989300230 1\n909636734\n171428571\n",
+      "hidden": true
+    },
+    {
+      "input": "6 726.818 442.095\n1 680.901 155.317\n8 938.418 596.947\n2 366.140 86.135\n5 297.205 30.521\n5 604.762 86.498\n5 593.696 43.708\n8 790.196 308.972\n3 856.327 439.814\n8 326.340 158.98\n",
+      "expectedOutput": "40006781\n20047042\n856464960 3\n555175055\n119845800\n",
+      "hidden": true
+    },
+    {
+      "input": "6 788.130 678.646\n4 618.016 510.915\n9 396.538 6.74\n7 817.703 473.886\n4 190.415 188.969\n2 682.330 460.394\n4 29.509 25.661\n7 43.259 33.098\n4 647.128 491.857\n2 422.663 134.673\n",
+      "expectedOutput": "20936571\n9648468\n768422880 1\n434093713\n124084857\n",
+      "hidden": true
+    },
+    {
+      "input": "4 337.637 62.86\n10 969.095 84.012\n1 136.798 18.53\n9 27.226 3.346\n10 62.692 32.685\n10 878.861 651.009\n6 980.052 856.556\n5 358.434 267.075\n10 323.327 209.351\n4 914.436 32.666\n",
+      "expectedOutput": "14098993\n6434281\n957822720 7\n435654446\n86147675\n",
+      "hidden": true
+    }
+  ],
+  "time-sheets-2012-junior": [
+    {
+      "input": "20 G G\n20 8 8\n9 G G\n1 5 5\n",
+      "expectedOutput": "$0.00\n$0.00\n$0.00\n$0.00\n$0.00\n",
+      "hidden": true
+    },
+    {
+      "input": "20 1 2\n9 1 2\n1 1 2\n1 1 2\n",
+      "expectedOutput": "$6.00\n$5.00\n$5.00\n$5.00\n$21.00\n",
+      "hidden": true
+    },
+    {
+      "input": "10 1 H\n19 1 H\n1 1 H\n20 1 H\n",
+      "expectedOutput": "$80.00\n$80.00\n$80.00\n$144.00\n$384.00\n",
+      "hidden": true
+    },
+    {
+      "input": "20 1 9\n1 1 9\n19 1 9\n29 1 9\n",
+      "expectedOutput": "$48.00\n$40.00\n$32.00\n$48.00\n$168.00\n",
+      "hidden": true
+    },
+    {
+      "input": "10 1 A\n1 1 A\n10 1 A\n1 1 A\n",
+      "expectedOutput": "$38.00\n$45.00\n$38.00\n$45.00\n$166.00\n",
+      "hidden": true
+    },
+    {
+      "input": "10 9 H\n29 6 D\n20 H H\n20 1 3\n",
+      "expectedOutput": "$32.00\n$42.00\n$0.00\n$12.00\n$86.00\n",
+      "hidden": true
+    },
+    {
+      "input": "29 E F\n1 6 D\n19 H H\n20 E G\n",
+      "expectedOutput": "$6.00\n$35.00\n$0.00\n$12.00\n$53.00\n",
+      "hidden": true
+    },
+    {
+      "input": "20 H H\n1 C G\n20 4 5\n19 B G\n",
+      "expectedOutput": "$0.00\n$20.00\n$6.00\n$20.00\n$46.00\n",
+      "hidden": true
+    },
+    {
+      "input": "1 7 F\n20 B H\n19 5 F\n19 5 A\n",
+      "expectedOutput": "$40.00\n$36.00\n$44.00\n$20.00\n$140.00\n",
+      "hidden": true
+    },
+    {
+      "input": "20 G H\n9 2 B\n20 2 7\n10 8 B\n",
+      "expectedOutput": "$6.00\n$45.00\n$30.00\n$12.00\n$93.00\n",
+      "hidden": true
+    },
+    {
+      "input": "10 4 4\n20 F G\n20 8 A\n29 H H\n",
+      "expectedOutput": "$0.00\n$6.00\n$12.00\n$0.00\n$18.00\n",
+      "hidden": true
+    },
+    {
+      "input": "1 G H\n19 H H\n29 6 6\n19 F F\n",
+      "expectedOutput": "$5.00\n$0.00\n$0.00\n$0.00\n$5.00\n",
+      "hidden": true
+    }
+  ],
+  "time-sheets-2012-intermediate": [
+    {
+      "input": "100 3 F F 299 1 1 1\n200 1 4 4 399 1 1 1\n300 7 7 7 499 1 C C\n400 4 4 4 599 2 F F\n500 1 3 3 199 1 6 6\n",
+      "expectedOutput": "$0.00\n$0.00\n$0.00\n$0.00\n$0.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 5 1 2 399 7 1 2\n300 1 1 2 499 4 1 2\n400 3 1 2 599 5 1 2\n500 3 1 2 199 1 1 2\n100 2 1 2 299 7 1 2\n",
+      "expectedOutput": "$8.38\n$8.00\n$7.38\n$9.00\n$8.75\n",
+      "hidden": true
+    },
+    {
+      "input": "300 6 1 H 499 7 1 H\n400 5 1 H 599 7 1 H\n500 1 1 H 199 2 1 H\n100 1 1 H 299 3 1 H\n200 2 1 H 399 6 1 H\n",
+      "expectedOutput": "$187.00\n$126.00\n$167.00\n$170.00\n$154.00\n",
+      "hidden": true
+    },
+    {
+      "input": "400 2 1 9 599 2 1 9\n500 3 1 9 199 6 1 9\n100 6 1 9 299 3 1 9\n200 7 1 9 399 3 1 9\n300 3 1 9 499 7 1 9\n",
+      "expectedOutput": "$59.00\n$72.00\n$70.00\n$67.00\n$91.00\n",
+      "hidden": true
+    },
+    {
+      "input": "500 6 1 A 199 7 1 A\n100 4 1 A 299 4 1 A\n200 2 1 A 399 7 1 A\n300 3 1 A 499 7 1 A\n400 3 1 A 599 2 1 A\n",
+      "expectedOutput": "$81.00\n$78.75\n$76.00\n$103.00\n$66.38\n",
+      "hidden": true
+    },
+    {
+      "input": "100 5 C C 299 6 D E\n200 2 7 E 399 7 E E\n300 7 9 C 499 2 E F\n400 3 9 9 599 6 5 5\n500 6 3 C 199 2 B H\n",
+      "expectedOutput": "$3.75\n$26.25\n$17.25\n$0.00\n$66.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 7 2 H 399 2 8 E\n300 6 G G 499 6 9 B\n400 1 1 1 599 1 6 G\n500 2 5 C 199 2 F G\n100 5 7 9 299 1 6 8\n",
+      "expectedOutput": "$95.25\n$6.75\n$40.00\n$33.00\n$17.50\n",
+      "hidden": true
+    },
+    {
+      "input": "300 2 H H 499 4 6 7\n400 6 2 H 599 5 1 6\n500 4 F G 199 4 F F\n100 5 F F 299 5 7 C\n200 6 C H 399 5 6 8\n",
+      "expectedOutput": "$3.38\n$70.63\n$4.00\n$18.75\n$28.00\n",
+      "hidden": true
+    },
+    {
+      "input": "400 6 7 D 599 4 5 D\n500 5 D D 199 3 1 7\n100 6 G H 299 5 H H\n200 3 6 G 399 3 B D\n300 4 A F 499 6 D G\n",
+      "expectedOutput": "$52.25\n$30.00\n$5.00\n$46.75\n$33.25\n",
+      "hidden": true
+    },
+    {
+      "input": "500 7 A H 199 5 B H\n100 7 2 5 299 5 9 F\n200 7 B E 399 4 3 4\n300 4 3 G 499 6 6 8\n400 3 9 9 599 1 2 3\n",
+      "expectedOutput": "$58.00\n$37.50\n$15.88\n$70.00\n$4.00\n",
+      "hidden": true
+    },
+    {
+      "input": "100 3 5 A 299 6 H H\n200 7 H H 399 7 F F\n300 4 A E 499 6 1 7\n400 5 H H 599 5 F H\n500 1 E F 199 7 3 B\n",
+      "expectedOutput": "$25.00\n$0.00\n$38.75\n$8.00\n$44.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 3 B G 399 5 8 C\n300 7 5 F 499 4 1 1\n400 7 5 H 599 1 4 7\n500 4 4 G 199 2 1 1\n100 4 5 C 299 6 8 F\n",
+      "expectedOutput": "$37.25\n$47.50\n$93.00\n$48.00\n$61.25\n",
+      "hidden": true
+    }
+  ],
+  "time-sheets-2012-senior": [
+    {
+      "input": "100 A A H H G G 6 6 3 3 A A H H\n200 8 8 H H 8 8 5 5 1 1 8 8 6 6\n300 3 3 E E A A 3 3 6 6 8 8 8 8\n400 B B 2 2 H H E E 9 9 6 6 9 9\n500 8 8 C C F F D D A A 1 1 3 3\n",
+      "expectedOutput": "$0.00\n$0.00\n$0.00\n$0.00\n$0.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 1 2 1 2 1 2 1 2 1 2 1 2 1 2\n300 1 2 1 2 1 2 1 2 1 2 1 2 1 2\n400 1 2 1 2 1 2 1 2 1 2 1 2 1 2\n500 1 2 1 2 1 2 1 2 1 2 1 2 1 2\n100 1 2 1 2 1 2 1 2 1 2 1 2 1 2\n",
+      "expectedOutput": "$26.25\n$32.38\n$30.38\n$28.00\n$35.00\n",
+      "hidden": true
+    },
+    {
+      "input": "300 1 H 1 H 1 H 1 H 1 H 1 H 1 H\n400 1 H 1 H 1 H 1 H 1 H 1 H 1 H\n500 1 H 1 H 1 H 1 H 1 H 1 H 1 H\n100 1 H 1 H 1 H 1 H 1 H 1 H 1 H\n200 1 H 1 H 1 H 1 H 1 H 1 H 1 H\n",
+      "expectedOutput": "$563.00\n$486.00\n$504.00\n$690.00\n$540.00\n",
+      "hidden": true
+    },
+    {
+      "input": "400 1 9 1 9 1 9 1 9 1 9 1 9 1 9\n500 1 9 1 9 1 9 1 9 1 9 1 9 1 9\n100 1 9 1 9 1 9 1 9 1 9 1 9 1 9\n200 1 9 1 9 1 9 1 9 1 9 1 9 1 9\n300 1 9 1 9 1 9 1 9 1 9 1 9 1 9\n",
+      "expectedOutput": "$243.00\n$224.00\n$280.00\n$210.00\n$269.00\n",
+      "hidden": true
+    },
+    {
+      "input": "500 1 A 1 A 1 A 1 A 1 A 1 A 1 A\n100 1 A 1 A 1 A 1 A 1 A 1 A 1 A\n200 1 A 1 A 1 A 1 A 1 A 1 A 1 A\n300 1 A 1 A 1 A 1 A 1 A 1 A 1 A\n400 1 A 1 A 1 A 1 A 1 A 1 A 1 A\n",
+      "expectedOutput": "$252.00\n$322.50\n$236.25\n$305.75\n$273.38\n",
+      "hidden": true
+    },
+    {
+      "input": "100 8 G C E 7 F 7 9 8 8 E G 9 D\n200 5 A 1 D 4 C 3 8 9 9 H H C G\n300 G G 4 G 6 8 6 D H H H H G H\n400 8 H F F H H C C 5 G 9 H H H\n500 B B 2 2 3 A H H 9 H F G E F\n",
+      "expectedOutput": "$130.00\n$127.50\n$101.75\n$124.88\n$68.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 3 A C H 6 8 6 9 H H 2 G 3 E\n300 E F E H 4 5 E H 5 6 A A 3 A\n400 E H G H 6 6 C H F G G G 3 9\n500 9 E F F 1 1 7 G 4 F 4 F G H\n100 8 F 2 E 3 D 1 8 F G E G E F\n",
+      "expectedOutput": "$157.50\n$74.00\n$84.38\n$148.00\n$200.00\n",
+      "hidden": true
+    },
+    {
+      "input": "300 F H D F 6 6 H H 5 6 F G F H\n400 B G 3 D 9 F 8 B E G H H 3 A\n500 F H H H C G F H 7 A 3 F C F\n100 C C 2 A 2 C A E 3 4 B F E F\n200 8 9 E E D F 9 F 2 9 9 9 8 C\n",
+      "expectedOutput": "$37.00\n$151.88\n$104.00\n$140.00\n$75.00\n",
+      "hidden": true
+    },
+    {
+      "input": "400 A G E G A G C G D E A F 7 7\n500 9 E 1 2 3 G 7 C G H 8 D 9 G\n100 D D 6 6 8 A 8 D 4 9 F G 1 1\n200 H H 3 7 5 6 A C 9 C 9 E B D\n300 E E 2 7 5 C C G H H B B D G\n",
+      "expectedOutput": "$101.25\n$150.00\n$65.00\n$63.75\n$87.88\n",
+      "hidden": true
+    },
+    {
+      "input": "500 H H H H F F 6 E 7 A H H A B\n100 E E A G E H 4 9 8 B 7 E A A\n200 E F 2 8 G H A A 3 8 4 D 9 G\n300 7 D 5 5 8 G 8 A 5 7 2 5 6 A\n400 9 H 2 5 1 5 C E H H 9 G 8 A\n",
+      "expectedOutput": "$48.00\n$120.00\n$108.75\n$115.63\n$121.50\n",
+      "hidden": true
+    },
+    {
+      "input": "100 G H A F A B B F 5 B H H D F\n200 5 E G H 9 D 1 G 7 B 2 3 E E\n300 C H 5 A 2 D G H C H 1 9 7 F\n400 7 D 4 9 D F 4 C F H 1 6 4 9\n500 7 D 7 B C G A H A A 1 B C C\n",
+      "expectedOutput": "$95.00\n$127.50\n$200.75\n$148.50\n$124.00\n",
+      "hidden": true
+    },
+    {
+      "input": "200 9 9 6 9 4 6 9 B 9 9 C H 4 G\n300 8 G H H 8 9 A C 5 5 C G 6 7\n400 F H 1 F H H 2 9 3 F 8 9 5 D\n500 B B D G A H 9 B D F B D H H\n100 4 G D D 8 H A H C G 5 E 6 8\n",
+      "expectedOutput": "$90.00\n$74.00\n$182.25\n$64.00\n$215.00\n",
+      "hidden": true
+    }
+  ],
+  "acsl-scrabble-2013-junior": [
+    {
+      "input": "A A A A\n34\n26\n17\n37\n31\n",
+      "expectedOutput": "6\n10\n6\n7\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "X X X X\n26\n21\n22\n4\n12\n",
+      "expectedOutput": "80\n120\n144\n96\n80\n",
+      "hidden": true
+    },
+    {
+      "input": "D V V D\n11\n37\n16\n35\n36\n",
+      "expectedOutput": "24\n20\n36\n16\n14\n",
+      "hidden": true
+    },
+    {
+      "input": "A B A M\n3\n1\n31\n23\n21\n",
+      "expectedOutput": "11\n9\n27\n30\n27\n",
+      "hidden": true
+    },
+    {
+      "input": "B V X A\n23\n3\n34\n37\n22\n",
+      "expectedOutput": "96\n35\n24\n26\n54\n",
+      "hidden": true
+    },
+    {
+      "input": "V D A R\n25\n34\n35\n16\n23\n",
+      "expectedOutput": "36\n13\n17\n27\n33\n",
+      "hidden": true
+    },
+    {
+      "input": "A A Y D\n37\n1\n35\n22\n25\n",
+      "expectedOutput": "16\n12\n10\n36\n28\n",
+      "hidden": true
+    },
+    {
+      "input": "X Y Y A\n35\n3\n37\n27\n23\n",
+      "expectedOutput": "33\n33\n23\n54\n75\n",
+      "hidden": true
+    },
+    {
+      "input": "D V D V\n35\n37\n27\n4\n24\n",
+      "expectedOutput": "16\n22\n44\n40\n72\n",
+      "hidden": true
+    },
+    {
+      "input": "J V A M\n24\n25\n23\n3\n22\n",
+      "expectedOutput": "81\n66\n54\n26\n66\n",
+      "hidden": true
+    },
+    {
+      "input": "M R V X\n15\n21\n3\n33\n27\n",
+      "expectedOutput": "60\n60\n28\n28\n72\n",
+      "hidden": true
+    },
+    {
+      "input": "R D J R\n17\n22\n1\n12\n22\n",
+      "expectedOutput": "18\n54\n22\n32\n54\n",
+      "hidden": true
+    }
+  ],
+  "acsl-scrabble-2013-intermediate": [
+    {
+      "input": "A A A A\n12 H\n24 H\n33 H\n3 H\n9 V\n",
+      "expectedOutput": "10\n21\n7\n7\n6\n",
+      "hidden": true
+    },
+    {
+      "input": "X X X X\n37 H\n1 H\n34 H\n31 H\n3 H\n",
+      "expectedOutput": "56\n40\n48\n120\n56\n",
+      "hidden": true
+    },
+    {
+      "input": "M R Y A\n2 V\n7 V\n10 V\n3 V\n16 H\n",
+      "expectedOutput": "30\n28\n30\n14\n30\n",
+      "hidden": true
+    },
+    {
+      "input": "D E X B\n9 V\n24 H\n6 V\n32 H\n36 H\n",
+      "expectedOutput": "19\n57\n42\n63\n17\n",
+      "hidden": true
+    },
+    {
+      "input": "Y M V X\n17 H\n5 V\n3 V\n2 H\n10 V\n",
+      "expectedOutput": "35\n54\n31\n38\n57\n",
+      "hidden": true
+    },
+    {
+      "input": "X D D M\n34 H\n9 V\n36 H\n2 H\n1 V\n",
+      "expectedOutput": "19\n26\n18\n23\n17\n",
+      "hidden": true
+    },
+    {
+      "input": "J A D A\n33 H\n1 V\n37 H\n11 H\n33 H\n",
+      "expectedOutput": "24\n14\n16\n24\n24\n",
+      "hidden": true
+    },
+    {
+      "input": "A D J V\n25 H\n37 H\n11 H\n1 H\n17 H\n",
+      "expectedOutput": "50\n31\n30\n23\n23\n",
+      "hidden": true
+    },
+    {
+      "input": "J A V M\n37 H\n11 H\n36 H\n33 H\n25 H\n",
+      "expectedOutput": "26\n32\n19\n32\n72\n",
+      "hidden": true
+    },
+    {
+      "input": "X E B D\n6 V\n7 V\n15 H\n5 V\n11 H\n",
+      "expectedOutput": "42\n34\n66\n41\n28\n",
+      "hidden": true
+    },
+    {
+      "input": "J R B A\n31 H\n11 H\n22 H\n23 H\n22 H\n",
+      "expectedOutput": "51\n28\n48\n60\n48\n",
+      "hidden": true
+    },
+    {
+      "input": "J D D Y\n1 H\n2 H\n24 H\n16 H\n26 H\n",
+      "expectedOutput": "18\n26\n72\n48\n36\n",
+      "hidden": true
+    }
+  ],
+  "acsl-scrabble-2013-senior": [
+    {
+      "input": "A A A A\n17 H 21 H 17 H\n8 V 17 H 15 H\n2 V 2 V 22 H\n4 V 16 H 35 H\n36 H 16 H 4 H\n",
+      "expectedOutput": "15\n24\n18\n24\n12\n",
+      "hidden": true
+    },
+    {
+      "input": "X X X X\n11 H 5 V 1 H\n25 H 2 H 7 V\n11 H 1 V 9 V\n3 V 33 H 26 H\n35 H 37 H 5 V\n",
+      "expectedOutput": "88\n112\n64\n80\n88\n",
+      "hidden": true
+    },
+    {
+      "input": "J A V B\n37 H 7 H 21 H\n21 H 1 H 35 H\n27 H 25 H 14 H\n37 H 5 H 15 H\n5 V 27 H 5 H\n",
+      "expectedOutput": "156\n72\n102\n192\n192\n",
+      "hidden": true
+    },
+    {
+      "input": "R V A R\n1 V 12 H 5 V\n27 H 15 H 37 H\n27 H 32 H 4 H\n3 V 35 H 3 H\n8 V 35 H 5 H\n",
+      "expectedOutput": "23\n33\n51\n13\n78\n",
+      "hidden": true
+    },
+    {
+      "input": "E E R M\n5 H 1 H 24 H\n14 H 11 H 3 V\n8 V 5 V 23 H\n6 H 6 H 22 H\n12 H 3 V 33 H\n",
+      "expectedOutput": "54\n48\n42\n60\n20\n",
+      "hidden": true
+    },
+    {
+      "input": "M Y D D\n33 H 27 H 6 V\n37 H 5 V 12 H\n35 H 6 H 5 H\n13 H 10 V 3 V\n6 H 27 H 24 H\n",
+      "expectedOutput": "36\n29\n102\n78\n78\n",
+      "hidden": true
+    },
+    {
+      "input": "R Y M V\n21 H 10 V 22 H\n5 V 22 H 10 V\n37 H 15 H 8 V\n1 H 8 V 25 H\n11 H 23 H 6 H\n",
+      "expectedOutput": "63\n63\n78\n78\n102\n",
+      "hidden": true
+    },
+    {
+      "input": "Y V Y A\n35 H 21 H 22 H\n21 H 12 H 22 H\n7 H 5 V 24 H\n7 V 5 V 21 H\n6 V 27 H 10 V\n",
+      "expectedOutput": "51\n51\n114\n51\n39\n",
+      "hidden": true
+    },
+    {
+      "input": "M A V R\n3 V 34 H 4 V\n11 H 5 V 5 H\n21 H 1 H 4 H\n6 H 7 H 7 H\n6 V 36 H 8 V\n",
+      "expectedOutput": "60\n96\n39\n108\n60\n",
+      "hidden": true
+    },
+    {
+      "input": "J B V M\n21 H 27 H 1 V\n37 H 9 V 8 V\n36 H 3 V 6 H\n13 H 2 V 6 H\n6 H 21 H 7 V\n",
+      "expectedOutput": "78\n108\n126\n132\n126\n",
+      "hidden": true
+    },
+    {
+      "input": "V Y V Y\n36 H 26 H 1 H\n25 H 23 H 4 V\n21 H 7 V 32 H\n16 H 7 V 5 H\n3 H 5 V 12 H\n",
+      "expectedOutput": "40\n96\n84\n144\n44\n",
+      "hidden": true
+    },
+    {
+      "input": "V M J E\n15 H 22 H 22 H\n10 V 3 V 37 H\n4 H 31 H 14 H\n14 H 7 H 10 V\n14 H 26 H 12 H\n",
+      "expectedOutput": "60\n48\n114\n156\n114\n",
+      "hidden": true
+    }
+  ],
+  "navigating-acslland-2014-junior": [
+    {
+      "input": "20 1.04 37\nC E\nB E\nA C\nC E\nB E\n",
+      "expectedOutput": "440 11:54 $22.88\n580 15:41 $30.16\n590 15:57 $30.68\n440 11:54 $22.88\n580 15:41 $30.16\n",
+      "hidden": true
+    },
+    {
+      "input": "21 2.87 38\nD E\nC F\nA G\nF G\nA E\n",
+      "expectedOutput": "320 08:25 $43.73\n690 18:09 $94.30\n1360 35:47 $185.87\n80 02:06 $10.93\n1030 27:06 $140.77\n",
+      "hidden": true
+    },
+    {
+      "input": "22 3.41 39\nB F\nB D\nA G\nA D\nA G\n",
+      "expectedOutput": "830 21:17 $128.65\n260 06:40 $40.30\n1360 34:52 $210.80\n710 18:12 $110.05\n1360 34:52 $210.80\n",
+      "hidden": true
+    },
+    {
+      "input": "23 4.09 40\nB G\nA B\nA C\nA D\nF G\n",
+      "expectedOutput": "910 22:45 $161.82\n450 11:15 $80.02\n590 14:45 $104.92\n710 17:45 $126.26\n80 02:00 $14.23\n",
+      "hidden": true
+    },
+    {
+      "input": "24 5.99 41\nD E\nA G\nA C\nD G\nE G\n",
+      "expectedOutput": "320 07:48 $79.87\n1360 33:10 $339.43\n590 14:23 $147.25\n650 15:51 $162.23\n330 08:03 $82.36\n",
+      "hidden": true
+    },
+    {
+      "input": "25 6.62 42\nE G\nB E\nC G\nE G\nA F\n",
+      "expectedOutput": "330 07:51 $87.38\n580 13:49 $153.58\n770 18:20 $203.90\n330 07:51 $87.38\n1280 30:29 $338.94\n",
+      "hidden": true
+    },
+    {
+      "input": "26 1.50 43\nB C\nA G\nC G\nB F\nA C\n",
+      "expectedOutput": "140 03:15 $8.08\n1360 31:38 $78.46\n770 17:54 $44.42\n830 19:18 $47.88\n590 13:43 $34.04\n",
+      "hidden": true
+    },
+    {
+      "input": "27 2.82 44\nB F\nA G\nB D\nE G\nB E\n",
+      "expectedOutput": "830 18:52 $86.69\n1360 30:55 $142.04\n260 05:55 $27.16\n330 07:30 $34.47\n580 13:11 $60.58\n",
+      "hidden": true
+    },
+    {
+      "input": "28 3.33 45\nA C\nF G\nE G\nE F\nE G\n",
+      "expectedOutput": "590 13:07 $70.17\n80 01:47 $9.51\n330 07:20 $39.25\n250 05:33 $29.73\n330 07:20 $39.25\n",
+      "hidden": true
+    },
+    {
+      "input": "29 4.70 46\nD E\nC D\nF G\nA B\nD G\n",
+      "expectedOutput": "320 06:57 $51.86\n120 02:37 $19.45\n80 01:44 $12.97\n450 09:47 $72.93\n650 14:08 $105.34\n",
+      "hidden": true
+    },
+    {
+      "input": "30 5.03 47\nD G\nD G\nD F\nC E\nB E\n",
+      "expectedOutput": "650 13:50 $108.98\n650 13:50 $108.98\n570 12:08 $95.57\n440 09:22 $73.77\n580 12:20 $97.25\n",
+      "hidden": true
+    },
+    {
+      "input": "31 6.40 48\nB G\nC G\nA G\nF G\nA G\n",
+      "expectedOutput": "910 18:58 $187.87\n770 16:03 $158.97\n1360 28:20 $280.77\n80 01:40 $16.52\n1360 28:20 $280.77\n",
+      "hidden": true
+    }
+  ],
+  "navigating-acslland-2014-intermediate": [
+    {
+      "input": "D F C M 1.64\nC F C H 1.90\nB C C H 1.34\nF G V I 1.05\nB G F M 1.68\n",
+      "expectedOutput": "570 10:22 $33.39\n690 11:30 $46.82\n140 02:20 $6.70\n80 01:14 $4.20\n910 16:33 $69.49\n",
+      "hidden": true
+    },
+    {
+      "input": "E G C I 2.45\nB G F S 2.89\nD E F I 2.05\nC D V S 2.76\nE F V H 2.60\n",
+      "expectedOutput": "330 05:05 $28.88\n910 20:13 $119.54\n320 04:55 $29.82\n120 02:40 $16.56\n250 04:10 $32.50\n",
+      "hidden": true
+    },
+    {
+      "input": "A B F S 3.38\nC E V S 3.02\nB G C M 3.95\nA D C H 3.84\nC E M M 3.07\n",
+      "expectedOutput": "450 10:00 $69.14\n440 09:47 $66.44\n910 16:33 $128.38\n710 11:50 $97.37\n440 08:00 $54.03\n",
+      "hidden": true
+    },
+    {
+      "input": "D E C M 4.81\nA D V I 4.75\nD F C M 4.85\nA D F M 4.07\nF G M S 4.30\n",
+      "expectedOutput": "320 05:49 $54.97\n710 10:55 $168.63\n570 10:22 $98.73\n710 12:55 $131.35\n80 01:47 $13.76\n",
+      "hidden": true
+    },
+    {
+      "input": "A C C I 5.05\nB D M S 5.94\nC G M H 5.83\nD F M H 5.15\nC G V H 5.41\n",
+      "expectedOutput": "590 09:05 $106.41\n260 05:47 $61.78\n770 12:50 $179.56\n570 09:30 $117.42\n770 12:50 $208.29\n",
+      "hidden": true
+    },
+    {
+      "input": "B G V H 6.63\nE G V S 6.58\nB G V H 6.09\nA B M M 6.45\nE F M M 6.31\n",
+      "expectedOutput": "910 15:10 $301.67\n330 07:20 $108.57\n910 15:10 $277.10\n450 08:11 $116.10\n250 04:33 $63.10\n",
+      "hidden": true
+    },
+    {
+      "input": "D E M M 1.13\nA G F I 1.98\nC E V M 1.14\nD E C M 1.94\nA G M S 1.63\n",
+      "expectedOutput": "320 05:49 $14.46\n1360 20:55 $122.40\n440 08:00 $25.08\n320 05:49 $22.17\n1360 30:13 $88.67\n",
+      "hidden": true
+    },
+    {
+      "input": "F G M H 2.34\nD E V I 2.88\nA G C I 2.85\nC F V H 2.61\nB F V H 2.48\n",
+      "expectedOutput": "80 01:20 $7.49\n320 04:55 $46.08\n1360 20:55 $138.43\n690 11:30 $90.05\n830 13:50 $102.92\n",
+      "hidden": true
+    },
+    {
+      "input": "D E F M 3.33\nA F V I 3.85\nD F V H 3.62\nA F C I 3.76\nA D V M 3.30\n",
+      "expectedOutput": "320 05:49 $48.44\n1280 19:42 $246.40\n570 09:30 $103.17\n1280 19:42 $171.89\n710 12:55 $117.15\n",
+      "hidden": true
+    },
+    {
+      "input": "B D M I 4.69\nC D F M 4.60\nB E C I 4.42\nF G C H 4.21\nA D V M 4.56\n",
+      "expectedOutput": "260 04:00 $48.78\n120 02:11 $25.09\n580 08:55 $91.56\n80 01:20 $12.03\n710 12:55 $161.88\n",
+      "hidden": true
+    },
+    {
+      "input": "C G V M 5.60\nB D V I 5.76\nF G M H 5.01\nC G F S 5.47\nA B V S 5.48\n",
+      "expectedOutput": "770 14:00 $215.60\n260 04:00 $74.88\n80 01:20 $16.03\n770 17:07 $191.45\n450 10:00 $123.30\n",
+      "hidden": true
+    },
+    {
+      "input": "B F F M 6.62\nB F V H 6.15\nB D C H 6.24\nB G V S 6.41\nD G M S 6.44\n",
+      "expectedOutput": "830 15:05 $249.75\n830 13:50 $255.23\n260 04:20 $57.94\n910 20:13 $291.66\n650 14:27 $167.44\n",
+      "hidden": true
+    }
+  ],
+  "navigating-acslland-2014-senior": [
+    {
+      "input": "A K 11 AM 11 AM 65 50\nB J 11 PM 12 AM 60 60\nC H 12 PM 11 AM 65 60\nC H 12 AM 2 AM 60 60\nA G 12 PM 10 AM 65 55\n",
+      "expectedOutput": "21:05\n14:18\n9:46\n11:40\n11:30\n",
+      "hidden": true
+    },
+    {
+      "input": "C H 11 AM 12 PM 65 45\nE K 12 AM 11 PM 50 50\nC H 11 AM 1 PM 55 60\nC H 12 PM 10 AM 45 45\nB J 12 PM 12 PM 45 60\n",
+      "expectedOutput": "12:03\n12:57\n12:10\n13:13\n15:46\n",
+      "hidden": true
+    },
+    {
+      "input": "A K 12 AM 11 PM 45 50\nA G 11 AM 1 PM 45 45\nE K 11 PM 9 PM 60 45\nA K 11 AM 11 AM 60 55\nA G 12 AM 1 AM 60 65\n",
+      "expectedOutput": "25:00\n17:33\n11:57\n21:05\n12:26\n",
+      "hidden": true
+    },
+    {
+      "input": "E K 12 PM 2 PM 55 45\nC H 11 PM 9 PM 60 65\nB J 12 PM 12 PM 55 50\nC H 11 PM 12 AM 65 50\nA G 11 AM 10 AM 55 65\n",
+      "expectedOutput": "14:21\n9:12\n15:46\n11:34\n11:53\n",
+      "hidden": true
+    },
+    {
+      "input": "C H 11 AM 9 AM 55 55\nE K 12 AM 12 AM 55 55\nC H 12 PM 1 PM 60 60\nB J 11 PM 10 PM 65 60\nB J 12 AM 2 AM 55 60\n",
+      "expectedOutput": "10:38\n12:14\n11:10\n12:46\n15:26\n",
+      "hidden": true
+    },
+    {
+      "input": "B J 12 PM 12 PM 55 55\nA K 12 PM 1 PM 60 45\nE K 12 PM 11 AM 55 50\nA G 12 PM 2 PM 65 55\nA G 12 AM 10 PM 55 65\n",
+      "expectedOutput": "15:03\n23:31\n12:20\n13:20\n11:20\n",
+      "hidden": true
+    },
+    {
+      "input": "A G 12 AM 1 AM 60 65\nB J 11 AM 10 AM 50 60\nA G 11 AM 1 PM 65 65\nC H 12 AM 10 PM 45 50\nA K 11 AM 11 AM 65 60\n",
+      "expectedOutput": "12:26\n14:30\n12:28\n12:25\n19:24\n",
+      "hidden": true
+    },
+    {
+      "input": "A G 11 AM 10 AM 55 55\nE K 11 PM 1 AM 55 65\nA K 11 PM 9 PM 45 55\nC H 11 AM 11 AM 60 55\nB J 12 PM 1 PM 45 50\n",
+      "expectedOutput": "13:03\n12:18\n23:09\n11:08\n17:57\n",
+      "hidden": true
+    },
+    {
+      "input": "A G 12 AM 2 AM 60 60\nE K 11 PM 9 PM 55 45\nA G 11 PM 11 PM 55 50\nA K 11 AM 12 PM 50 45\nC H 12 PM 11 AM 60 65\n",
+      "expectedOutput": "13:25\n12:33\n14:11\n26:00\n9:43\n",
+      "hidden": true
+    },
+    {
+      "input": "B J 12 PM 10 AM 45 60\nC H 12 PM 12 PM 45 55\nB J 11 AM 12 PM 50 55\nA G 12 AM 11 PM 65 65\nA G 12 AM 2 AM 50 65\n",
+      "expectedOutput": "14:37\n12:48\n16:17\n10:58\n14:05\n",
+      "hidden": true
+    },
+    {
+      "input": "A G 12 AM 12 AM 65 65\nE K 12 PM 1 PM 60 60\nC H 11 AM 10 AM 60 65\nA K 11 AM 1 PM 45 60\nA G 11 PM 9 PM 50 65\n",
+      "expectedOutput": "11:28\n11:43\n9:43\n24:14\n11:50\n",
+      "hidden": true
+    },
+    {
+      "input": "E K 11 AM 12 PM 60 65\nE K 12 PM 11 AM 55 50\nC H 12 PM 2 PM 45 50\nB J 12 PM 10 AM 65 55\nC H 12 AM 12 AM 65 55\n",
+      "expectedOutput": "11:17\n12:20\n14:32\n12:53\n10:40\n",
+      "hidden": true
+    }
+  ],
+  "acsl-chmod-2015-junior": [
+    {
+      "input": "0 0 0\n7 7 7\n1 1 1\n4 4 4\n2 2 2\n",
+      "expectedOutput": "000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n001 001 001 and --x --x --x\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n",
+      "hidden": true
+    },
+    {
+      "input": "7 7 7\n1 1 1\n4 4 4\n2 2 2\n0 1 2\n",
+      "expectedOutput": "111 111 111 and rwx rwx rwx\n001 001 001 and --x --x --x\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1\n4 4 4\n2 2 2\n0 1 2\n3 5 6\n",
+      "expectedOutput": "001 001 001 and --x --x --x\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n011 101 110 and -wx r-x rw-\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4 4\n2 2 2\n0 1 2\n3 5 6\n2 4 6\n",
+      "expectedOutput": "100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 2\n0 1 2\n3 5 6\n2 4 6\n7 0 1\n",
+      "expectedOutput": "010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n",
+      "hidden": true
+    },
+    {
+      "input": "0 1 2\n3 5 6\n2 4 6\n7 0 1\n1 7 0\n",
+      "expectedOutput": "000 001 010 and --- --x -w-\n011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n",
+      "hidden": true
+    },
+    {
+      "input": "3 5 6\n2 4 6\n7 0 1\n1 7 0\n0 1 7\n",
+      "expectedOutput": "011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n",
+      "hidden": true
+    },
+    {
+      "input": "2 4 6\n7 0 1\n1 7 0\n0 1 7\n5 4 6\n",
+      "expectedOutput": "010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n101 100 110 and r-x r-- rw-\n",
+      "hidden": true
+    },
+    {
+      "input": "7 0 1\n1 7 0\n0 1 7\n0 5 5\n0 0 0\n",
+      "expectedOutput": "111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n000 101 101 and --- r-x r-x\n000 000 000 and --- --- ---\n",
+      "hidden": true
+    },
+    {
+      "input": "1 7 0\n0 1 7\n0 0 1\n0 0 0\n7 7 7\n",
+      "expectedOutput": "001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n000 000 001 and --- --- --x\n000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n",
+      "hidden": true
+    },
+    {
+      "input": "0 1 7\n6 4 6\n0 0 0\n7 7 7\n1 1 1\n",
+      "expectedOutput": "000 001 111 and --- --x rwx\n110 100 110 and rw- r-- rw-\n000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n001 001 001 and --x --x --x\n",
+      "hidden": true
+    },
+    {
+      "input": "0 6 6\n0 0 0\n7 7 7\n1 1 1\n4 4 4\n",
+      "expectedOutput": "000 110 110 and --- rw- rw-\n000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n001 001 001 and --x --x --x\n100 100 100 and r-- r-- r--\n",
+      "hidden": true
+    }
+  ],
+  "acsl-chmod-2015-intermediate": [
+    {
+      "input": "0 0 0\n7 7 7\n001 001 001\n100 100 100\n-w- -w- -w-\n",
+      "expectedOutput": "000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n111 and --x --x --x\n444 and r-- r-- r--\n222 and 010 010 010\n",
+      "hidden": true
+    },
+    {
+      "input": "7 7 7\n1 1 1\n100 100 100\n010 010 010\n--- --x -w-\n",
+      "expectedOutput": "111 111 111 and rwx rwx rwx\n001 001 001 and --x --x --x\n444 and r-- r-- r--\n222 and -w- -w- -w-\n012 and 000 001 010\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1\n4 4 4\n010 010 010\n000 001 010\n-wx r-x rw-\n",
+      "expectedOutput": "001 001 001 and --x --x --x\n100 100 100 and r-- r-- r--\n222 and -w- -w- -w-\n012 and --- --x -w-\n356 and 011 101 110\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4 4\n2 2 2\n000 001 010\n011 101 110\n-w- r-- rw-\n",
+      "expectedOutput": "100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n012 and --- --x -w-\n356 and -wx r-x rw-\n246 and 010 100 110\n",
+      "hidden": true
+    },
+    {
+      "input": "2 2 2\n0 1 2\n011 101 110\n010 100 110\nrwx --- --x\n",
+      "expectedOutput": "010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n356 and -wx r-x rw-\n246 and -w- r-- rw-\n701 and 111 000 001\n",
+      "hidden": true
+    },
+    {
+      "input": "0 1 2\n3 5 6\n010 100 110\n111 000 001\n--x rwx ---\n",
+      "expectedOutput": "000 001 010 and --- --x -w-\n011 101 110 and -wx r-x rw-\n246 and -w- r-- rw-\n701 and rwx --- --x\n170 and 001 111 000\n",
+      "hidden": true
+    },
+    {
+      "input": "3 5 6\n2 4 6\n111 000 001\n001 111 000\n--- --x rwx\n",
+      "expectedOutput": "011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n701 and rwx --- --x\n170 and --x rwx ---\n017 and 000 001 111\n",
+      "hidden": true
+    },
+    {
+      "input": "2 4 6\n7 0 1\n001 111 000\n000 001 111\nrwx rw- rwx\n",
+      "expectedOutput": "010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n170 and --x rwx ---\n017 and --- --x rwx\n767 and 111 110 111\n",
+      "hidden": true
+    },
+    {
+      "input": "7 0 1\n1 7 0\n000 001 111\n011 110 111\n--- --- ---\n",
+      "expectedOutput": "111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n017 and --- --x rwx\n367 and -wx rw- rwx\n000 and 000 000 000\n",
+      "hidden": true
+    },
+    {
+      "input": "1 7 0\n0 1 7\n001 110 101\n000 000 000\nrwx rwx rwx\n",
+      "expectedOutput": "001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n165 and --x rw- r-x\n000 and --- --- ---\n777 and 111 111 111\n",
+      "hidden": true
+    },
+    {
+      "input": "0 1 7\n3 7 6\n000 000 000\n111 111 111\n--x --x --x\n",
+      "expectedOutput": "000 001 111 and --- --x rwx\n011 111 110 and -wx rwx rw-\n000 and --- --- ---\n777 and rwx rwx rwx\n111 and 001 001 001\n",
+      "hidden": true
+    },
+    {
+      "input": "6 1 2\n0 0 0\n111 111 111\n001 001 001\nr-- r-- r--\n",
+      "expectedOutput": "110 001 010 and rw- --x -w-\n000 000 000 and --- --- ---\n777 and rwx rwx rwx\n111 and --x --x --x\n444 and 100 100 100\n",
+      "hidden": true
+    }
+  ],
+  "acsl-chmod-2015-senior": [
+    {
+      "input": "0 0 0 0\n0 7 7 7\n1 1 1 1\n4 4 4 4\n0 2 2 2\n",
+      "expectedOutput": "000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n001 001 001 and --s --x --x\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n",
+      "hidden": true
+    },
+    {
+      "input": "1 7 7 7\n4 1 1 1\n2 4 4 4\n2 2 2 2\n1 0 1 2\n",
+      "expectedOutput": "111 111 111 and rws rwx rwx\n001 001 001 and --x --x --t\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 1 1\n0 4 4 4\n1 2 2 2\n2 0 1 2\n0 3 5 6\n",
+      "expectedOutput": "001 001 001 and --s --x --x\n100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --s -w-\n011 101 110 and -wx r-x rw-\n",
+      "hidden": true
+    },
+    {
+      "input": "4 4 4 4\n2 2 2 2\n2 0 1 2\n1 3 5 6\n4 2 4 6\n",
+      "expectedOutput": "100 100 100 and r-- r-- r--\n010 010 010 and -w- -w- -w-\n000 001 010 and --- --s -w-\n011 101 110 and -ws r-x rw-\n010 100 110 and -w- r-- rw-\n",
+      "hidden": true
+    },
+    {
+      "input": "4 2 2 2\n0 0 1 2\n1 3 5 6\n4 2 4 6\n0 7 0 1\n",
+      "expectedOutput": "010 010 010 and -w- -w- -w-\n000 001 010 and --- --x -w-\n011 101 110 and -ws r-x rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n",
+      "hidden": true
+    },
+    {
+      "input": "4 0 1 2\n2 3 5 6\n1 2 4 6\n4 7 0 1\n1 1 7 0\n",
+      "expectedOutput": "000 001 010 and --- --x -w-\n011 101 110 and -wx r-s rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --t\n001 111 000 and --s rwx ---\n",
+      "hidden": true
+    },
+    {
+      "input": "0 3 5 6\n2 2 4 6\n2 7 0 1\n0 1 7 0\n1 0 1 7\n",
+      "expectedOutput": "011 101 110 and -wx r-x rw-\n010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --x\n001 111 000 and --x rwx ---\n000 001 111 and --- --x rwx\n",
+      "hidden": true
+    },
+    {
+      "input": "0 2 4 6\n4 7 0 1\n1 1 7 0\n0 0 1 7\n1 3 2 1\n",
+      "expectedOutput": "010 100 110 and -w- r-- rw-\n111 000 001 and rwx --- --t\n001 111 000 and --s rwx ---\n000 001 111 and --- --x rwx\n011 010 001 and -ws -w- --x\n",
+      "hidden": true
+    },
+    {
+      "input": "1 7 0 1\n2 1 7 0\n4 0 1 7\n0 3 2 7\n0 0 0 0\n",
+      "expectedOutput": "111 000 001 and rws --- --x\n001 111 000 and --x rws ---\n000 001 111 and --- --x rwt\n011 010 111 and -wx -w- rwx\n000 000 000 and --- --- ---\n",
+      "hidden": true
+    },
+    {
+      "input": "1 1 7 0\n4 0 1 7\n4 4 7 0\n2 0 0 0\n0 7 7 7\n",
+      "expectedOutput": "001 111 000 and --s rwx ---\n000 001 111 and --- --x rwt\n100 111 000 and r-- rwx ---\n000 000 000 and --- --- ---\n111 111 111 and rwx rwx rwx\n",
+      "hidden": true
+    },
+    {
+      "input": "0 0 1 7\n0 3 1 4\n2 0 0 0\n2 7 7 7\n2 1 1 1\n",
+      "expectedOutput": "000 001 111 and --- --x rwx\n011 001 100 and -wx --x r--\n000 000 000 and --- --- ---\n111 111 111 and rwx rws rwx\n001 001 001 and --x --s --x\n",
+      "hidden": true
+    },
+    {
+      "input": "0 6 5 3\n1 0 0 0\n1 7 7 7\n2 1 1 1\n1 4 4 4\n",
+      "expectedOutput": "110 101 011 and rw- r-x -wx\n000 000 000 and --- --- ---\n111 111 111 and rws rwx rwx\n001 001 001 and --x --s --x\n100 100 100 and r-- r-- r--\n",
+      "hidden": true
+    }
+  ],
+  "acsl-agram-2016-junior": [
+    {
+      "input": "2 C 8 S 7 H 1 D 8 H 2 D\n1 C 9 H 4 S 2 H 4 C 3 H\n3 D 5 D 4 S 8 H 7 H 5 S\n8 D 4 C 6 D 8 C 3 D 2 C\n8 S 8 H 9 H 4 S 3 H 9 D\n",
+      "expectedOutput": "NONE\n4 C\n5 D\n3 D\n4 S\n",
+      "hidden": true
+    },
+    {
+      "input": "9 C 5 D 2 S 4 S 9 D 3 H\n1 D 4 S 8 H 9 H 4 H 5 D\n5 D 5 S 5 C 6 H 1 S 2 S\n8 H 6 H 5 S 1 D 3 C 2 C\n4 D 9 H 3 C 1 S 6 H 3 H\n",
+      "expectedOutput": "NONE\n5 D\nNONE\n6 H\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 H 4 C 2 H 7 H 3 D 6 S\n1 H 5 D 3 S 3 C 4 S 6 C\n4 C 3 D 8 C 9 C 7 C 4 S\n4 S 7 C 6 H 4 C 5 H 7 D\n7 S 2 H 8 D 4 D 1 H 3 H\n",
+      "expectedOutput": "2 H\nNONE\n7 C\nNONE\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "4 D 9 S 2 C 4 C 3 S 6 D\n9 S 3 D 9 D 6 H 8 H 4 S\n4 C 6 S 1 S 4 S 7 D 5 S\n5 C 7 S 3 S 4 S 4 C 8 C\n2 S 4 C 7 D 5 C 1 H 7 H\n",
+      "expectedOutput": "6 D\n4 S\nNONE\n8 C\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "1 D 9 S 5 H 3 C 3 D 5 D\n9 H 6 H 6 C 9 S 3 H 6 S\n9 S 7 S 8 C 4 S 5 S 7 D\n9 H 5 D 4 C 2 C 1 S 6 D\n2 S 6 D 3 D 2 D 1 H 9 D\n",
+      "expectedOutput": "3 D\n3 H\n4 S\nNONE\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "5 H 3 H 1 D 4 C 7 D 4 D\n6 H 5 H 9 H 7 D 5 D 7 C\n7 D 5 S 2 S 3 S 5 D 8 C\n4 S 1 C 6 H 5 D 8 D 6 D\n1 D 6 H 5 S 9 D 4 C 9 C\n",
+      "expectedOutput": "3 H\n9 H\n5 D\nNONE\n9 D\n",
+      "hidden": true
+    },
+    {
+      "input": "2 C 5 C 3 H 2 D 1 D 4 D\n6 C 6 S 4 C 7 C 9 C 2 H\n6 C 2 C 3 S 9 S 2 D 4 C\n6 S 7 D 6 H 9 C 3 H 6 C\n5 S 1 D 6 C 3 C 9 S 7 C\n",
+      "expectedOutput": "5 C\n7 C\n2 C\nNONE\n9 S\n",
+      "hidden": true
+    },
+    {
+      "input": "8 D 4 H 7 D 7 H 5 S 9 H\n1 H 3 H 2 H 4 D 1 C 5 C\n7 S 7 H 3 H 3 C 6 C 2 S\n8 C 3 H 7 S 9 C 9 S 2 D\n8 S 2 S 8 H 1 S 9 C 6 S\n",
+      "expectedOutput": "7 D\n2 H\n2 S\n9 C\n1 S\n",
+      "hidden": true
+    },
+    {
+      "input": "6 H 3 S 4 S 2 D 8 S 1 C\n1 C 9 H 7 S 2 H 1 H 3 C\n5 S 2 C 8 C 9 D 7 D 3 S\n3 S 9 S 6 H 8 D 7 H 4 S\n1 S 4 H 2 S 4 S 6 D 5 S\n",
+      "expectedOutput": "NONE\n3 C\n3 S\n4 S\n2 S\n",
+      "hidden": true
+    },
+    {
+      "input": "1 C 9 H 6 C 7 H 8 C 3 S\n2 C 2 S 1 C 8 H 9 H 6 H\n8 H 8 S 3 C 6 S 9 S 6 D\n8 D 3 D 3 S 1 C 2 S 7 H\n5 H 3 C 7 C 6 D 6 H 1 C\n",
+      "expectedOutput": "6 C\n1 C\nNONE\n3 D\n6 H\n",
+      "hidden": true
+    },
+    {
+      "input": "2 S 7 C 2 D 2 C 5 H 1 C\n2 D 8 C 8 S 8 H 1 C 1 S\n2 C 9 D 9 S 5 S 7 H 4 D\n8 S 7 C 8 D 3 C 3 S 7 H\n5 D 3 S 2 H 9 C 1 S 4 S\n",
+      "expectedOutput": "NONE\nNONE\nNONE\n3 S\nNONE\n",
+      "hidden": true
+    },
+    {
+      "input": "6 C 8 S 5 D 8 D 1 D 9 H\n3 D 4 C 8 S 8 C 5 D 7 C\n7 S 3 H 2 D 8 S 4 D 1 H\n3 H 1 H 5 D 5 H 9 H 2 S\n6 S 7 D 3 D 8 D 9 H 6 H\n",
+      "expectedOutput": "NONE\n5 D\n8 S\n5 H\nNONE\n",
+      "hidden": true
+    }
+  ],
+  "acsl-agram-2016-intermediate": [
+    {
+      "input": "9H 7D TS QC 4D QS\n3S 8H TS 6C JC QD\n6S QD 8D KC 8C AD\n6S AD QC KH 3C 5S\n9S 6D TH QC KH AC\n",
+      "expectedOutput": "4D\nTS\nAD\n5S\nAC\n",
+      "hidden": true
+    },
+    {
+      "input": "9C JH KC 7S 7D QH\n8H 6D 3C AS 6H JD\n2C 3C 9H 6H 3H 8S\n4C 6C 8D 3D 6S JS\n6D AS AD 3H 3D AC\n",
+      "expectedOutput": "KC\n6H\n3C\n6C\nAD\n",
+      "hidden": true
+    },
+    {
+      "input": "8S 7S QS 8H 4S TD\nTD AS 5D AD 2D JS\nKC 4H TH JC 9D 3H\n7C KC 9S QH 8H QS\n5H 9D 3S JS 9S JH\n",
+      "expectedOutput": "QS\nAD\nJC\nKC\nJH\n",
+      "hidden": true
+    },
+    {
+      "input": "5D JD 4H TD 5S 8S\n6D 6H JS KS 4D TD\n3H KD 8H 6D KS KC\n8C 2H JD 8H AD QD\n9D 5H KD TS 2D KC\n",
+      "expectedOutput": "TD\nTD\n8H\nAD\nKD\n",
+      "hidden": true
+    },
+    {
+      "input": "9H 4D JD KH 8C KS\n5H QH 3C TD 6D AD\n7D 2C KD 5H 4D 7S\nJC KC QS 5H 8C 2C\nAH 2C JH JS QC 5H\n",
+      "expectedOutput": "KH\nQH\nKD\nKC\n5H\n",
+      "hidden": true
+    },
+    {
+      "input": "2S 6H 3D AD TD 9D\n5C KS 3S 2S TH 8H\n8S JD AD 9H KD 2D\n7H QH AS 4S 9C 7D\nKS 8S 7C QC 4H 8D\n",
+      "expectedOutput": "AD\n2S\nAD\nQH\n8S\n",
+      "hidden": true
+    },
+    {
+      "input": "9C 3C 6H 4D 4S 8D\n7S 4H 8H 5D QD 2C\nKC 5D 6S 8S 4C 4H\nJS TS QD 5C 9S JD\n9D 4H 2H 3H 5C 3S\n",
+      "expectedOutput": "3C\n2C\n4C\n9S\n2H\n",
+      "hidden": true
+    },
+    {
+      "input": "7H 7C 3D JS KS 2S\n3D 3S 3H AC 5H 2D\nQH TD AS AH 9H 4S\n8S AC KH 9H 4S QH\n8H 8S 6C 5C KH QS\n",
+      "expectedOutput": "2S\n2D\nAH\n4S\nKH\n",
+      "hidden": true
+    },
+    {
+      "input": "QD TH KS 9S JS 5C\nAC 3H KC 2H QC TH\nQS 5S 6D KS QD TH\nTD 5S 8C 4H 9D 6C\n5D 3C QH AH 2S TD\n",
+      "expectedOutput": "5C\nQC\nKS\n9D\nTD\n",
+      "hidden": true
+    },
+    {
+      "input": "2D QH 4S 7D 8S 5H\nQD 9D 2C 2H TH 8H\n7S QD 9D 6S 5D QS\n3H JD AS 7H 5D TD\n6H 9D 2H 4S AH 3C\n",
+      "expectedOutput": "7D\n9D\nQS\n7H\nAH\n",
+      "hidden": true
+    },
+    {
+      "input": "6D KH AH 9S 6C 4S\n3S 5C AH 4S 8C JH\nAS AD JC AC KS AH\nQC JC 5D 9C 2S 4H\n3H 7S 8H KS 9H 6H\n",
+      "expectedOutput": "AH\n4S\nKS\n9C\n6H\n",
+      "hidden": true
+    },
+    {
+      "input": "9H 6S 5C 2C 5D QD\nTD 9C 2C JH AH 5C\n2D AD 2H JH 4C 4D\n8C 6S 6H 2S TS 4H\n8S JS TD 6C JC 3H\n",
+      "expectedOutput": "2C\nAH\n4D\n2S\nJS\n",
+      "hidden": true
+    }
+  ],
+  "acsl-agram-2016-senior": [
+    {
+      "input": "9S JC TH 2C AH JS\n7C JD 3C TH 7S 6D\n2S 5D 7H 4H 2H 4D\nJD 3S AS 5D 7C 6H\nAC KS 5C 3C JC 9H\n",
+      "expectedOutput": "JS\n3C\n2H\n5D\n3C\n",
+      "hidden": true
+    },
+    {
+      "input": "8H 3C 5H 2C JS 7C\n6H KH 2S 8D 9C 6D\n9C KD AC 4H JH 4C\n5C 7H 2D 5D QC 6H\n2D QS TS 8C TC KD\n",
+      "expectedOutput": "5H\nKH\nAC\nQC\nKD\n",
+      "hidden": true
+    },
+    {
+      "input": "5H KH QS 8S 4C 3D\n7S KD QH 3S KS KH\nJC 3D 4C 7D JS QC\n2C KD TD KC 3C 6S\n6S 8S KD TD TC JS\n",
+      "expectedOutput": "KH\nKS\nQC\n3C\n8S\n",
+      "hidden": true
+    },
+    {
+      "input": "5S 9H 3H 6C 5D 5H\nJH JS 8C KD AS 6D\n4S 3H 4D 9S 9C 7D\n2H 8D AC 2S 5S 3H\nTC JH 2S 7S JC TH\n",
+      "expectedOutput": "3H\nAS\n9S\n3H\nJC\n",
+      "hidden": true
+    },
+    {
+      "input": "2H 8H QD QH 6S TS\n5H KS 4D 7H QC TH\n4C 6D 2D QD QS 8C\nAH 8H 4D 6D 8D 3S\n7S KH QC 4C 9D JS\n",
+      "expectedOutput": "8H\n7H\n8C\n8H\nJS\n",
+      "hidden": true
+    },
+    {
+      "input": "6S 7C JC TS JD 5D\nQD 3H 6D KD JD 7H\nJD TC AD QC 7S 2S\n7S KH 6D KS 7C TC\nJD 5C JC KC QH KS\n",
+      "expectedOutput": "TS\nKD\nAD\nKS\n5C\n",
+      "hidden": true
+    },
+    {
+      "input": "7C 6C QD JC KH 9S\n6H 2D 3S KC 5D 7C\nTC AH 9S 5H 5C 2S\n2D QC 2H 3S 6D KS\n5S 6C TS 3D JD JH\n",
+      "expectedOutput": "JC\n2D\n5C\n6D\nTS\n",
+      "hidden": true
+    },
+    {
+      "input": "5D 2D KC 3H KH AS\n3C 6D 9C 2S 8H AC\n5D 4S KD AS 7S 5S\n7H QC 7D 4D 2H 8D\n5C 8H JH 4C 7H 3H\n",
+      "expectedOutput": "2D\n9C\nKD\n2H\n4C\n",
+      "hidden": true
+    },
+    {
+      "input": "QC JD 5D KD 5S TD\n4C KH 9S 2D QD 8S\nQH 8H TD 8D KC QS\nQD 4C TD JC 9C QS\n3S 7C 8D 7S JD QD\n",
+      "expectedOutput": "5D\n2D\n8H\nTD\n7S\n",
+      "hidden": true
+    },
+    {
+      "input": "JD 5D AH 6C 5H 9S\n7C 6C 5D 2S 7S 4C\nQC 4C JS 7D 2D 3D\nJH 3D KC 7S 8C AD\nJC 9S QS KS TD TH\n",
+      "expectedOutput": "5D\n4C\n4C\nAD\n9S\n",
+      "hidden": true
+    },
+    {
+      "input": "8S 5D 9C 7S 9H TC\nJS 3D 3H 5H 7S 6D\n5H TH 6S 7H 7D 5D\n4H AC 6S 7S KH 4C\nQS 4H 8H 8D JD AC\n",
+      "expectedOutput": "7S\n7S\n7H\nKH\nAC\n",
+      "hidden": true
+    },
+    {
+      "input": "8C 3D QS 7C JS 2C\nKS AD 5D AC 6H 2S\nQS AC 5S 5D 5H 9H\nQS 6S JD 5D AS 6H\n7C JD 8H AS TS TD\n",
+      "expectedOutput": "2C\n2S\n5S\nAS\nAS\n",
+      "hidden": true
+    }
+  ],
+  "acsl-ninety-nine-2017-junior": [
+    {
+      "input": "99 6 5 2 1 0 3 5 7 6 4\n98 8 3 4 0 0 8 8 4 4 7\n89 5 3 2 1 6 4 2 0 4 6\n90 9 9 7 4 1 5 5 8 2 3\n94 2 3 1 9 4 1 6 6 5 1\n",
+      "expectedOutput": "105 dealer\n106 dealer\n100 player\n103 dealer\n101 player\n",
+      "hidden": true
+    },
+    {
+      "input": "98 9 3 2 0 3 0 3 1 9 7\n89 1 2 6 2 1 5 2 5 8 1\n90 6 2 4 2 5 1 3 9 9 4\n94 6 3 0 2 7 8 4 3 8 1\n80 8 5 6 0 3 2 1 2 2 4\n",
+      "expectedOutput": "101 player\n101 dealer\n101 player\n100 dealer\n103 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "89 0 7 3 7 5 5 9 3 2 1\n90 3 0 0 2 9 3 9 7 7 3\n94 9 0 7 6 2 8 0 1 2 2\n80 9 4 0 1 0 5 9 3 7 8\n77 6 0 3 0 4 3 7 4 6 2\n",
+      "expectedOutput": "102 dealer\n102 player\n105 dealer\n100 dealer\n100 player\n",
+      "hidden": true
+    },
+    {
+      "input": "90 7 6 2 0 0 5 8 9 7 0\n94 5 8 4 3 8 0 0 2 0 2\n80 6 8 6 2 8 1 1 7 7 7\n77 0 7 3 9 2 4 9 5 6 6\n78 7 0 6 9 8 5 3 0 7 6\n",
+      "expectedOutput": "104 dealer\n107 player\n102 dealer\n100 dealer\n103 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "94 0 1 9 7 6 7 1 3 6 6\n80 2 8 6 7 8 5 1 9 3 1\n77 5 1 3 7 0 7 6 6 7 4\n78 6 5 3 8 6 2 4 5 6 2\n85 1 6 2 4 5 9 3 4 1 6\n",
+      "expectedOutput": "101 player\n105 dealer\n100 player\n102 dealer\n100 player\n",
+      "hidden": true
+    },
+    {
+      "input": "80 4 3 2 5 6 2 8 9 7 8\n77 8 8 3 5 2 7 2 3 6 1\n78 7 9 3 6 8 5 7 3 7 7\n85 0 7 2 7 0 0 8 7 4 9\n95 1 5 8 3 6 9 1 2 2 9\n",
+      "expectedOutput": "101 dealer\n100 dealer\n100 player\n104 dealer\n102 player\n",
+      "hidden": true
+    },
+    {
+      "input": "77 1 1 6 7 6 3 0 0 0 8\n78 8 4 2 3 8 4 5 9 8 6\n85 2 9 0 3 1 3 5 2 6 3\n95 1 8 9 9 1 6 5 1 8 7\n88 0 4 2 9 5 7 5 1 5 6\n",
+      "expectedOutput": "102 dealer\n102 dealer\n100 player\n105 dealer\n104 player\n",
+      "hidden": true
+    },
+    {
+      "input": "78 9 2 0 0 5 7 1 0 5 4\n85 5 7 9 8 2 7 9 4 2 7\n95 7 5 8 9 9 7 0 6 1 7\n88 3 6 6 0 1 7 1 9 0 2\n70 8 6 2 2 0 8 3 0 6 3\n",
+      "expectedOutput": "102 player\n101 player\n102 dealer\n105 dealer\n100 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "85 3 5 0 8 5 0 7 0 9 8\n95 0 7 9 0 3 1 5 7 0 2\n88 0 5 9 3 2 3 5 7 7 9\n70 6 1 2 7 7 2 8 9 8 1\n99 2 0 6 7 5 2 9 7 5 1\n",
+      "expectedOutput": "105 player\n106 dealer\n101 player\n102 player\n101 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "95 6 9 7 8 7 6 1 0 3 4\n88 5 3 3 9 2 9 7 4 6 9\n70 0 0 9 8 8 0 1 1 3 8\n99 9 9 6 4 0 7 1 2 1 0\n98 0 0 3 2 1 9 0 8 6 5\n",
+      "expectedOutput": "101 dealer\n105 player\n102 dealer\n100 player\n100 player\n",
+      "hidden": true
+    },
+    {
+      "input": "88 5 7 3 0 6 9 7 8 3 1\n70 7 9 7 5 0 2 2 2 5 9\n99 0 2 6 4 8 3 8 7 5 3\n98 1 0 5 7 2 1 6 1 2 4\n89 1 7 6 1 0 6 1 0 3 7\n",
+      "expectedOutput": "106 dealer\n102 player\n100 dealer\n101 player\n105 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "70 2 5 0 7 9 0 3 4 8 5\n99 3 9 2 3 2 0 6 9 6 1\n98 0 5 5 6 9 5 3 6 1 8\n89 5 8 2 0 0 0 4 5 8 3\n90 2 7 0 9 0 1 8 8 9 2\n",
+      "expectedOutput": "106 dealer\n102 dealer\n104 dealer\n103 dealer\n100 dealer\n",
+      "hidden": true
+    }
+  ],
+  "acsl-ninety-nine-2017-intermediate": [
+    {
+      "input": "99 7 5 5 8 Q 8 J 6 6 4\n98 J 9 4 J 7 7 5 5 T 3\n89 4 J Q J A 2 K 4 2 6\n90 8 A 4 5 3 3 K 2 6 J\n94 9 A 3 2 4 6 Q A T 5\n",
+      "expectedOutput": "106 dealer\n109 dealer\n101 dealer\n102 dealer\n111 player\n",
+      "hidden": true
+    },
+    {
+      "input": "98 2 7 5 K 8 8 K K J 9\n89 5 J 5 4 4 K Q A 7 3\n90 Q 5 A 8 A 2 2 T 8 3\n94 2 8 Q 3 2 8 8 3 K J\n80 A 5 Q 3 Q 8 2 T 3 9\n",
+      "expectedOutput": "105 dealer\n100 dealer\n104 dealer\n106 dealer\n106 player\n",
+      "hidden": true
+    },
+    {
+      "input": "89 7 T 3 4 Q 7 9 T 3 2\n90 K 2 8 6 2 K Q Q 8 5\n94 J 7 K 9 Q J T 6 5 A\n80 6 8 8 T A 3 J J A 2\n77 3 Q 6 3 8 7 K 5 9 3\n",
+      "expectedOutput": "105 dealer\n103 dealer\n107 dealer\n110 dealer\n103 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "90 8 7 T J 2 J 8 6 8 8\n94 7 6 T 6 8 7 K A 5 Q\n80 4 A K K T 2 T 4 T 8\n77 8 4 K 3 J K J K Q 5\n78 J T K 8 4 Q 3 6 Q 5\n",
+      "expectedOutput": "101 player\n112 player\n100 dealer\n101 player\n106 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "94 2 7 J 7 Q 9 K 4 8 Q\n80 A 5 Q K 8 9 3 Q 8 T\n77 4 5 A 2 7 4 Q K 7 T\n78 K 5 J Q 2 2 6 7 3 9\n85 9 5 T Q 5 2 8 7 9 A\n",
+      "expectedOutput": "105 dealer\n102 player\n103 dealer\n105 dealer\n100 player\n",
+      "hidden": true
+    },
+    {
+      "input": "80 T 4 8 K 6 Q 8 2 8 9\n77 K 9 8 T 3 K Q 8 4 3\n78 K 8 Q 4 3 T T 2 8 J\n85 9 Q K A 3 8 7 9 6 T\n95 2 A 3 5 2 9 Q A 4 T\n",
+      "expectedOutput": "109 dealer\n108 dealer\n106 dealer\n101 player\n103 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "77 9 J 7 T 5 4 K Q 3 7\n78 2 2 K 3 9 A 9 T 7 Q\n85 K 2 4 K 3 T K 5 Q J\n95 7 2 5 2 T T 9 3 6 7\n88 8 J 9 K 8 A Q Q T J\n",
+      "expectedOutput": "111 dealer\n102 player\n101 player\n102 dealer\n107 player\n",
+      "hidden": true
+    },
+    {
+      "input": "78 J 3 9 5 5 5 8 T K 2\n85 5 K J 8 3 6 A 2 2 8\n95 J 4 A T A 3 8 3 8 6\n88 5 4 A 9 3 J Q 4 2 A\n70 5 K 2 K K 8 3 9 9 Q\n",
+      "expectedOutput": "102 player\n101 player\n108 dealer\n104 player\n109 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "85 Q 6 J T A K T A 7 2\n95 T Q 8 K 7 4 2 6 7 7\n88 5 K K 2 5 5 K 8 2 Q\n70 5 6 6 A T A 3 7 7 7\n99 7 5 J K 3 Q Q 2 3 T\n",
+      "expectedOutput": "109 dealer\n107 dealer\n101 dealer\n104 player\n110 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "95 J 5 T A 2 8 3 Q Q 5\n88 8 A 7 K Q T 2 8 A 3\n70 6 J 8 6 J J 7 3 Q K\n99 T T 2 4 J K 5 2 K 9\n98 Q 5 A 6 Q 7 K 7 2 T\n",
+      "expectedOutput": "106 dealer\n101 player\n100 dealer\n100 player\n111 player\n",
+      "hidden": true
+    },
+    {
+      "input": "88 A 4 K 8 6 5 5 3 9 6\n70 8 5 2 K J 3 8 7 Q 2\n99 8 3 3 J T 8 7 A T 9\n98 K A Q K 4 6 4 T 9 Q\n89 6 K 3 5 9 9 T 7 7 4\n",
+      "expectedOutput": "108 dealer\n102 dealer\n107 dealer\n103 player\n102 dealer\n",
+      "hidden": true
+    },
+    {
+      "input": "70 A 5 2 A 6 9 4 6 7 7\n99 7 J 3 2 J 2 7 6 T 9\n98 5 7 2 9 6 8 K K Q 5\n89 3 3 J 9 J A A 6 3 5\n90 T 3 9 7 7 K 9 K 2 6\n",
+      "expectedOutput": "102 player\n110 dealer\n105 dealer\n100 dealer\n100 dealer\n",
+      "hidden": true
+    }
+  ],
+  "acsl-ninety-nine-2017-senior": [
+    {
+      "input": "6 J 9 K 4 4 4 J 3 8\n99 9 A 6 7 8 2 5 T T 8\n98 6 Q 9 6 7 Q 3 A 7 8\n90 3 5 3 5 T 3 7 7 2 2\n33 4 3 5 Q 5 8 K 6 A K\n55 T A 9 6 8 K 5 7 J J\n",
+      "expectedOutput": "103 Player #1\n102 Player #1\n100 Player #2\n105 Player #1\n103 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "4 J 6 Q 5 K 4 4 T 3\n98 6 7 J J 8 2 7 5 9 A\n90 5 T 3 4 7 5 J 8 K 9\n33 K 8 8 7 5 6 A A K A\n55 5 8 8 6 2 5 J T 4 2\n77 9 8 2 8 7 8 A K T 6\n",
+      "expectedOutput": "104 Player #2\n100 Player #1\n103 Player #1\n102 Player #1\n100 Player #1\n",
+      "hidden": true
+    },
+    {
+      "input": "8 7 Q Q T 5 Q J 7 6\n90 6 4 K T 9 3 K 5 4 2\n33 6 K A 2 A 2 J T 5 K\n55 3 Q 6 3 4 5 5 T J K\n77 2 3 A J T 4 9 3 9 A\n78 4 5 Q 3 3 T 3 8 9 5\n",
+      "expectedOutput": "101 Player #1\n110 Player #2\n100 Player #2\n105 Player #2\n111 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "2 J K 4 J 9 6 5 A 3\n33 4 7 Q 2 T 3 7 K A 5\n55 4 Q T J A J 7 6 3 3\n77 3 J 8 8 3 4 A 7 6 5\n78 9 7 8 K 6 7 2 9 Q 8\n56 4 K J 5 A 5 7 A 5 Q\n",
+      "expectedOutput": "104 Player #2\n103 Player #2\n103 Player #2\n104 Player #2\n109 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "7 5 A A 7 8 K 2 9 5\n55 J 4 9 T K 8 Q 3 T 2\n77 T K Q 3 2 3 A 5 9 K\n78 9 6 6 T J Q T 7 K J\n56 4 6 K 6 4 J 5 2 9 J\n34 J Q 2 Q 6 6 6 J 6 T\n",
+      "expectedOutput": "109 Player #2\n104 Player #1\n100 Player #2\n102 Player #2\n101 Player #1\n",
+      "hidden": true
+    },
+    {
+      "input": "7 2 4 7 3 2 J 8 K 3\n77 4 K 8 2 9 T 3 8 Q A\n78 K 2 8 T 7 T J 6 8 Q\n56 6 T 6 2 J 8 9 9 8 2\n34 9 A 2 5 A J T 8 3 K\n65 6 A A 6 7 T 4 6 J K\n",
+      "expectedOutput": "109 Player #1\n100 Player #1\n102 Player #2\n100 Player #1\n100 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "6 K 4 7 3 2 A 5 3 4\n78 3 6 7 9 8 K 2 7 A J\n56 6 Q K 5 Q 6 T J 4 J\n34 2 5 8 9 8 J J A 7 Q\n65 2 8 8 6 9 J 6 2 9 2\n80 K 4 5 J 7 J 8 A Q A\n",
+      "expectedOutput": "104 Player #1\n106 Player #2\n102 Player #1\n102 Player #1\n101 Player #1\n",
+      "hidden": true
+    },
+    {
+      "input": "8 3 5 4 7 Q 2 Q A 7\n56 K 6 8 J J J K 5 3 A\n34 A 4 7 J T 6 K Q 9 3\n65 K 6 6 T T K 4 J 9 K\n80 K A 6 9 5 Q J 2 7 8\n95 5 7 3 7 6 5 8 5 9 J\n",
+      "expectedOutput": "100 Player #2\n101 Player #2\n101 Player #2\n110 Player #1\n100 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "4 K 5 A A 7 9 8 8 K\n34 Q 3 3 A J 8 9 7 K 2\n65 T Q 3 7 T T 6 Q A A\n80 3 A 3 J 7 7 9 Q 2 2\n95 2 2 5 K Q 4 4 9 J 5\n99 5 J Q 3 7 4 2 4 T 6\n",
+      "expectedOutput": "101 Player #2\n111 Player #2\n101 Player #1\n108 Player #2\n112 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "T Q J 2 T 6 A 6 T 3\n65 8 8 4 K 5 4 3 Q J K\n80 8 K A 6 A 8 9 6 7 J\n95 9 8 9 2 K 6 7 Q K A\n99 8 J K 6 4 3 5 2 K 3\n98 9 4 K 2 A Q 6 9 5 7\n",
+      "expectedOutput": "105 Player #2\n110 Player #2\n106 Player #2\n105 Player #2\n101 Player #2\n",
+      "hidden": true
+    },
+    {
+      "input": "8 Q 6 2 5 9 5 6 7 6\n80 T 7 2 3 9 4 K Q 8 J\n95 8 K Q K A 2 8 7 4 7\n99 9 7 K K 5 J 5 T J 9\n98 3 8 Q T 9 7 3 T A K\n90 A 8 9 T A T J K 5 6\n",
+      "expectedOutput": "100 Player #2\n101 Player #2\n105 Player #2\n104 Player #2\n102 Player #1\n",
+      "hidden": true
+    },
+    {
+      "input": "J K K 2 2 9 3 9 A Q\n95 Q 3 3 8 5 T K 4 4 6\n99 3 A 8 8 8 Q 3 4 7 Q\n98 6 5 A T 7 2 6 9 A 7\n90 8 7 A T 9 6 7 6 3 5\n33 Q T 9 5 5 2 A 7 Q Q\n",
+      "expectedOutput": "106 Player #2\n110 Player #2\n109 Player #2\n101 Player #2\n103 Player #2\n",
+      "hidden": true
+    }
+  ],
+  "digit-reassembly-2018-junior": [
+    {
+      "input": "1\n99999999999999999999999999999999999999999999999999\n44444444444444444444444444444444444444444444444444\n10000000000000000000000000000000000000000000000001\n135792468\n",
+      "expectedOutput": "1\n450\n100\n0\n9\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999\n44444444444444444444444444444444444444444444444444\n10000000000000000000000000000000000000000000000001\n135792468\n4444\n",
+      "expectedOutput": "50\n200\n1\n1\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "44444444444444444444444444444444444444444444444444\n10000000000000000000000000000000000000000000000001\n135792468\n4444\n987654321\n",
+      "expectedOutput": "50\n2\n27\n4\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000001\n135792468\n4444\n987654321\n123456\n",
+      "expectedOutput": "50\n45\n8\n1\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "135792468\n4444\n987654321\n123456\n99999999999999999999999999999999999999999999999999\n",
+      "expectedOutput": "9\n16\n25\n1\n9\n",
+      "hidden": true
+    },
+    {
+      "input": "4444\n987654321\n123456\n99999999999999999999999999999999999999999999999999\n102030405060708090\n",
+      "expectedOutput": "4\n45\n9\n0\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "987654321\n123456\n99999999999999999999999999999999999999999999999999\n102030405060708090\n12345\n",
+      "expectedOutput": "9\n21\n225\n1\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "123456\n99999999999999999999999999999999999999999999999999\n102030405060708090\n12345\n10000000000000000000000000000000000000000000000000\n",
+      "expectedOutput": "6\n450\n45\n1\n0\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999\n102030405060708090\n12345\n10000000000000000000000000000000000000000000000000\n1\n",
+      "expectedOutput": "50\n45\n9\n0\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "102030405060708090\n12345\n10000000000000000000000000000000000000000000000000\n1\n99999999999999999999999999999999999999999999999999\n",
+      "expectedOutput": "18\n15\n1\n0\n9\n",
+      "hidden": true
+    },
+    {
+      "input": "12345\n10000000000000000000000000000000000000000000000000\n1\n99999999999999999999999999999999999999999999999999\n44444444444444444444444444444444444444444444444444\n",
+      "expectedOutput": "5\n1\n1\n0\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000000\n1\n99999999999999999999999999999999999999999999999999\n44444444444444444444444444444444444444444444444444\n10000000000000000000000000000000000000000000000001\n",
+      "expectedOutput": "50\n1\n225\n50\n0\n",
+      "hidden": true
+    }
+  ],
+  "digit-reassembly-2018-intermediate": [
+    {
+      "input": "1 1\n99999999999999999999999999999999999999999999999999 33\n44444444444444444444444444444444444444444444444444 25\n10000000000000000000000000000000000000000000000001 21\n135792468 9\n",
+      "expectedOutput": "1\n17999999999999999999999999999999982\n115555555555555555555555544\n100000000000000000001\n135792468\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999 14\n44444444444444444444444444444444444444444444444444 38\n10000000000000000000000000000000000000000000000001 28\n135792468 8\n4444 3\n",
+      "expectedOutput": "3699999999999963\n577777777777777777777777777777777777772\n1000000000000000000000000001\n49371714\n888\n",
+      "hidden": true
+    },
+    {
+      "input": "44444444444444444444444444444444444444444444444444 23\n10000000000000000000000000000000000000000000000001 10\n135792468 3\n4444 2\n987654321 2\n",
+      "expectedOutput": "1244444444444444444444432\n1000000001\n3501\n132\n476\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000001 4\n135792468 3\n4444 4\n987654321 9\n123456 5\n",
+      "expectedOutput": "1001\n3501\n4444\n987654321\n35801\n",
+      "hidden": true
+    },
+    {
+      "input": "135792468 7\n4444 2\n987654321 2\n123456 1\n99999999999999999999999999999999999999999999999999 5\n",
+      "expectedOutput": "10729638\n132\n476\n21\n4599954\n",
+      "hidden": true
+    },
+    {
+      "input": "4444 2\n987654321 3\n123456 1\n99999999999999999999999999999999999999999999999999 38\n102030405060708090 9\n",
+      "expectedOutput": "132\n4578\n21\n1299999999999999999999999999999999999987\n1722783385\n",
+      "hidden": true
+    },
+    {
+      "input": "987654321 9\n123456 6\n99999999999999999999999999999999999999999999999999 1\n102030405060708090 11\n12345 1\n",
+      "expectedOutput": "987654321\n123456\n450\n115600448930\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "123456 3\n99999999999999999999999999999999999999999999999999 34\n102030405060708090 17\n12345 5\n10000000000000000000000000000000000000000000000000 5\n",
+      "expectedOutput": "1158\n169999999999999999999999999999999983\n12233445566778899\n12345\n10000\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999 1\n102030405060708090 1\n12345 1\n10000000000000000000000000000000000000000000000000 1\n1 1\n",
+      "expectedOutput": "450\n45\n15\n1\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "102030405060708090 18\n12345 5\n10000000000000000000000000000000000000000000000000 50\n1 1\n99999999999999999999999999999999999999999999999999 50\n",
+      "expectedOutput": "102030405060708090\n12345\n10000000000000000000000000000000000000000000000000\n1\n99999999999999999999999999999999999999999999999999\n",
+      "hidden": true
+    },
+    {
+      "input": "12345 2\n10000000000000000000000000000000000000000000000000 15\n1 1\n99999999999999999999999999999999999999999999999999 43\n44444444444444444444444444444444444444444444444444 12\n",
+      "expectedOutput": "114\n100000000000000\n1\n79999999999999999999999999999999999999999992\n17333333333316\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000000 45\n1 1\n99999999999999999999999999999999999999999999999999 35\n44444444444444444444444444444444444444444444444444 21\n10000000000000000000000000000000000000000000000001 10\n",
+      "expectedOutput": "100000000000000000000000000000000000000000000\n1\n1599999999999999999999999999999999984\n13333333333333333333320\n1000000001\n",
+      "hidden": true
+    }
+  ],
+  "digit-reassembly-2018-senior": [
+    {
+      "input": "1 1\n99999999999999999999999999999999999999999999999999 1\n44444444444444444444444444444444444444444444444444 48\n10000000000000000000000000000000000000000000000001 50\n135792468 1\n",
+      "expectedOutput": "1\n450\n884444444444444444444444444444444444444444444444\n10000000000000000000000000000000000000000000000001\n45\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999 34\n44444444444444444444444444444444444444444444444444 38\n10000000000000000000000000000000000000000000000001 31\n135792468 8\n4444 2\n",
+      "expectedOutput": "19999999999999998999999999999999999\n88888888888844444444444444444444444444\n1000000000000000001000000000000\n93579246\n88\n",
+      "hidden": true
+    },
+    {
+      "input": "44444444444444444444444444444444444444444444444444 9\n10000000000000000000000000000000000000000000000001 2\n135792468 5\n4444 2\n987654321 7\n",
+      "expectedOutput": "2666662220\n11\n38259\n88\n11976543\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000001 11\n135792468 3\n4444 3\n987654321 2\n123456 3\n",
+      "expectedOutput": "10000100000\n1395\n844\n270\n579\n",
+      "hidden": true
+    },
+    {
+      "input": "135792468 6\n4444 2\n987654321 4\n123456 2\n99999999999999999999999999999999999999999999999999 23\n",
+      "expectedOutput": "603792\n88\n16308\n102\n299989999999999999999998\n",
+      "hidden": true
+    },
+    {
+      "input": "4444 4\n987654321 8\n123456 5\n99999999999999999999999999999999999999999999999999 32\n102030405060708090 17\n",
+      "expectedOutput": "4444\n108765432\n72345\n199999999999999999899999999999999\n10203040506070809\n",
+      "hidden": true
+    },
+    {
+      "input": "987654321 2\n123456 2\n99999999999999999999999999999999999999999999999999 48\n102030405060708090 2\n12345 1\n",
+      "expectedOutput": "270\n102\n1989999999999999999999999999999999999999999999999\n450\n15\n",
+      "hidden": true
+    },
+    {
+      "input": "123456 4\n99999999999999999999999999999999999999999999999999 22\n102030405060708090 12\n12345 2\n10000000000000000000000000000000000000000000000000 5\n",
+      "expectedOutput": "6834\n29999989999999999999998\n810120405060\n96\n10000\n",
+      "hidden": true
+    },
+    {
+      "input": "99999999999999999999999999999999999999999999999999 1\n102030405060708090 1\n12345 1\n10000000000000000000000000000000000000000000000000 1\n1 1\n",
+      "expectedOutput": "450\n45\n15\n1\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "102030405060708090 18\n12345 5\n10000000000000000000000000000000000000000000000000 50\n1 1\n99999999999999999999999999999999999999999999999999 50\n",
+      "expectedOutput": "102030405060708090\n12345\n10000000000000000000000000000000000000000000000000\n1\n99999999999999999999999999999999999999999999999999\n",
+      "hidden": true
+    },
+    {
+      "input": "12345 50\n10000000000000000000000000000000000000000000000000 50\n1 50\n99999999999999999999999999999999999999999999999999 50\n44444444444444444444444444444444444444444444444444 50\n",
+      "expectedOutput": "12345000000000000000000000000000000000000000000000\n10000000000000000000000000000000000000000000000000\n10000000000000000000000000000000000000000000000000\n99999999999999999999999999999999999999999999999999\n44444444444444444444444444444444444444444444444444\n",
+      "hidden": true
+    },
+    {
+      "input": "10000000000000000000000000000000000000000000000000 39\n1 1\n99999999999999999999999999999999999999999999999999 7\n44444444444444444444444444444444444444444444444444 8\n10000000000000000000000000000000000000000000000001 9\n",
+      "expectedOutput": "100000000000000000000000000000000000000\n1\n78999993\n310666664\n100010000\n",
+      "hidden": true
+    }
+  ],
+  "number-transformation-2019-junior": [
+    {
+      "input": "1 1 10\n9 1 1\n999999999999989 15 1000000000\n100000000000001 12 4\n444444444444444 10 9\n",
+      "expectedOutput": "1\n8\n900000000000000\n100400000000000\n444443000000000\n",
+      "hidden": true
+    },
+    {
+      "input": "9 1 10\n999999999999989 1 9\n100000000000001 1 523\n444444444444444 1 54\n555555555555555 1 10\n",
+      "expectedOutput": "1\n999999999999980\n100000000000004\n444444444444448\n555555555555555\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999989 15 10\n987654321 1 54\n444444444444444 15 523\n555555555555555 15 9\n210 3 4\n",
+      "expectedOutput": "100000000000000\n987654325\n700000000000000\n400000000000000\n600\n",
+      "hidden": true
+    },
+    {
+      "input": "100000000000001 2 10\n444444444444444 7 4\n555555555555555 9 9\n210 3 1000000000\n999999999999999 11 10\n",
+      "expectedOutput": "100000000000000\n444444448000000\n555555400000000\n200\n999910000000000\n",
+      "hidden": true
+    },
+    {
+      "input": "444444444444444 1 9\n555555555555555 1 4\n210 1 5\n999999999999999 1 1000000000\n70368744177664 1 10\n",
+      "expectedOutput": "444444444444443\n555555555555551\n215\n999999999999999\n70368744177664\n",
+      "hidden": true
+    },
+    {
+      "input": "555555555555555 15 1\n210 3 523\n999999999999999 15 1000000000\n70368744177664 14 54\n510510 6 54\n",
+      "expectedOutput": "400000000000000\n500\n900000000000000\n40000000000000\n400000\n",
+      "hidden": true
+    },
+    {
+      "input": "210 3 523\n999999999999999 8 1000000000\n70368744177664 1 5\n510510 6 1000000000\n999983 6 1000000000\n",
+      "expectedOutput": "500\n999999990000000\n70368744177669\n900000\n900000\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999999 1 5\n70368744177664 1 54\n510510 1 54\n999983 1 10\n314159265358979 1 1000000000\n",
+      "expectedOutput": "999999999999994\n70368744177668\n510514\n999983\n314159265358979\n",
+      "hidden": true
+    },
+    {
+      "input": "70368744177664 14 523\n510510 6 1\n999983 6 5\n314159265358979 15 523\n1 1 523\n",
+      "expectedOutput": "50000000000000\n400000\n400000\n600000000000000\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "510510 4 9\n999983 2 523\n314159265358979 6 10\n1 1 10\n9 1 5\n",
+      "expectedOutput": "519000\n999950\n314159265300000\n1\n4\n",
+      "hidden": true
+    },
+    {
+      "input": "999983 1 1000000000\n314159265358979 1 1\n987654321 1 1\n987654321 1 4\n999999999999989 1 10\n",
+      "expectedOutput": "999983\n314159265358978\n987654322\n987654325\n999999999999981\n",
+      "hidden": true
+    },
+    {
+      "input": "314159265358979 15 9\n1 1 1000000000\n9 1 5\n999999999999989 15 1000000000\n100000000000001 15 1000000000\n",
+      "expectedOutput": "200000000000000\n1\n4\n900000000000000\n100000000000000\n",
+      "hidden": true
+    }
+  ],
+  "number-transformation-2019-intermediate": [
+    {
+      "input": "1 1\n9 1\n999999999999989 11\n100000000000001 1\n444444444444444 13\n",
+      "expectedOutput": "1\n9\n888890000000010\n211111111111111\n884000000000000\n",
+      "hidden": true
+    },
+    {
+      "input": "9 1\n999999999999989 1\n100000000000001 1\n444444444444444 1\n111111111 1\n",
+      "expectedOutput": "9\n888888888888879\n211111111111111\n888888888888884\n222222221\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999989 15\n100000000000001 15\n444444444444444 15\n555555555555555 15\n210 3\n",
+      "expectedOutput": "900000000000010\n111111111111110\n400000000000000\n500000000000000\n212\n",
+      "hidden": true
+    },
+    {
+      "input": "100000000000001 1\n444444444444444 11\n111111111 1\n210 1\n999999999999999 14\n",
+      "expectedOutput": "211111111111111\n888840000000000\n222222221\n210\n890000000000000\n",
+      "hidden": true
+    },
+    {
+      "input": "444444444444444 1\n111111111 1\n210 1\n999999999999999 1\n70368744177664 1\n",
+      "expectedOutput": "888888888888884\n222222221\n210\n888888888888889\n14702188511004\n",
+      "hidden": true
+    },
+    {
+      "input": "555555555555555 15\n210 3\n999999999999999 15\n70368744177664 14\n510510 6\n",
+      "expectedOutput": "500000000000000\n212\n900000000000000\n77411033600113\n545045\n",
+      "hidden": true
+    },
+    {
+      "input": "210 3\n999999999999999 5\n70368744177664 11\n510510 5\n999983 3\n",
+      "expectedOutput": "212\n888888888890000\n36962122511002\n611401\n888916\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999999 1\n70368744177664 1\n510510 1\n999983 1\n314159265358979 1\n",
+      "expectedOutput": "888888888888889\n14702188511004\n510510\n222213\n203048154247869\n",
+      "hidden": true
+    },
+    {
+      "input": "70368744177664 14\n510510 6\n999983 6\n314159265358979 15\n1 1\n",
+      "expectedOutput": "77411033600113\n545045\n900016\n321226132025646\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "510510 4\n999983 6\n314159265358979 5\n1 1\n9 1\n",
+      "expectedOutput": "510510\n900016\n869604710853424\n1\n9\n",
+      "hidden": true
+    },
+    {
+      "input": "999983 1\n314159265358979 1\n1 1\n9 1\n999999999999989 1\n",
+      "expectedOutput": "222213\n203048154247869\n1\n9\n888888888888879\n",
+      "hidden": true
+    },
+    {
+      "input": "314159265358979 15\n1 1\n9 1\n999999999999989 15\n100000000000001 15\n",
+      "expectedOutput": "321226132025646\n1\n9\n900000000000010\n111111111111110\n",
+      "hidden": true
+    }
+  ],
+  "number-transformation-2019-senior": [
+    {
+      "input": "1 1\n9 1\n999999999999989 14\n100000000000001 5\n444444444444444 9\n",
+      "expectedOutput": "0\n1\n1810000000000010\n100000000040001\n888888700000000\n",
+      "hidden": true
+    },
+    {
+      "input": "9 1\n999999999999989 1\n100000000000001 1\n444444444444444 1\n555555555555555 1\n",
+      "expectedOutput": "1\n18181818181818181818181818171\n211111111111114\n888888888888887\n10101010101010101010101010107\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999989 15\n100000000000001 15\n444444444444444 15\n555555555555555 15\n210 3\n",
+      "expectedOutput": "100000000000010\n411111111111110\n700000000000000\n700000000000000\n412\n",
+      "hidden": true
+    },
+    {
+      "input": "100000000000001 11\n444444444444444 1\n555555555555555 8\n210 1\n999999999999999 11\n",
+      "expectedOutput": "100040000000001\n888888888888887\n1010101010101070000000\n214\n1818181860000000000\n",
+      "hidden": true
+    },
+    {
+      "input": "444444444444444 1\n555555555555555 1\n210 1\n999999999999999 1\n70368744177664 1\n",
+      "expectedOutput": "888888888888887\n10101010101010101010101010107\n214\n18181818181818181818181818186\n1147101211885111110101\n",
+      "hidden": true
+    },
+    {
+      "input": "555555555555555 15\n210 3\n999999999999999 15\n70368744177664 14\n510510 6\n",
+      "expectedOutput": "700000000000000\n412\n600000000000000\n17411033600113\n745045\n",
+      "hidden": true
+    },
+    {
+      "input": "210 1\n999999999999999 12\n70368744177664 4\n510510 2\n999983 6\n",
+      "expectedOutput": "214\n181818600000000000\n1471013151411118141113\n621671\n100016\n",
+      "hidden": true
+    },
+    {
+      "input": "999999999999999 1\n70368744177664 1\n510510 1\n999983 1\n314159265358979 1\n",
+      "expectedOutput": "18181818181818181818181818186\n1147101211885111110101\n510517\n12121212111\n12101310141811151412141718163\n",
+      "hidden": true
+    },
+    {
+      "input": "70368744177664 14\n510510 6\n999983 6\n314159265358979 15\n1 1\n",
+      "expectedOutput": "17411033600113\n745045\n100016\n321226132025646\n0\n",
+      "hidden": true
+    },
+    {
+      "input": "510510 5\n999983 4\n314159265358979 6\n1 1\n9 1\n",
+      "expectedOutput": "671401\n18181016\n6474812598325646\n0\n1\n",
+      "hidden": true
+    },
+    {
+      "input": "999983 1\n314159265358979 1\n1 1\n9 1\n999999999999989 1\n",
+      "expectedOutput": "12121212111\n12101310141811151412141718163\n0\n1\n18181818181818181818181818171\n",
+      "hidden": true
+    },
+    {
+      "input": "314159265358979 15\n1 1\n9 1\n999999999999989 15\n100000000000001 15\n",
+      "expectedOutput": "321226132025646\n0\n1\n100000000000010\n411111111111110\n",
+      "hidden": true
+    }
+  ],
+  "numeral-triangles-2020-junior": [
+    {
+      "input": "79763 78098 1\n42086 85532 1\n96494 26549 1\n85046 95547 1\n15627 79657 1\n",
+      "expectedOutput": "5\n2\n5\n5\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "71913 46787 2\n35326 33097 2\n45994 34806 2\n61675 37907 2\n58203 84215 2\n",
+      "expectedOutput": "12\n14\n8\n11\n6\n",
+      "hidden": true
+    },
+    {
+      "input": "9 1 174\n9 1 16\n9 1 162\n9 1 89\n9 1 59\n",
+      "expectedOutput": "867\n87\n810\n441\n285\n",
+      "hidden": true
+    },
+    {
+      "input": "74778 71480 102\n50532 9180 163\n29388 76131 172\n51764 53279 131\n1079 18089 4\n",
+      "expectedOutput": "510\n978\n516\n649\n20\n",
+      "hidden": true
+    },
+    {
+      "input": "99999 19989 131\n99999 20044 24\n99999 71035 30\n99999 37879 263\n99999 9768 236\n",
+      "expectedOutput": "1179\n123\n147\n1317\n1413\n",
+      "hidden": true
+    },
+    {
+      "input": "84885 99999 102\n25146 99999 203\n31146 99999 279\n66012 99999 249\n96088 99999 147\n",
+      "expectedOutput": "612\n1827\n1674\n1494\n588\n",
+      "hidden": true
+    },
+    {
+      "input": "34785 2299 282\n70977 31039 237\n82530 13601 245\n26675 51355 119\n20313 8694 275\n",
+      "expectedOutput": "1407\n1182\n1221\n595\n2475\n",
+      "hidden": true
+    },
+    {
+      "input": "78185 62408 268\n13535 51760 278\n92331 5288 8\n92430 20536 103\n98762 54288 128\n",
+      "expectedOutput": "1340\n1387\n36\n516\n640\n",
+      "hidden": true
+    },
+    {
+      "input": "46883 29738 232\n95728 44315 245\n1409 98067 246\n8163 66160 154\n44233 25290 264\n",
+      "expectedOutput": "1160\n1220\n1230\n774\n1848\n",
+      "hidden": true
+    },
+    {
+      "input": "55435 54879 10000\n22812 28115 26\n51118 34379 131\n19192 83563 221\n91618 16858 266\n",
+      "expectedOutput": "40000\n129\n650\n1106\n1328\n",
+      "hidden": true
+    },
+    {
+      "input": "22554 13680 99999\n46865 77208 241\n13197 8142 127\n72104 20178 263\n14142 47328 21\n",
+      "expectedOutput": "899991\n1202\n759\n1315\n126\n",
+      "hidden": true
+    },
+    {
+      "input": "6105 27465 286\n68596 68954 214\n28285 86836 162\n50376 26854 64\n20231 23088 141\n",
+      "expectedOutput": "1713\n1069\n810\n318\n705\n",
+      "hidden": true
+    }
+  ],
+  "numeral-triangles-2020-intermediate": [
+    {
+      "input": "556746 176325 1\n645642 156175 1\n133262 773672 1\n641664 115711 1\n357252 722777 1\n",
+      "expectedOutput": "33\n27\n17\n27\n24\n",
+      "hidden": true
+    },
+    {
+      "input": "723605 100074 2\n625665 57542 2\n670134 436116 2\n713523 157471 2\n144315 265012 2\n",
+      "expectedOutput": "40\n52\n49\n40\n42\n",
+      "hidden": true
+    },
+    {
+      "input": "7 1 92\n7 1 63\n7 1 39\n7 1 41\n7 1 133\n",
+      "expectedOutput": "938\n1043\n450\n483\n1561\n",
+      "hidden": true
+    },
+    {
+      "input": "700452 654224 34\n40644 335146 75\n616007 231506 239\n530033 450266 20\n117347 333234 98\n",
+      "expectedOutput": "1242\n2376\n8539\n644\n3423\n",
+      "hidden": true
+    },
+    {
+      "input": "777777 120515 152\n777777 156725 267\n777777 435165 221\n777777 137551 276\n777777 460027 117\n",
+      "expectedOutput": "5243\n9730\n8161\n11156\n4675\n",
+      "hidden": true
+    },
+    {
+      "input": "760446 777777 218\n452625 777777 205\n335522 777777 275\n445003 777777 199\n210403 777777 211\n",
+      "expectedOutput": "8462\n6831\n9315\n9365\n7829\n",
+      "hidden": true
+    },
+    {
+      "input": "745333 167744 231\n446565 772447 256\n645644 615743 65\n254450 111340 280\n775215 104211 120\n",
+      "expectedOutput": "8414\n11263\n2117\n9268\n4206\n",
+      "hidden": true
+    },
+    {
+      "input": "246532 350011 181\n150552 366006 42\n67363 576003 77\n235317 427671 106\n14416 426111 57\n",
+      "expectedOutput": "7349\n1449\n2737\n3927\n2046\n",
+      "hidden": true
+    },
+    {
+      "input": "364751 6400 175\n430375 670634 186\n351465 752757 217\n263775 76605 286\n113277 500023 125\n",
+      "expectedOutput": "4746\n6986\n8463\n9980\n4599\n",
+      "hidden": true
+    },
+    {
+      "input": "556566 145506 10000\n126074 67472 283\n276652 337063 131\n156656 733630 117\n776233 102545 174\n",
+      "expectedOutput": "546244\n9129\n4813\n4517\n6923\n",
+      "hidden": true
+    },
+    {
+      "input": "333737 410002 262143\n1162 70560 171\n273013 405704 84\n546120 620561 122\n773262 307315 55\n",
+      "expectedOutput": "12702004\n4810\n2982\n4221\n1555\n",
+      "hidden": true
+    },
+    {
+      "input": "710007 413276 170\n205544 106535 114\n703400 523570 1\n266625 20110 120\n556301 150214 46\n",
+      "expectedOutput": "6896\n3901\n14\n3884\n1345\n",
+      "hidden": true
+    }
+  ],
+  "numeral-triangles-2020-senior": [
+    {
+      "input": "FA3D1B 9AB046 1\n4F02E6 DF0E40 1\n1BDE9C 719794 1\n92DE30 51B15F 1\n3A88C1 6F3A3B 1\n",
+      "expectedOutput": "8\nB\nF\nB\nC\n",
+      "hidden": true
+    },
+    {
+      "input": "E02CA7 60F816 2\n62E22C BD3E80 2\n3DCF5 E8FF4F 2\n94AFE9 B7B990 2\n469557 988B47 2\n",
+      "expectedOutput": "3\nD\n9\n8\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "F 1 16\nF 1 167\nF 1 134\nF 1 265\nF 1 147\n",
+      "expectedOutput": "F\n3\nF\nF\n3\n",
+      "hidden": true
+    },
+    {
+      "input": "31C715 92FAB2 176\nB37C95 ABCE76 120\n661434 55591E 136\n607FF7 CCC9B0 150\n93870C 7D6B7B 263\n",
+      "expectedOutput": "4\nF\n9\nF\nC\n",
+      "hidden": true
+    },
+    {
+      "input": "FFFFFF ED16FD 246\nFFFFFF 42440 67\nFFFFFF 2BC73 145\nFFFFFF E99B32 130\nFFFFFF 8C94EB 160\n",
+      "expectedOutput": "F\nC\nF\nF\nF\n",
+      "hidden": true
+    },
+    {
+      "input": "73DF5 FFFFFF 45\nD6527A FFFFFF 115\n75DD0E FFFFFF 252\n73DFE4 FFFFFF 236\nBD24FE FFFFFF 235\n",
+      "expectedOutput": "F\nA\n9\n1\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "B6DFBD A2AB2B 163\n8EF7DC AFCD6E 37\n7FE68C E2F3DE 194\nFA086 8F7A96 55\nA6B440 BF3050 74\n",
+      "expectedOutput": "9\n3\nD\nF\nA\n",
+      "hidden": true
+    },
+    {
+      "input": "FDBB2D 477F78 257\n28D86F E56CAC 235\nFBE672 EB5395 192\n1DDD17 CE28CC 232\n3043D1 F0BCCD 107\n",
+      "expectedOutput": "4\nA\n6\n6\nC\n",
+      "hidden": true
+    },
+    {
+      "input": "D1AE1C 6D6DD7 26\n744464 3D50DA 207\n618B40 E1FA8D 189\nE08460 F0829F 136\n44050F B637AD 5\n",
+      "expectedOutput": "6\nF\nF\n2\n5\n",
+      "hidden": true
+    },
+    {
+      "input": "75FD7B E09471 10000\nA2EA0B AB4067 58\n6235BF 806086 36\n52E90 E41CFA 283\n25F15C 1104DD 271\n",
+      "expectedOutput": "A\n2\nC\nC\nA\n",
+      "hidden": true
+    },
+    {
+      "input": "84339D E2AF12 16777215\n9B5E15 D62739 140\n4E76A9 1FB35A 130\nFCD85F E15333 199\nB0A98 1A66DC 146\n",
+      "expectedOutput": "F\nF\n5\n2\nD\n",
+      "hidden": true
+    },
+    {
+      "input": "9CEE6C 9A1158 222\nEC45A6 A874EA 118\n6CE5F7 93B143 43\nABA597 96DFF9 195\n1E5BC7 9B409E 49\n",
+      "expectedOutput": "6\n9\nE\nF\n5\n",
+      "hidden": true
+    }
+  ],
+  "fibonacci-clock-2021-junior": [
+    {
+      "input": "W W W W W\nR W W W W\nW R W W W\nW W W W B\nR W G G B\n",
+      "expectedOutput": "00:00\n01:00\n01:00\n05:25\n06:50\n",
+      "hidden": true
+    },
+    {
+      "input": "R W W W W\nW R W W W\nW W W W B\nR B W W W\nB B G W R\n",
+      "expectedOutput": "01:00\n01:00\n05:25\n02:05\n07:20\n",
+      "hidden": true
+    },
+    {
+      "input": "W R W W W\nW W W W B\nB R R G B\nR B R R W\nG B R B W\n",
+      "expectedOutput": "01:00\n05:25\n09:45\n07:05\n06:25\n",
+      "hidden": true
+    },
+    {
+      "input": "W W W W B\nR G B B W\nR R W W G\nB G B W R\nB W B B B\n",
+      "expectedOutput": "05:25\n06:30\n02:25\n08:20\n11:55\n",
+      "hidden": true
+    },
+    {
+      "input": "B R W B R\nW B G R B\nW W G B R\nW G G B G\nG R R W G\n",
+      "expectedOutput": "10:20\n09:40\n08:25\n03:55\n03:30\n",
+      "hidden": true
+    },
+    {
+      "input": "W B R R R\nG W W G B\nW G R R W\nB B R W G\nW G R G R\n",
+      "expectedOutput": "11:05\n05:45\n05:05\n04:35\n07:20\n",
+      "hidden": true
+    },
+    {
+      "input": "B G W R G\nW W G W R\nB W W W W\nG W R B B\nW B B B B\n",
+      "expectedOutput": "04:35\n05:10\n01:05\n10:45\n11:55\n",
+      "hidden": true
+    },
+    {
+      "input": "B W G W G\nG W G B R\nR G B R R\nW B B B B\nR W G R R\n",
+      "expectedOutput": "01:40\n08:30\n11:15\n11:55\n09:10\n",
+      "hidden": true
+    },
+    {
+      "input": "W G W R R\nB W W B B\nW B B B B\nB R W G G\nW W W W W\n",
+      "expectedOutput": "08:05\n09:45\n11:55\n02:45\n00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "B B W B W\nW B B B B\nW B G G R\nW W W W W\nR W W W W\n",
+      "expectedOutput": "05:25\n11:55\n06:30\n00:00\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "W B B B B\nR B B G R\nW W W W W\nR W W W W\nW R W W W\n",
+      "expectedOutput": "11:55\n09:30\n00:00\n01:00\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "G W W B R\nW W W W W\nR W W W W\nW R W W W\nW W W W B\n",
+      "expectedOutput": "08:20\n00:00\n01:00\n01:00\n05:25\n",
+      "hidden": true
+    }
+  ],
+  "fibonacci-clock-2021-intermediate": [
+    {
+      "input": "W W W W W\nR W W W W\nW R W W W\nW W W W B\nB B B B B\n",
+      "expectedOutput": "00:00\n01:00\n01:00\n05:25\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "R W W W W\nW R W W W\nW W W W B\nB B B B B\nG G G G G\n",
+      "expectedOutput": "01:00\n01:00\n05:25\n01:00\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "W R W W W\nW W W W B\nB B B B B\nG G G G G\nB W G R G\n",
+      "expectedOutput": "01:00\n05:25\n01:00\n01:00\n04:40\n",
+      "hidden": true
+    },
+    {
+      "input": "W W W W B\nB B B B B\nG G G G G\nR R G W W\nR R R R R\n",
+      "expectedOutput": "05:25\n01:00\n01:00\n02:10\n00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "B B B B B\nG G G G G\nW W W G B\nR R R R R\nG W R B R\n",
+      "expectedOutput": "01:00\n01:00\n05:40\n00:00\n10:20\n",
+      "hidden": true
+    },
+    {
+      "input": "G G G G G\nG W B R G\nR R R R R\nR R B W W\nG G W R B\n",
+      "expectedOutput": "01:00\n05:40\n00:00\n04:10\n08:35\n",
+      "hidden": true
+    },
+    {
+      "input": "G B B R R\nR R R R R\nW R G B W\nW B G R G\nW B B B B\n",
+      "expectedOutput": "11:20\n00:00\n04:25\n04:40\n11:55\n",
+      "hidden": true
+    },
+    {
+      "input": "R R R R R\nW G G B W\nW W W G G\nW B B B B\nG B W G G\n",
+      "expectedOutput": "00:00\n03:30\n00:40\n11:55\n01:50\n",
+      "hidden": true
+    },
+    {
+      "input": "G B G B G\nB W G G G\nW B B B B\nR W G W R\nW W W W W\n",
+      "expectedOutput": "05:00\n01:55\n11:55\n06:10\n00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "B W W B R\nW B B B B\nB B R R R\nW W W W W\nR W W W W\n",
+      "expectedOutput": "09:20\n11:55\n00:10\n00:00\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "W B B B B\nG R B G R\nW W W W W\nR W W W W\nW R W W W\n",
+      "expectedOutput": "11:55\n08:30\n00:00\n01:00\n01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "G R G G G\nW W W W W\nR W W W W\nW R W W W\nW W W W B\n",
+      "expectedOutput": "01:55\n00:00\n01:00\n01:00\n05:25\n",
+      "hidden": true
+    }
+  ],
+  "fibonacci-clock-2021-senior": [
+    {
+      "input": "WWWWW\nRWWWW\nWRWWW\nWWWWB\nBBBBB\n",
+      "expectedOutput": "00:00:00\n01:00:00\n01:00:00\n00:00:25\n00:01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "RWWWW\nWRWWW\nWWWWB\nBBBBB\nGGGGG\n",
+      "expectedOutput": "01:00:00\n01:00:00\n00:00:25\n00:01:00\n01:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "WRWWW\nWWWWB\nBBBBB\nGGGGG\nCCCCC\n",
+      "expectedOutput": "01:00:00\n00:00:25\n00:01:00\n01:00:00\n01:01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "WWWWB\nBBBBB\nGGGGG\nCCCCC\nRRRRR\n",
+      "expectedOutput": "00:00:25\n00:01:00\n01:00:00\n01:01:00\n00:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "BBBBB\nGGGGG\nCCCCC\nRRRRR\nMMMMM\n",
+      "expectedOutput": "00:01:00\n01:00:00\n01:01:00\n00:00:00\n00:01:00\n",
+      "hidden": true
+    },
+    {
+      "input": "GGGGG\nCCCCC\nRRRRR\nMMMMM\nYYYYY\n",
+      "expectedOutput": "01:00:00\n01:01:00\n00:00:00\n00:01:00\n01:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "CCCCC\nRRRRR\nMMMMM\nYYYYY\nWBBBB\n",
+      "expectedOutput": "01:01:00\n00:00:00\n00:01:00\n01:00:00\n00:00:55\n",
+      "hidden": true
+    },
+    {
+      "input": "RRRRR\nMMMMM\nYYYYY\nWBBBB\nRCMGB\n",
+      "expectedOutput": "00:00:00\n00:01:00\n01:00:00\n00:00:55\n03:20:40\n",
+      "hidden": true
+    },
+    {
+      "input": "MMMMM\nYYYYY\nWBBBB\nRCMGB\nWWWWW\n",
+      "expectedOutput": "00:01:00\n01:00:00\n00:00:55\n03:20:40\n00:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "YYYYY\nWBBBB\nRCMGB\nWWWWW\nRWWWW\n",
+      "expectedOutput": "01:00:00\n00:00:55\n03:20:40\n00:00:00\n01:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "WBBBB\nRCMGB\nWWWWW\nRWWWW\nWRWWW\n",
+      "expectedOutput": "00:00:55\n03:20:40\n00:00:00\n01:00:00\n01:00:00\n",
+      "hidden": true
+    },
+    {
+      "input": "RCMGB\nWWWWW\nRWWWW\nWRWWW\nWWWWB\n",
+      "expectedOutput": "03:20:40\n00:00:00\n01:00:00\n01:00:00\n00:00:25\n",
+      "hidden": true
+    }
+  ],
+  "next-base-2022-junior": [
+    {
+      "input": "1 7 54131\n",
+      "expectedOutput": "14\n",
+      "hidden": true
+    },
+    {
+      "input": "52 2 11111111\n",
+      "expectedOutput": "195\n",
+      "hidden": true
+    },
+    {
+      "input": "163 9 65587\n",
+      "expectedOutput": "4160\n",
+      "hidden": true
+    },
+    {
+      "input": "151 3 2222222222222222\n",
+      "expectedOutput": "827\n",
+      "hidden": true
+    },
+    {
+      "input": "53 9 8888888888888888\n",
+      "expectedOutput": "506\n",
+      "hidden": true
+    },
+    {
+      "input": "175 9 74262\n",
+      "expectedOutput": "3924\n",
+      "hidden": true
+    },
+    {
+      "input": "167 4 13123\n",
+      "expectedOutput": "1257\n",
+      "hidden": true
+    },
+    {
+      "input": "27 8 71\n",
+      "expectedOutput": "175\n",
+      "hidden": true
+    },
+    {
+      "input": "161 5 20133\n",
+      "expectedOutput": "1369\n",
+      "hidden": true
+    },
+    {
+      "input": "10000 5 2220\n",
+      "expectedOutput": "111240\n",
+      "hidden": true
+    },
+    {
+      "input": "83 5 444\n",
+      "expectedOutput": "503\n",
+      "hidden": true
+    },
+    {
+      "input": "100000 9 8888888888888888\n",
+      "expectedOutput": "2079272\n",
+      "hidden": true
+    }
+  ],
+  "next-base-2022-intermediate": [
+    {
+      "input": "1 6 33015\n",
+      "expectedOutput": "1\n",
+      "hidden": true
+    },
+    {
+      "input": "169 2 1111\n",
+      "expectedOutput": "632\n",
+      "hidden": true
+    },
+    {
+      "input": "157 9 12630\n",
+      "expectedOutput": "57\n",
+      "hidden": true
+    },
+    {
+      "input": "145 4 3333333333333333\n",
+      "expectedOutput": "120\n",
+      "hidden": true
+    },
+    {
+      "input": "195 6 5555555555555555\n",
+      "expectedOutput": "92\n",
+      "hidden": true
+    },
+    {
+      "input": "112 7 42050\n",
+      "expectedOutput": "37\n",
+      "hidden": true
+    },
+    {
+      "input": "99 5 22414\n",
+      "expectedOutput": "56\n",
+      "hidden": true
+    },
+    {
+      "input": "48 4 22103\n",
+      "expectedOutput": "43\n",
+      "hidden": true
+    },
+    {
+      "input": "181 4 22133\n",
+      "expectedOutput": "287\n",
+      "hidden": true
+    },
+    {
+      "input": "10000 9 8504\n",
+      "expectedOutput": "4401\n",
+      "hidden": true
+    },
+    {
+      "input": "115 5 4444\n",
+      "expectedOutput": "60\n",
+      "hidden": true
+    },
+    {
+      "input": "100000 5 4444444444444444\n",
+      "expectedOutput": "134386\n",
+      "hidden": true
+    }
+  ],
+  "next-base-2022-senior": [
+    {
+      "input": "1 9 32330\n",
+      "expectedOutput": "3\n",
+      "hidden": true
+    },
+    {
+      "input": "174 2 11111\n",
+      "expectedOutput": "677\n",
+      "hidden": true
+    },
+    {
+      "input": "173 16 5E511\n",
+      "expectedOutput": "373\n",
+      "hidden": true
+    },
+    {
+      "input": "48 10 9999999999999999\n",
+      "expectedOutput": "673\n",
+      "hidden": true
+    },
+    {
+      "input": "187 5 4444444444444444\n",
+      "expectedOutput": "2485\n",
+      "hidden": true
+    },
+    {
+      "input": "153 15 8A300\n",
+      "expectedOutput": "178\n",
+      "hidden": true
+    },
+    {
+      "input": "92 6 15241\n",
+      "expectedOutput": "134\n",
+      "hidden": true
+    },
+    {
+      "input": "184 10 21661\n",
+      "expectedOutput": "223\n",
+      "hidden": true
+    },
+    {
+      "input": "53 2 1110\n",
+      "expectedOutput": "172\n",
+      "hidden": true
+    },
+    {
+      "input": "10000 3 11201\n",
+      "expectedOutput": "30782\n",
+      "hidden": true
+    },
+    {
+      "input": "167 3 222\n",
+      "expectedOutput": "303\n",
+      "hidden": true
+    },
+    {
+      "input": "100000 3 2222222222222222\n",
+      "expectedOutput": "900858\n",
+      "hidden": true
+    }
+  ],
+  "acsl-tiles-2023-intermediate": [
+    {
+      "input": "1234\n12\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n99\n",
+      "expectedOutput": "18\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n11 23 34 15\n",
+      "expectedOutput": "12\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n11 22 33 12\n",
+      "expectedOutput": "10\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n21 32 43 14\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n49 98 87 76\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n12 12 12 12\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n12 23 34 45\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "6854\n77 85 39 56 74 56 64 21 86 36 74 26 68 54 77 24 12 44 14 77 71 82 43 94 92 83 88 92 18 29 61 21 38 85 69 13 84 33 46 29 12 12 25 88 91 94 94 44 93 85\n",
+      "expectedOutput": "223\n",
+      "hidden": true
+    },
+    {
+      "input": "9538\n34 45 94 52 53 45 77 66 16 97 96 78 68 86\n",
+      "expectedOutput": "48\n",
+      "hidden": true
+    },
+    {
+      "input": "7386\n56 57 33 25 91 35 18 52 23 77 79 43 38 38 41\n",
+      "expectedOutput": "69\n",
+      "hidden": true
+    },
+    {
+      "input": "7329\n43 63 37 42 98 91 69 41 66 44 55 55 31 21 56 29\n",
+      "expectedOutput": "90\n",
+      "hidden": true
+    }
+  ],
+  "acsl-tiles-2023-senior": [
+    {
+      "input": "1234\n12\n99\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n99\n\n",
+      "expectedOutput": "18\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n11 23 34 15\n12\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n11 22 33\n99 98 12\n",
+      "expectedOutput": "41\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n21 32 43 14\n\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1234\n49 98 87 76\n\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "1111\n12 12 12 12\n\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "0\n0\n99\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "9999\n48 79 52 72 44 68 15 7 15 13 8 13 12 99 68 13 19 9 47 7 59 37 61 47 49 96 16 68 90 55 74 77 31 60 32 76 20 90 75 83 21 21 99 33 89 91 61 95 91 28\n24 84 76 88 65 55 38 41 70 51 99 77 2 2 11 81 69 64 99 75 79 56 15 53 70 66 32 36 38 46 57 78 36 27 75 1 80 58 88 4 60 94 2 21 69 30 3 5 97 0\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "100\n99 88 77\n66 55 44\n",
+      "expectedOutput": "78\n",
+      "hidden": true
+    },
+    {
+      "input": "0\n1 2 3 4\n0 5 6\n",
+      "expectedOutput": "0\n",
+      "hidden": true
+    },
+    {
+      "input": "5923\n56 27 73 34 99 45 32 17 64 57 18 11\n36 92 22 50 82\n",
+      "expectedOutput": "16\n",
+      "hidden": true
+    }
+  ],
+  "rings-2024-junior": [
+    {
+      "input": "A\nR\n",
+      "expectedOutput": "1 1\n",
+      "hidden": true
+    },
+    {
+      "input": "BG\nOB\n",
+      "expectedOutput": "9 9\n",
+      "hidden": true
+    },
+    {
+      "input": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n",
+      "expectedOutput": "600 100\n",
+      "hidden": true
+    },
+    {
+      "input": "ARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARAR\nRARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARARA\n",
+      "expectedOutput": "100 100\n",
+      "hidden": true
+    },
+    {
+      "input": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\nBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\n",
+      "expectedOutput": "600 594\n",
+      "hidden": true
+    },
+    {
+      "input": "BORGGOGG\nGORROGBGRABOOORBBRRGOGARBBGABARGGRRAAORGBRGGARRORGOBGORBAGBGOBOBROGABOGAROARAGOOARAAGOABRGAGAORGA\n",
+      "expectedOutput": "254 25\n",
+      "hidden": true
+    },
+    {
+      "input": "BGB\nGOBBAOOBOBRABGRBOORBGRORAGOARGGBGOBROROBRBROGAAR\n",
+      "expectedOutput": "143 15\n",
+      "hidden": true
+    },
+    {
+      "input": "ORRARRBGOROAARABRAOGRABOOABORBBOORGORBGORRGBGRBGGRGRRAOR\nBOROGGBOGGBRRGBOOAOGORAGORAGRBAOGRAAOOBBGOROAGRORBAAGBRAOROAAORBGOGBAORRRAROABGGRRRBGARRAGBAGRGB\n",
+      "expectedOutput": "251 143\n",
+      "hidden": true
+    },
+    {
+      "input": "GRGRAORBRRGABBOROOAAOOGROOBGOGORG\nGABOAORARAABGGROAORGGGGAORRABOABOAORBBOOABAGBAAGGOORROOOAAAGOBRAOABBARBARAOGRBGGBGRRGGAGGARRR\n",
+      "expectedOutput": "237 87\n",
+      "hidden": true
+    },
+    {
+      "input": "GRRGOABOAAOAG\nRGGBBGBGBOGBBORAAOBBOBOGBOOBORRRABORROBROBBBROROROGAGAOORBGABORGRRBROGBAORGGBBABBGOB\n",
+      "expectedOutput": "277 30\n",
+      "hidden": true
+    },
+    {
+      "input": "BORAGABRABGAORBRAOBRGAGRRGARAOBRAOBAOBABGOGOBROOOBOGABGRBGRGBRBBBOA\nOBOGOBOBRBARRGRGARGBBOGBAROABGARAOBGAAOABOBARORORAAARGRAORRRBBOBBBG\n",
+      "expectedOutput": "200 191\n",
+      "hidden": true
+    },
+    {
+      "input": "RA\nBOROOGBBAOGORGBBBBOBGGRGAOGGRBRBBRGBRAAOBAGOGBRAGOBGRRGGRBAGBRRGGBGOBABRGGROAAGBRRBOAROGABOAB\n",
+      "expectedOutput": "289 2\n",
+      "hidden": true
+    }
+  ],
+  "rings-2024-intermediate": [
+    {
+      "input": "AO\nB\nOB\n",
+      "expectedOutput": "10 6 5\n",
+      "hidden": true
+    },
+    {
+      "input": "O R R\nGR G OB\nGR AO G\n",
+      "expectedOutput": "18 13 5\n",
+      "hidden": true
+    },
+    {
+      "input": "AO A BG A B R B B G B R R AO GR AO BG R OB O O A G BG OB BG B R G BG BG R R O\nOB OB BG AO GR OB OB G BG A A B G O A OB R B A O OB O AO B A OB OB OB BG G A B BG\nAO BG A BG OB OB OB B O GR R AO B A BG G BG GR GR GR G BG B B OB BG A R A GR B B OB\n",
+      "expectedOutput": "196 194 158\n",
+      "hidden": true
+    },
+    {
+      "input": "B BG GR GR GR OB R\nOB BG BG BG OB R GR\nA BG GR OB GR R R\n",
+      "expectedOutput": "56 42 33\n",
+      "hidden": true
+    },
+    {
+      "input": "BG AO AO OB B AO G BG O\nGR B A AO R BG BG A A\nBG B B AO AO B GR OB O\n",
+      "expectedOutput": "57 56 40\n",
+      "hidden": true
+    },
+    {
+      "input": "O A AO OB O O A B O GR G\nR A OB G O BG R A GR OB OB\nR A G B AO B O A BG O G\n",
+      "expectedOutput": "55 43 42\n",
+      "hidden": true
+    },
+    {
+      "input": "AO AO O O GR GR G O G G B G GR\nG AO O GR OB OB BG G R O GR OB GR\nBG GR A BG O G OB AO G R O AO A\n",
+      "expectedOutput": "73 60 52\n",
+      "hidden": true
+    },
+    {
+      "input": "O OB O O AO GR BG R B AO BG O GR BG BG\nAO OB OB A G B GR OB GR BG B BG A G GR\nB OB R R BG G A R AO G BG A AO OB A\n",
+      "expectedOutput": "90 89 68\n",
+      "hidden": true
+    },
+    {
+      "input": "O OB AO R B AO B G R B G G BG O AO A A\nB O G G OB OB G O BG B B G R B OB GR BG\nO O O G O B GR G A O GR B AO BG AO G G\n",
+      "expectedOutput": "98 72 70\n",
+      "hidden": true
+    },
+    {
+      "input": "A O AO O AO AO BG A GR OB BG AO GR OB AO B A GR OB\nB AO GR R G B G R G O BG AO R R R B O O O\nR R B OB GR A G B GR AO R AO A AO A A O OB AO\n",
+      "expectedOutput": "105 75 69\n",
+      "hidden": true
+    },
+    {
+      "input": "OB GR R OB B AO GR G OB BG GR O O GR OB GR A G BG O GR\nR G AO BG A OB BG GR O G O GR BG O B GR R AO A A BG\nGR GR GR AO B R BG BG BG R GR OB GR R R A OB B R O BG\n",
+      "expectedOutput": "118 111 101\n",
+      "hidden": true
+    },
+    {
+      "input": "B B AO G G O GR GR A A R AO AO O B BG B A G O G G B\nOB AO AO AO BG BG BG AO OB OB AO O O O B AO B OB A OB GR O R\nGR BG B O A BG AO B AO O A O BG OB B GR O G GR A GR O O\n",
+      "expectedOutput": "141 112 93\n",
+      "hidden": true
+    }
+  ],
+  "rings-2024-senior": [
+    {
+      "input": "1\nA\n",
+      "expectedOutput": "1-1\n",
+      "hidden": true
+    },
+    {
+      "input": "2\nGB+ G BO+ A RG GR R O+ A O\nRG RG OA+ B OA G GR BG OA+ OA B+ GB+ GR BG+ GR BG+ O+ BG\n",
+      "expectedOutput": "2-127 1-48\n",
+      "hidden": true
+    },
+    {
+      "input": "3\nAO O O GR AO A B\nA R B+ BO+ GR OA+ R O+ R+ BG GR+ RG R+ BG AO AO G OB O\nOA OA AO RG A B R BG+\n",
+      "expectedOutput": "2-104 3-40 1-28\n",
+      "hidden": true
+    },
+    {
+      "input": "4\nAO AO+ GR R O BG+ O+ OA+ BO+\nG AO B R OB B+ GR+ GB+ R OB+ BG G+ R BG OB+ B A GB B+ GB+\nGR\nG OA+ BG O+ GB O+ O R+ AO+ OB O+ AO\n",
+      "expectedOutput": "2-140 4-73 1-57 3-5\n",
+      "hidden": true
+    },
+    {
+      "input": "5\nAO\nBG AO+ BO+ G R OB+ O RG+ B RG+ AO B G B RG BG BO BO+ AO OB+\nRG A+\nO+ BG+ RG OB O AO B B+ A BG+ GB\nA+ OA BO GB GB G+ B OA+ AO OB+ GR+ OA+ RG\n",
+      "expectedOutput": "2-142 5-92 4-77 3-8 1-5\n",
+      "hidden": true
+    },
+    {
+      "input": "6\nOA BO+ R+ A G B+ A O RG+ GR+ GR R R\nOB G A+ AO G OB AO+ OA B G RG+ A R RG+ OB OB+ AO+ BO+ GR\nRG OB+ GB BG RG+ BO OB+ GB\nBO+ O+ R G+\nAO+ RG B+ OB+ RG+ AO RG BO\nOA GR BO AO+ BO+ BO+ GB\n",
+      "expectedOutput": "2-117 3-76 6-61 5-59 1-57 4-23\n",
+      "hidden": true
+    },
+    {
+      "input": "7\nBO BO\nGR+ BO R\nB+ A BG B+ GB+ OB+ R+ B G OA O+ OA OA+ BG+ OA RG BG GB\nRG+ OA+ AO O BO O+ GB+ OA B BO O AO O+ G OB+\nAO+\nOA+ R+ AO OB AO OA OA+ GR GR GR OB GR G BO\nOA+ RG+ BG R+ BG GR+ OB+ BO+ BG RG GB+ B AO OB OA\n",
+      "expectedOutput": "3-127 7-121 4-98 6-85 1-20 2-18 5-7\n",
+      "hidden": true
+    },
+    {
+      "input": "8\nOB AO O G B+ G\nOB+ G BG+ RG RG O A+ RG B OB B+ AO+\nBO GR G GR R BO OA B B+ RG OA+\nBO BO+\nA GB B B BG+ OA B AO+ GR+ AO GB+ OA+ AO+ GR\nG+ GR+ G+\nR+ G R+ BO+ AO BG GB OB+ O+ GR A+ A OA+ O GB GR GR+ BG AO\nR BG G+ OA+ BO+ RG R O GR+ A+ GB GB A OB GB\n",
+      "expectedOutput": "7-119 5-96 8-95 2-79 3-65 1-32 4-22 6-17\n",
+      "hidden": true
+    },
+    {
+      "input": "3\nB\nO O\nA R A R A R\n",
+      "expectedOutput": "1-6 2-6 3-6\n",
+      "hidden": true
+    },
+    {
+      "input": "2\nBO AO+ RG B GR AO OA+ A+ A+ BG BG AO GB GR+ O+ O\nBO RG R BO+\n",
+      "expectedOutput": "1-101 2-28\n",
+      "hidden": true
+    },
+    {
+      "input": "100\nRG+ BO+ GB+ OB BG+ B OB GB+ AO BG+ BG B+ R+ O+ BG GR\nOB R+ G GB A RG G+ OA+ AO+ GB+ G+ BG O B+ B BG+ G\nA B GB GR O RG+ BG B O+ O OA OA GB B A\nBO OB RG R+\nB+ OA+ G A+ OA+ BG+ R+ BO\nBG+ O+ R B+ G+ AO B+ GB BO+ BO OB+ GR+ GR O B OB A+\nB+ G RG OB+ OB+ OB OB+ BO+ B OB O G B+\nOB+\nGR BO+ OA+ O B RG B+ BG BG AO BO+ GB+ B O BO\nBO+ G RG+ R G AO+ BG A AO A+ G\nOB R AO+ GB RG+ R OB+ BO B+ RG+\nRG A GB AO+ A R OB RG O+ OB OB+ RG+ GR+ B+ O+ G OA GB OA+ G+\nG\nOA RG+ GR\nA G+ OA RG R BO OA+\nAO+ GB BG+ B\nA RG OB B O GB O+ G A AO B BO+ AO+ BG+ AO GB+ BG+ GB+ RG G\nB+ OB+ RG O+\nGR R A+ BG+ BO+ GB R+ G AO G+ A GR\nB G+ OA+ O+ A AO+ RG\nRG+ OB OB+ GR+ G\nOA OB+ GB RG BG+ RG\nR+ OA OB+ OB+ GB GB B\nAO+\nB+ R OA+ GR BG+ RG+ GB+ O G A+ A OB\nGB+ GB GB GR+\nA G GB G+ AO+\nR GR G+ A+ OB+ OA+\nGR AO GB GR R GB OA+ G G+ B OA BO GB+\nBO+ OA B B+ BG+ R+ RG R+ R+ AO OA GR+ BG A+ G+\nR+ G OB+ G GB G+ R+ OA+ BG GR+ A+ AO+ R+ A+ OA GR+\nB GR O BG BO RG BG+ B GB OA G RG+ BG+ B RG R GR+ RG+ A\nA+ A RG\nOB O GB+ G BO+ G BG RG+ AO+ G\nGR+ G A+ B GR+ B BG RG+ O OA RG+ A+ GR B+ AO OB RG\nBG B A+ BG A GB+ BO RG O OB+ BG B+\nA R+ GR+ A OB GR+ BG RG\nOB+ BG+ R+ B GR RG+ RG OA G O OB+ B\nBG+ GB GB R G BO+ GR BO+\nG+ B R+ G G OA BO GR+\nBG GR G B GB BO+ BO+ B B+ G\nB+ GR A G AO BG RG+ GR OB BO+ BG GB\nOB OA+ A+ A+ OA R+ O GB RG+ OB O\nOA+ O+ AO AO+\nGB GR OB+ BG GB A+ BO\nAO BO OA+ BO O BO R+ GR+\nBG+ B+ OA OA G\nGB BO AO+ AO BO+ R B+ BO\nGR+ A GR+ G AO A+ GR OA+ OB BO GB+ BO AO O+ G A G+\nOB+ BO BO AO A O+ BO GB A AO AO AO O+ R+ O+ O\nRG RG B A A R+ B+ RG OA RG B+ RG+ A GR\nB GB+ A+ OB R\nBO+ OA GB AO+ OB+ G AO+\nGR A GR BO OA AO+ OA R+ BG G+ BG+ G OA G BG OB OA+\nA+ R BG OB BG AO+ GB B+ GR G AO+ R AO+ A+ O AO BG O+\nR BG RG B+ AO OA+ GR+ OB R GR+ GB BO OA GB\nG BG OA+ OA+ GR+ GR OA GR OB+ BO RG+ B+ O GB+\nG O O+ GR AO OA AO R AO+ AO\nGB+ A GR+ A+ BG G G BO+ GR RG+ R+ B+ BG+ R+\nGR BG RG+\nO OB\nBO GR+ OA BO+ GR+ BG\nAO GR O+ O+\nRG+ BG O+ AO GB BG A O O+ RG GB RG AO+ RG BO OA\nG+ AO+ A A+ BG+ BG+\nOB AO G RG GR OA GR AO RG+ G OB RG+ AO RG\nAO+ OA OB G G+ B GR AO RG AO\nB\nBO B A+ GR+ RG AO OB+\nR G B GR+ BG OA B AO AO OA O O\nOB G A+ A G BG BG+ A+ AO+ O OA+ R B GR B+ BG+ OB+ OB BG\nR+ B R GB BG+ GR+ R GB GB+ OA+ OB+ A\nO G BO+ B G\nRG GR OA GB R+ BG GB+ B AO BO AO+ GR+ BG+ OB A R\nB BG BG GB OA+ AO R O G+ OB AO BG+ OA G+ G G+\nA+ GR\nG AO+ R A G+ G GB GB+ RG R A GR B+ GR RG OA\nG OB+ GB+\nBG B+ RG A GB R RG O+ GR+ GR+\nG+ O AO AO R O AO+ A+ BO R+ OA+ BG GR R\nGR+ RG+ O B GR+ GR GR+ B+\nO OA+ G O GB+ RG GR OA A BO+ BO+ A B B AO+\nO+\nO+ GR+\nG+ G RG G+ A B O O BO+ G+ G G+ GB+ RG+\nO GR+ GR+ BO GR OB+ BG BG R+ GB GR+ BG\nBG B GB OB+ GB RG A RG\nR GR A+ RG+ OB GR+ BG O+ GB AO GR OA OA+ RG\nO RG+ G BG GR+ G B+ GR+\nOB GB+ GB+ OB+ GB GB BG B+ OA+ G AO\nO+ G AO+ B+ BO OB+ AO G OB+ BG+ AO AO GR+ RG+ OA GB OB+ O\nBG G BO OB+ OB AO A RG OA OB A OB+ RG GR\nOA+ R+ AO AO+ GR OA B+ OB AO+ OB+ OB O+ G A+ O AO BO+ GB+ O+ R+\nG+ RG R+ A R B A OB A+ B A GB A GR R+ R+ RG A+ OB+\nR BO GR GR+ G+ BG+ OB G+ GB B+ AO+ R+\nBO+ GR+ BO RG+\nOB BO OB+ O AO+\nB+ AO BO+ A BO GB GR+ O+ BG R+ RG+ OB RG OB+ BG R\nOB OB B GB+ OB BG R G\nRG OA+ BO BO+ RG GR+ GR+ GR OB A BO BG+ R+ OB+ BO+ B\n",
+      "expectedOutput": "1-139 17-135 91-131 93-130 71-126 100-124 12-124 6-122 32-121 98-116 9-114 2-110 74-109 55-108 54-106 7-104 64-103 75-102 57-101 35-100 90-99 49-99 56-96 50-95 86-94 92-94 30-92 31-91 36-90 59-89 82-88 42-86 88-85 29-84 94-84 95-83 3-83 72-82 66-80 38-79 77-77 41-75 85-75 11-73 25-72 34-70 80-68 39-65 19-65 51-65 43-64 48-63 99-62 45-60 87-59 79-59 70-59 23-58 53-56 67-56 46-55 10-55 5-53 62-51 81-50 22-49 69-48 89-48 37-44 58-44 97-42 40-42 65-40 26-39 21-39 96-36 20-36 16-35 15-34 47-33 28-33 52-32 18-30 4-28 78-27 73-27 27-26 44-24 60-22 63-20 14-17 61-13 8-12 84-12 33-9 76-8 24-7 68-6 83-5 13-3\n",
+      "hidden": true
+    },
+    {
+      "input": "4\nBO AO OA+ AO G OB OA B+ B BG R+ O OB G GB+ GB GR+ RG AO+ RG G+ GB+ BO R+ BG OB O AO+ OB GR+ O+ AO BG+ B+ G RG BO+ BG+ G BG+ R\nR+ GR A+ GR GB+ GR O+ B B+ R+ AO BO+ GR BO+ AO BG+ BO RG+ B BG B RG A+ GR+ GB BO OA BG+ GB BO BO BO+ RG BO AO+ AO GB R+ GR+ OA+ OB+ A AO+ G OB GR O OA+ R+ G+ B+ BO BO+ GB BO B BG OA+ R BG+ A B G O BO GB+ BG+ OA+ BO GR+ A+ OB B OB+ GR+ G+ GR G\nGB+ O O GB R+ R+ GB R+ G OA+ AO B OB GB BG+ OA+ OB G+ BO+ OB RG RG BO B GB+ O RG BO+ OB+ OB G+ O A O B OB G OB B O+ OA AO+ BO GB+ GB G BG R A A+ AO BG RG+ BO GB+ BO BO+ RG B+ GB O O G BG+ OB+ OA AO+ AO+ BG B G GR+ R+ GB A+ GR OA+ GB RG+ A G+ GR BO+ AO BO+ BO+ A+ RG OB OA+ OA AO A GR+ A+ AO+ RG O OA BO+\nOA G+ B OA+ RG+ GB BO BO R OA+ OA BO+ BG+ G+ OB+ GR G+ RG O R G GR GR A B OA R B GB+ BG BO R O+ O+ A OB BO B G RG AO RG+ OB+ BG GR+ O+ OA+ G+ OB GR BG+ OB OA+ OA GR AO GB\n",
+      "expectedOutput": "3-680 2-557 4-370 1-289\n",
+      "hidden": true
+    }
+  ]
+}

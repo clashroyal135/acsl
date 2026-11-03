@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { groupProblems } from "@/lib/problem-groups";
 import { getAllProblems } from "@/lib/database.server";
 
 export default async function HomePage() {
@@ -15,7 +16,7 @@ export default async function HomePage() {
           <h1 className="max-w-3xl text-5xl font-black tracking-[-0.045em] sm:text-6xl">ACSL programming practice.</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">Solve problems in Python, Java, or C++ and submit them for automatic grading.</p>
           <Link href="/problems" className={cn(buttonVariants({ size: "lg" }), "mt-8")}>Browse problems <ArrowRight className="h-4 w-4" /></Link>
-          <div className="mt-10 flex gap-6 text-sm text-muted-foreground"><span><strong className="text-foreground">{problems.length}</strong> problems</span><span><strong className="text-foreground">3</strong> divisions</span><span><strong className="text-foreground">3</strong> languages</span></div>
+          <div className="mt-10 flex gap-6 text-sm text-muted-foreground"><span><strong className="text-foreground">{groupProblems(problems).length}</strong> problems</span><span><strong className="text-foreground">3</strong> divisions</span><span><strong className="text-foreground">3</strong> languages</span></div>
         </div>
       </section>
 

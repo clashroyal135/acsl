@@ -8,6 +8,7 @@ function loader(mocks = {}, env = {}, globals = {}) {
   const cache = new Map();
   function load(file) {
     const absolute = path.resolve(root, file);
+    if (absolute.endsWith(".json")) return JSON.parse(fs.readFileSync(absolute, "utf8"));
     if (cache.has(absolute)) return cache.get(absolute);
     const exports = {};
     cache.set(absolute, exports);
@@ -18,7 +19,7 @@ function loader(mocks = {}, env = {}, globals = {}) {
         if (name in mocks) return mocks[name];
         if (name === "server-only") return {};
         if (name === "next/cache") return { unstable_noStore() {} };
-        if (name.startsWith("@/")) { const base = `src/${name.slice(2)}`; return load(fs.existsSync(path.resolve(root, `${base}.ts`)) ? `${base}.ts` : `${base}.tsx`); }
+        if (name.startsWith("@/")) { const base = `src/${name.slice(2)}`; if (base.endsWith(".json")) return load(base); return load(fs.existsSync(path.resolve(root, `${base}.ts`)) ? `${base}.ts` : `${base}.tsx`); }
         return require(name);
       },
     }, { filename: absolute });

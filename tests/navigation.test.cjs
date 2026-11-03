@@ -34,7 +34,7 @@ test('submission history and problem titles load concurrently after authenticati
 
 test('problem content and verified administrator permissions load concurrently', async () => {
   const content = deferred(); let roleStarted = false;
-  const Page = loader({ '@/lib/database.server': { getProblemBySlug: () => content.promise }, '@/lib/admin.server': { requireAdmin: async () => { roleStarted = true; return {}; } }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
+  const Page = loader({ '@/lib/database.server': { getAllProblems: async () => [], getProblemBySlug: () => content.promise }, '@/lib/admin.server': { requireAdmin: async () => { roleStarted = true; return {}; } }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
   const pending = Page({ params: Promise.resolve({ slug: 'one' }) }); await tick(); assert.equal(roleStarted, true);
   content.resolve({ slug: 'one' }); assert.equal((await pending).props.isAdmin, true);
 });

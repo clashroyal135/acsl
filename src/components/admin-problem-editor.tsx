@@ -16,7 +16,7 @@ export function AdminProblemEditor({ value, onChange }: { value: AdminProblem; o
       <label className="block text-sm font-semibold">Division<select className={`${inputClass} mt-1.5`} value={value.division} onChange={(event) => update("division", event.target.value as AdminProblem["division"])}>{["Junior", "Intermediate", "Senior"].map((option) => <option key={option}>{option}</option>)}</select></label>
       <label className="block text-sm font-semibold">Difficulty<select className={`${inputClass} mt-1.5`} value={value.difficulty} onChange={(event) => update("difficulty", event.target.value as AdminProblem["difficulty"])}>{["Easy", "Medium", "Hard"].map((option) => <option key={option}>{option}</option>)}</select></label>
       <TextField label="Topic" value={value.topic} maxLength={100} onChange={(topic) => update("topic", topic)} />
-      <label className="block text-sm font-semibold">Year<input className={`${inputClass} mt-1.5`} required type="number" min={2000} max={2200} value={value.year} onChange={(event) => update("year", Number(event.target.value))} /></label>
+      <label className="block text-sm font-semibold">Season start year<input className={`${inputClass} mt-1.5`} required type="number" min={2000} max={2200} value={value.year} onChange={(event) => update("year", Number(event.target.value))} /></label>
     </div>
     <TextField label="Summary" value={value.summary} maxLength={2000} onChange={(summary) => update("summary", summary)} />
     <TextField label="Problem statement (Markdown)" multiline rows={8} value={value.statement} onChange={(statement) => update("statement", statement)} />

@@ -2,7 +2,7 @@
 
 A full-stack ACSL-style programming practice platform built with Next.js, TypeScript, Tailwind CSS, Monaco Editor, Supabase, and server-side code execution.
 
-The six bundled challenges are original practice problems across Junior, Intermediate, and Senior divisions. The application never returns fake compiler output: Run and Submit call a real execution service.
+The library contains 18 ACSL Contest 1 problem families (2007–2008 through 2024–2025), with 53 division versions adapted from the supplied source archive. Every version has 12 hidden grading cases (636 total), plus its public source examples. The 2023–2024 ACSL Tiles archive includes Intermediate and Senior only. The application never returns fake compiler output: Run and Submit call a real execution service.
 
 ## Included
 
@@ -69,7 +69,11 @@ Users must open the email link in the same browser that requested it. The callba
 
 ## Adding problems
 
-Bundled problems live in `src/lib/problems.ts`; their hidden cases live in the server-only `src/lib/test-cases.server.ts`. Database-authored problems can be managed at `/admin` by an admin user. The JSON editor accepts one problem object or an array of up to 100 objects and can import `.json` files.
+Bundled problem metadata lives in `src/lib/contest1/catalog.json`, loaded through `src/lib/problems.ts`; hidden cases in `src/lib/contest1/hidden-tests.json` are imported only by the server-only `src/lib/test-cases.server.ts`. Each season/title appears once in the browser. The workspace division selector loads a distinct problem ID, statement, samples, draft, and grading suite. `year` is the season’s starting year. Missing or unpublished divisions cannot be selected.
+
+Authoring sources, reference solvers, independent source fixtures, generators, and the verification report are in `scripts/contest1/`. Rebuild with `python3 scripts/contest1/build.py`; audit all input domains, source examples, and hidden outputs with `python3 scripts/contest1/audit.py`. The audit checks 161 source fixture sets and uses a second numeric method for 180 hidden cases. Paper worksheet labels and punctuation are normalized to explicit standard-input/output formats.
+
+The Wandbox fallback compiles the provided `solve(input)` starter once for the complete test suite, avoiding a separate compilation per hidden case. Judge0 and custom full-program submissions use at most three concurrent executions. Hidden stdout, stderr, expected outputs, and compilation details are never returned to students; incorrect batch sample output is also redacted because submitted code can inspect the batch input. Run still shows normal public sample output. Database-authored problems can be managed at `/admin` by an admin user. The JSON editor accepts one problem object or an array of up to 100 objects and can import `.json` files.
 
 Database problems remain drafts until `isPublished` is `true`. Test cases are stored in the separate protected table. At least one test should be marked public if you want it available as a visible sample.
 
@@ -131,4 +135,4 @@ src/lib/                 Problems, Judge0 integration, Supabase, and grading
 supabase/migrations/     Database schema and RLS policies
 ```
 
-ACSL Practice is an independent practice project. ACSL is a trademark of its respective owner. The bundled problems are original and do not reproduce competition materials.
+ACSL Practice is an independent practice project. ACSL is a trademark of its respective owner. Contest statements are adapted from user-provided ACSL materials; original titles and seasons are retained.
