@@ -5,8 +5,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = { title: "Problems" };
 
-export default async function ProblemsPage() {
-  const problems = await getAllProblems();
+async function getSolvedProblemIds() {
   const supabase = await createSupabaseServerClient();
   const { data: auth } = (await supabase?.auth.getUser()) ?? { data: { user: null } };
   let solved: string[] = [];
@@ -15,5 +14,10 @@ export default async function ProblemsPage() {
     solved = Array.from(new Set((data ?? []).map((row) => row.problem_id)));
   }
 
+  return solved;
+}
+
+export default async function ProblemsPage() {
+  const [problems, solved] = await Promise.all([getAllProblems(), getSolvedProblemIds()]);
   return <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6"><h1 className="mb-8 text-4xl font-black tracking-tight">Problems</h1><ProblemBrowser problems={problems} solved={solved} /></main>;
 }

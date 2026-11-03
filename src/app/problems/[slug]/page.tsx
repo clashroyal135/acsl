@@ -19,8 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProblemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const problem = await getProblemBySlug(slug);
+  const [problem, admin] = await Promise.all([getProblemBySlug(slug), requireAdmin()]);
   if (!problem) notFound();
-  const isAdmin = Boolean(await requireAdmin());
+  const isAdmin = Boolean(admin);
   return <CodeWorkspace problem={problem} isAdmin={isAdmin} />;
 }

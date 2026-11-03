@@ -1,4 +1,5 @@
 import "server-only";
+import { cache } from "react";
 import { unstable_noStore as noStore } from "next/cache";
 
 import { problems as bundledProblems, getProblem as getBundledProblem } from "@/lib/problems";
@@ -36,7 +37,8 @@ export function fromRow(row: Record<string, unknown>): Problem {
   };
 }
 
-export async function getAllProblems(): Promise<Problem[]> {
+// Share reads within one server render, including metadata. Nothing persists across requests.
+export const getAllProblems = cache(async (): Promise<Problem[]> => {
   noStore();
   const admin = createSupabaseAdminClient();
   if (!admin) return bundledProblems;
@@ -46,9 +48,9 @@ export async function getAllProblems(): Promise<Problem[]> {
 
   const storedSlugs = new Set((data ?? []).map((row) => row.slug));
   return [...bundledProblems.filter((problem) => !storedSlugs.has(problem.slug)), ...(data ?? []).filter((row) => row.is_published).map((row) => fromRow(row))];
-}
+});
 
-export async function getProblemBySlug(slug: string): Promise<Problem | undefined> {
+export const getProblemBySlug = cache(async (slug: string): Promise<Problem | undefined> => {
   noStore();
   const admin = createSupabaseAdminClient();
   if (!admin) return getBundledProblem(slug);
@@ -56,7 +58,7 @@ export async function getProblemBySlug(slug: string): Promise<Problem | undefine
   if (error) throw new Error("Unable to load problem availability.");
   if (data) return data.is_published ? fromRow(data) : undefined;
   return getBundledProblem(slug);
-}
+});
 
 export async function getDatabaseTests(problemId: string): Promise<StoredTestCase[]> {
   const admin = createSupabaseAdminClient();

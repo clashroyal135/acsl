@@ -94,6 +94,10 @@ An administrator lands on `/admin` and has an **Admin** navigation link. The das
 - **Problems:** add or edit a problem through the form, manage samples and hidden grading cases, edit starter code, import JSON, and publish or unpublish with one button. New problems start as drafts. Bundled problems can be edited and unpublished; database overrides take precedence over bundled copies. Added problems can also be deleted.
 - **Accounts & progress:** browse every registered account, including those with no submissions; inspect signup and last sign-in times; see all-time submission counts, solved and attempted problems, and progress by problem; page through submission history and open each saved source file.
 
+Admin sections stay mounted after their first visit, so switching tabs preserves problem drafts, account selections, and loaded results. The accounts Refresh button requests current progress. Navigating away from the dashboard still clears unsaved browser state.
+
+Page navigation has a shared loading view that Next.js can prefetch. Independent problem, progress, permission, and submission reads run concurrently. Problem lookups are shared only within the current server render (including metadata), so later requests still check current publication status.
+
 Problem content and grading cases save in one database transaction. Account and submission APIs require an administrator session and return private, non-cacheable responses. Student code is loaded only when selected. The code viewer shows submitted solutions; drafts saved only in a student’s browser are not uploaded or visible to administrators.
 
 ## Quality checks
