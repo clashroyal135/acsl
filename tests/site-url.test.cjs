@@ -49,7 +49,7 @@ test("proxy leaves stable and local requests alone when Supabase is unconfigured
 async function submitAuth(mode, origin) {
   let index = 0, states = [], payload;
   const mockReact = { ...React, useState(initial) { const i = index++; if (!(i in states)) states[i] = initial; return [states[i], value => { states[i] = value; }]; } };
-  const { LoginForm } = loader({ react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: {
+  const { LoginForm } = loader({ "@/lib/display-name": { isDisplayNameAvailable: async () => true }, react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: {
     signUp: async value => { payload = value; return { error: null }; },
     resetPasswordForEmail: async (email, options) => { payload = { email, options }; return { error: null }; },
   } }) } }, {}, { window: { location: { origin } } })("src/components/login-form.tsx");
@@ -57,7 +57,7 @@ async function submitAuth(mode, origin) {
   function render() { index = 0; tree = LoginForm({ initialMode: mode }); }
   function find(predicate) { let found; function walk(node) { if (!node || typeof node !== "object") return; if (Array.isArray(node)) return node.forEach(walk); if (predicate(node)) found = node; walk(node.props?.children); } walk(tree); return found; }
   render();
-  for (const [label, value] of [["Email address", "learner@example.com"], ["Display name", "Learner"], ["Name", "Personal Name"], ["Password", "password123"]]) {
+  for (const [label, value] of [["Email address", "learner@example.com"], ["Display name", "Learner"], ["Full name", "Personal Name"], ["Password", "password123"]]) {
     const field = find(node => node.props?.label === label); if (field) { field.props.onChange(value); render(); }
   }
   await find(node => node.type === "form").props.onSubmit({ preventDefault() {} });

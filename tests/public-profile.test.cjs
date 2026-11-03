@@ -63,21 +63,21 @@ test("profile validation keeps display name independent of private name and reje
   const { validateProfileText } = loader()("src/lib/profile.ts");
   const result = validateProfileText(" PublicHandle ", " Personal Name ", false, " About ");
   assert.equal(result.displayName, "PublicHandle"); assert.equal(result.fullName, "Personal Name"); assert.equal(result.showName, false);
-  assert.equal(validateProfileText("Handle", "", false, "").fullName, "");
-  assert.throws(() => validateProfileText("Handle", "", true, ""), /Enter your name/);
+  assert.throws(() => validateProfileText("Handle", "", false, ""), /Full name must/);
+  assert.throws(() => validateProfileText("Handle", "", true, ""), /Full name must/);
   assert.throws(() => validateProfileText("Handle", "Name", "true", ""), /Choose whether/);
-  assert.throws(() => validateProfileText("Handle", "x".repeat(61), false, ""), /Name must/);
+  assert.throws(() => validateProfileText("Handle", "x".repeat(61), false, ""), /Full name must/);
 });
 
 test("registration sends separate display and personal names to the signup trigger", async () => {
   let state = [], index = 0, payload;
   const mockReact = { ...React, useState(initial) { const i = index++; if (!(i in state)) state[i] = initial; return [state[i], value => { state[i] = value; }]; } };
-  const { LoginForm } = loader({ react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: { signUp: async value => { payload = value; return { error: null }; } } }) } }, {}, { window: { location: { origin: "http://localhost:3000" } } })("src/components/login-form.tsx");
+  const { LoginForm } = loader({ "@/lib/display-name": { isDisplayNameAvailable: async () => true }, react: mockReact, "next/navigation": { useRouter: () => ({}) }, "@/lib/supabase/client": { createSupabaseBrowserClient: () => ({ auth: { signUp: async value => { payload = value; return { error: null }; } } }) } }, {}, { window: { location: { origin: "http://localhost:3000" } } })("src/components/login-form.tsx");
   let tree;
   function render() { index = 0; tree = LoginForm({ initialMode: "register" }); }
   function find(predicate) { let found; function walk(node) { if (!node || typeof node !== "object") return; if (Array.isArray(node)) return node.forEach(walk); if (predicate(node)) found = node; walk(node.props?.children); } walk(tree); return found; }
   render();
-  for (const [label, value] of [["Display name", " PublicHandle "], ["Name", " Personal Name "], ["Email address", "learner@example.com"], ["Password", "password123"]]) { find(node => node.props?.label === label).props.onChange(value); render(); }
+  for (const [label, value] of [["Display name", " PublicHandle "], ["Full name", " Personal Name "], ["Email address", "learner@example.com"], ["Password", "password123"]]) { find(node => node.props?.label === label).props.onChange(value); render(); }
   await find(node => node.type === "form").props.onSubmit({ preventDefault() {} });
   assert.equal(payload.options.data.display_name, "PublicHandle"); assert.equal(payload.options.data.full_name, "Personal Name");
 });

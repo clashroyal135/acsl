@@ -22,7 +22,7 @@ function setup(options = {}) {
       assert.equal(table, "profiles");
       return {
         select: () => ({ eq: (key, value) => { assert.equal(key, "id"); assert.equal(value, id); return { maybeSingle: async () => ({ data: { avatar_path: options.avatarPath ?? null }, error: null }) }; } }),
-        update: values => { calls.push(["update", values]); return { eq: (key, value) => { assert.equal(key, "id"); assert.equal(value, id); return { select: () => ({ single: async () => ({ data: { id }, error: options.saveError ? Error("save failed") : null }) }) }; } }; },
+        update: values => { calls.push(["update", values]); return { eq: (key, value) => { assert.equal(key, "id"); assert.equal(value, id); return { select: () => ({ single: async () => ({ data: { id }, error: options.saveError ? (typeof options.saveError === "object" ? options.saveError : Error("save failed")) : null }) }) }; } }; },
       };
     },
   };
@@ -124,8 +124,19 @@ test("profile has a labeled biography field and explicit Save profile button", (
   assert.doesNotMatch(html, /JPG, PNG, or WebP · Up to 2 MB/);
 });
 
-test("registration shows a required Name text box with the profile length limit", () => {
+test("registration shows a required Full name text box with the profile length limit", () => {
   const { LoginForm } = loader({ "next/navigation": { useRouter: () => ({}) } })("src/components/login-form.tsx");
   const html = renderToStaticMarkup(createElement(LoginForm, { initialMode: "register" }));
-  assert.match(html, />Name<\/span>/); assert.match(html, />Display name<\/span>/); assert.match(html, /autoComplete="nickname"/); assert.match(html, /maxLength="60"/); assert.match(html, /autoComplete="name"/);
+  assert.match(html, />Full name<\/span>/); assert.match(html, />Display name<\/span>/); assert.match(html, /autoComplete="nickname"/); assert.match(html, /maxLength="60"/); assert.match(html, /autoComplete="name"/);
+  assert.equal((html.match(/<input[^>]*required=""/g) ?? []).length, 4);
+});
+
+
+test("duplicate display names return a conflict and discard only the new picture", async () => {
+  const { post, form, calls } = setup({ avatarPath: oldPath, saveError: { code: "23505" } });
+  form.set("avatar", new File([png], "picture.png", { type: "image/png" }));
+  const response = await post(); assert.equal(response.status, 409); assert.match((await response.json()).error, /already taken/);
+  const upload = calls.find(call => call[0] === "upload")[1];
+  assert.equal(calls.find(call => call[0] === "remove")[1], upload);
+  assert.equal(calls.some(call => call[0] === "remove" && call[1] === oldPath), false);
 });

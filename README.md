@@ -48,7 +48,7 @@ The browser never receives Judge0 credentials. `/api/run` and `/api/submit` disa
 ## Supabase setup
 
 1. Create a Supabase project.
-2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`, `20261102202949_profile_settings.sql`, and `20261102230901_profile_names.sql`.
+2. Run the SQL files in `supabase/migrations/` in filename order with the Supabase CLI or SQL editor. Existing installations also need `202611020001_admin_tools.sql`, `20261102202949_profile_settings.sql`, `20261102230901_profile_names.sql`, and `20261102233329_required_unique_profile_names.sql`.
 3. Under **Authentication → Providers → Email**, leave the Email provider enabled.
 4. Copy `.env.example` to `.env.local`, then add the project URL, publishable (anon) key, and secret (service-role) key from **Project Settings → API Keys**.
 5. Under **Authentication → URL Configuration**, set **Site URL** to `https://acsl.netlify.app`. Allow `https://acsl.netlify.app/login` and `https://acsl.netlify.app/api/auth/reset-password` in **Redirect URLs**. For local development, also allow the equivalent `http://localhost:3000` URLs.
@@ -75,9 +75,9 @@ Database problems remain drafts until `isPublished` is `true`. Test cases are st
 
 ## Profiles
 
-Registration asks for a required **Display name** and **Name** (each up to 60 characters). Display name is the public identity used on leaderboards and around the site. Name is stored separately, hidden from other users by default, and always available to administrators. On `/profile`, users can edit both fields and choose **Show my name on my profile**; a name is required when enabling that option. Existing accounts keep their display names and can add a name in profile settings.
+Registration requires **Display name**, **Full name** (each up to 60 characters), **Email address**, and **Password**. Display names are unique regardless of capitalization or surrounding whitespace, enforced by a database index even for simultaneous signups and profile edits. Taken names produce a clear error. Full name is stored separately, hidden from other users by default, and always available to administrators. On `/profile`, users can edit both fields and choose **Show my full name on my profile**. Both names are required when saving; older accounts with no full name must fill it in before saving. About me and profile pictures remain optional.
 
-Leaderboard display names link to read-only `/profile/<user-id>` pages showing the display name, picture, About me, and progress on published problems. Name appears only when enabled, or when an administrator is viewing the profile. The server omits hidden names from the data sent to other users. Email addresses and submitted code are not included in public profiles. Raw profile rows remain restricted to their owner and administrators.
+Leaderboard display names link to read-only `/profile/<user-id>` pages showing the display name, picture, About me, and progress on published problems. Full name appears only when enabled, or when an administrator is viewing the profile. The server omits hidden names from the data sent to other users. Email addresses and submitted code are not included in public profiles. Raw profile rows remain restricted to their owner and administrators.
 
 Signed-in users can also edit **About me** (up to 1,000 characters), select or remove a profile picture, then choose **Save profile**. **Add profile picture** opens a floating window with the file requirements and an **Upload from computer** button. Dropping a file anywhere on the profile screen opens the same window. Pictures can be repositioned by dragging (or arrow keys), zoomed, and cropped to a square before choosing **Use picture**. Cropping happens in the browser and exports a 512 × 512 PNG. Changes remain unsaved until **Save profile** is selected, and the form shows success or error feedback.
 
@@ -86,6 +86,8 @@ Pictures accept JPG, PNG, and WebP files up to 2 MB. The `profile-pictures` Stor
 ## Administration
 
 Sign in with the administrator’s email, or use `admin` as the username shortcut. The shortcut resolves to `NEXT_PUBLIC_ADMIN_EMAIL` (defaults to `chrisgaorb@gmail.com`); it never grants permissions by itself. Authorization always checks the signed-in user’s `profiles.role` on the server. Passwords are stored by Supabase Auth and are never built into the app. Sign-in accepts existing six-character passwords, while registration and password resets require at least eight characters.
+
+Administrators can copy, cut, and paste using the system clipboard in problem workspaces, including the editor context menu. Other users retain the internal editor clipboard restriction.
 
 An administrator lands on `/admin` and has an **Admin** navigation link. The dashboard includes:
 

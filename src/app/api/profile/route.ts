@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { errorResponse, isAllowedOrigin } from "@/lib/api.server";
 import { checkRateLimit } from "@/lib/rate-limit.server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { isOwnAvatarPath, PROFILE_PICTURE_BUCKET, validateAvatar, validateProfileText } from "@/lib/profile";
+import { DISPLAY_NAME_TAKEN_MESSAGE, isOwnAvatarPath, PROFILE_PICTURE_BUCKET, validateAvatar, validateProfileText } from "@/lib/profile";
 
 export const runtime = "nodejs";
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       avatarUrl = data?.signedUrl ?? null;
     }
     const { error } = await supabase.from("profiles").update({ display_name: displayName, full_name: fullName, show_name: showName, about_me: aboutMe, avatar_path: avatarPath, updated_at: new Date().toISOString() }).eq("id", auth.user.id).select("id").single();
-    if (error) { await discardUpload(); return errorResponse("Unable to save your profile. Please try again.", 500); }
+    if (error) { await discardUpload(); return error.code === "23505" ? errorResponse(DISPLAY_NAME_TAKEN_MESSAGE, 409) : errorResponse("Unable to save your profile. Please try again.", 500); }
 
     // Keep the previous picture until its replacement is saved successfully.
     if (current.avatar_path !== avatarPath && isOwnAvatarPath(current.avatar_path, auth.user.id)) {
@@ -60,6 +60,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ displayName, fullName, showName, aboutMe, avatarUrl, hasAvatar: Boolean(avatarPath) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     await discardUpload();
-    return errorResponse(error instanceof Error && /^(Display name must|Name must|Enter your name|About me must|Choose)/.test(error.message) ? error.message : "Unable to save your profile. Please try again.");
+    return errorResponse(error instanceof Error && /^(Display name must|Full name must|About me must|Choose)/.test(error.message) ? error.message : "Unable to save your profile. Please try again.");
   }
 }

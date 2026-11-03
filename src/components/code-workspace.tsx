@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 const languageLabels: Record<Language, string> = { python: "Python 3", cpp: "C++17", java: "Java 17" };
 const monacoLanguages: Record<Language, string> = { python: "python", cpp: "cpp", java: "java" };
 
-export function CodeWorkspace({ problem }: { problem: Problem }) {
+export function CodeWorkspace({ problem, isAdmin = false }: { problem: Problem; isAdmin?: boolean }) {
   const templates = useMemo(() => ({
     python: splitStarterCode(problem.starterCode.python),
     cpp: splitStarterCode(problem.starterCode.cpp),
@@ -50,6 +50,7 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
   }, [problem.slug, language]);
 
   useEffect(() => {
+    if (isAdmin) return;
     const handleClipboard = (event: ClipboardEvent) => {
       event.preventDefault();
       event.stopPropagation();
@@ -87,7 +88,7 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
       document.removeEventListener("paste", handleClipboard, true);
       document.removeEventListener("drop", blockDrop, true);
     };
-  }, []);
+  }, [isAdmin]);
 
   useEffect(() => {
     const update = () => setDark(document.documentElement.classList.contains("dark"));
@@ -202,7 +203,7 @@ export function CodeWorkspace({ problem }: { problem: Problem }) {
           </div>
           <div className="h-[58vh] min-h-[420px] border-b border-border p-2 md:flex-1">
             <div className="acsl-code-cell h-full overflow-hidden rounded-lg border border-border bg-background shadow-inner">
-              <Editor height="100%" language={monacoLanguages[language]} value={fullCode} onChange={handleEditorChange} theme={dark ? "vs-dark" : "light"} onMount={(editor) => { editorRef.current = editor; decorateLockedCode(editor); }} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, lineNumbersMinChars: 3, padding: { top: 12, bottom: 12 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: false, dragAndDrop: false, stickyScroll: { enabled: false }, scrollbar: { alwaysConsumeMouseWheel: false } }} />
+              <Editor height="100%" language={monacoLanguages[language]} value={fullCode} onChange={handleEditorChange} theme={dark ? "vs-dark" : "light"} onMount={(editor) => { editorRef.current = editor; decorateLockedCode(editor); }} options={{ minimap: { enabled: false }, fontSize: 14, lineHeight: 22, lineNumbersMinChars: 3, padding: { top: 12, bottom: 12 }, automaticLayout: true, scrollBeyondLastLine: false, tabSize: 4, bracketPairColorization: { enabled: true }, wordWrap: "on", contextmenu: isAdmin, dragAndDrop: false, stickyScroll: { enabled: false }, scrollbar: { alwaysConsumeMouseWheel: false } }} />
             </div>
           </div>
           <div className="min-h-[260px] max-h-[40vh] overflow-y-auto">

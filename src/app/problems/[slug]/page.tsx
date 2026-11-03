@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CodeWorkspace } from "@/components/code-workspace";
 import { getProblemBySlug } from "@/lib/database.server";
 import { problems } from "@/lib/problems";
+import { requireAdmin } from "@/lib/admin.server";
 
 export const dynamic = "force-dynamic";
 
@@ -20,5 +21,6 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const problem = await getProblemBySlug(slug);
   if (!problem) notFound();
-  return <CodeWorkspace problem={problem} />;
+  const isAdmin = Boolean(await requireAdmin());
+  return <CodeWorkspace problem={problem} isAdmin={isAdmin} />;
 }

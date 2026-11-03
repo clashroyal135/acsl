@@ -1,6 +1,7 @@
 export const PROFILE_PICTURE_BUCKET = "profile-pictures";
 export const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 export const MAX_ABOUT_ME_LENGTH = 1000;
+export const DISPLAY_NAME_TAKEN_MESSAGE = "This display name is already taken. Choose another.";
 
 export type EditableProfile = {
   displayName: string;
@@ -11,13 +12,17 @@ export type EditableProfile = {
   hasAvatar: boolean;
 };
 
-export function validateProfileText(displayName: unknown, fullName: unknown, showName: unknown, about: unknown) {
+export function validateDisplayName(displayName: unknown) {
   if (typeof displayName !== "string" || !displayName.trim() || displayName.trim().length > 60) throw new Error("Display name must be between 1 and 60 characters.");
-  if (typeof fullName !== "string" || fullName.trim().length > 60) throw new Error("Name must be at most 60 characters.");
+  return displayName.trim();
+}
+
+export function validateProfileText(displayName: unknown, fullName: unknown, showName: unknown, about: unknown) {
+  const normalizedDisplayName = validateDisplayName(displayName);
+  if (typeof fullName !== "string" || !fullName.trim() || fullName.trim().length > 60) throw new Error("Full name must be between 1 and 60 characters.");
   if (typeof showName !== "boolean") throw new Error("Choose whether to show your name on your profile.");
-  if (showName && !fullName.trim()) throw new Error("Enter your name before showing it on your profile.");
   if (typeof about !== "string" || about.length > MAX_ABOUT_ME_LENGTH) throw new Error(`About me must be at most ${MAX_ABOUT_ME_LENGTH} characters.`);
-  return { displayName: displayName.trim(), fullName: fullName.trim(), showName, aboutMe: about.trim() };
+  return { displayName: normalizedDisplayName, fullName: fullName.trim(), showName, aboutMe: about.trim() };
 }
 
 export function isOwnAvatarPath(path: unknown, userId: string): path is string {

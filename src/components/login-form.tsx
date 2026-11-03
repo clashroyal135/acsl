@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { loginEmail } from "@/lib/login-identity";
 import { siteOrigin } from "@/lib/site-url";
+import { isDisplayNameAvailable } from "@/lib/display-name";
+import { DISPLAY_NAME_TAKEN_MESSAGE } from "@/lib/profile";
 
 type Mode = "login" | "register" | "forgot";
 
@@ -48,9 +50,16 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
         }
       } else {
         if (!displayName.trim() || displayName.trim().length > 60) { setMessage("Display name must be between 1 and 60 characters."); return; }
-        if (!name.trim() || name.trim().length > 60) { setMessage("Name must be between 1 and 60 characters."); return; }
+        if (!name.trim() || name.trim().length > 60) { setMessage("Full name must be between 1 and 60 characters."); return; }
+        if (!email.trim()) { setMessage("Email address is required."); return; }
+        if (password.length < 8) { setMessage("Password must be at least 8 characters."); return; }
+        if (!await isDisplayNameAvailable(displayName)) { setMessage(DISPLAY_NAME_TAKEN_MESSAGE); return; }
         const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim() }, emailRedirectTo: `${siteOrigin(window.location.origin)}/login` } });
-        setMessage(error ? error.message : "Account created. Check your email if confirmation is enabled.");
+        if (error) {
+          let taken = false;
+          try { taken = !await isDisplayNameAvailable(displayName); } catch { /* Keep the signup error if the check fails. */ }
+          setMessage(taken ? DISPLAY_NAME_TAKEN_MESSAGE : error.message);
+        } else setMessage("Account created. Check your email if confirmation is enabled.");
       }
     } catch {
       setMessage("Unable to connect. Please try again.");
@@ -70,7 +79,7 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
         <fieldset disabled={loading} className="space-y-4">
           {mode === "register" && <>
             <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} />
-            <Field label="Name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile." />
+            <Field label="Full name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile." />
           </>}
           <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}
