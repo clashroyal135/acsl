@@ -31,6 +31,7 @@ function setup(options = {}) {
     "@/lib/rate-limit.server": { checkRateLimit: () => ({ allowed: true }) },
   })("src/app/api/profile/route.ts");
   const form = new FormData(); form.set("displayName", " Learner "); form.set("name", " Personal Name "); form.set("showName", "false"); form.set("aboutMe", " I like Python. ");
+  form.set("division", "Senior"); form.set("preferredLanguage", "java");
   const request = { headers: new Headers({ origin: "https://practice.example" }), nextUrl: new URL("https://practice.example/api/profile"), formData: async () => form };
   return { calls, form, request, post: () => module.POST(request) };
 }
@@ -70,7 +71,25 @@ test("saving name and biography updates only the authenticated account and edita
   const values = calls.find(call => call[0] === "update")[1];
   assert.equal(values.display_name, "Learner"); assert.equal(values.full_name, "Personal Name"); assert.equal(values.show_name, false);
   assert.equal("role" in values, false); assert.equal("userId" in values, false); assert.equal(values.avatar_path, null);
+  assert.equal(values.division, "Senior"); assert.equal(values.preferred_language, "java");
   assert.equal(response.headers.get("cache-control"), "private, no-store");
+});
+
+test("avatar autosaves update only the picture and preserve unfinished text and preference edits", async () => {
+  const { post, form, calls } = setup();
+  form.set("mode", "avatar"); form.set("displayName", "Unfinished name"); form.set("division", "Invalid"); form.delete("name");
+  form.set("avatar", new File([png], "picture.png", { type: "image/png" }));
+  const response = await post(); assert.equal(response.status, 200);
+  const values = calls.find(call => call[0] === "update")[1];
+  assert.deepEqual(Object.keys(values).sort(), ["avatar_path", "updated_at"]);
+  const result = await response.json(); assert.equal(result.hasAvatar, true); assert.equal("displayName" in result, false);
+});
+
+test("invalid divisions or languages never update profile data", async () => {
+  for (const [field, value] of [["division", "Invalid"], ["preferredLanguage", "javascript"]]) {
+    const { post, form, calls } = setup(); form.set(field, value);
+    assert.equal((await post()).status, 400); assert.equal(calls.length, 0);
+  }
 });
 
 test("invalid profile input does not upload a picture or update the profile", async () => {
@@ -119,9 +138,10 @@ test("removing a picture clears its profile reference before cleanup", async () 
 
 test("profile has a labeled biography field and explicit Save profile button", () => {
   const { ProfileEditor } = loader({ "next/navigation": { useRouter: () => ({ refresh() {} }) } })("src/components/profile-editor.tsx");
-  const html = renderToStaticMarkup(createElement(ProfileEditor, { email: "learner@example.com", initialProfile: { displayName: "Learner", fullName: "Personal Name", showName: false, aboutMe: "Learning Python", avatarUrl: null, hasAvatar: false } }));
+  const html = renderToStaticMarkup(createElement(ProfileEditor, { email: "learner@example.com", initialProfile: { displayName: "Learner", fullName: "Personal Name", showName: false, aboutMe: "Learning Python", avatarUrl: null, hasAvatar: false, division: "Junior", preferredLanguage: "python" } }));
   assert.match(html, /About me/); assert.match(html, /Learning Python/); assert.match(html, /Save profile/); assert.match(html, /Add profile picture/);
   assert.doesNotMatch(html, /JPG, PNG, or WebP · Up to 2 MB/);
+  assert.match(html, /Edit profile/); assert.match(html, /readOnly=""/); assert.doesNotMatch(html, /Use Save profile/);
 });
 
 test("registration shows a required Full name text box with the profile length limit", () => {

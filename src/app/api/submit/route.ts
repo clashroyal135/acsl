@@ -36,6 +36,9 @@ export async function POST(request: NextRequest) {
       timeLimitMs: problem.timeLimitMs,
       memoryLimitKb: problem.memoryLimitKb,
     });
+    if (result.verdict !== "Accepted" || result.passed !== tests.length || result.total !== tests.length) {
+      return NextResponse.json({ error: "Pass all test cases before submitting your solution.", ...result, cases: describeTestCases(tests), saved: false }, { status: 422, headers: { "Cache-Control": "private, no-store" } });
+    }
 
     const supabase = await createSupabaseServerClient();
     const admin = createSupabaseAdminClient();

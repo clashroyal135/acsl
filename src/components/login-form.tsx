@@ -9,6 +9,9 @@ import { loginEmail } from "@/lib/login-identity";
 import { siteOrigin } from "@/lib/site-url";
 import { isDisplayNameAvailable } from "@/lib/display-name";
 import { DISPLAY_NAME_TAKEN_MESSAGE } from "@/lib/profile";
+import { DEFAULT_PREFERENCES, PROGRAMMING_LANGUAGES, validatePreferences } from "@/lib/preferences";
+import { DIVISIONS } from "@/lib/problem-groups";
+import type { Division, Language } from "@/lib/types";
 
 type Mode = "login" | "register" | "forgot";
 
@@ -20,6 +23,8 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
   const [displayName, setDisplayName] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [division, setDivision] = useState<Division>(DEFAULT_PREFERENCES.division);
+  const [preferredLanguage, setPreferredLanguage] = useState<Language>(DEFAULT_PREFERENCES.preferredLanguage);
   const router = useRouter();
 
   function changeMode(nextMode: Mode) {
@@ -53,8 +58,9 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
         if (!name.trim() || name.trim().length > 60) { setMessage("Full name must be between 1 and 60 characters."); return; }
         if (!email.trim()) { setMessage("Email address is required."); return; }
         if (password.length < 8) { setMessage("Password must be at least 8 characters."); return; }
+        validatePreferences(division, preferredLanguage);
         if (!await isDisplayNameAvailable(displayName)) { setMessage(DISPLAY_NAME_TAKEN_MESSAGE); return; }
-        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim() }, emailRedirectTo: `${siteOrigin(window.location.origin)}/login` } });
+        const { error } = await supabase.auth.signUp({ email: email.trim(), password, options: { data: { display_name: displayName.trim(), full_name: name.trim(), division, preferred_language: preferredLanguage }, emailRedirectTo: `${siteOrigin(window.location.origin)}/login` } });
         if (error) {
           let taken = false;
           try { taken = !await isDisplayNameAvailable(displayName); } catch { /* Keep the signup error if the check fails. */ }
@@ -80,6 +86,8 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
           {mode === "register" && <>
             <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} />
             <Field label="Full name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile." />
+            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Division</span><select required aria-label="Division" value={division} onChange={event => setDivision(event.target.value as Division)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary">{DIVISIONS.map(value => <option key={value}>{value}</option>)}</select></label>
+            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Programming language</span><select required aria-label="Programming language" value={preferredLanguage} onChange={event => setPreferredLanguage(event.target.value as Language)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary">{Object.entries(PROGRAMMING_LANGUAGES).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
           </>}
           <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}

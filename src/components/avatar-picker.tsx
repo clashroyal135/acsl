@@ -8,7 +8,7 @@ import { validateAvatar } from "@/lib/profile";
 
 type ImageSource = { image: HTMLImageElement; url: string };
 
-export function AvatarPicker({ disabled, hasAvatar, onApply }: { disabled: boolean; hasAvatar: boolean; onApply: (file: File) => void }) {
+export function AvatarPicker({ disabled, hasAvatar, onApply }: { disabled: boolean; hasAvatar: boolean; onApply: (file: File) => void | Promise<void> }) {
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [source, setSource] = useState<ImageSource | null>(null);
@@ -139,7 +139,8 @@ export function AvatarPicker({ disabled, hasAvatar, onApply }: { disabled: boole
     try {
       const cropped = await cropAvatar(source.image, zoom, center);
       if (!mounted.current) return;
-      onApply(cropped); setOpen(false); setFile(null); setSource(null);
+      await onApply(cropped);
+      if (mounted.current) { setOpen(false); setFile(null); setSource(null); }
     } catch (error) { if (mounted.current) setError(error instanceof Error ? error.message : "Unable to crop this picture."); }
     finally { if (mounted.current) setApplying(false); }
   }
@@ -176,7 +177,7 @@ export function AvatarPicker({ disabled, hasAvatar, onApply }: { disabled: boole
         </div> : <div className={`mt-5 rounded-xl border-2 border-dashed px-5 py-10 text-center ${draggingFile ? "border-primary bg-primary/10" : "border-border bg-muted/30"}`}><ImagePlus className="mx-auto h-10 w-10 text-primary" /><p className="mt-4 font-bold">Drag a picture into this window</p><p className="mt-1 text-sm text-muted-foreground">or choose one from your computer.</p><Button type="button" className="mt-5" onClick={() => input.current?.click()}><Upload className="h-4 w-4" /> Upload from computer</Button></div>}
         {error && <p role="alert" className="mt-4 rounded-lg border border-danger/25 bg-danger/10 p-3 text-sm text-danger">{error}</p>}
         </div>
-        <div className="mt-5 flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-border p-5 sm:p-6"><p className="max-w-56 text-xs text-muted-foreground">Your picture is saved when you save your profile.</p><div className="flex gap-2"><Button type="button" variant="outline" disabled={applying} onClick={close}>Cancel</Button>{source && <Button type="button" disabled={applying || reading} onClick={apply}>{applying ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />} {applying ? "Preparing…" : "Use picture"}</Button>}</div></div>
+        <div className="mt-5 flex shrink-0 justify-end gap-3 border-t border-border p-5 sm:p-6"><div className="flex gap-2"><Button type="button" variant="outline" disabled={applying} onClick={close}>Cancel</Button>{source && <Button type="button" disabled={applying || reading} onClick={apply}>{applying ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />} {applying ? "Saving…" : "Use picture"}</Button>}</div></div>
       </div>
     </dialog>}
   </>;

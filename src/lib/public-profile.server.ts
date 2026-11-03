@@ -7,13 +7,14 @@ import { isUserId } from "@/lib/admin-students.server";
 import { getAllProblems } from "@/lib/database.server";
 import { isOwnAvatarPath, PROFILE_PICTURE_BUCKET } from "@/lib/profile";
 import type { StudentProgress } from "@/lib/admin-types";
+import { profilePreferences } from "@/lib/preferences";
 
 export async function getPublicProfile(id: string) {
   noStore();
   if (!isUserId(id)) return null;
   const admin = createSupabaseAdminClient();
   if (!admin) return null;
-  const { data: profile, error } = await admin.from("profiles").select("id,display_name,full_name,show_name,about_me,avatar_path").eq("id", id).maybeSingle();
+  const { data: profile, error } = await admin.from("profiles").select("id,display_name,full_name,show_name,about_me,avatar_path,division,preferred_language").eq("id", id).maybeSingle();
   if (error) throw new Error("Unable to load this profile.");
   if (!profile) return null;
 
@@ -39,6 +40,7 @@ export async function getPublicProfile(id: string) {
     nameIsPrivate: Boolean(viewerAdmin && !profile.show_name && profile.full_name),
     aboutMe: (profile.about_me as string) || "",
     avatarUrl,
+    ...profilePreferences(profile),
     submissionCount: Number(progress?.submission_count ?? 0),
     solvedCount: problems.filter((problem) => solved.has(problem.id)).length,
     attemptedCount: problems.filter((problem) => attempted.has(problem.id)).length,

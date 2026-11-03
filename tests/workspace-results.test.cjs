@@ -12,12 +12,12 @@ test('locked decorations follow restored code, edits with unchanged length, and 
  const listeners=new Map();const disposed=[];
  const editor={getModel:()=>current,createDecorationsCollection:()=>({set:value=>{decorations=value;},clear:()=>{cleared++;}}),onDidChangeModelContent:fn=>{listeners.set('content',fn);return {dispose:()=>disposed.push('content')};},onDidChangeModel:fn=>{listeners.set('model',fn);return {dispose:()=>disposed.push('model')};}};
  const tracker=trackLockedCode(editor,()=>template);
- assert.equal(decorations[1].range.startLineNumber,2);assert.equal(decorations[1].range.startColumn,6);
- current=model('header\nmy code\nmore code\nlast line\nfooter\n');listeners.get('content')();assert.equal(decorations[1].range.startLineNumber,4);assert.equal(decorations[1].range.startColumn,10);assert.equal(decorations[0].range.endLineNumber,2);assert.equal(decorations[0].range.endColumn,1);
+ assert.equal(decorations[1].range.startLineNumber,3);assert.equal(decorations[1].range.startColumn,1);
+ current=model('header\nmy code\nmore code\nlast line\nfooter\n');listeners.get('content')();assert.equal(decorations[1].range.startLineNumber,5);assert.equal(decorations[1].range.startColumn,1);assert.equal(decorations[0].range.endLineNumber,1);assert.equal(decorations[0].range.endColumn,7);
  // Same character count, but the student's newline moved to a different place.
- current=model('header\nmy code more code\nlast line\nfooter\n');listeners.get('content')();assert.equal(decorations[1].range.startLineNumber,3);assert.equal(decorations[1].range.startColumn,10);
- template={prefix:'class Main {\n',suffix:'\n}\n'};current=model('class Main {\nuser\nuser\n}\n');listeners.get('model')();assert.equal(decorations[1].range.startLineNumber,3);assert.equal(decorations[1].range.startColumn,5);
- assert.ok(decorations.every(d=>d.options.isWholeLine===false&&d.options.stickiness===1));
+ current=model('header\nmy code more code\nlast line\nfooter\n');listeners.get('content')();assert.equal(decorations[1].range.startLineNumber,4);assert.equal(decorations[1].range.startColumn,1);
+ template={prefix:'class Main {\n',suffix:'\n}\n'};current=model('class Main {\nuser\nuser\n}\n');listeners.get('model')();assert.equal(decorations[1].range.startLineNumber,4);assert.equal(decorations[1].range.startColumn,1);
+ assert.ok(decorations.every(d=>d.options.isWholeLine&&d.options.stickiness===1));
  tracker.dispose();assert.equal(cleared,1);assert.deepEqual(disposed,['content','model']);
 });
 
@@ -30,12 +30,12 @@ test('inline wrapper boundaries never mark a whole student line locked',()=>{
 
 const problem={id:'rings-junior',slug:'rings-2024-junior',samples:[{input:'A\nB\n',output:'6 1\n'},{input:'R\nG\n',output:'3 1\n'}],timeLimitMs:2000,memoryLimitKb:128000};
 const hidden={input:'PRIVATE HIDDEN INPUT',expectedOutput:'PRIVATE HIDDEN ANSWER',hidden:true};
-function apiSetup({saveError=false,signedIn=true}={}){
+function apiSetup({saveError=false,signedIn=true,fails=false}={}){
  const calls=[];
  const mocks={
   '@/lib/database.server':{getProblemBySlug:async()=>problem,getDatabaseTests:async()=>[...problem.samples.map(s=>({input:s.input,expectedOutput:s.output,hidden:false})),hidden]},
   '@/lib/rate-limit.server':{checkRateLimit:()=>({allowed:true})},
-  '@/lib/judge0.server':{gradeSubmission:async options=>{calls.push(['grade',options]);return {verdict:'Accepted',passed:options.tests.length,total:options.tests.length,time:null,memory:null,tests:options.tests.map((t,index)=>({index,hidden:t.hidden,verdict:'Accepted',stdout:t.hidden?null:t.expectedOutput,expectedOutput:t.hidden?undefined:t.expectedOutput,stderr:null,compileOutput:null,time:null,memory:null}))};}},
+  '@/lib/judge0.server':{gradeSubmission:async options=>{calls.push(['grade',options]);return {verdict:fails?'Wrong Answer':'Accepted',passed:options.tests.length-(fails?1:0),total:options.tests.length,time:null,memory:null,tests:options.tests.map((t,index)=>({index,hidden:t.hidden,verdict:'Accepted',stdout:t.hidden?null:t.expectedOutput,expectedOutput:t.hidden?undefined:t.expectedOutput,stderr:null,compileOutput:null,time:null,memory:null}))};}},
   '@/lib/supabase/server':{createSupabaseServerClient:async()=>({auth:{getUser:async()=>({data:{user:signedIn?{id:'verified-user'}:null}})}}),createSupabaseAdminClient:()=>({from:table=>({insert:async row=>{calls.push(['insert',table,row]);return {error:saveError?{message:'private database detail'}:null};}})})},
  };
  const load=loader(mocks);
@@ -66,6 +66,18 @@ test('Submit grades the complete suite and saves the exact source under the veri
 test('submission save failures are reported and guest grading never claims the code was saved',async()=>{
  const failed=apiSetup({saveError:true});const response=await failed.submit(failed.req('all'));assert.equal(response.status,500);assert.match((await response.json()).error,/could not be saved/);
  const guest=apiSetup({signedIn:false});const guestResult=await guest.submit(guest.req('all'));assert.equal((await guestResult.json()).saved,false);assert.equal(guest.calls.some(c=>c[0]==='insert'),false);
+});
+
+test('Submit rejects a failing solution even if a client bypasses the disabled button',async()=>{
+ const {calls,req,submit}=apiSetup({fails:true});const response=await submit(req('all'));
+ assert.equal(response.status,422);assert.match((await response.json()).error,/Pass all test cases/);assert.equal(calls.some(c=>c[0]==='insert'),false);
+});
+
+test('full wrapper lines and blank lines are shaded without including the editable line',()=>{
+ const {lockedCodeDecorations}=loader()('src/lib/editor-locks.ts');
+ const decorations=lockedCodeDecorations(model('header\n\nfunction\nstudent\n\nfooter\n'),{prefix:'header\n\nfunction\n',suffix:'\nfooter\n'});
+ assert.equal(decorations[0].range.endLineNumber,3);assert.equal(decorations[1].range.startLineNumber,5);
+ assert.ok(decorations.every(d=>d.options.isWholeLine));
 });
 
 test('result boxes show each outcome, including not-run cases, without hidden input or output fields',()=>{

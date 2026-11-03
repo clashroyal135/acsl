@@ -6,6 +6,7 @@ import { CheckCircle2, Code2, Layers3 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { getPublicProfile } from "@/lib/public-profile.server";
+import { PROGRAMMING_LANGUAGES } from "@/lib/preferences";
 
 export const metadata: Metadata = { title: "Profile" };
 export const dynamic = "force-dynamic";
@@ -20,6 +21,7 @@ export default async function PublicProfilePage({ params }: { params: Promise<{ 
         <div className="grid h-24 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-primary/10 text-3xl font-black text-primary">{profile.avatarUrl ? <img src={profile.avatarUrl} alt={`${profile.displayName}'s profile picture`} className="h-full w-full object-cover" /> : profile.displayName[0].toUpperCase()}</div>
         <div className="min-w-0"><p className="text-xs font-bold uppercase tracking-wider text-primary">Profile</p><h1 className="mt-1 break-words text-3xl font-black">{profile.displayName}</h1>{profile.fullName && <p className="mt-1 break-words text-muted-foreground">{profile.fullName}</p>}{profile.nameIsPrivate && <p className="mt-1 text-xs text-muted-foreground">Full name visible to administrators only.</p>}</div>
       </div>
+      <dl className="mt-5 flex flex-wrap gap-6 text-sm"><div><dt className="text-xs text-muted-foreground">Division</dt><dd className="mt-1 font-semibold">{profile.division}</dd></div><div><dt className="text-xs text-muted-foreground">Programming language</dt><dd className="mt-1 font-semibold">{PROGRAMMING_LANGUAGES[profile.preferredLanguage]}</dd></div></dl>
       {profile.aboutMe && <div className="mt-6 border-t border-border pt-5"><h2 className="font-bold">About me</h2><p className="mt-3 whitespace-pre-wrap break-words text-sm leading-7 text-muted-foreground">{profile.aboutMe}</p></div>}
     </Card>
     <div className="mt-6 grid gap-4 sm:grid-cols-3">{[

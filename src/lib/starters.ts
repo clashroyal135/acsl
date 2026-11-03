@@ -27,13 +27,23 @@ export function splitStarterCode(source: string): StarterSections {
   };
 }
 
+const legacyStarterBodies = {
+  python: '    lines = data.strip().splitlines()\n    # Write your solution here.\n    return ""\n',
+  cpp: '    istringstream in(input);\n    ostringstream out;\n    // Write your solution here.\n    return out.str();\n',
+  java: '        Scanner scanner = new Scanner(input);\n        StringBuilder output = new StringBuilder();\n        // Write your solution here.\n        return output.toString();\n',
+};
+
+export function restoreStarterDraft(language: keyof StarterCode, draft: string, currentBody: string) {
+  // Upgrade only an untouched old placeholder. Preserve every written/custom draft.
+  return draft === legacyStarterBodies[language] && currentBody === splitStarterCode(defaultStarter[language]).editable ? currentBody : draft;
+}
+
 export const defaultStarter: StarterCode = {
   python: `import sys
 
 def solve(data: str) -> str:
     # ACSL_EDITABLE_START
-    lines = data.strip().splitlines()
-    # Write your solution here.
+    # data contains the input for this test case.
     return ""
     # ACSL_EDITABLE_END
 
@@ -45,10 +55,8 @@ using namespace std;
 
 string solve(const string& input) {
     // ACSL_EDITABLE_START
-    istringstream in(input);
-    ostringstream out;
-    // Write your solution here.
-    return out.str();
+    // input contains the input for this test case.
+    return "";
     // ACSL_EDITABLE_END
 }
 
@@ -67,10 +75,8 @@ import java.util.*;
 public class Main {
     static String solve(String input) {
         // ACSL_EDITABLE_START
-        Scanner scanner = new Scanner(input);
-        StringBuilder output = new StringBuilder();
-        // Write your solution here.
-        return output.toString();
+        // input contains the input for this test case.
+        return "";
         // ACSL_EDITABLE_END
     }
 

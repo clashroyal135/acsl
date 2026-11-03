@@ -9,6 +9,10 @@ export function problemGroupKey(problem: Pick<Problem, "title" | "year">) {
   return `${problem.year}:${problem.title.trim().toLowerCase()}`;
 }
 
+export function preferredVersion<T extends ProblemVersion>(versions: T[], division: Division) {
+  return versions.find(version => version.division === division) ?? versions[0];
+}
+
 export function groupProblems(problems: Problem[]): ProblemGroup[] {
   const groups = new Map<string, ProblemGroup>();
   for (const problem of problems) {

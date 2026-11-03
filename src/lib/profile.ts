@@ -1,3 +1,5 @@
+import type { Division, Language } from "@/lib/types";
+
 export const PROFILE_PICTURE_BUCKET = "profile-pictures";
 export const MAX_AVATAR_BYTES = 2 * 1024 * 1024;
 export const MAX_ABOUT_ME_LENGTH = 1000;
@@ -10,6 +12,8 @@ export type EditableProfile = {
   aboutMe: string;
   avatarUrl: string | null;
   hasAvatar: boolean;
+  division: Division;
+  preferredLanguage: Language;
 };
 
 export function validateDisplayName(displayName: unknown) {

@@ -12,13 +12,14 @@ test('problems catalogue and personal progress load concurrently', async () => {
   const catalogue = deferred(); let progressStarted = false;
   const client = {
     auth: { getUser: async () => ({ data: { user: { id: 'current-user' } } }) },
-    from: () => ({ select: () => ({ eq: (key, user) => { assert.equal(key, 'user_id'); assert.equal(user, 'current-user'); return { eq: async () => { progressStarted = true; return { data: [{ problem_id: 'one' }, { problem_id: 'one' }] }; } }; } }) }),
+    from: table => ({ select: () => ({ eq: (key, user) => { assert.equal(key, table === 'profiles' ? 'id' : 'user_id'); assert.equal(user, 'current-user'); return table === 'profiles' ? { maybeSingle: async () => ({ data: { division:'Senior', preferred_language:'java' } }) } : { eq: async () => { progressStarted = true; return { data: [{ problem_id: 'one' }, { problem_id: 'one' }] }; } }; } }) }),
   };
   const Page = loader({ '@/lib/database.server': { getAllProblems: () => catalogue.promise }, '@/lib/supabase/server': { createSupabaseServerClient: async () => client } })('src/app/problems/page.tsx').default;
   const pending = Page(); await tick();
   assert.equal(progressStarted, true, 'progress should start before the catalogue returns');
   catalogue.resolve([]); const page = await pending;
   const browser = find(page, node => node.props?.solved); assert.equal(browser.props.solved.length, 1); assert.equal(browser.props.solved[0], 'one');
+  assert.equal(browser.props.preferredDivision, 'Senior');
 });
 
 test('submission history and problem titles load concurrently after authentication', async () => {
@@ -34,9 +35,9 @@ test('submission history and problem titles load concurrently after authenticati
 
 test('problem content and verified administrator permissions load concurrently', async () => {
   const content = deferred(); let roleStarted = false;
-  const Page = loader({ '@/lib/database.server': { getAllProblems: async () => [], getProblemBySlug: () => content.promise }, '@/lib/admin.server': { requireAdmin: async () => { roleStarted = true; return {}; } }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
+  const Page = loader({ '@/lib/database.server': { getAllProblems: async () => [], getProblemBySlug: () => content.promise }, '@/lib/admin.server': { requireAdmin: async () => { roleStarted = true; return {}; } }, '@/lib/preferences.server': { getViewerPreferences: async () => ({division:'Senior',preferredLanguage:'java'}) }, '@/components/code-workspace': { CodeWorkspace: () => null } })('src/app/problems/[slug]/page.tsx').default;
   const pending = Page({ params: Promise.resolve({ slug: 'one' }) }); await tick(); assert.equal(roleStarted, true);
-  content.resolve({ slug: 'one' }); assert.equal((await pending).props.isAdmin, true);
+  content.resolve({ slug: 'one' }); const page=await pending;assert.equal(page.props.isAdmin, true);assert.equal(page.props.preferredLanguage,'java');
 });
 
 test('admin tabs stay mounted after their first visit and only the active tab is shown', () => {

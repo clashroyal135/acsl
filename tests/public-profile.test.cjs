@@ -5,7 +5,6 @@ const { renderToStaticMarkup } = require("react-dom/server");
 const { loader } = require("./helpers.cjs");
 const id = "00000000-0000-0000-0000-000000000001";
 const Link = { __esModule: true, default: ({ href, children, ...props }) => React.createElement("a", { href, ...props }, children) };
-
 function setup({ showName = false, adminViewer = false } = {}) {
   const columns = [];
   const client = {
@@ -23,6 +22,7 @@ function setup({ showName = false, adminViewer = false } = {}) {
 test("hidden names and other private account fields never enter public profile data", async () => {
   const result = await setup().get();
   assert.equal(result.displayName, "PublicHandle"); assert.equal(result.fullName, null); assert.equal(result.nameIsPrivate, false);
+  assert.equal(result.division, "Junior"); assert.equal(result.preferredLanguage, "python");
   const json = JSON.stringify(result);
   assert.doesNotMatch(json, /Private Legal Name|private@example.com|unpublished|source_code/);
   assert.equal("email" in result, false); assert.equal("role" in result, false);
@@ -44,6 +44,7 @@ test("the public profile page renders only the name allowed by its server projec
     const Page = loader({ "next/link": Link, "next/navigation": { notFound() { throw Error("not found"); } }, "@/lib/public-profile.server": { getPublicProfile: async () => profile } })("src/app/profile/[id]/page.tsx").default;
     const html = renderToStaticMarkup(await Page({ params: Promise.resolve({ id }) }));
     assert.match(html, /PublicHandle/); assert.match(html, /Learning algorithms/);
+    assert.match(html, /Division/); assert.match(html, /Programming language/); assert.match(html, /Python 3/);
     if (showName) assert.match(html, /Private Legal Name/); else assert.doesNotMatch(html, /Private Legal Name/);
     assert.doesNotMatch(html, /private@example.com|source_code/);
   }
@@ -78,6 +79,9 @@ test("registration sends separate display and personal names to the signup trigg
   function find(predicate) { let found; function walk(node) { if (!node || typeof node !== "object") return; if (Array.isArray(node)) return node.forEach(walk); if (predicate(node)) found = node; walk(node.props?.children); } walk(tree); return found; }
   render();
   for (const [label, value] of [["Display name", " PublicHandle "], ["Full name", " Personal Name "], ["Email address", "learner@example.com"], ["Password", "password123"]]) { find(node => node.props?.label === label).props.onChange(value); render(); }
+  find(node => node.type === 'select' && node.props.value === 'Junior').props.onChange({target:{value:'Senior'}}); render();
+  find(node => node.type === 'select' && node.props.value === 'python').props.onChange({target:{value:'java'}}); render();
   await find(node => node.type === "form").props.onSubmit({ preventDefault() {} });
   assert.equal(payload.options.data.display_name, "PublicHandle"); assert.equal(payload.options.data.full_name, "Personal Name");
+  assert.equal(payload.options.data.division, "Senior"); assert.equal(payload.options.data.preferred_language, "java");
 });

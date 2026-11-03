@@ -4,6 +4,7 @@ import { errorResponse, isAllowedOrigin } from "@/lib/api.server";
 import { checkRateLimit } from "@/lib/rate-limit.server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { DISPLAY_NAME_TAKEN_MESSAGE, isOwnAvatarPath, PROFILE_PICTURE_BUCKET, validateAvatar, validateProfileText } from "@/lib/profile";
+import { validatePreferences } from "@/lib/preferences";
 
 export const runtime = "nodejs";
 
@@ -26,9 +27,10 @@ export async function POST(request: NextRequest) {
 
   try {
     const form = await request.formData();
+    const avatarOnly = form.get("mode") === "avatar";
     const visibility = form.get("showName");
-    if (visibility !== "true" && visibility !== "false") return errorResponse("Choose whether to show your name on your profile.");
-    const { displayName, fullName, showName, aboutMe } = validateProfileText(form.get("displayName"), form.get("name"), visibility === "true", form.get("aboutMe"));
+    if (!avatarOnly && visibility !== "true" && visibility !== "false") return errorResponse("Choose whether to show your name on your profile.");
+    const text = avatarOnly ? null : { ...validateProfileText(form.get("displayName"), form.get("name"), visibility === "true", form.get("aboutMe")), ...validatePreferences(form.get("division"), form.get("preferredLanguage")) };
     const avatar = form.get("avatar");
     if (avatar !== null && !(avatar instanceof File)) return errorResponse("Choose an image file.");
     const extension = avatar && avatar.size ? await validateAvatar(avatar) : null;
@@ -50,14 +52,14 @@ export async function POST(request: NextRequest) {
       if (error && uploadedPath) { await discardUpload(); return errorResponse("Unable to prepare your picture. Please try again.", 502); }
       avatarUrl = data?.signedUrl ?? null;
     }
-    const { error } = await supabase.from("profiles").update({ display_name: displayName, full_name: fullName, show_name: showName, about_me: aboutMe, avatar_path: avatarPath, updated_at: new Date().toISOString() }).eq("id", auth.user.id).select("id").single();
+    const { error } = await supabase.from("profiles").update({ ...(text ? { display_name: text.displayName, full_name: text.fullName, show_name: text.showName, about_me: text.aboutMe, division: text.division, preferred_language: text.preferredLanguage } : {}), avatar_path: avatarPath, updated_at: new Date().toISOString() }).eq("id", auth.user.id).select("id").single();
     if (error) { await discardUpload(); return error.code === "23505" ? errorResponse(DISPLAY_NAME_TAKEN_MESSAGE, 409) : errorResponse("Unable to save your profile. Please try again.", 500); }
 
     // Keep the previous picture until its replacement is saved successfully.
     if (current.avatar_path !== avatarPath && isOwnAvatarPath(current.avatar_path, auth.user.id)) {
       try { await storage.remove([current.avatar_path]); } catch { /* The profile is already saved. */ }
     }
-    return NextResponse.json({ displayName, fullName, showName, aboutMe, avatarUrl, hasAvatar: Boolean(avatarPath) }, { headers: { "Cache-Control": "private, no-store" } });
+    return NextResponse.json({ ...text, avatarUrl, hasAvatar: Boolean(avatarPath) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     await discardUpload();
     return errorResponse(error instanceof Error && /^(Display name must|Full name must|About me must|Choose)/.test(error.message) ? error.message : "Unable to save your profile. Please try again.");
