@@ -116,6 +116,7 @@ export function readWandboxBatch(batch: WandboxBatch, execution: TestResult, tes
   if (execution.verdict !== "Accepted") return failed(execution.verdict, "The program did not finish the test suite. Use Run to inspect the sample output.");
   const lines = (execution.stdout ?? "").replace(/\r\n/g, "\n").trimEnd().split("\n");
   if (lines.length !== tests.length + 2 || lines[0] !== batch.marker || lines.at(-1) !== `END_${batch.marker}`) return failed("Runtime Error", "The solution did not return a valid result for every test. Use Run to inspect the sample output.");
+  const hasHiddenCases = tests.some((test) => test.hidden);
   const results: TestResult[] = [];
   for (let i = 0; i < tests.length; i++) {
     const match = /^(\d+) ([OE]) ([A-Za-z0-9+/]+={0,2}|-)$/.exec(lines[i + 1]);
@@ -123,9 +124,9 @@ export function readWandboxBatch(batch: WandboxBatch, execution: TestResult, tes
     const stdout = match[3] === "-" ? "" : Buffer.from(match[3], "base64").toString("utf8");
     const verdict = match[2] === "E" ? "Runtime Error" : normalizeOutput(stdout) === normalizeOutput(tests[i].expectedOutput) ? "Accepted" : "Wrong Answer";
     results.push({ index: i, verdict, hidden: tests[i].hidden,
-      // A wrong public answer could contain the entire batch input. Only a value
-      // matching the already-public sample answer is safe to return from this path.
-      stdout: !tests[i].hidden && verdict === "Accepted" ? stdout : null,
+      // A wrong public answer could contain the entire batch input. When hidden
+      // cases are included, return only an already-public matching sample answer.
+      stdout: !tests[i].hidden && (!hasHiddenCases || verdict === "Accepted") ? stdout : null,
       expectedOutput: tests[i].hidden ? undefined : tests[i].expectedOutput,
       stderr: null, compileOutput: null, time: null, memory: null });
   }

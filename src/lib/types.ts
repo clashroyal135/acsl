@@ -59,3 +59,6 @@ export type SubmissionResult = {
   memory: number | null;
   tests: TestResult[];
 };
+
+export type TestCaseDetails = { index: number; hidden: boolean; input?: string; expectedOutput?: string };
+export type ExecutionResult = SubmissionResult & { cases: TestCaseDetails[]; saved?: boolean };

@@ -3,6 +3,7 @@ import { errorResponse, isAllowedOrigin, isLanguage, requestKey, validateCode } 
 import { getProblemBySlug } from "@/lib/database.server";
 import { gradeSubmission } from "@/lib/judge0.server";
 import { checkRateLimit } from "@/lib/rate-limit.server";
+import { describeTestCases, getGradingTests } from "@/lib/grading-tests.server";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -27,22 +28,24 @@ export async function POST(request: NextRequest) {
   if (!problem) return errorResponse("Problem not found.", 404);
 
   const custom = body.mode === "custom";
-  const sampleIndex = typeof body.sampleIndex === "number" ? body.sampleIndex : 0;
-  const sample = problem.samples[sampleIndex] ?? problem.samples[0];
-  if (!custom && !sample) return errorResponse("This problem has no public sample.");
-  const input = custom ? String(body.customInput ?? "") : sample.input;
-  if (input.length > 50_000) return errorResponse("Custom input is too large.");
+  if (body.mode !== undefined && !["sample", "custom", "all"].includes(String(body.mode))) return errorResponse("Choose samples, custom input, or all tests.");
+  const input = String(body.customInput ?? "");
+  if (custom && input.length > 50_000) return errorResponse("Custom input is too large.");
 
   try {
+    const tests = custom ? [{ input, expectedOutput: "", hidden: false }]
+      : body.mode === "all" ? await getGradingTests(problem)
+      : problem.samples.map((sample) => ({ input: sample.input, expectedOutput: sample.output, hidden: false }));
+    if (!tests.length) return errorResponse("No test cases are configured for this problem.", 503);
     const result = await gradeSubmission({
       sourceCode: body.code,
       language: body.language,
-      tests: [{ input, expectedOutput: custom ? "" : sample.output, hidden: false }],
+      tests,
       timeLimitMs: problem.timeLimitMs,
       memoryLimitKb: problem.memoryLimitKb,
       compareOutput: !custom,
     });
-    return NextResponse.json(result);
+    return NextResponse.json({ ...result, cases: describeTestCases(tests) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Execution service failed.";
     return errorResponse(message, 502);

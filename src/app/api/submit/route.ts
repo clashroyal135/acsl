@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { errorResponse, isAllowedOrigin, isLanguage, requestKey, validateCode } from "@/lib/api.server";
-import { getDatabaseTests, getProblemBySlug } from "@/lib/database.server";
+import { getProblemBySlug } from "@/lib/database.server";
 import { gradeSubmission } from "@/lib/judge0.server";
 import { checkRateLimit } from "@/lib/rate-limit.server";
 import { createSupabaseAdminClient, createSupabaseServerClient } from "@/lib/supabase/server";
-import { getBundledTests } from "@/lib/test-cases.server";
+import { describeTestCases, getGradingTests } from "@/lib/grading-tests.server";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -26,14 +26,9 @@ export async function POST(request: NextRequest) {
 
   const problem = await getProblemBySlug(body.problemSlug);
   if (!problem) return errorResponse("Problem not found.", 404);
-  const bundled = problem.samples[0]
-    ? getBundledTests(problem.slug, problem.samples[0].input, problem.samples[0].output)
-    : [];
-  const databaseTests = await getDatabaseTests(problem.id);
-  const tests = databaseTests.length ? databaseTests : bundled;
-  if (!tests.length) return errorResponse("No grading cases are configured for this problem.", 503);
-
   try {
+    const tests = await getGradingTests(problem);
+    if (!tests.length) return errorResponse("No grading cases are configured for this problem.", 503);
     const result = await gradeSubmission({
       sourceCode: body.code,
       language: body.language,
@@ -46,7 +41,7 @@ export async function POST(request: NextRequest) {
     const admin = createSupabaseAdminClient();
     const { data: authData } = (await supabase?.auth.getUser()) ?? { data: { user: null } };
     if (admin && authData.user) {
-      await admin.from("submissions").insert({
+      const { error: saveError } = await admin.from("submissions").insert({
         user_id: authData.user.id,
         problem_id: problem.id,
         language: body.language,
@@ -57,8 +52,9 @@ export async function POST(request: NextRequest) {
         execution_time_ms: result.time == null ? null : Math.round(result.time * 1000),
         memory_kb: result.memory,
       });
+      if (saveError) return errorResponse("Your code was graded, but the submission could not be saved. Please try again.", 500);
     }
-    return NextResponse.json(result);
+    return NextResponse.json({ ...result, cases: describeTestCases(tests), saved: Boolean(admin && authData.user) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Grading service failed.";
     return errorResponse(message, 502);
