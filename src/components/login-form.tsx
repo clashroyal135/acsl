@@ -4,6 +4,7 @@ import { Loader2, LockKeyhole } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { Select } from "@/components/ui/select";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { loginEmail } from "@/lib/login-identity";
 import { siteOrigin } from "@/lib/site-url";
@@ -86,8 +87,8 @@ export function LoginForm({ initialMode = "login" }: { initialMode?: Mode }) {
           {mode === "register" && <>
             <Field label="Display name" value={displayName} onChange={setDisplayName} type="text" autoComplete="nickname" maxLength={60} />
             <Field label="Full name" value={name} onChange={setName} type="text" autoComplete="name" maxLength={60} description="Hidden from other users until you choose to show it on your profile." />
-            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Division</span><select required aria-label="Division" value={division} onChange={event => setDivision(event.target.value as Division)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary">{DIVISIONS.map(value => <option key={value}>{value}</option>)}</select></label>
-            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Programming language</span><select required aria-label="Programming language" value={preferredLanguage} onChange={event => setPreferredLanguage(event.target.value as Language)} className="h-11 w-full rounded-lg border border-border bg-background px-3 outline-none focus:ring-2 focus:ring-primary">{Object.entries(PROGRAMMING_LANGUAGES).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
+            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Division</span><Select required aria-label="Division" value={division} onChange={event => setDivision(event.target.value as Division)} >{DIVISIONS.map(value => <option key={value}>{value}</option>)}</Select></label>
+            <label className="block"><span className="mb-1.5 block text-sm font-semibold">Programming language</span><Select required aria-label="Programming language" value={preferredLanguage} onChange={event => setPreferredLanguage(event.target.value as Language)} >{Object.entries(PROGRAMMING_LANGUAGES).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</Select></label>
           </>}
           <Field label="Email address" value={email} onChange={setEmail} type={mode === "login" ? "text" : "email"} autoComplete={mode === "login" ? "username" : "email"} />
           {mode !== "forgot" && <Field label="Password" value={password} onChange={setPassword} type="password" minLength={mode === "login" ? 6 : 8} autoComplete={mode === "login" ? "current-password" : "new-password"} />}

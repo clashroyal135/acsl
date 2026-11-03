@@ -61,4 +61,4 @@ export type SubmissionResult = {
 };
 
 export type TestCaseDetails = { index: number; hidden: boolean; input?: string; expectedOutput?: string };
-export type ExecutionResult = SubmissionResult & { cases: TestCaseDetails[]; saved?: boolean };
+export type ExecutionResult = Omit<SubmissionResult, "verdict"> & { verdict: JudgeVerdict | "In progress"; cases: TestCaseDetails[]; saved?: boolean };

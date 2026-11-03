@@ -4,6 +4,7 @@ import Editor from "@monaco-editor/react";
 import { AlertCircle, ChevronDown, ChevronLeft, Code2, Loader2, Play, Send } from "lucide-react";
 import type { editor as MonacoEditor } from "monaco-editor";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { DivisionSelector } from "@/components/division-selector";
 import { seasonLabel, type ProblemVersion } from "@/lib/problem-groups";
@@ -21,6 +22,7 @@ const monacoLanguages: Record<Language, string> = { python: "python", cpp: "cpp"
 type Action = "sample" | "all" | "custom" | "submit";
 
 export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], preferredLanguage = "python" }: { problem: Problem; isAdmin?: boolean; versions?: ProblemVersion[]; preferredLanguage?: Language }) {
+  const router = useRouter();
   const templates = useMemo(() => ({
     python: splitStarterCode(problem.starterCode.python),
     cpp: splitStarterCode(problem.starterCode.cpp),
@@ -41,7 +43,6 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
   const [lastAction, setLastAction] = useState<Action>("sample");
   const [leftWidth, setLeftWidth] = useState(43);
   const [codeHeight, setCodeHeight] = useState(56);
-  const [passedSource, setPassedSource] = useState<{ code: string; language: Language } | null>(null);
   const [dark, setDark] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const rightPanelRef = useRef<HTMLElement>(null);
@@ -131,8 +132,6 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
 
   async function execute(kind: Action) {
     const submissionCode = `${templates[language].prefix}${code}${templates[language].suffix}`;
-    if (kind === "submit" && (passedSource?.code !== submissionCode || passedSource.language !== language)) return;
-    if (kind === "all") setPassedSource(null);
     setRunning(kind); setLastAction(kind); setMode(kind === "custom" ? "custom" : "sample"); setError(""); setResult(null);
     try {
       const response = await fetch(kind === "submit" ? "/api/submit" : "/api/run", {
@@ -143,7 +142,7 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
       const data = await response.json();
       if (!response.ok) throw new Error(data.error ?? "The judge could not process this request.");
       setResult(data);
-      if (kind === "all" && data.verdict === "Accepted" && data.total > 0 && data.passed === data.total) setPassedSource({ code: submissionCode, language });
+      if (kind === "submit" && data.saved) router.refresh();
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "The judge could not process this request.");
     } finally { setRunning(null); }
@@ -173,7 +172,6 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
 
   const activeTemplate = templates[language];
   const fullCode = `${activeTemplate.prefix}${code}${activeTemplate.suffix}`;
-  const canSubmit = passedSource?.code === fullCode && passedSource.language === language;
 
   useEffect(() => { lockedCodeRef.current?.refresh(); }, [language, templates]);
   useEffect(() => () => { lockedCodeRef.current?.dispose(); }, []);
@@ -209,7 +207,7 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
         <section ref={rightPanelRef} className="flex h-[calc(100dvh-8rem)] min-h-[480px] min-w-0 flex-col overflow-hidden bg-card md:h-full md:min-h-0">
           <div className="flex shrink-0 flex-wrap items-center justify-between gap-2 border-b border-border px-3 py-2">
             <div className="flex items-center gap-2"><Code2 className="h-4 w-4 text-muted-foreground" /><span className="relative"><select value={language} aria-label="Programming language" disabled={Boolean(running)} onChange={(event) => changeLanguage(event.target.value as Language)} className="block h-8 appearance-none rounded-md border border-border bg-background py-0 pl-2 pr-7 text-xs font-semibold leading-[1.875rem] outline-none">{Object.entries(languageLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select><ChevronDown aria-hidden="true" className="pointer-events-none absolute right-2 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" /></span></div>
-            <div className="flex gap-2"><Button size="sm" variant="secondary" onClick={() => execute("sample")} disabled={Boolean(running)}>{running === "sample" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />} Run</Button><Button size="sm" onClick={() => execute("submit")} disabled={Boolean(running) || !canSubmit} title={canSubmit ? "Submit your solution" : "Pass all test cases to enable Submit"}>{running === "submit" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />} Submit</Button></div>
+            <div className="flex gap-2"><Button size="sm" variant="secondary" onClick={() => execute("sample")} disabled={Boolean(running)}>{running === "sample" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Play className="h-3.5 w-3.5" />} Run</Button><Button size="sm" onClick={() => execute("submit")} disabled={Boolean(running)}>{running === "submit" ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Send className="h-3.5 w-3.5" />} Submit</Button></div>
           </div>
           <div className="min-h-0 shrink-0 p-2" style={{ height: `calc((100% - 49px) * ${codeHeight / 100})` }}>
             <div className="acsl-code-cell h-full overflow-hidden rounded-lg border border-border bg-background shadow-inner">

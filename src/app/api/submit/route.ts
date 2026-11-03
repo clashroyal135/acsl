@@ -36,9 +36,7 @@ export async function POST(request: NextRequest) {
       timeLimitMs: problem.timeLimitMs,
       memoryLimitKb: problem.memoryLimitKb,
     });
-    if (result.verdict !== "Accepted" || result.passed !== tests.length || result.total !== tests.length) {
-      return NextResponse.json({ error: "Pass all test cases before submitting your solution.", ...result, cases: describeTestCases(tests), saved: false }, { status: 422, headers: { "Cache-Control": "private, no-store" } });
-    }
+    const verdict = result.verdict === "Accepted" && result.passed === tests.length && result.total === tests.length ? "Accepted" : "In progress";
 
     const supabase = await createSupabaseServerClient();
     const admin = createSupabaseAdminClient();
@@ -49,7 +47,7 @@ export async function POST(request: NextRequest) {
         problem_id: problem.id,
         language: body.language,
         source_code: body.code,
-        verdict: result.verdict,
+        verdict,
         passed_tests: result.passed,
         total_tests: result.total,
         execution_time_ms: result.time == null ? null : Math.round(result.time * 1000),
@@ -57,7 +55,7 @@ export async function POST(request: NextRequest) {
       });
       if (saveError) return errorResponse("Your code was graded, but the submission could not be saved. Please try again.", 500);
     }
-    return NextResponse.json({ ...result, cases: describeTestCases(tests), saved: Boolean(admin && authData.user) }, { headers: { "Cache-Control": "private, no-store" } });
+    return NextResponse.json({ ...result, verdict, cases: describeTestCases(tests), saved: Boolean(admin && authData.user) }, { headers: { "Cache-Control": "private, no-store" } });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Grading service failed.";
     return errorResponse(message, 502);

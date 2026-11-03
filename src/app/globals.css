@@ -40,6 +40,12 @@ button, a, input, textarea, select { -webkit-tap-highlight-color: transparent; }
 
 .prose-acsl p { margin: 0 0 1rem; line-height: 1.75; color: hsl(var(--muted-foreground)); }
 .prose-acsl code { border-radius: .35rem; background: hsl(var(--muted)); padding: .12rem .35rem; font-family: var(--font-mono); font-size: .9em; color: hsl(var(--foreground)); }
+.prose-acsl pre { margin: 1rem 0; max-width: 100%; overflow-x: auto; border-radius: .5rem; background: hsl(var(--muted)); padding: .75rem; font-size: .8rem; }
+.prose-acsl pre code { padding: 0; }
+.prose-acsl ul, .prose-acsl ol { margin: 1rem 0; padding-left: 1.25rem; }
+.prose-acsl ul { list-style: disc; }
+.prose-acsl ol { list-style: decimal; }
+.prose-acsl li { margin: .35rem 0; line-height: 1.75; color: hsl(var(--muted-foreground)); }
 .code-block { white-space: pre-wrap; overflow-x: auto; border-radius: .75rem; background: hsl(224 35% 8%); padding: 1rem; font: .82rem/1.6 var(--font-mono); color: hsl(215 28% 92%); }
 .monaco-editor .acsl-locked-line { background: hsl(var(--muted) / .38); }
 .monaco-editor .acsl-locked-text { opacity: .48; }

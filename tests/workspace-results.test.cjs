@@ -68,9 +68,9 @@ test('submission save failures are reported and guest grading never claims the c
  const guest=apiSetup({signedIn:false});const guestResult=await guest.submit(guest.req('all'));assert.equal((await guestResult.json()).saved,false);assert.equal(guest.calls.some(c=>c[0]==='insert'),false);
 });
 
-test('Submit rejects a failing solution even if a client bypasses the disabled button',async()=>{
+test('Submit saves unfinished solutions as In progress and retains their code',async()=>{
  const {calls,req,submit}=apiSetup({fails:true});const response=await submit(req('all'));
- assert.equal(response.status,422);assert.match((await response.json()).error,/Pass all test cases/);assert.equal(calls.some(c=>c[0]==='insert'),false);
+ assert.equal(response.status,200);const result=await response.json();assert.equal(result.verdict,'In progress');assert.equal(result.saved,true);const insert=calls.find(c=>c[0]==='insert');assert.equal(insert[2].verdict,'In progress');assert.equal(insert[2].source_code,'trusted code snapshot');
 });
 
 test('full wrapper lines and blank lines are shaded without including the editable line',()=>{

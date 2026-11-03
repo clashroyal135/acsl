@@ -7,7 +7,7 @@ export function ProblemStatement({ problem }: { problem: Problem }) {
   return (
     <article className="prose-acsl px-5 py-6 sm:px-7">
       <div className="mb-6 flex flex-wrap gap-2"><Badge>{seasonLabel(problem.year)}</Badge><Badge>Contest 1</Badge></div>
-      <ReactMarkdown>{problem.statement}</ReactMarkdown>
+      <ReactMarkdown components={{ img: ({ src, alt }) => typeof src === "string" ? <a href={src} target="_blank" rel="noreferrer" className="my-5 block w-fit max-w-full"><img src={src} alt={alt ?? "Problem diagram"} loading="lazy" className="h-auto max-w-full rounded-lg border border-border bg-white p-2" /></a> : null }}>{problem.statement}</ReactMarkdown>
       <Section title="Input"><ReactMarkdown>{problem.inputSpec}</ReactMarkdown></Section>
       <Section title="Output"><ReactMarkdown>{problem.outputSpec}</ReactMarkdown></Section>
       <Section title="Constraints"><ul className="space-y-2 text-sm text-muted-foreground">{problem.constraints.map((constraint) => <li key={constraint} className="font-mono">• {constraint}</li>)}</ul></Section>

@@ -8,6 +8,7 @@ import { getAllProblems } from "@/lib/database.server";
 import { isOwnAvatarPath, PROFILE_PICTURE_BUCKET } from "@/lib/profile";
 import type { StudentProgress } from "@/lib/admin-types";
 import { profilePreferences } from "@/lib/preferences";
+import { preferredVersion, questionProgress } from "@/lib/problem-groups";
 
 export async function getPublicProfile(id: string) {
   noStore();
@@ -31,6 +32,8 @@ export async function getPublicProfile(id: string) {
     avatarUrl = data?.signedUrl ?? null;
   }
   const visibleName = profile.show_name === true || Boolean(viewerAdmin);
+  const preferences = profilePreferences(profile);
+  const questions = questionProgress(problems, solved, attempted);
 
   // Return an explicit public projection. A hidden name never reaches page props for other users.
   return {
@@ -40,13 +43,16 @@ export async function getPublicProfile(id: string) {
     nameIsPrivate: Boolean(viewerAdmin && !profile.show_name && profile.full_name),
     aboutMe: (profile.about_me as string) || "",
     avatarUrl,
-    ...profilePreferences(profile),
+    ...preferences,
     submissionCount: Number(progress?.submission_count ?? 0),
-    solvedCount: problems.filter((problem) => solved.has(problem.id)).length,
-    attemptedCount: problems.filter((problem) => attempted.has(problem.id)).length,
-    problems: problems.map((problem) => ({
+    solvedCount: questions.filter(question => question.solved).length,
+    attemptedCount: questions.filter(question => question.attempted).length,
+    problems: questions.map((question) => {
+      const problem = preferredVersion(question.versions, preferences.division);
+      return {
       id: problem.id, slug: problem.slug, title: problem.title, division: problem.division, year: problem.year,
-      status: solved.has(problem.id) ? "Solved" : attempted.has(problem.id) ? "Attempted" : "Not started",
-    })),
+      status: question.solved ? "Solved" : question.attempted ? "Attempted" : "Not started",
+      };
+    }),
   };
 }

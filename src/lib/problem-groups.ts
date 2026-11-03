@@ -13,6 +13,14 @@ export function preferredVersion<T extends ProblemVersion>(versions: T[], divisi
   return versions.find(version => version.division === division) ?? versions[0];
 }
 
+export function questionProgress(problems: Problem[], solvedIds: Iterable<string>, attemptedIds: Iterable<string> = []) {
+  const solved = new Set(solvedIds), attempted = new Set(attemptedIds);
+  return groupProblems(problems).map(group => ({ ...group,
+    solved: group.versions.some(version => solved.has(version.id)),
+    attempted: group.versions.some(version => attempted.has(version.id) || solved.has(version.id)),
+  }));
+}
+
 export function groupProblems(problems: Problem[]): ProblemGroup[] {
   const groups = new Map<string, ProblemGroup>();
   for (const problem of problems) {

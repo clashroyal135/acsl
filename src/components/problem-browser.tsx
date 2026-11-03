@@ -20,7 +20,7 @@ export function ProblemBrowser({ problems, solved, preferredDivision = "Junior" 
     const versions = group.versions.filter(problem => division === "All" || problem.division === division);
     const target = preferredVersion(versions, preferredDivision);
     if (!target) return [];
-    const isSolved = solvedSet.has(target.id);
+    const isSolved = group.versions.some(version => solvedSet.has(version.id));
     if (completion !== "All" && (completion === "Solved") !== isSolved) return [];
     return [{ ...group, target, isSolved }];
   });

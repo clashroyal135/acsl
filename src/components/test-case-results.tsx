@@ -14,8 +14,8 @@ export function TestCaseResults({ samples, result, running, custom = false, subm
   return <div className="space-y-4">
     {result && <div role="status" className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className={cn("flex items-center gap-2 font-bold", result.verdict === "Accepted" ? "text-success" : "text-danger")}>
-          {result.verdict === "Accepted" ? <CheckCircle2 className="h-5 w-5" /> : <XCircle className="h-5 w-5" />}
+        <p className={cn("flex items-center gap-2 rounded-lg font-bold", result.verdict === "Accepted" ? "text-success" : result.verdict === "In progress" ? "bg-warning/10 px-3 py-2 text-warning" : "text-danger")}>
+          {result.verdict === "Accepted" ? <CheckCircle2 className="h-5 w-5" /> : result.verdict === "In progress" ? <Clock3 className="h-5 w-5" /> : <XCircle className="h-5 w-5" />}
           {custom && result.verdict === "Accepted" ? "Finished" : result.verdict}
           {!custom && <span className="text-xs font-normal text-muted-foreground">{result.passed}/{result.total} passed</span>}
         </p>

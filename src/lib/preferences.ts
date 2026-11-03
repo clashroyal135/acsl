@@ -1,7 +1,9 @@
 import type { Division, Language } from "@/lib/types";
 
-export const PROGRAMMING_LANGUAGES: Record<Language, string> = { python: "Python 3", cpp: "C++17", java: "Java 17" };
+export const PROGRAMMING_LANGUAGES: Record<Language, string> = { python: "Python", cpp: "C++", java: "Java" };
 export const DEFAULT_PREFERENCES = { division: "Junior" as Division, preferredLanguage: "python" as Language };
+
+export function programmingLanguageLabel(language: string) { return PROGRAMMING_LANGUAGES[language as Language] ?? language; }
 
 export function validatePreferences(division: unknown, language: unknown) {
   if (!["Junior", "Intermediate", "Senior"].includes(String(division))) throw new Error("Choose a division.");

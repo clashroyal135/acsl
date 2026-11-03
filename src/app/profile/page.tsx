@@ -7,6 +7,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getAllProblems } from "@/lib/database.server";
 import { isOwnAvatarPath, PROFILE_PICTURE_BUCKET } from "@/lib/profile";
 import { profilePreferences } from "@/lib/preferences";
+import { questionProgress } from "@/lib/problem-groups";
 
 export const metadata: Metadata = { title: "Profile" };
 
@@ -26,12 +27,13 @@ export default async function ProfilePage() {
     avatarUrl = data?.signedUrl ?? null;
   }
   const accepted = new Set((submissions ?? []).filter((item) => item.verdict === "Accepted").map((item) => item.problem_id));
-  const divisionStats = ["Junior", "Intermediate", "Senior"].map((division) => ({ division, solved: problems.filter((problem) => problem.division === division && accepted.has(problem.id)).length, total: problems.filter((problem) => problem.division === division).length }));
+  const questions = questionProgress(problems, accepted);
+  const solved = questions.filter(question => question.solved).length;
   const displayName = profile.display_name || auth.user.user_metadata.display_name || auth.user.email?.split("@")[0] || "Coder";
   return <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
     <ProfileEditor email={auth.user.email ?? ""} publicProfileUrl={`/profile/${auth.user.id}`} initialProfile={{ displayName, fullName: profile.full_name ?? "", showName: profile.show_name === true, aboutMe: profile.about_me ?? "", avatarUrl, hasAvatar: Boolean(profile.avatar_path), ...profilePreferences(profile) }} />
-    <div className="mt-9 grid gap-4 sm:grid-cols-3"><Stat icon={CheckCircle2} label="Problems solved" value={accepted.size} /><Stat icon={Code2} label="Submissions" value={submissions?.length ?? 0} /><Stat icon={Layers3} label="Divisions active" value={divisionStats.filter((item) => item.solved > 0).length} /></div>
-    <Card className="mt-6 p-6"><h2 className="flex items-center gap-2 font-bold"><BarChart3 className="h-5 w-5 text-primary" /> Progress by division</h2><div className="mt-6 space-y-5">{divisionStats.map((item) => <div key={item.division}><div className="mb-2 flex justify-between text-sm"><span className="font-semibold">{item.division}</span><span className="text-muted-foreground">{item.solved} / {item.total}</span></div><div className="h-2 rounded-full bg-muted"><div className="h-2 rounded-full bg-primary" style={{ width: `${item.total ? (item.solved / item.total) * 100 : 0}%` }} /></div></div>)}</div></Card>
+    <div className="mt-9 grid gap-4 sm:grid-cols-3"><Stat icon={CheckCircle2} label="Questions solved" value={solved} /><Stat icon={Code2} label="Submissions" value={submissions?.length ?? 0} /><Stat icon={Layers3} label="Questions remaining" value={questions.length - solved} /></div>
+    <Card className="mt-6 p-6"><h2 className="flex items-center gap-2 font-bold"><BarChart3 className="h-5 w-5 text-primary" /> Progress</h2><div className="mt-6"><div className="mb-2 flex justify-between text-sm"><span className="font-semibold">Questions solved</span><span className="text-muted-foreground">{solved} / {questions.length}</span></div><div role="progressbar" aria-label="Questions solved" aria-valuenow={solved} aria-valuemin={0} aria-valuemax={questions.length} className="h-2 rounded-full bg-muted"><div className="h-2 rounded-full bg-primary" style={{ width: `${questions.length ? solved / questions.length * 100 : 0}%` }} /></div></div></Card>
   </main>;
 }
 

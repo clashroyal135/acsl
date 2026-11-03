@@ -4,14 +4,14 @@ const React = require('react');
 const { renderToStaticMarkup } = require('react-dom/server');
 const { loader } = require('./helpers.cjs');
 
-test('problem rows open the preferred division and solved checks belong to that version', () => {
+test('problem rows open the preferred division while any division solve marks the whole question', () => {
   const { ProblemBrowser } = loader()('src/components/problem-browser.tsx');
   const problems = ['Junior','Intermediate','Senior'].map(division => ({ id:division, slug:division.toLowerCase(), division, title:'Example', year:2024 }));
   const render = solved => renderToStaticMarkup(React.createElement(ProblemBrowser,{ problems, solved, preferredDivision:'Senior' }));
-  const unsolved = render(['Junior']);
+  const unsolved = render([]);
   assert.match(unsolved,/href="\/problems\/senior"/); assert.match(unsolved,/Solved\?/); assert.match(unsolved,/aria-label="Not solved"/);
   assert.doesNotMatch(unsolved, /aria-label="Solved"|All difficulties|All topics|rounded-full|<span>Divisions<\/span>/);
-  assert.match(render(['Senior']),/aria-label="Solved"/);
+  assert.match(render(['Senior']),/aria-label="Solved"/);assert.match(render(['Junior']),/aria-label="Solved"/);
 });
 
 test('an unavailable preferred division falls back to an available version', () => {

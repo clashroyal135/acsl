@@ -8,7 +8,7 @@ function workspace(isAdmin) {
   const document = { addEventListener: (name, handler) => listeners.set(name, handler), removeEventListener: name => listeners.delete(name) };
   const Editor = () => null;
   const react = { ...React, useState: value => [value, () => {}], useRef: value => ({ current: value }), useMemo: fn => fn(), useCallback: fn => fn, useEffect: fn => effects.push(fn) };
-  const { CodeWorkspace } = loader({ react, '@monaco-editor/react': { __esModule: true, default: Editor }, '@/components/problem-statement': { ProblemStatement: () => null } }, {}, { document, Element: class Element {} })('src/components/code-workspace.tsx');
+  const { CodeWorkspace } = loader({ react, 'next/navigation': { useRouter: () => ({refresh(){}}) }, '@monaco-editor/react': { __esModule: true, default: Editor }, '@/components/problem-statement': { ProblemStatement: () => null } }, {}, { document, Element: class Element {} })('src/components/code-workspace.tsx');
   const problem = { slug: 'test', title: 'Test', starterCode: { python: '', cpp: '', java: '' }, samples: [], timeLimitMs: 1000, memoryLimitKb: 64000 };
   const tree = CodeWorkspace({ problem, isAdmin });
   // The clipboard effect follows draft restoration, and owns all clipboard listeners.

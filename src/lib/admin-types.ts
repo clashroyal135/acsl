@@ -21,6 +21,8 @@ export type AdminStudent = {
   createdAt: string;
   lastSignInAt: string | null;
   progress: StudentProgress;
+  questionsSolved?: number;
+  questionsAttempted?: number;
 };
 export type AdminSubmission = {
   id: string;

@@ -44,7 +44,7 @@ test("the public profile page renders only the name allowed by its server projec
     const Page = loader({ "next/link": Link, "next/navigation": { notFound() { throw Error("not found"); } }, "@/lib/public-profile.server": { getPublicProfile: async () => profile } })("src/app/profile/[id]/page.tsx").default;
     const html = renderToStaticMarkup(await Page({ params: Promise.resolve({ id }) }));
     assert.match(html, /PublicHandle/); assert.match(html, /Learning algorithms/);
-    assert.match(html, /Division/); assert.match(html, /Programming language/); assert.match(html, /Python 3/);
+    assert.match(html, /Division/); assert.match(html, /Programming language/); assert.match(html, /Python/);
     if (showName) assert.match(html, /Private Legal Name/); else assert.doesNotMatch(html, /Private Legal Name/);
     assert.doesNotMatch(html, /private@example.com|source_code/);
   }
@@ -55,7 +55,7 @@ test("leaderboards use display names and link to profiles without revealing pers
     if (table === "profiles") { assert.equal(columns, "id,display_name"); return Promise.resolve({ data: [{ id, display_name: "PublicHandle", full_name: "Private Legal Name" }] }); }
     assert.equal(table, "submissions"); return { eq: async () => ({ data: [{ user_id: id, problem_id: "one" }] }) };
   } }) };
-  const Page = loader({ "next/link": Link, "@/lib/supabase/server": { createSupabaseAdminClient: () => client } })("src/app/leaderboard/page.tsx").default;
+  const Page = loader({ "next/link": Link, "@/lib/supabase/server": { createSupabaseAdminClient: () => client }, "@/lib/database.server": { getAllProblems: async () => [{id:"one",title:"One",year:2024}] } })("src/app/leaderboard/page.tsx").default;
   const html = renderToStaticMarkup(await Page());
   assert.match(html, /PublicHandle/); assert.match(html, new RegExp(`/profile/${id}`)); assert.doesNotMatch(html, /Private Legal Name/);
 });
@@ -79,8 +79,8 @@ test("registration sends separate display and personal names to the signup trigg
   function find(predicate) { let found; function walk(node) { if (!node || typeof node !== "object") return; if (Array.isArray(node)) return node.forEach(walk); if (predicate(node)) found = node; walk(node.props?.children); } walk(tree); return found; }
   render();
   for (const [label, value] of [["Display name", " PublicHandle "], ["Full name", " Personal Name "], ["Email address", "learner@example.com"], ["Password", "password123"]]) { find(node => node.props?.label === label).props.onChange(value); render(); }
-  find(node => node.type === 'select' && node.props.value === 'Junior').props.onChange({target:{value:'Senior'}}); render();
-  find(node => node.type === 'select' && node.props.value === 'python').props.onChange({target:{value:'java'}}); render();
+  find(node => node.props?.['aria-label'] === 'Division').props.onChange({target:{value:'Senior'}}); render();
+  find(node => node.props?.['aria-label'] === 'Programming language').props.onChange({target:{value:'java'}}); render();
   await find(node => node.type === "form").props.onSubmit({ preventDefault() {} });
   assert.equal(payload.options.data.display_name, "PublicHandle"); assert.equal(payload.options.data.full_name, "Personal Name");
   assert.equal(payload.options.data.division, "Senior"); assert.equal(payload.options.data.preferred_language, "java");

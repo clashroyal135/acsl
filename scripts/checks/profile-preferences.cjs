@@ -34,7 +34,7 @@ const routes = {
   assert.equal(await page.getByLabel('Difficulty',{exact:true}).count(),0);assert.equal(await page.getByLabel('Topic',{exact:true}).count(),0);
   await page.getByLabel('Division',{exact:true}).selectOption('Junior');
   assert.equal(await nextBase.getAttribute('href'),'/problems/next-base-2022-junior');
-  assert.equal(await nextBase.getByLabel('Not solved',{exact:true}).count(),1);
+  assert.equal(await nextBase.getByLabel('Solved',{exact:true}).count(),1);
   await page.goto(base+'/checks-workspace');
   assert.equal(await page.getByLabel('Programming language',{exact:true}).inputValue(),'java');
   await page.waitForFunction(()=>window.monaco?.editor.getModels().some(m=>m.getLanguageId()==='java'));
@@ -54,6 +54,8 @@ const routes = {
   const save=page.getByRole('button',{name:'Save profile',exact:true});
   assert.equal(await save.isDisabled(),true);assert.equal(await page.getByLabel('About me',{exact:true}).getAttribute('readonly'),'');
   await page.getByRole('button',{name:'Edit profile',exact:true}).click();assert.equal(await save.isDisabled(),true);
+  for(const name of ['Division','Programming language']) { const select=page.getByLabel(name,{exact:true});const box=await select.boundingBox();const arrow=await select.locator('..').locator('svg').boundingBox();assert.ok(Math.abs(box.y+box.height/2-arrow.y-arrow.height/2)<1);assert.equal(box.height,44); }
+  assert.equal(await page.getByText('Senior · Java 17',{exact:true}).count(),0);
   await page.getByLabel('About me',{exact:true}).fill('Unfinished biography');
   assert.equal(await save.isEnabled(),true);assert.match(await save.getAttribute('class'),/bg-primary/);
   assert.equal(await page.evaluate(()=>{const event=new Event('beforeunload',{cancelable:true});dispatchEvent(event);return event.defaultPrevented;}),true);
