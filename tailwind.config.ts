@@ -16,7 +16,10 @@ export default {
         "primary-foreground": "hsl(var(--primary-foreground))",
         success: "hsl(var(--success))",
         warning: "hsl(var(--warning))",
-        danger: "hsl(var(--danger))"
+        danger: "hsl(var(--danger))",
+        "danger-foreground": "hsl(var(--danger-foreground))",
+        code: "hsl(var(--code))",
+        "code-foreground": "hsl(var(--code-foreground))"
       },
       boxShadow: {
         soft: "0 16px 50px -24px rgb(15 23 42 / 0.25)"

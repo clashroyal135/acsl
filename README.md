@@ -116,6 +116,8 @@ npm run typecheck
 npm run build
 ```
 
+`node scripts/checks/theme-contrast.cjs` checks actual rendered text contrast in light and dark modes, including sample blocks, code panels, status tints, forms, and button states. It requires Playwright and Chrome (a bundled Playwright installation can be supplied through `NODE_PATH`). The default run uses temporary local fixtures and removes them afterward. Set `ACSL_CHECK_URL` to check public pages on a running production build or deployed site, including mobile layouts. Theme colors use paired foreground/background tokens; code blocks and native controls follow the selected color scheme.
+
 ## Deployment
 
 Use `https://acsl.netlify.app` as the public address and `https://acsl.netlify.app/login` for sign-in. The application redirects Netlify deploy permalinks, branch URLs, and deploy-preview URLs ending in `--acsl.netlify.app` to that address before rendering pages or creating auth cookies, preserving paths and query parameters. Signup confirmations, password recovery, and sign-out redirects use the stable domain. Local development keeps its local origin. Netlify's historical deploy permalinks contain immutable copies of older code; redirects added in a new commit apply to deployments built with that commit or later.
