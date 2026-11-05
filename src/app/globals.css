@@ -64,3 +64,50 @@ input::placeholder, textarea::placeholder { color: hsl(var(--muted-foreground));
   .desktop-split { display: block !important; }
   .desktop-resizer { display: none; }
 }
+
+/* Worksheet content is laid out for the statement pane, not the viewport. */
+.prose-acsl { container-type: inline-size; overflow-wrap: anywhere; }
+.prose-acsl .statement-body, .prose-acsl > section { max-width: 65ch; }
+.prose-acsl strong { color: hsl(var(--foreground)); }
+.prose-acsl p a { color: hsl(var(--primary)); text-decoration: underline; text-underline-offset: 3px; }
+.prose-acsl pre:not(.code-block) { white-space: pre-wrap; overflow-wrap: anywhere; }
+.prose-acsl .code-block { overflow-wrap: anywhere; tab-size: 4; }
+.statement-table { margin: 1.5rem 0; max-width: 100%; border: 1px solid hsl(var(--border)); border-radius: .75rem; overflow: clip; }
+.statement-table table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: .875rem; line-height: 1.6; color: hsl(var(--foreground)); }
+.statement-table caption, .prose-acsl figcaption { padding: .7rem .8rem; text-align: left; font-weight: 600; font-size: .875rem; color: hsl(var(--foreground)); }
+.statement-table th, .statement-table td { padding: .65rem .8rem; vertical-align: top; text-align: left; border-top: 1px solid hsl(var(--border)); overflow-wrap: anywhere; }
+.statement-table th { background: hsl(var(--muted) / .55); font-weight: 600; }
+.statement-table tr:nth-child(even) { background: hsl(var(--muted) / .22); }
+.statement-table td { font-variant-numeric: tabular-nums; }
+.prose-acsl .statement-label { margin: 0 0 .5rem; font-size: .75rem; line-height: 1.5; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.statement-example { display: grid; gap: 1rem; margin: 1.25rem 0; }
+.statement-example > div { min-width: 0; }
+.statement-equation { padding: .85rem 1rem; margin: 1rem 0; border-left: 3px solid hsl(var(--primary)); border-radius: 0 .5rem .5rem 0; background: hsl(var(--muted) / .4); color: hsl(var(--foreground)); }
+.statement-equation math { display: block; text-align: left; font-size: clamp(1.05rem, 3.6cqi, 1.15rem); margin: .3rem 0; }
+.statement-figure, .statement-image-link { display: block; max-width: 100%; margin: 1.5rem 0; }
+.statement-image { display: block; width: 100%; height: auto; max-width: 100%; border: 1px solid hsl(var(--border)); border-radius: .5rem; background: white; }
+.statement-image-link { width: min(100%, 32rem); }
+.statement-board, .statement-triangle, .statement-tiles { max-width: 100%; margin: 1.5rem 0; border: 1px solid hsl(var(--border)); border-radius: .75rem; padding: .5rem; background: hsl(var(--muted) / .3); color: hsl(var(--foreground)); }
+.statement-grid { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); border-top: 1px solid hsl(var(--border)); border-left: 1px solid hsl(var(--border)); }
+.statement-grid > span { padding: .5rem 0; text-align: center; font: .8rem var(--font-mono); border-right: 1px solid hsl(var(--border)); border-bottom: 1px solid hsl(var(--border)); }
+.statement-triangle { width: fit-content; }
+.statement-triangle-row { display: flex; gap: .4rem; padding: .2rem; }
+.statement-triangle-row > span { min-width: 2.4rem; padding: .3rem .4rem; border: 1px solid hsl(var(--border)); border-radius: .25rem; background: hsl(var(--background)); font: .875rem var(--font-mono); text-align: center; }
+.statement-tile-row { display: flex; align-items: baseline; gap: .6rem; margin: .6rem .3rem; }
+.statement-row-label { flex: 0 0 3.5rem; font-size: .8rem; font-weight: 600; }
+.statement-tile-row > div { display: flex; flex-wrap: wrap; gap: .4rem; min-width: 0; }
+.statement-tile { display: inline-flex; border: 1px solid hsl(var(--border)); border-radius: .25rem; background: hsl(var(--background)); font: .875rem var(--font-mono); }
+.statement-tile > span { padding: .3rem .5rem; }
+.statement-tile > span + span { border-left: 1px solid hsl(var(--border)); }
+.statement-tile-start { font-weight: 700; }
+.statement-tile-row > div > .statement-tile:last-child > span:last-child { background: hsl(var(--warning) / .16); }
+.statement-clock { width: 16rem; max-width: 100%; margin: 1.5rem 0; }
+.statement-clock svg { display: block; width: 100%; height: auto; }
+.prose-acsl .statement-clock figcaption { padding: .65rem 0; font-family: var(--font-mono); }
+@container (min-width: 30rem) { .statement-example { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (max-width: 23rem) {
+  .statement-table th, .statement-table td { padding: .5rem .4rem; }
+  .statement-table table { font-size: .8rem; }
+  .statement-triangle-row { gap: .25rem; }
+  .statement-triangle-row > span { min-width: 2rem; padding: .3rem; }
+}

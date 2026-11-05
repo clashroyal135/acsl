@@ -201,7 +201,7 @@ export function CodeWorkspace({ problem, isAdmin = false, versions = [problem], 
         <div className="flex min-w-0 items-center gap-3"><Link href="/problems" className="grid h-8 w-8 shrink-0 place-items-center rounded-lg hover:bg-muted" aria-label="Back to problems"><ChevronLeft className="h-4 w-4" /></Link><div className="min-w-0"><h1 className="truncate text-sm font-bold sm:text-base">{problem.title}</h1><p className="text-xs text-muted-foreground">{seasonLabel(problem.year)} · Contest 1</p></div></div>
         <DivisionSelector currentSlug={problem.slug} versions={versions} /><div className="hidden items-center gap-4 text-xs text-muted-foreground lg:flex"><span>{problem.timeLimitMs / 1000}s</span><span>{Math.round(problem.memoryLimitKb / 1000)} MB</span></div>
       </div>
-      <div ref={containerRef} className="desktop-split grid min-h-0 flex-1 overflow-hidden rounded-xl border border-border bg-card" style={{ gridTemplateColumns: `${leftWidth}% 6px minmax(0, 1fr)` }}>
+      <div ref={containerRef} className="desktop-split grid min-h-0 flex-1 overflow-hidden rounded-xl border border-border bg-card" style={{ gridTemplateColumns: `minmax(320px, ${leftWidth}%) 6px minmax(0, 1fr)` }}>
         <section aria-label="Problem statement" className="max-h-[40dvh] min-h-0 min-w-0 overflow-y-auto border-b border-border md:max-h-none md:border-b-0"><ProblemStatement problem={problem} /></section>
         <button className="desktop-resizer cursor-col-resize bg-border transition-colors hover:bg-primary" onPointerDown={beginResize} aria-label="Resize problem and editor panels" />
         <section ref={rightPanelRef} className="flex h-[calc(100dvh-8rem)] min-h-[480px] min-w-0 flex-col overflow-hidden bg-card md:h-full md:min-h-0">

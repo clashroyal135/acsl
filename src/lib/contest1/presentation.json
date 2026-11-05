@@ -1,0 +1,3414 @@
+{
+  "numeral-triangles-2020-senior": {
+    "sourceHash": "484ccf6b0ba7ea6fd69d6ac84ebc304cbe651377425627c373072164db645033",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Construct a Numeral Hex Triangle according to the following rules. You will be given three positive integers: s, a starting number; d, a delta (the amount by which to increase each number in the triangle); and r the number of rows. The numbers s and d will be in hexadecimal."
+      },
+      {
+        "type": "prose",
+        "markdown": "1. The first row contains the number s."
+      },
+      {
+        "type": "prose",
+        "markdown": "2. Each of the next rows has one more number than the previous row."
+      },
+      {
+        "type": "prose",
+        "markdown": "3. Each number in the triangle is d more than the previous number in the triangle."
+      },
+      {
+        "type": "prose",
+        "markdown": "Here are two examples of Numeral Hex Triangles:"
+      },
+      {
+        "type": "triangle",
+        "caption": "start=A, delta=9, rows=5",
+        "rows": [
+          [
+            "A"
+          ],
+          [
+            "13",
+            "1C"
+          ],
+          [
+            "25",
+            "2E",
+            "37"
+          ],
+          [
+            "40",
+            "49",
+            "52",
+            "5B"
+          ],
+          [
+            "64",
+            "6D",
+            "76",
+            "7F",
+            "88"
+          ]
+        ]
+      },
+      {
+        "type": "triangle",
+        "caption": "start=ABC, delta=F, rows=4",
+        "rows": [
+          [
+            "ABC"
+          ],
+          [
+            "ACB",
+            "ADA"
+          ],
+          [
+            "AE9",
+            "AF8",
+            "B07"
+          ],
+          [
+            "B16",
+            "B25",
+            "B34",
+            "B43"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "For each line of data, print the sum of all of the numbers on the rth row of the Numeral Hex Triangle, transformed into a single hexadecimal digit. To transform the sum, add its digits in base 16. If that sum is more than one hex digit, continue this process until a single hex digit is reached."
+      },
+      {
+        "type": "prose",
+        "markdown": "For the example with start A, delta 9 and 5 rows, the full numbers in the last row sum to 24E in base 16:"
+      },
+      {
+        "type": "math",
+        "tex": "2+4+E_{16}=14_{16}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mn>2</mn><mo>+</mo><mn>4</mn><mo>+</mo><msub><mi>E</mi><mn>16</mn></msub><mo>=</mo><msub><mn>14</mn><mn>16</mn></msub></mrow><annotation encoding=\"application/x-tex\">2+4+E_{16}=14_{16}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "math",
+        "tex": "1+4=5",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mn>1</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>5</mn></mrow><annotation encoding=\"application/x-tex\">1+4=5</annotation></semantics></math></span>"
+      }
+    ]
+  },
+  "numeral-triangles-2020-junior": {
+    "sourceHash": "e944a7888bf2f7fbee0fceac98b38fc1a6b43af06519f02ad606cb4608da82ca",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Construct a Numeral Triangle according to the following rules. You will be given three positive integers: s, a starting number; d, a delta (the amount by which to increase each number in the triangle); and r the number of rows."
+      },
+      {
+        "type": "prose",
+        "markdown": "1. The first row contains the number s."
+      },
+      {
+        "type": "prose",
+        "markdown": "2. Each of the next rows has one more number than the previous row."
+      },
+      {
+        "type": "prose",
+        "markdown": "3. Each number in the triangle is d more than the previous number in the triangle."
+      },
+      {
+        "type": "prose",
+        "markdown": "4. Before putting a number in the triangle, it is transformed to a single digit. That is, if the number is more than one digit, replace it by the sum of the digits, repeating until the sum is one digit (for example, 1938 ⇒ 21 ⇒ 3)."
+      },
+      {
+        "type": "prose",
+        "markdown": "Here are two examples of Numeral Triangles:"
+      },
+      {
+        "type": "triangle",
+        "caption": "start=2, delta=3, rows=5",
+        "rows": [
+          [
+            "2"
+          ],
+          [
+            "5",
+            "8"
+          ],
+          [
+            "2",
+            "5",
+            "8"
+          ],
+          [
+            "2",
+            "5",
+            "8",
+            "2"
+          ],
+          [
+            "5",
+            "8",
+            "2",
+            "5",
+            "8"
+          ]
+        ]
+      },
+      {
+        "type": "triangle",
+        "caption": "start=221, delta=2, rows=4",
+        "rows": [
+          [
+            "5"
+          ],
+          [
+            "7",
+            "9"
+          ],
+          [
+            "2",
+            "4",
+            "6"
+          ],
+          [
+            "8",
+            "1",
+            "3",
+            "5"
+          ]
+        ]
+      }
+    ]
+  },
+  "numeral-triangles-2020-intermediate": {
+    "sourceHash": "1470cb8a0058423dadcec39f9719a9065ebd6109bb72b5a79924a8b010aae832",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Construct a Numeral Octal Triangle according to the following rules. You will be given three positive integers: s, a starting number; d, a delta (the amount by which to increase each number in the triangle); and r the number of rows. The numbers s and d will be in octal."
+      },
+      {
+        "type": "prose",
+        "markdown": "1. The first row contains the number s."
+      },
+      {
+        "type": "prose",
+        "markdown": "2. Each of the next rows has one more number than the previous row."
+      },
+      {
+        "type": "prose",
+        "markdown": "3. Each number in the triangle is d more than the previous number in the triangle."
+      },
+      {
+        "type": "prose",
+        "markdown": "Here are two examples of Numeral Octal Triangles:"
+      },
+      {
+        "type": "triangle",
+        "caption": "start=2, delta=3, rows=5",
+        "rows": [
+          [
+            "2"
+          ],
+          [
+            "5",
+            "10"
+          ],
+          [
+            "13",
+            "16",
+            "21"
+          ],
+          [
+            "24",
+            "27",
+            "32",
+            "35"
+          ],
+          [
+            "40",
+            "43",
+            "46",
+            "51",
+            "54"
+          ]
+        ]
+      },
+      {
+        "type": "triangle",
+        "caption": "start=221, delta=2, rows=4",
+        "rows": [
+          [
+            "221"
+          ],
+          [
+            "223",
+            "225"
+          ],
+          [
+            "227",
+            "231",
+            "233"
+          ],
+          [
+            "235",
+            "237",
+            "241",
+            "243"
+          ]
+        ]
+      }
+    ]
+  },
+  "fibonacci-clock-2021-intermediate": {
+    "sourceHash": "b74f43e3823dcc92281d5c1d02c4bd0061d0c6bd010f108aba5f6d7174aec0c4",
+    "blocks": [
+      {
+        "type": "figure",
+        "src": "/problems/figures/fibonacci-clock-2021-intermediate-1.png",
+        "alt": "Fibonacci Clock, Intermediate: original diagram 1",
+        "width": 510,
+        "height": 392,
+        "displayWidth": 264
+      },
+      {
+        "type": "prose",
+        "markdown": "ACSL’s version of Philippe Chretien’s “Fibonacci Clock” displays time by changing the colors displayed in 5 squares, whose side lengths correspond to the first 5 Fibonacci numbers (1, 1, 2, 3, and 5). Given the colors of the squares on the clock face, you must output the time that is represented in hh:mm format.\n\nThe colors will be given to you as 5 individual characters representing the lower 1 × 1 square, the upper 1 × 1 square, the 2 × 2 square, the 3 × 3 square, and the 5 × 5 square in that order. (See [Fibonacci Clock](https://basbrun.com/2015/05/04/fibonacci-clock/).) Red squares are used to represent only hours and green squares are used to represent only minutes.\n\nBlue squares are used to represent both hours and minutes. White squares are ignored."
+      },
+      {
+        "type": "prose",
+        "markdown": "To find the current hour, add the values of the red and blue squares. To find the current minutes, add the values of the green and blue squares and multiply by 5 so that the number of minutes and seconds are in intervals of 5 between 0 and 60 inclusive."
+      },
+      {
+        "type": "prose",
+        "markdown": "However, if the number of minutes is 60, change it to the next hour with 0 minutes and if the number of hours is 12 or more, change it to a valid time from 00:00 to 11:55. For example, 09:60 would become 10:00 and 12:60 would be 01:00."
+      },
+      {
+        "type": "prose",
+        "markdown": "The clock in the picture above is displaying 08:50. The hours are represented by the red 1 × 1, blue 2 × 2, and blue 5 × 5 squares (1+2+5=8). The minutes are represented by the blue 2 × 2, the green 3 × 3, and the blue 5 × 5 squares (2+3+5=10, and 10 × 5=50)."
+      },
+      {
+        "type": "prose",
+        "markdown": "The example at the left which uses the inputted characters R, W, G, B, G displays the time 04:50."
+      },
+      {
+        "type": "prose",
+        "markdown": "The hours are represented by the 1 × 1 red square and the 3 × 3 blue square: 1+3=4. The minutes are represented by the 2 × 2 green, the 3 × 3 blue, and the 5 × 5 green squares: (2+3+5) × 5 = 50. The example at the right which uses the inputted characters W, B, B, G, R displays the time 08:30."
+      },
+      {
+        "type": "prose",
+        "markdown": "The hours are 1+2+5=8 and the minutes are (1+2+3) × 5=30."
+      },
+      {
+        "type": "clock",
+        "colors": "RWGBG",
+        "time": "04:50"
+      },
+      {
+        "type": "clock",
+        "colors": "WBBGR",
+        "time": "08:30"
+      }
+    ]
+  },
+  "fibonacci-clock-2021-junior": {
+    "sourceHash": "f6a847600a3eddb2075310291774aa30e8f3f840a8d703a21c75601777b3cdd9",
+    "blocks": [
+      {
+        "type": "figure",
+        "src": "/problems/figures/fibonacci-clock-2021-junior-1.png",
+        "alt": "Fibonacci Clock, Junior: original diagram 1",
+        "width": 510,
+        "height": 392,
+        "displayWidth": 264
+      },
+      {
+        "type": "prose",
+        "markdown": "ACSL’s version of Philippe Chretien’s “Fibonacci Clock” displays time by changing the colors displayed in 5 squares, whose side lengths correspond to the first 5 Fibonacci numbers (1, 1, 2, 3, and 5). Given the colors of the squares on the clock face, you must output the time that is represented in hh:mm format.\n\nThe colors will be given to you as 5 individual characters representing the lower 1 × 1 square, the upper 1 × 1 square, the 2 × 2 square, the 3 × 3 square, and the 5 × 5 square in that order. (See [Fibonacci Clock](https://basbrun.com/2015/05/04/fibonacci-clock/).) Red squares are used to represent only hours and green squares are used to represent only minutes.\n\nBlue squares are used to represent both hours and minutes. White squares are ignored."
+      },
+      {
+        "type": "prose",
+        "markdown": "To find the current hour, add the values of the red and blue squares. To find the current minutes, add the values of the green and blue squares and multiply by 5. The minutes are displayed in five-minute increments."
+      },
+      {
+        "type": "prose",
+        "markdown": "The clock in the picture above is displaying 08:50. The hours are represented by the red 1 × 1, blue 2 × 2, and blue 5 × 5 squares (1+2+5=8). The minutes are represented by the blue 2 × 2, the green 3 × 3, and the blue 5 × 5 squares (2+3+5=10 and 10 × 5=50)."
+      },
+      {
+        "type": "prose",
+        "markdown": "The example at the left which uses the inputted characters R, W, G, B, G displays the time 04:50."
+      },
+      {
+        "type": "prose",
+        "markdown": "The hours are represented by the 1 × 1 red square and the 3 × 3 blue square: 1+3=4. The minutes are represented by the 2 × 2 green, the 3 × 3 blue, and the 5 × 5 green squares: (2+3+5) × 5 = 50. The example at the right which uses the inputted characters W, B, B, G, R displays the time 08:30."
+      },
+      {
+        "type": "prose",
+        "markdown": "The hours are 1+2+5=8 and the minutes are (1+2+3) × 5=30."
+      },
+      {
+        "type": "clock",
+        "colors": "RWGBG",
+        "time": "04:50"
+      },
+      {
+        "type": "clock",
+        "colors": "WBBGR",
+        "time": "08:30"
+      }
+    ]
+  },
+  "fibonacci-clock-2021-senior": {
+    "sourceHash": "03f3609530a79301cb85ead6ef865e19f3a50034cf73338b3fa3bf7fda5c173a",
+    "blocks": [
+      {
+        "type": "figure",
+        "src": "/problems/figures/fibonacci-clock-2021-senior-1.png",
+        "alt": "Fibonacci Clock, Senior: original diagram 1",
+        "width": 510,
+        "height": 392,
+        "displayWidth": 264
+      },
+      {
+        "type": "prose",
+        "markdown": "ACSL’s version of Philippe Chretien’s “Fibonacci Clock” displays time by changing the colors displayed in 5 squares, whose side lengths correspond to the first 5 Fibonacci numbers (1, 1, 2, 3, and 5). Given the colors of the squares on the clock face, you must output the time that is represented in hh:mm:ss format."
+      },
+      {
+        "type": "prose",
+        "markdown": "The colors will be given to you as a single string of 5 uppercase characters representing the lower 1 × 1 square, the upper 1 × 1 square, the 2 × 2 square, the 3 × 3 square, and the 5 × 5 square in that order. (See [Fibonacci Clock](https://basbrun.com/2015/05/04/fibonacci-clock/).) Each square has a color: red, green, blue, cyan, magenta, yellow, or white.\n\nAll red squares represent only the number of hours; green squares represent only minutes; and blue squares represent only seconds. However, intersecting regions (in the Venn Diagram shown) are used to represent 2 different values:"
+      },
+      {
+        "type": "figure",
+        "src": "/problems/figures/fibonacci-clock-2021-senior-2.png",
+        "alt": "Fibonacci Clock, Senior: original diagram 2",
+        "width": 425,
+        "height": 412,
+        "displayWidth": 300
+      },
+      {
+        "type": "table",
+        "caption": "Overlapping colors",
+        "columns": [
+          "Color",
+          "Represents"
+        ],
+        "rows": [
+          [
+            "Yellow",
+            "Hours and minutes"
+          ],
+          [
+            "Magenta",
+            "Hours and seconds"
+          ],
+          [
+            "Cyan",
+            "Minutes and seconds"
+          ],
+          [
+            "White",
+            "Ignored"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "For both minutes and seconds, the sum of the values of the lengths is multiplied by 5 so that the number of minutes and seconds are in intervals of 5 between 0 and 60 inclusive."
+      },
+      {
+        "type": "prose",
+        "markdown": "However, if the number of minutes or seconds is 60 or more and/or if the number of hours is 12 or more, change it to a valid time from 00:00:00 to 11:56:55. For example, 09:60:00 would become 10:00:00 and 12:00:60 would be 00:01:00."
+      },
+      {
+        "type": "prose",
+        "markdown": "In this modified version of the clock, the time displayed on the clock in the picture above is 01:15:35. The hours are represented by the red 1 × 1 square. The minutes are represented by the green 3 × 3 square (3 × 5=15), and the seconds are represented by the blue 2 × 2 and the blue 5 × 5 squares (2+5=7 and 7 × 5=35)."
+      },
+      {
+        "type": "prose",
+        "markdown": "For example, the 2 illustrations below represent the first two sample inputs. The string “RWGBG” represents 1 hour, (2+5) × 5 = 35 minutes, and 3 × 5 = 15 seconds. The string “RCMGB” represents 3 hours (1+2), 20 minutes ((1+3) × 5), and 40 seconds ((5+1+2) × 5) or 03:20:40."
+      },
+      {
+        "type": "clock",
+        "colors": "RWGBG",
+        "time": "01:35:15"
+      },
+      {
+        "type": "clock",
+        "colors": "RCMGB",
+        "time": "03:20:40"
+      }
+    ]
+  },
+  "acsl-tiles-2023-intermediate": {
+    "sourceHash": "f5118b711cd205af7588c274c9eab5ddd8c740a3fe9a964275e91b9816b16f33",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Tiles is a one-person game played with rectangular tiles. Each tile has a single-digit number between 1 and 9 inclusive at each end. At the start of the game, there are 4 rows, each with a number. The goal of the game is to build rows by placing a tile at the right end of a row whose last number matches a number on the tile. Tiles can be re-oriented; thus, the tiles 34 and 43 are the same tile.\n\nIf a tile cannot be placed on any row, it is placed in the discard pile."
+      },
+      {
+        "type": "prose",
+        "markdown": "When all tiles have been played or discarded, find the sum of the single-digit numbers on all of the tiles in the discard pile."
+      },
+      {
+        "type": "prose",
+        "markdown": "At each turn, try the next tile in your hand to see if it can be added to one of the rows, starting with Row 1, then the row after the one where the last tile was placed, rotating back to Row 1 if necessary. However, if the last tile placed was a double (i.e., both numbers are the same), another tile must be placed on that row before any other match can be considered.\n\nIf the tile cannot be placed, add it to the discard pile."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**"
+      },
+      {
+        "type": "example",
+        "input": "5923\n56 27 73 34 99 45 32 19 64 57 18",
+        "output": "21"
+      },
+      {
+        "type": "prose",
+        "markdown": "The game starts with 4 rows having numbers 5, 9, 2, 3."
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5"
+          ],
+          [
+            "9"
+          ],
+          [
+            "2"
+          ],
+          [
+            "3"
+          ]
+        ],
+        "discard": []
+      },
+      {
+        "type": "prose",
+        "markdown": "The tile 56 is placed on Row 1; the tile 27 is placed on Row 3; the tile 73 is placed on Row 4 as 37 because Row 4 is checked first after a tile is placed on Row 3; the tile 34 is placed on the discard pile; the tile 99 is placed on Row 2."
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5",
+            "56"
+          ],
+          [
+            "9",
+            "99"
+          ],
+          [
+            "2",
+            "27"
+          ],
+          [
+            "3",
+            "37"
+          ]
+        ],
+        "discard": [
+          "34"
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The 45 and the 32 tiles are placed in the discard pile because they don’t match the 99 tile; the tile 19 is placed on Row 2 as 91; the tile 64 is placed on Row 1; the 57 is placed on Row 3 as 75; and the 18 is placed on Row 2. The final outcome is shown below:"
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5",
+            "56",
+            "64"
+          ],
+          [
+            "9",
+            "99",
+            "91",
+            "18"
+          ],
+          [
+            "2",
+            "27",
+            "75"
+          ],
+          [
+            "3",
+            "37"
+          ]
+        ],
+        "discard": [
+          "34",
+          "45",
+          "32"
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The sum of the single-digit numbers on the tiles in the discard pile is 3+4+4+5+3+2 = 21."
+      }
+    ]
+  },
+  "acsl-tiles-2023-senior": {
+    "sourceHash": "671ff5fe01cc9a6689abbc9f1909bd0b16178a33e12a36be8968a826df946c39",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Tiles is a one-person game played with rectangular tiles. Each tile has a single-digit number, 0-9, at each end. At the start of the game, there are 4 rows, each with a single-digit number from 0-9; thus the number 405 represents the starting numbers 0, 4, 0, 5."
+      },
+      {
+        "type": "prose",
+        "markdown": "Tiles can be re-oriented; thus, the tiles 04 and 40 are the same tile."
+      },
+      {
+        "type": "prose",
+        "markdown": "Tiles, called the hand, are given to the player, and other tiles are put into a draw pile. The initial number of tiles in your hand and in the draw pile varies from game to game. The goal of the game is to build rows by placing a tile from your hand at the right end of a row whose last number matches one of the numbers on the tile.\n\nIf no tiles in your hand can be placed, tiles are added to the end of your hand from the draw pile, until a tile from the draw pile can be placed."
+      },
+      {
+        "type": "prose",
+        "markdown": "More specifically, on each turn, try to match your tiles starting with the first one in your hand."
+      },
+      {
+        "type": "prose",
+        "markdown": "See if any can be added to one of the rows, starting with Row 1, then the row after the one where the last tile was placed, rotating back to Row 1 if necessary. However, if the last tile placed was a double (i.e., both numbers are the same), another tile must be placed on that row before any other match can be considered.\n\nIf you cannot place any tiles in your hand, add tiles from the draw pile to your hand until a tile can be placed."
+      },
+      {
+        "type": "prose",
+        "markdown": "The game ends when you’ve placed all tiles in your hand OR you cannot place any of the tiles in your hand and you’ve exhausted the draw pile. At that point, find the sum of the single-digit numbers that are still in your hand."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**"
+      },
+      {
+        "type": "example",
+        "input": "5923\n56 27 73 34 99 45 32 17 64 57 18 11\n36 92 22 50 82",
+        "output": "16"
+      },
+      {
+        "type": "prose",
+        "markdown": "The game starts with 4 rows having numbers 5, 9, 2, 3."
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5"
+          ],
+          [
+            "9"
+          ],
+          [
+            "2"
+          ],
+          [
+            "3"
+          ]
+        ],
+        "discard": []
+      },
+      {
+        "type": "prose",
+        "markdown": "The tile 56 is placed on Row 1; the tile 27 is placed on Row 3; the tile 73 is placed on Row 4 (note that it’s rotated, so that the 3 matches); the tile 34 is kept in your hand; and the tile 99 is placed on Row 2."
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5",
+            "56"
+          ],
+          [
+            "9",
+            "99"
+          ],
+          [
+            "2",
+            "27"
+          ],
+          [
+            "3",
+            "37"
+          ]
+        ],
+        "discard": []
+      },
+      {
+        "type": "prose",
+        "markdown": "The 99 is a double, so the next tile to be placed must match a 9. None of the tiles in your hand match, so 36 is added to your hand from the draw pile. That tile cannot be placed, so it stays in your hand. Next the 92 is drawn; it can be placed on Row 2. Your hand is now 34 45 32 17 64 57 18 11 36 and the draw pile is 22 50 82."
+      },
+      {
+        "type": "prose",
+        "markdown": "The following moves are made: 32 on Row 2 (rotated), 34 on Row 2, 45 on Row 2, 17 on Row 3 (rotated), 64 on Row 1, 57 on Row 2, 18 on Row 3. Here is what the board looks like:"
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5",
+            "56",
+            "64"
+          ],
+          [
+            "9",
+            "99",
+            "92",
+            "23",
+            "34",
+            "45",
+            "57"
+          ],
+          [
+            "2",
+            "27",
+            "71",
+            "18"
+          ],
+          [
+            "3",
+            "37"
+          ]
+        ],
+        "discard": []
+      },
+      {
+        "type": "prose",
+        "markdown": "The tiles left in your hand are 11 and 36; neither can be placed, so draw 22 (it cannot be placed), then 50 (it cannot be placed), and then 82. The 82 can be placed on Row 3. Your hand is now 11 36 22 50 and the draw pile is empty. The 22 tile can be placed and then the game is over. The final board is as follows:"
+      },
+      {
+        "type": "tiles",
+        "rows": [
+          [
+            "5",
+            "56",
+            "64"
+          ],
+          [
+            "9",
+            "99",
+            "92",
+            "23",
+            "34",
+            "45",
+            "57"
+          ],
+          [
+            "2",
+            "27",
+            "71",
+            "18",
+            "82",
+            "22"
+          ],
+          [
+            "3",
+            "37"
+          ]
+        ],
+        "discard": []
+      },
+      {
+        "type": "prose",
+        "markdown": "Your hand is 11 36 50, so the sum of the single-digit numbers on those tiles is 1+1+3+6+5+0 = 16."
+      }
+    ]
+  },
+  "time-sheets-2012-intermediate": {
+    "sourceHash": "10b207cee9b101210a10882421a444846374555f6190d5cdf035b50f1ad41024",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Most hourly jobs require someone to enter information on a time sheet.  The ACSL Amusement Park is open from 9:00 a.m. to 5:00 p.m. The Business Office enters a code representing the location where an employee works and the starting time and ending time for each day.  The codes entered are as follows:"
+      },
+      {
+        "type": "table",
+        "caption": "Time codes",
+        "columns": [
+          "Time",
+          "Code"
+        ],
+        "rows": [
+          [
+            "9:00 AM",
+            "1"
+          ],
+          [
+            "9:30 AM",
+            "2"
+          ],
+          [
+            "10:00 AM",
+            "3"
+          ],
+          [
+            "10:30 AM",
+            "4"
+          ],
+          [
+            "11:00 AM",
+            "5"
+          ],
+          [
+            "11:30 AM",
+            "6"
+          ],
+          [
+            "12:00 PM",
+            "7"
+          ],
+          [
+            "12:30 PM",
+            "8"
+          ],
+          [
+            "1:00 PM",
+            "9"
+          ],
+          [
+            "1:30 PM",
+            "A"
+          ],
+          [
+            "2:00 PM",
+            "B"
+          ],
+          [
+            "2:30 PM",
+            "C"
+          ],
+          [
+            "3:00 PM",
+            "D"
+          ],
+          [
+            "3:30 PM",
+            "E"
+          ],
+          [
+            "4:00 PM",
+            "F"
+          ],
+          [
+            "4:30 PM",
+            "G"
+          ],
+          [
+            "5:00 PM",
+            "H"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 100-199 get paid $10.00 per hour with time and a half for any hours over 5 per day."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 200-299 get paid $7.50 per hour with double time for hours worked over 6 per day."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 300-399 get paid $9.25 for the first 4 hours and $10.50 for the rest."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 400-499 get paid $13.50 per hour on Sundays (day 1) and Saturdays (day 7) and $6.75 per hour otherwise."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 500-599 get paid $8.00 per hour for the first 6 hours per day and $12.00 per hour after that."
+      },
+      {
+        "type": "prose",
+        "markdown": "Print pay as dollars and cents, with a dollar sign and exactly two decimal places. Round the complete requested pay to the nearest cent, with exact half cents rounded up."
+      }
+    ]
+  },
+  "time-sheets-2012-junior": {
+    "sourceHash": "28ff1957d7ee19e3377a9f83c2c7692766de0727ba532f66180e5571d127ad85",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Most hourly paying  jobs require someone to enter information on a time sheet.  The ACSL Amusement Park is open from 9:00 a.m. to 5:00 p.m. The Business Office enters a code representing the location where an employee works and the starting time and ending time for each day.  The codes entered are as follows:"
+      },
+      {
+        "type": "table",
+        "caption": "Time codes",
+        "columns": [
+          "Time",
+          "Code"
+        ],
+        "rows": [
+          [
+            "9:00 AM",
+            "1"
+          ],
+          [
+            "9:30 AM",
+            "2"
+          ],
+          [
+            "10:00 AM",
+            "3"
+          ],
+          [
+            "10:30 AM",
+            "4"
+          ],
+          [
+            "11:00 AM",
+            "5"
+          ],
+          [
+            "11:30 AM",
+            "6"
+          ],
+          [
+            "12:00 PM",
+            "7"
+          ],
+          [
+            "12:30 PM",
+            "8"
+          ],
+          [
+            "1:00 PM",
+            "9"
+          ],
+          [
+            "1:30 PM",
+            "A"
+          ],
+          [
+            "2:00 PM",
+            "B"
+          ],
+          [
+            "2:30 PM",
+            "C"
+          ],
+          [
+            "3:00 PM",
+            "D"
+          ],
+          [
+            "3:30 PM",
+            "E"
+          ],
+          [
+            "4:00 PM",
+            "F"
+          ],
+          [
+            "4:30 PM",
+            "G"
+          ],
+          [
+            "5:00 PM",
+            "H"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 1-9 get paid $10.00 per hour with no overtime for extra hours."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 10-19 get paid $8.00 per hour for the first 4 hours and $12.00 for any hours over 4."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 20-29 get $12.00 per hour for the first 4 hours and double that for any hours over 4."
+      },
+      {
+        "type": "prose",
+        "markdown": "Print pay as dollars and cents, with a dollar sign and exactly two decimal places. Round the complete requested pay to the nearest cent, with exact half cents rounded up."
+      }
+    ]
+  },
+  "time-sheets-2012-senior": {
+    "sourceHash": "ccd11c200f37973aeba159838c724946a282bd916afa776bf12b2569d02fd997",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Most hourly jobs require someone to enter information on a time sheet. The ACSL Amusement Park is open from 9:00 a.m. to 5:00 p.m. The Business Office enters a code representing the location where an employee works and the starting time and ending time for each day. The codes entered are as follows:"
+      },
+      {
+        "type": "table",
+        "caption": "Time codes",
+        "columns": [
+          "Time",
+          "Code"
+        ],
+        "rows": [
+          [
+            "9:00 AM",
+            "1"
+          ],
+          [
+            "9:30 AM",
+            "2"
+          ],
+          [
+            "10:00 AM",
+            "3"
+          ],
+          [
+            "10:30 AM",
+            "4"
+          ],
+          [
+            "11:00 AM",
+            "5"
+          ],
+          [
+            "11:30 AM",
+            "6"
+          ],
+          [
+            "12:00 PM",
+            "7"
+          ],
+          [
+            "12:30 PM",
+            "8"
+          ],
+          [
+            "1:00 PM",
+            "9"
+          ],
+          [
+            "1:30 PM",
+            "A"
+          ],
+          [
+            "2:00 PM",
+            "B"
+          ],
+          [
+            "2:30 PM",
+            "C"
+          ],
+          [
+            "3:00 PM",
+            "D"
+          ],
+          [
+            "3:30 PM",
+            "E"
+          ],
+          [
+            "4:00 PM",
+            "F"
+          ],
+          [
+            "4:30 PM",
+            "G"
+          ],
+          [
+            "5:00 PM",
+            "H"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 100-199 get paid $10.00 per hour with time and a half for any hours over 30 for the week."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 200-299 get paid $7.50 per hour with double time for hours worked over 40 for the week."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 300-399 get paid $9.25 for the first 20 hours and $10.50 for the rest."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 400-499 get paid $13.50 per hour on Sundays (day 1) and Saturdays (day 7) and $6.75 otherwise."
+      },
+      {
+        "type": "prose",
+        "markdown": "Locations 500-599 get paid $8.00 per hour for the first 6 hours per day and $12.00 per hour after that."
+      },
+      {
+        "type": "prose",
+        "markdown": "Print pay as dollars and cents, with a dollar sign and exactly two decimal places. Round the complete requested pay to the nearest cent, with exact half cents rounded up."
+      }
+    ]
+  },
+  "acsl-prints-2010-senior": {
+    "sourceHash": "7741ac08cc14d957a2a9e5923204c432b93792a7a298585adcb623e78ee4e83e",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "The Henry Classification System for fingerprints was developed by Sir Edward Henry in the late 1880’s.  The system is based upon the pattern of lines that appear on each finger.  There are three basic patterns: the Arch, the Loop and the Whorl.  Surprisingly, just the Whorl pattern is used in the classification system."
+      },
+      {
+        "type": "prose",
+        "markdown": "If you place your hands, palms down, on a surface, the Henry system labels the left pinky to the left thumb with the numbers 10 through 6.  The right thumb to the right pinky are numbered 1 through 5.  Each finger is given a Whorl number as shown in the following table:"
+      },
+      {
+        "type": "table",
+        "caption": "Henry Classification System",
+        "columns": [
+          "Finger",
+          "Whorl number"
+        ],
+        "rows": [
+          [
+            "10",
+            "1"
+          ],
+          [
+            "9",
+            "1"
+          ],
+          [
+            "8",
+            "2"
+          ],
+          [
+            "7",
+            "2"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "1",
+            "16"
+          ],
+          [
+            "2",
+            "16"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "4",
+            "8"
+          ],
+          [
+            "5",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "A value called the Primary Group Ratio is calculated as follows:"
+      },
+      {
+        "type": "math",
+        "tex": "R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">v</mi><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi></mrow></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">d</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "**W_even** is the sum of the Whorl numbers for whorled even-numbered fingers. **W_odd** is the corresponding sum for whorled odd-numbered fingers."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a whorl is detected on fingers 8, 7 and 2 the calculation would give:"
+      },
+      {
+        "type": "math",
+        "tex": "\\frac{1+2+16}{1+2}=\\frac{19}{3}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>16</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>19</mn><mn>3</mn></mfrac></mrow><annotation encoding=\"application/x-tex\">\\frac{1+2+16}{1+2}=\\frac{19}{3}</annotation></semantics></math></span>"
+      }
+    ]
+  },
+  "acsl-prints-2010-junior": {
+    "sourceHash": "0558747c1cd89cac87e6650118e98fb79790cec692acf4b4cfd035d5d45d9eb2",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "The Henry Classification System for finger prints was developed by Sir Edward Henry in the late 1880’s.  The system is based upon the pattern of lines that appear on each finger.  There are three basic patterns: the Arch, the Loop and the Whorl.  Surprisingly, just the Whorl pattern is used in the classification system."
+      },
+      {
+        "type": "prose",
+        "markdown": "If you place your hands, palms down, on a surface, the Henry system labels the left pinky to the left thumb with the numbers 10 through 6.  The right thumb through the right pinky are numbered 1 through 5.  Each finger is given a Whorl number as shown in the following table:"
+      },
+      {
+        "type": "table",
+        "caption": "Henry Classification System",
+        "columns": [
+          "Finger",
+          "Whorl number"
+        ],
+        "rows": [
+          [
+            "10",
+            "1"
+          ],
+          [
+            "9",
+            "1"
+          ],
+          [
+            "8",
+            "2"
+          ],
+          [
+            "7",
+            "2"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "1",
+            "16"
+          ],
+          [
+            "2",
+            "16"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "4",
+            "8"
+          ],
+          [
+            "5",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "A value called the Primary Group Ratio is calculated as follows:"
+      },
+      {
+        "type": "math",
+        "tex": "R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">v</mi><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi></mrow></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">d</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "**W_even** is the sum of the Whorl numbers for whorled even-numbered fingers. **W_odd** is the corresponding sum for whorled odd-numbered fingers."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a whorl is detected on fingers 8, 7 and 2 the calculation would give:"
+      },
+      {
+        "type": "math",
+        "tex": "\\frac{1+2+16}{1+2}=\\frac{19}{3}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>16</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>19</mn><mn>3</mn></mfrac></mrow><annotation encoding=\"application/x-tex\">\\frac{1+2+16}{1+2}=\\frac{19}{3}</annotation></semantics></math></span>"
+      }
+    ]
+  },
+  "acsl-prints-2010-intermediate": {
+    "sourceHash": "a5521af421b06de72a85ea7afc9994bdf1fcb30fef0dd853754d47633cf606ad",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "The Henry Classification System for finger prints was developed by Sir Edward Henry in the late 1880’s.  The system is based upon the pattern of lines that appear on each finger.  There are three basic patterns: the Arch, the Loop and the Whorl.  Surprisingly, just the Whorl pattern is used in the classification system."
+      },
+      {
+        "type": "prose",
+        "markdown": "If you place your hands, palms down, on a surface, the Henry system labels the left pinky to the left thumb with the numbers 10 through 6.  The right thumb to the right pinky are numbered 1 through 5.  Each finger is given a Whorl number as shown in the following table:"
+      },
+      {
+        "type": "table",
+        "caption": "Henry Classification System",
+        "columns": [
+          "Finger",
+          "Whorl number"
+        ],
+        "rows": [
+          [
+            "10",
+            "1"
+          ],
+          [
+            "9",
+            "1"
+          ],
+          [
+            "8",
+            "2"
+          ],
+          [
+            "7",
+            "2"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "1",
+            "16"
+          ],
+          [
+            "2",
+            "16"
+          ],
+          [
+            "3",
+            "8"
+          ],
+          [
+            "4",
+            "8"
+          ],
+          [
+            "5",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "A value called the Primary Group Ratio is calculated as follows:"
+      },
+      {
+        "type": "math",
+        "tex": "R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">v</mi><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">n</mi></mrow></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">o</mi><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">d</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">R=\\frac{1+W_{\\mathrm{even}}}{1+W_{\\mathrm{odd}}}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "**W_even** is the sum of the Whorl numbers for whorled even-numbered fingers. **W_odd** is the corresponding sum for whorled odd-numbered fingers."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a whorl is detected on fingers 8, 7 and 2 the calculation would give:"
+      },
+      {
+        "type": "math",
+        "tex": "\\frac{1+2+16}{1+2}=\\frac{19}{3}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mn>16</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn></mrow></mfrac><mo>=</mo><mfrac><mn>19</mn><mn>3</mn></mfrac></mrow><annotation encoding=\"application/x-tex\">\\frac{1+2+16}{1+2}=\\frac{19}{3}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "A later system called the Automated Fingerprint Classification System (AFCS) was developed to adapt to computer searches. In this system the right thumb to the right pinky are numbered 1 to 5. The left thumb to left pinky are numbered 6 to 10."
+      },
+      {
+        "type": "table",
+        "caption": "Automated Fingerprint Classification System",
+        "columns": [
+          "Finger",
+          "Whorl number"
+        ],
+        "rows": [
+          [
+            "1",
+            "16"
+          ],
+          [
+            "2",
+            "8"
+          ],
+          [
+            "3",
+            "4"
+          ],
+          [
+            "4",
+            "2"
+          ],
+          [
+            "5",
+            "1"
+          ],
+          [
+            "6",
+            "16"
+          ],
+          [
+            "7",
+            "8"
+          ],
+          [
+            "8",
+            "4"
+          ],
+          [
+            "9",
+            "2"
+          ],
+          [
+            "10",
+            "1"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The Primary Group Ratio is now calculated as follows:"
+      },
+      {
+        "type": "math",
+        "tex": "R=\\frac{1+W_{\\mathrm{right}}}{1+W_{\\mathrm{left}}}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>R</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">r</mi><mi mathvariant=\"normal\">i</mi><mi mathvariant=\"normal\">g</mi><mi mathvariant=\"normal\">h</mi><mi mathvariant=\"normal\">t</mi></mrow></msub></mrow><mrow><mn>1</mn><mo>+</mo><msub><mi>W</mi><mrow><mi mathvariant=\"normal\">l</mi><mi mathvariant=\"normal\">e</mi><mi mathvariant=\"normal\">f</mi><mi mathvariant=\"normal\">t</mi></mrow></msub></mrow></mfrac></mrow><annotation encoding=\"application/x-tex\">R=\\frac{1+W_{\\mathrm{right}}}{1+W_{\\mathrm{left}}}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "**W_right** is the sum of the Whorl numbers for whorled right-hand fingers. **W_left** is the corresponding sum for whorled left-hand fingers."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a whorl is detected on fingers 8, 7 and 2 the calculation would give:"
+      },
+      {
+        "type": "math",
+        "tex": "\\frac{1+8}{1+8+4}=\\frac{9}{13}",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mfrac><mrow><mn>1</mn><mo>+</mo><mn>8</mn></mrow><mrow><mn>1</mn><mo>+</mo><mn>8</mn><mo>+</mo><mn>4</mn></mrow></mfrac><mo>=</mo><mfrac><mn>9</mn><mn>13</mn></mfrac></mrow><annotation encoding=\"application/x-tex\">\\frac{1+8}{1+8+4}=\\frac{9}{13}</annotation></semantics></math></span>"
+      }
+    ]
+  },
+  "acsl-golf-2009-senior": {
+    "sourceHash": "3007e4270707602f55622f74e812e20d3fed3c6df2fa76e47cb269541926247b",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In the sport of golf, scoring is based upon what a normal score should be for a particular hole on a course.  That normal score called “par” is based upon the length of that hole measured from the tee, the start point, to the green, the end point.  For the vast majority of golf courses and for this problem par values will be either 3, 4 or 5. Golf scores can be  reported in three ways.\n\nThe first way is to report the cumulative score.  That is, the player scored a 68 after playing the standard 18 holes.  The second way is to report the cumulative score in relation to par.  If par for the course ( the sum of the par values of all the holes) is 72, then the score reported as 68 would be 4 under par.  A score of 75 would be 3 over par.  The third way is by holes won.\n\nA player wins a hole when his score is lower than his opponents’ scores."
+      },
+      {
+        "type": "table",
+        "caption": "Par for each hole",
+        "columns": [
+          "Hole",
+          "Par"
+        ],
+        "rows": [
+          [
+            "1",
+            "3"
+          ],
+          [
+            "2",
+            "4"
+          ],
+          [
+            "3",
+            "5"
+          ],
+          [
+            "4",
+            "4"
+          ],
+          [
+            "5",
+            "4"
+          ],
+          [
+            "6",
+            "4"
+          ],
+          [
+            "7",
+            "5"
+          ],
+          [
+            "8",
+            "3"
+          ],
+          [
+            "9",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "To find the median of all 36 scores, sort them and average the 18th and 19th values."
+      }
+    ]
+  },
+  "acsl-golf-2009-junior": {
+    "sourceHash": "7de32c229387dc6ddb6412e60e4e2c5b52318b9d6c6d770582c0b0676b95f917",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In the sport of golf, scoring is based upon what a normal score should be for a particular hole on a course.  That normal score called “par” is based upon the length of that hole measured from the tee, the start point, to the green, the end point.  For the vast majority of golf courses and for this problem,  par will be either 3, 4 or 5. Through the years names were given to scores above and below par on a hole.\n\nThe more common names are listed below. Golf scores are reported in two ways.  The first way is to report the cumulative score.  That is, the player scored a 68 after playing the standard 18 holes.  The second way is to report the cumulative score in relation to par.  If par for the course is 72, then the score reported as 68 would be 4 under par.  A score of 75 would be 3 over par."
+      },
+      {
+        "type": "table",
+        "caption": "Golf scoring",
+        "columns": [
+          "Term",
+          "Score relative to par"
+        ],
+        "rows": [
+          [
+            "Par",
+            "Equal to par"
+          ],
+          [
+            "Birdie",
+            "1 below par"
+          ],
+          [
+            "Eagle",
+            "2 below par"
+          ],
+          [
+            "Bogey",
+            "1 above par"
+          ],
+          [
+            "Double bogey",
+            "2 above par"
+          ]
+        ]
+      }
+    ]
+  },
+  "acsl-golf-2009-intermediate": {
+    "sourceHash": "146bf30468043c6790e4ea06f31b65df8fa631c9c744049b1bb7e16d598a3f68",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In the sport of golf, scoring is based upon what a normal score should be for a particular hole on a course.  That normal score called “par” is based upon the length of that hole measured from the tee, the start point, to the green, the end point.  For the vast majority of golf courses and for this problem par values will be either 3, 4 or 5. Golf scores can be  reported in three ways.\n\nThe first way is to report cumulative score.  That is, the player scored a 68 after playing the standard 18 holes.  The second way is to report the cumulative score in relation to par.  If par for the course ( the sum of the par values of all the holes) is 72, then the score reported as 68 would be 4 under par.  A score of 75 would be 3 over par.  A score of 72 is reported as par. The third way is by holes won.\n\nA player wins a hole when his score is lower than his opponent’s score."
+      }
+    ]
+  },
+  "acsl-bridge-2008-intermediate": {
+    "sourceHash": "7484de09cc7050c2ba3e79bba87672c37e28b209737662fc8ed2b73f0b80e076",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Bridge is a  4-handed, 2-team card game that consists of bidding, play and scoring.  Accurate bidding is rewarded and inaccurate bidding is penalized.  Bidding before the start of play is based upon how many of the 13 possible “tricks” a player thinks his team will win.  During play each player lays down one card and a winner of that “trick” is determined by the rules of the game.\n\nScoring is based upon how many tricks above 6 are won by the bid winner. A bid of 1 says that the team will win at least 7 tricks, a bid of 2 says that the team will win at least 8 tricks and so on.  The bid establishes a “line” and only points awarded for tricks under the “line” count towards winning the game.\n\nIn addition to the bid number, a suit for trump (hearts, diamonds, spades, clubs or no trump) is specified.  The table below gives point values for scoring:"
+      },
+      {
+        "type": "table",
+        "caption": "Points",
+        "columns": [
+          "Suit",
+          "Points"
+        ],
+        "rows": [
+          [
+            "No Trump",
+            "40 for the first trick; 30 for each additional trick"
+          ],
+          [
+            "Hearts or Spades",
+            "30 for each trick"
+          ],
+          [
+            "Clubs or Diamonds",
+            "20 for each trick"
+          ],
+          [
+            "Vulnerable",
+            "100 for each undertrick"
+          ],
+          [
+            "Not vulnerable",
+            "50 for each undertrick"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "If a player bids two hearts (needs to win at least 8 tricks ) and wins 8 (2 more than the base amount of 6) tricks, his team gets 60 under the line points.\n\nIf a player bids two clubs and wins 9 (one more than the line amount of 8) tricks, his team gets 40 under the line points and 20 over the line points.  If a player bids 4 no trump and wins 11 ( one more than the line amount of 10) tricks, his team gets 130 under the line points and 30 over the line points.\n\nIf a player bids two hearts ( needs 8 tricks to score points) and the team wins only 6 tricks (2 undertricks), the team is penalized by awarding points to the other team.  The penalty differs depending upon whether the team has won a game in that match or not.  Not vulnerable means the team has not won a game in the match.  Vulnerable means the team has won a game in the match.\n\nAll undertrick points are awarded as over the line points."
+      }
+    ]
+  },
+  "acsl-bridge-2008-junior": {
+    "sourceHash": "1cb3402ad26e58003392a374a79b3e062a8a6924bb3c614f03b5c5ffef9316db",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Bridge is a  4-handed, 2-team card game that consists of bidding, play and scoring.  Accurate bidding is rewarded and inaccurate bidding is penalized.  Bidding before the start of play is based upon how many of the 13 possible “tricks” a player thinks his team will win.  During play each player lays down one card and a winner of that “trick” is determined by the rules of the game.\n\nScoring is based upon how many tricks above 6 are won by the bid winner. A bid of 1 says that the team will win at least 7 tricks, a bid of 2 says that the team will win at least 8 tricks and so on.  The bid establishes a “line” and only points awarded for tricks under the “line” count towards winning the game.\n\nIn addition to the bid number, a suit for trump (hearts, diamonds, spades, clubs or no trump) is specified.  The table below gives point values for scoring:"
+      },
+      {
+        "type": "table",
+        "caption": "Points",
+        "columns": [
+          "Suit",
+          "Points"
+        ],
+        "rows": [
+          [
+            "No Trump",
+            "40 for the first trick; 30 for each additional trick"
+          ],
+          [
+            "Hearts or Spades",
+            "30 for each trick"
+          ],
+          [
+            "Clubs or Diamonds",
+            "20 for each trick"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Although the scoring rules of bridge are much more complicated than the chart above indicates, for this program only simple winning hands will be scored."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a player bids two hearts (needs to win at least 8 tricks ) and wins 8 (2 more than the base amount of 6) tricks, his team gets 60 under the line points. If a player bids two clubs and wins 9 (one more than the line amount of 8) tricks, his team gets 40 under the line points and 20 over the line points.\n\nIf a player bids 4 no trump and wins 11 ( one more than the line amount of 10) tricks, his team gets 130 under the line points and 30 over the line points."
+      }
+    ]
+  },
+  "acsl-bridge-2008-senior": {
+    "sourceHash": "f13563d58accf45b1f23db24377bd096a567e18d682100ff2d3ff6f6b12616ce",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Bridge is a  4-handed, 2-team card game that consists of bidding, play and scoring.  Accurate bidding is rewarded and inaccurate bidding is penalized.  Bidding before the start of play is based upon how many of the 13 possible “tricks” a player thinks his team will win.  During play each player lays down one card and a winner of that “trick” is determined by the rules of the game.\n\nScoring is based upon how many tricks above 6 are won by the bid winner. A bid of 1 says that the team will win at least 7 tricks, a bid of 2 says that the team will win at least 8 tricks and so on.  The bid establishes a “line” and only points awarded for tricks under the “line” count towards winning the game.\n\nIn addition to the bid number, a suit for trump (hearts, diamonds, spades, clubs or no trump) is specified.  The table below gives point values for scoring:"
+      },
+      {
+        "type": "table",
+        "caption": "Points",
+        "columns": [
+          "Suit",
+          "Points"
+        ],
+        "rows": [
+          [
+            "No Trump",
+            "40 for the first trick; 30 for each additional trick"
+          ],
+          [
+            "Hearts or Spades",
+            "30 for each trick"
+          ],
+          [
+            "Clubs or Diamonds",
+            "20 for each trick"
+          ],
+          [
+            "Vulnerable",
+            "100 for each undertrick"
+          ],
+          [
+            "Not vulnerable",
+            "50 for each undertrick"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "If a player bids two hearts (needs to win at least 8 tricks ) and wins 8 (2 more than the base amount of 6) tricks, his team gets 60 under the line points.\n\nIf a player bids two clubs and wins 9 (one more than the line amount of 8) tricks, his team gets 40 under the line points and 20 over the line points.  If a player bids 4 no trump and wins 11 ( one more than the line amount of 10) tricks, his team gets 130 under the line points and 30 over the line points.\n\nIf a player bids two hearts ( needs 8 tricks to score points) and the team wins only 6 tricks ( two undertricks), the team is penalized by awarding over the line points to the other team. The penalty differs depending upon whether the bidding team has won a game in that match or not.  Not vulnerable means the team has not won a game in that match.\n\nVulnerable means the team has won a game in that match."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first team to accumulate at least one hundred points below the line wins that match.  At that point both under the line scores are reset to zero. Multiple matches are played but over the line points are never reset."
+      },
+      {
+        "type": "prose",
+        "markdown": "Both teams start at zero and are not vulnerable. A team becomes vulnerable when it first reaches 100 below-the-line points and stays vulnerable for the remaining hands. Print the totals after each deal, before resetting both below-the-line scores; over-the-line scores are never reset."
+      }
+    ]
+  },
+  "triangles-2007-senior": {
+    "sourceHash": "fc7bd53e02f21c74b7109ce73f7c3d2b50c6b345c225730a10b5887ee68704f3",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Two triangles are similar if for some pairing of their vertices the corresponding angles are equal and the corresponding sides are proportional."
+      },
+      {
+        "type": "figure",
+        "src": "/problems/figures/triangles-2007-senior-1.png",
+        "alt": "Triangles, Senior: original diagram 1",
+        "width": 616,
+        "height": 344,
+        "displayWidth": 440
+      },
+      {
+        "type": "prose",
+        "markdown": "In this problem you will be checking for just the proportionality part of the definition. In the diagram above ∆ ABC is similar to ∆ EFD.  Note that the ratio of the length of side AB to the length of side EF (3:6) is the same as the ratio of the length of side BC to the length of side FD (2:4) and the ratio of the length of side AC to the length of side ED (4:8).\n\nThis is the pairing that makes the sides proportional.  The above supposes that the sides given form valid triangles.  The triangle inequality rule states that the sum of the lengths of any two sides must be greater than the length of the third side."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first 3 input numbers are the lengths for the first triangle (△ ABC) in the order **AB, BC, AC**. The last 3 numbers are the lengths for the second triangle (△ DEF) in the order **DE, EF, DF**. A name such as EFD means A corresponds to E, B to F, and C to D."
+      }
+    ]
+  },
+  "triangles-2007-intermediate": {
+    "sourceHash": "d5664679635d7dd3b6638f369628a6b7c298e0bd57cfb81b86b95955009e11c3",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Two triangles are congruent if for some pairing of their sides the lengths of those paired sides are equal."
+      },
+      {
+        "type": "figure",
+        "src": "/problems/figures/triangles-2007-intermediate-1.png",
+        "alt": "Triangles, Intermediate: original diagram 1",
+        "width": 489,
+        "height": 300,
+        "displayWidth": 400
+      },
+      {
+        "type": "prose",
+        "markdown": "In the diagram above ∆ ABC is congruent to ∆ EFD.  Note that the length of side AB equals the length of side EF, the length of side BC is equal to the length of side FD and the length of side AC is equal to the length of side ED.  This is the pairing of the sides that makes the triangles congruent."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first 3 input numbers are the lengths for the first triangle (△ ABC) in the order **AB, BC, AC**. The last 3 numbers are the lengths for the second triangle (△ DEF) in the order **DE, EF, DF**. A name such as EFD means A corresponds to E, B to F, and C to D."
+      }
+    ]
+  },
+  "triangles-2007-junior": {
+    "sourceHash": "3c206b24d6e475dd8af7a7cf5e99a11201138b0e95d80e91401e68474b6ac2cb",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Two triangles are congruent if for some pairing of their sides the lengths of those paired sides are equal."
+      },
+      {
+        "type": "figure",
+        "src": "/problems/figures/triangles-2007-junior-1.png",
+        "alt": "Triangles, Junior: original diagram 1",
+        "width": 489,
+        "height": 300,
+        "displayWidth": 400
+      },
+      {
+        "type": "prose",
+        "markdown": "In the diagram above ∆ ABC is congruent to ∆ EFD.  Note that the length of side AB is equal to the length of side EF, the length of side BC is equal to the length of side FD and the length of side AC is equal to the length of side ED.  This is the pairing of the sides that makes the triangles congruent."
+      },
+      {
+        "type": "prose",
+        "markdown": "For each data line print the largest number of pairs of equal sides that exists when all pairings of the sides are considered. Each side can be paired only once."
+      }
+    ]
+  },
+  "draft-picks-2011-junior": {
+    "sourceHash": "e3dc538368d3af92cd2b3c15949b5d587f08332ef66eb456dca6699cac4afa04",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "For most of this past summer, there was still a lockout and the potential for not having a 2012 National Football League (NFL) season.  Two of the sticking points between owners and players were the high price for first round draft picks and the extension of the season to 18 games.  The following statistics are available for the top 5 first-round draft picks in 2008:"
+      },
+      {
+        "type": "table",
+        "caption": "First-round draft picks, 2008",
+        "columns": [
+          "Pick",
+          "Years",
+          "Value ($ millions)"
+        ],
+        "rows": [
+          [
+            "1",
+            "5",
+            "57.5"
+          ],
+          [
+            "2",
+            "6",
+            "56.5"
+          ],
+          [
+            "3",
+            "6",
+            "72"
+          ],
+          [
+            "4",
+            "6",
+            "60"
+          ],
+          [
+            "5",
+            "5",
+            "51"
+          ]
+        ],
+        "widths": [
+          20,
+          25,
+          55
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "If you were at the negotiating table, you would need to find statistical information out about these figures."
+      },
+      {
+        "type": "prose",
+        "markdown": "The annual salary is the total contract value divided by the length of the contract. Salary per game is the annual salary divided by the number of games in a season. Use unrounded values in these calculations. Round final dollar amounts to the nearest whole dollar, with exact halves rounded up, and do not include thousands separators."
+      }
+    ]
+  },
+  "draft-picks-2011-senior": {
+    "sourceHash": "533c4a6d5e275641df0ba0e78f601448cfae503c3d29fed332d5eb6c78ff986c",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "For most of this past summer, there was still a lockout and the potential for not having a 2012 National Football League (NFL) season.  Two of the sticking points between owners and players were the high price for first round draft picks and the extension of the season to 18 games.  The following statistics are available for the top 10 first-round draft picks in 2008.\n\nThe first number represents the length of the contract in years, the second number represents the value of the contract in millions of dollars, and the third number represents the guaranteed money in millions of dollars."
+      },
+      {
+        "type": "table",
+        "caption": "First-round draft picks, 2008",
+        "columns": [
+          "Pick",
+          "Years",
+          "Value ($ millions)",
+          "Guarantee ($ millions)"
+        ],
+        "rows": [
+          [
+            "1",
+            "5",
+            "57.5",
+            "30"
+          ],
+          [
+            "2",
+            "6",
+            "56.5",
+            "29"
+          ],
+          [
+            "3",
+            "6",
+            "72",
+            "34"
+          ],
+          [
+            "4",
+            "6",
+            "60",
+            "26"
+          ],
+          [
+            "5",
+            "5",
+            "51",
+            "23"
+          ],
+          [
+            "6",
+            "5",
+            "50",
+            "21"
+          ],
+          [
+            "7",
+            "5",
+            "49",
+            "19"
+          ],
+          [
+            "8",
+            "5",
+            "33.4",
+            "17.177"
+          ],
+          [
+            "9",
+            "5",
+            "23",
+            "15.6"
+          ],
+          [
+            "10",
+            "5",
+            "18.9",
+            "13.8"
+          ]
+        ],
+        "widths": [
+          15,
+          17,
+          34,
+          34
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "If you were at the negotiating table, you would need to find statistical information about these figures. For any professional athlete, there is always a chance that he/she will be injured so all contracts include an amount of guaranteed money if the athlete is unable to play for the entire length of the contract.\n\nThe expected value is a mathematical way to determine a cash value based on the probabilities of two events occurring. ACSL rules will simplify the variables involved saying that there is a 3% chance each year that a player will get injured in any given 16-game season and a 3.375 % chance each year in an 18-game season. The formula is:"
+      },
+      {
+        "type": "math",
+        "tex": "E=(1-Lp)V+LpG",
+        "label": "Expected value",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><mi>E</mi><mo>=</mo><mo stretchy=\"false\">(</mo><mn>1</mn><mo>−</mo><mi>L</mi><mi>p</mi><mo stretchy=\"false\">)</mo><mi>V</mi><mo>+</mo><mi>L</mi><mi>p</mi><mi>G</mi></mrow><annotation encoding=\"application/x-tex\">E=(1-Lp)V+LpG</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "Here, **L** is the contract length in years, **p** is the chance of injury each year, **V** is the contract value, and **G** is the guaranteed money. Values are in millions of dollars."
+      },
+      {
+        "type": "prose",
+        "markdown": "For example, the top draft choice listed above would have an expected value for a 5-year contract of:"
+      },
+      {
+        "type": "math",
+        "tex": "\\begin{aligned}E_{16}&=(0.85)(57.5)\\\\&\\quad+(0.15)(30)\\end{aligned}",
+        "label": "16-game seasons",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>E</mi><mn>16</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo stretchy=\"false\">(</mo><mn>0.85</mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">(</mo><mn>57.5</mn><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mspace width=\"1em\"/><mo>+</mo><mo stretchy=\"false\">(</mo><mn>0.15</mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">(</mo><mn>30</mn><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}E_{16}&amp;=(0.85)(57.5)\\\\&amp;\\quad+(0.15)(30)\\end{aligned}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "math",
+        "tex": "E_{16}=53.375",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>E</mi><mn>16</mn></msub><mo>=</mo><mn>53.375</mn></mrow><annotation encoding=\"application/x-tex\">E_{16}=53.375</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "That is **$53,375,000** for 16-game seasons."
+      },
+      {
+        "type": "math",
+        "tex": "\\begin{aligned}E_{18}&=(0.83125)(57.5)\\\\&\\quad+(0.16875)(30)\\end{aligned}",
+        "label": "18-game seasons",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mtable rowspacing=\"0.25em\" columnalign=\"right left\" columnspacing=\"0em\"><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><msub><mi>E</mi><mn>18</mn></msub></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mo>=</mo><mo stretchy=\"false\">(</mo><mn>0.83125</mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">(</mo><mn>57.5</mn><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel=\"0\" displaystyle=\"true\"><mrow><mrow></mrow><mspace width=\"1em\"/><mo>+</mo><mo stretchy=\"false\">(</mo><mn>0.16875</mn><mo stretchy=\"false\">)</mo><mo stretchy=\"false\">(</mo><mn>30</mn><mo stretchy=\"false\">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding=\"application/x-tex\">\\begin{aligned}E_{18}&amp;=(0.83125)(57.5)\\\\&amp;\\quad+(0.16875)(30)\\end{aligned}</annotation></semantics></math></span>"
+      },
+      {
+        "type": "math",
+        "tex": "E_{18}=52.859375",
+        "html": "<span class=\"katex\"><math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><semantics><mrow><msub><mi>E</mi><mn>18</mn></msub><mo>=</mo><mn>52.859375</mn></mrow><annotation encoding=\"application/x-tex\">E_{18}=52.859375</annotation></semantics></math></span>"
+      },
+      {
+        "type": "prose",
+        "markdown": "That is **$52,859,375** for 18-game seasons."
+      },
+      {
+        "type": "prose",
+        "markdown": "The annual salary is the total contract value divided by the length of the contract. Salary per game is the annual salary divided by the number of games in a season. Use unrounded values in these calculations. Round final dollar amounts to the nearest whole dollar, with exact halves rounded up, and do not include thousands separators."
+      }
+    ]
+  },
+  "draft-picks-2011-intermediate": {
+    "sourceHash": "0622e085f87ae64eb6d221d6dafdf10dfd0549515b944eb949cff091f8eed00a",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "For most of this past summer, there was still a lockout and the potential for not having a 2012 National Football League (NFL) season.  Two of the sticking points between owners and players were the high price for first round draft picks and the extension of the season to 18 games.  The following statistics are available for the top 10 first-round draft picks in 2008:"
+      },
+      {
+        "type": "table",
+        "caption": "First-round draft picks, 2008",
+        "columns": [
+          "Pick",
+          "Years",
+          "Value ($ millions)"
+        ],
+        "rows": [
+          [
+            "1",
+            "5",
+            "57.5"
+          ],
+          [
+            "2",
+            "6",
+            "56.5"
+          ],
+          [
+            "3",
+            "6",
+            "72"
+          ],
+          [
+            "4",
+            "6",
+            "60"
+          ],
+          [
+            "5",
+            "5",
+            "51"
+          ],
+          [
+            "6",
+            "5",
+            "50"
+          ],
+          [
+            "7",
+            "5",
+            "49"
+          ],
+          [
+            "8",
+            "5",
+            "33.4"
+          ],
+          [
+            "9",
+            "5",
+            "23"
+          ],
+          [
+            "10",
+            "5",
+            "18.9"
+          ]
+        ],
+        "widths": [
+          20,
+          25,
+          55
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "If you were at the negotiating table, you would need to find statistical information about these figures."
+      },
+      {
+        "type": "prose",
+        "markdown": "The annual salary is the total contract value divided by the length of the contract. Salary per game is the annual salary divided by the number of games in a season. Use unrounded values in these calculations. Round final dollar amounts to the nearest whole dollar, with exact halves rounded up, and do not include thousands separators."
+      }
+    ]
+  },
+  "number-transformation-2019-intermediate": {
+    "sourceHash": "35edb9b321a937c086bcb2544ebb1fe85232a25b35a065086313e68f6747b6f3",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a positive integer (call it N) and a position in that integer (call it P) transform N. To transform N, find the Pth digit of N from the right. Replace each of the digits to the left of the Pth digit by the sum of that digit and the Pth digit. If the sum is greater than 9, use just the units digits (see the second example below).\n\nReplace each of the digits to the right of the Pth digit by the absolute value of the difference between it and the Pth digit. Do not change the Pth digit."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 1**\n\nN = 102439, P = 3."
+      },
+      {
+        "type": "table",
+        "caption": "Transform each digit from left to right",
+        "columns": [
+          "Digit",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1",
+            "1 + 4",
+            "5"
+          ],
+          [
+            "0",
+            "0 + 4",
+            "4"
+          ],
+          [
+            "2",
+            "2 + 4",
+            "6"
+          ],
+          [
+            "4",
+            "Unchanged",
+            "4"
+          ],
+          [
+            "3",
+            "|3 − 4|",
+            "1"
+          ],
+          [
+            "9",
+            "|9 − 4|",
+            "5"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The transformed value is **546415**."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 2**\n\nN = 4329, P = 1."
+      },
+      {
+        "type": "table",
+        "caption": "Transform each digit from left to right",
+        "columns": [
+          "Digit",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "4",
+            "4 + 9 = 13; use units digit",
+            "3"
+          ],
+          [
+            "3",
+            "3 + 9 = 12; use units digit",
+            "2"
+          ],
+          [
+            "2",
+            "2 + 9 = 11; use units digit",
+            "1"
+          ],
+          [
+            "9",
+            "Unchanged",
+            "9"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The transformed value is **3219**."
+      }
+    ]
+  },
+  "number-transformation-2019-senior": {
+    "sourceHash": "a49081f13ec5116de098a51016d21bd7307c038aac981018ef1a96d322bc364c",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a positive integer (call it N) and a position in that integer (call it P) transform N. To transform N, find the Pth digit of N from the right:"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Replace each of the digits to the left by the sum of that digit and the Pth digit."
+      },
+      {
+        "type": "prose",
+        "markdown": "- Replace each of the digits to the right by the absolute value of the difference between it and the Pth digit."
+      },
+      {
+        "type": "prose",
+        "markdown": "- Replace the Pth digit by the number of different prime factors of N. Note that 1 is not a prime number, and it has no prime factors. A prime number has exactly one prime factor (namely, itself)."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 1**\n\nN = 102438, P = 3. There are 4 different prime factors of N (2, 3, 7, 271)."
+      },
+      {
+        "type": "table",
+        "caption": "Transform each digit from left to right",
+        "columns": [
+          "Digit",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1",
+            "1 + 4",
+            "5"
+          ],
+          [
+            "0",
+            "0 + 4",
+            "4"
+          ],
+          [
+            "2",
+            "2 + 4",
+            "6"
+          ],
+          [
+            "4",
+            "4 distinct prime factors",
+            "4"
+          ],
+          [
+            "3",
+            "|3 − 4|",
+            "1"
+          ],
+          [
+            "8",
+            "|8 − 4|",
+            "4"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The transformed value is **546414**."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 2**\n\nN = 4329, P = 1. There are 3 different prime factors of N (3, 13, 37)."
+      },
+      {
+        "type": "table",
+        "caption": "Transform each digit from left to right",
+        "columns": [
+          "Digit",
+          "Operation",
+          "Result"
+        ],
+        "rows": [
+          [
+            "4",
+            "4 + 9",
+            "13"
+          ],
+          [
+            "3",
+            "3 + 9",
+            "12"
+          ],
+          [
+            "2",
+            "2 + 9",
+            "11"
+          ],
+          [
+            "9",
+            "3 distinct prime factors",
+            "3"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The transformed value is **1312113**."
+      }
+    ]
+  },
+  "number-transformation-2019-junior": {
+    "sourceHash": "78aefebba2452a801aa4f6fd1ecbdc8aa6ca72e3522198dc094aeb718d12a6e3",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a positive integer (call it N), a position in that integer (call it P), and a transition integer (call it D). Transform N as follows:"
+      },
+      {
+        "type": "prose",
+        "markdown": "- If the Pth digit of N from the right is from 0 to 4, add D to it. Replace the Pth digit by the units digit of the sum. Then, replace all digits to the right of the Pth digit by 0."
+      },
+      {
+        "type": "prose",
+        "markdown": "- If the Pth digit of N from the right is from 5 to 9, subtract D from it. Replace the Pth digit by the leftmost digit of the absolute value of the difference. Then, replace all digits to the right of the Pth digit by 0."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 1:** N = 7145032, P = 2, D = 8. The 2nd digit from the right is 3; add 8 to it (3+8=11), and replace the 3 with 1 to get 7145012. Replace the digits to the right by 0s to get 7145010."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example 2:** N = 1540670, P = 3, D = 54. The 3rd digit from the right is 6; the absolute value of 6-54 is 48; replace with the 4 to get 1540470. Replace the digits to the right with 0s to get 1540400."
+      }
+    ]
+  },
+  "acsl-ninety-nine-2017-intermediate": {
+    "sourceHash": "e8c3ebce103a87f0ee6992472e95b972c94a2416d2200aa0acc9cf59072d686b",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Ninety-Nine is a two-player card game played with a standard deck of 52-cards (2 – 9, T, J, Q, K, A). To start, each player is dealt 3 cards and the remaining cards are placed face down on the table (the pile).  In an actual game the point total is set to zero, but for this program an initial point total will be given.\n\nEach player in turn puts down one card and changes the point total according to the point value of his card and then selects a card from the top of the pile.  Each card adds its face value in points (e.g. a 5 is worth five points, a T is worth 10 points, a J is worth 11 points, a Q is worth 12 points, a K is worth 13  points and an A is worth 14 points) except for certain cards that have special values or meanings:"
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 9 is a pass (and does not change point total)."
+      },
+      {
+        "type": "prose",
+        "markdown": "* A T subtracts 10 points from the total."
+      },
+      {
+        "type": "prose",
+        "markdown": "* An A adds either 1 or 14 to the point total.  The 14 is played first as long as it does not put the point total over 99."
+      },
+      {
+        "type": "prose",
+        "markdown": "Cards are played using the following rule: Play the largest face value card."
+      },
+      {
+        "type": "prose",
+        "markdown": "The game ends when the card played puts the point total over 99."
+      }
+    ]
+  },
+  "acsl-ninety-nine-2017-senior": {
+    "sourceHash": "36b8e181f0b7cde9285fef62791af78205d31eeffb62362c43f2d283be03e209",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Ninety-Nine is a two-player card game played with a standard deck of 52-card (2 – 9, T, J, Q, K, A). To start, each player gets 5 cards and the remaining cards are placed face down on the table (the pile).  In an actual game the point total is set to zero but for this program an initial point total will be given.  Each player in turn puts down one card.\n\nThe player adds the point value of his card to the point total and selects a card from the top of the pile.  Each card adds its face value in points (e.g. a 5 is worth five points,  a T is worth 10 points, a J is worth 11 points, a Q is worth 12 points, a K is worth 13 points, an A is worth 14 points) except for certain cards that have special values or meanings:"
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 9 is a pass (and does not change point total)."
+      },
+      {
+        "type": "prose",
+        "markdown": "* A T subtracts 10 points from the total."
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 7 adds either 1 or 7 to the point total. The 7 is added first as long as it does not put the point total over 99."
+      },
+      {
+        "type": "prose",
+        "markdown": "* Also, crossing point total borders 33:34, 55:56 and 77:78 in either direction adds an additional 5 points to the point total."
+      },
+      {
+        "type": "prose",
+        "markdown": "Cards are played using the following rule:  play the card that is the median point value of the 5 cards.  The game ends when the card played puts the point total over 99."
+      },
+      {
+        "type": "prose",
+        "markdown": "Choose the median card by face value, before applying any special effect. Count each crossed border using the totals immediately before and after the card’s effect; the extra 5-point bonuses do not cause further border bonuses."
+      }
+    ]
+  },
+  "acsl-ninety-nine-2017-junior": {
+    "sourceHash": "185de6009d5be8ec9263f9b7698331d82be9822760cdba6deef5a917912898a2",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Ninety-Nine is a two-player card game played with a deck of 40-cards. The cards are labeled 0 – 9. To start, each player gets 3 cards and the remaining cards are placed face down on the table (the pile).  In an actual game the point total is set to zero but for this program an initial point total will be given.  Cards are played in the order they are added to a player’s hand.\n\nEach player in turn puts down a card and changes the point total according to the point value of his card and then selects a card from the top of the pile.  Each card adds its face value in points (e.g. a 5 is worth five points) to the point total except for certain cards that have special values or meanings:"
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 9 is a pass (and does not change point total)"
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 4 subtracts 10 points from the total"
+      },
+      {
+        "type": "prose",
+        "markdown": "* A 0 adds either 1 or 11 to the point total. The 11 is played first as long as it does not put the point total over 99."
+      },
+      {
+        "type": "prose",
+        "markdown": "If a player plays a card that puts the total over 99, that player loses the game."
+      }
+    ]
+  },
+  "acsl-scrabble-2013-senior": {
+    "sourceHash": "31228ec6426090065130b29616f2f83aedb5a72e85717f520a39257c3ce48f4c",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL  Scrabble is a lettered tile game played on a grid game board.  The board for this program will be 4 x 10.  The grid squares are numbered as below:"
+      },
+      {
+        "type": "grid",
+        "caption": "4 × 10 game board",
+        "rows": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"
+          ],
+          [
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30"
+          ],
+          [
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are every other multiple of 3 ( 3, 9, 15...) are Double Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 5 and not used above are Triple Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 7 and not used above are Double Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 8 and not used above are Triple Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "Letter values will come from the following chart:"
+      },
+      {
+        "type": "table",
+        "caption": "Letter values",
+        "columns": [
+          "Letters",
+          "Points"
+        ],
+        "rows": [
+          [
+            "A, E",
+            "1"
+          ],
+          [
+            "D, R",
+            "2"
+          ],
+          [
+            "B, M",
+            "3"
+          ],
+          [
+            "V, Y",
+            "4"
+          ],
+          [
+            "J, X",
+            "8"
+          ]
+        ]
+      }
+    ]
+  },
+  "acsl-scrabble-2013-intermediate": {
+    "sourceHash": "18ec0cf059426d60b0cfd8cca04eb6c0728c4afe064dffdb895947aa4655e2c0",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACL  Scrabble is a lettered tile game played on a grid game board.  The board for this program will be 4 x 10.  The grid squares are numbered as below:"
+      },
+      {
+        "type": "grid",
+        "caption": "4 × 10 game board",
+        "rows": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"
+          ],
+          [
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30"
+          ],
+          [
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are every other multiple of 3 (3, 9, 15...) are Double Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 5 and not used above are Triple Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 7 and not used above are Double Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 8 and not used above are Triple Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "Letter values will come from the following chart:"
+      },
+      {
+        "type": "table",
+        "caption": "Letter values",
+        "columns": [
+          "Letters",
+          "Points"
+        ],
+        "rows": [
+          [
+            "A, E",
+            "1"
+          ],
+          [
+            "D, R",
+            "2"
+          ],
+          [
+            "B, M",
+            "3"
+          ],
+          [
+            "V, Y",
+            "4"
+          ],
+          [
+            "J, X",
+            "8"
+          ]
+        ]
+      }
+    ]
+  },
+  "acsl-scrabble-2013-junior": {
+    "sourceHash": "b08a4133eb9dfda03fb6fcba7d881a95de4cfb8a9bdca67ad20d5f5bf301b388",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Scrabble is a lettered tile game played on a grid game board.  The board for this program will be 4 x 10.  The grid squares are numbered as below:"
+      },
+      {
+        "type": "grid",
+        "caption": "4 × 10 game board",
+        "rows": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          [
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"
+          ],
+          [
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30"
+          ],
+          [
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are every other multiple of 3 ( 3, 9, 15...) are Double Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 5 and not used above are Triple Letter score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 7 and not used above are Double Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "The squares that are multiples of 8 and not used above are Triple Word score squares."
+      },
+      {
+        "type": "prose",
+        "markdown": "Letter values will come from the following chart:"
+      },
+      {
+        "type": "table",
+        "caption": "Letter values",
+        "columns": [
+          "Letters",
+          "Points"
+        ],
+        "rows": [
+          [
+            "A, E",
+            "1"
+          ],
+          [
+            "D, R",
+            "2"
+          ],
+          [
+            "B, M",
+            "3"
+          ],
+          [
+            "V, Y",
+            "4"
+          ],
+          [
+            "J, X",
+            "8"
+          ]
+        ]
+      }
+    ]
+  },
+  "navigating-acslland-2014-junior": {
+    "sourceHash": "b15a0e12276e31711c6d17913655c5e26acea36627144c7a4a6eb6a90a6bb395",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In taking a vacation trip, MapQuest and Google Maps provide very valuable information.  Newer versions of these on-line tools provide not only the distance traveled, but also how long it will take you and how much it will cost for gasoline.  In this program, you will be traveling a sequential route through ACSLland with all destinations given in alphabetical order.\n\nThe distances between each pair of adjacent cities on your route are given below:"
+      },
+      {
+        "type": "table",
+        "caption": "Distances between adjacent cities",
+        "columns": [
+          "Route",
+          "Miles"
+        ],
+        "rows": [
+          [
+            "A to B",
+            "450"
+          ],
+          [
+            "B to C",
+            "140"
+          ],
+          [
+            "C to D",
+            "120"
+          ],
+          [
+            "D to E",
+            "320"
+          ],
+          [
+            "E to F",
+            "250"
+          ],
+          [
+            "F to G",
+            "80"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "For example, if your vehicle gets 25 miles per gallon, it costs $3.79 for gasoline, and you can average 50 miles per hour, going from city A to city C will be 590 miles, a time of “11:48”, and $89.44 for gasoline."
+      },
+      {
+        "type": "prose",
+        "markdown": "Round the total travel time to the nearest minute before splitting it into hours and minutes. Round the gasoline cost to the nearest cent. Exact halves round up."
+      }
+    ]
+  },
+  "navigating-acslland-2014-intermediate": {
+    "sourceHash": "133457eaa939dae89dca7e3c958ef57d03c480476da4a3e1775d50b219552719",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In taking a vacation trip, MapQuest and Google Maps provide very valuable information.  Newer versions of these on-line tools provide not only the distance traveled, but also how long it will take you and how much it will cost for gasoline.  In this program, you will be traveling a sequential route through ACSLland with all destinations given in alphabetical order.\n\nEach time that you input two cities, the kind of vehicle you are driving, the kind of highway it is, and the cost per gallon of gasoline, print out the total distance between these two inputted cities, the total time it should take you, and the total cost of gasoline.  Assume that the following information between each pair of adjacent cities on your route is given below:"
+      },
+      {
+        "type": "table",
+        "caption": "Distances between adjacent cities",
+        "columns": [
+          "Route",
+          "Miles"
+        ],
+        "rows": [
+          [
+            "A to B",
+            "450"
+          ],
+          [
+            "B to C",
+            "140"
+          ],
+          [
+            "C to D",
+            "120"
+          ],
+          [
+            "D to E",
+            "320"
+          ],
+          [
+            "E to F",
+            "250"
+          ],
+          [
+            "F to G",
+            "80"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "For example, if you are driving a mid-size vehicle and driving on the highway from city A to city C with a cost of $3.79/gallon, output 590 miles, “09:50” hours and minutes, and $89.44 for gas."
+      },
+      {
+        "type": "prose",
+        "markdown": "Given the following kinds of cars and types of roads,"
+      },
+      {
+        "type": "table",
+        "caption": "Kinds of cars",
+        "columns": [
+          "Vehicle (code)",
+          "Miles per gallon"
+        ],
+        "rows": [
+          [
+            "Compact (C)",
+            "28"
+          ],
+          [
+            "Mid-size (M)",
+            "25"
+          ],
+          [
+            "Full-size (F)",
+            "22"
+          ],
+          [
+            "Van/SUV (V)",
+            "20"
+          ]
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Types of roads",
+        "columns": [
+          "Road (code)",
+          "Miles per hour"
+        ],
+        "rows": [
+          [
+            "Interstate (I)",
+            "65"
+          ],
+          [
+            "Highway (H)",
+            "60"
+          ],
+          [
+            "Main roads (M)",
+            "55"
+          ],
+          [
+            "Side roads (S)",
+            "45"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Round the total travel time to the nearest minute before splitting it into hours and minutes. Round the gasoline cost to the nearest cent. Exact halves round up."
+      }
+    ]
+  },
+  "navigating-acslland-2014-senior": {
+    "sourceHash": "1f0477992a80bafd3c136609020602b5f0ebca59e8dacaa9f024f324df8d961e",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "In taking a vacation trip, MapQuest and Google Maps provide very valuable information.  Newer versions of these on-line tools provide not only the distance traveled, but also how long it will take you and how much it will cost for gasoline.  ACSL staff members live in different cities and have to meet for contest work sessions, so they need to know when they will meet.\n\nIn this program, they will be traveling a route in a particular region of ACSLland with all destinations given in alphabetical order.  The information between each pair of adjacent cities on your route is given below:"
+      },
+      {
+        "type": "table",
+        "caption": "Distances between adjacent cities",
+        "columns": [
+          "Route",
+          "Miles"
+        ],
+        "rows": [
+          [
+            "A to B",
+            "450"
+          ],
+          [
+            "B to C",
+            "140"
+          ],
+          [
+            "C to D",
+            "125"
+          ],
+          [
+            "D to E",
+            "365"
+          ],
+          [
+            "E to F",
+            "250"
+          ],
+          [
+            "F to G",
+            "160"
+          ],
+          [
+            "G to H",
+            "380"
+          ],
+          [
+            "H to J",
+            "235"
+          ],
+          [
+            "J to K",
+            "320"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "For example,  if two staff members from cities A and C (590 miles apart) need to meet with one staff member traveling at 50 miles per hour and starting at 1 PM and the other traveling at 60 miles per hour but starting at 2:00 PM, the 2 cars will meet in 5 hours and 55 minutes or “5:55”."
+      },
+      {
+        "type": "prose",
+        "markdown": "For each input line, find the elapsed time from the **first traveler’s departure** until the meeting. Use the smallest difference between the given clock times. For example, 11 PM followed by 2 AM means the second traveler starts 3 hours later. Round the total elapsed minutes to the nearest minute before formatting."
+      }
+    ]
+  },
+  "acsl-chmod-2015-senior": {
+    "sourceHash": "90f319637ede2606e2adff7aec3bded4f6d34913673dd2adfb86d9d27e596eaf",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "CHMOD is a command in the UNIX computer system.  It is the command used for giving users permissions to access and change files and directories.  There are 3 classes of users.  They are the owner, the group and others.  The permissions given are: read(r), write(w) and execute(x)."
+      },
+      {
+        "type": "prose",
+        "markdown": "The argument of the CHMOD command is a 3-character octal number (ex. 526).  When each digit of that number is converted to binary, the binary digits are paired to represent read, write and execute in that order.  526 would convert to 101 010 110."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first binary conversion gives the user permissions. The second gives the group permissions. The third gives the others permissions. So here, the owner has read and execute permissions and that is represented by r-x. The group has only write permission given by -w-. The others class has read and write permissions as given by rw-."
+      },
+      {
+        "type": "prose",
+        "markdown": "Putting all of the above together, **CHMOD 526** gives:"
+      },
+      {
+        "type": "table",
+        "caption": "CHMOD 526",
+        "columns": [
+          "Class",
+          "Octal",
+          "Binary",
+          "Access"
+        ],
+        "rows": [
+          [
+            "Owner",
+            "5",
+            "101",
+            "r-x"
+          ],
+          [
+            "Group",
+            "2",
+            "010",
+            "-w-"
+          ],
+          [
+            "Others",
+            "6",
+            "110",
+            "rw-"
+          ]
+        ]
+      },
+      {
+        "type": "prose",
+        "markdown": "Further, a fourth octal digit can be added on the left.  This digit gives special permissions such as the ability to change passwords, rename files and delete files.  The permissions only apply if the class already has the execute permission.  A special permission of 0 indicates no special permissions are granted.\n\nA special permission of 1 applies only to the owner.\n\nA special permission of 2 applies only to the group class.  A special permission of 4 applies only to the others class.  When the special permissions are applied to either the owner or group classes, the x is changed to an s.  When applied to the others class, the x is changed to a t."
+      }
+    ]
+  },
+  "acsl-chmod-2015-junior": {
+    "sourceHash": "6aef1c413f3b7d1f02c2a973f64798fc06428dc5af8c93440dceebe136d26800",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "CHMOD is a command in the UNIX computer system.  It is the command used for giving users permissions to access and change files and directories.  There are 3 classes of users.  They are the owner, the group and others.  The permissions given are: read(r), write(w) and execute(x)."
+      },
+      {
+        "type": "prose",
+        "markdown": "The argument of the CHMOD command is a 3-character octal number (ex. 526).  When each digit of that number is converted to binary, the binary digits are paired to represent read, write and execute in that order.  526 would convert to 101 010 110."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first binary conversion gives the user permissions. The second gives the group permissions. The third gives the others permissions. So here, the owner has read and execute permissions and that is represented by r-x. The group has only write permission given by -w-. The others class has read and write permissions as shown by rw-."
+      },
+      {
+        "type": "prose",
+        "markdown": "Putting all of the above together, **CHMOD 526** gives:"
+      },
+      {
+        "type": "table",
+        "caption": "CHMOD 526",
+        "columns": [
+          "Class",
+          "Octal",
+          "Binary",
+          "Access"
+        ],
+        "rows": [
+          [
+            "Owner",
+            "5",
+            "101",
+            "r-x"
+          ],
+          [
+            "Group",
+            "2",
+            "010",
+            "-w-"
+          ],
+          [
+            "Others",
+            "6",
+            "110",
+            "rw-"
+          ]
+        ]
+      }
+    ]
+  },
+  "acsl-chmod-2015-intermediate": {
+    "sourceHash": "6aef1c413f3b7d1f02c2a973f64798fc06428dc5af8c93440dceebe136d26800",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "CHMOD is a command in the UNIX computer system.  It is the command used for giving users permissions to access and change files and directories.  There are 3 classes of users.  They are the owner, the group and others.  The permissions given are: read(r), write(w) and execute(x)."
+      },
+      {
+        "type": "prose",
+        "markdown": "The argument of the CHMOD command is a 3-character octal number (ex. 526).  When each digit of that number is converted to binary, the binary digits are paired to represent read, write and execute in that order.  526 would convert to 101 010 110."
+      },
+      {
+        "type": "prose",
+        "markdown": "The first binary conversion gives the user permissions. The second gives the group permissions. The third gives the others permissions. So here, the owner has read and execute permissions and that is represented by r-x. The group has only write permission given by -w-. The others class has read and write permissions as shown by rw-."
+      },
+      {
+        "type": "prose",
+        "markdown": "Putting all of the above together, **CHMOD 526** gives:"
+      },
+      {
+        "type": "table",
+        "caption": "CHMOD 526",
+        "columns": [
+          "Class",
+          "Octal",
+          "Binary",
+          "Access"
+        ],
+        "rows": [
+          [
+            "Owner",
+            "5",
+            "101",
+            "r-x"
+          ],
+          [
+            "Group",
+            "2",
+            "010",
+            "-w-"
+          ],
+          [
+            "Others",
+            "6",
+            "110",
+            "rw-"
+          ]
+        ]
+      }
+    ]
+  },
+  "acsl-agram-2016-senior": {
+    "sourceHash": "199c20c2cbbd796860b2360fc9c9e3ef19f7e7632e4288a5619a4b240b8c60d7",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Agram is a card game for 2 players, using the cards from a standard 52-card pack."
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer deals five cards to each player. The opponent player leads any card, playing it face up in the middle of the playing area."
+      },
+      {
+        "type": "prose",
+        "markdown": "For this program the following strategy will be used to determine which card the dealer will play:"
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer must play a card of the same suit if he can."
+      },
+      {
+        "type": "prose",
+        "markdown": "He plays the lowest card in that suit that is of a higher rank than the card the opponent played."
+      },
+      {
+        "type": "prose",
+        "markdown": "If he does not have such a card, he plays his lowest card in that suit."
+      },
+      {
+        "type": "prose",
+        "markdown": "If he does not have a card in that suit, he plays the lowest ranking card regardless of suit."
+      },
+      {
+        "type": "prose",
+        "markdown": "If there is a tie, he plays the card in the following order: clubs, diamonds, hearts and spades."
+      },
+      {
+        "type": "prose",
+        "markdown": "Cards use 2-character strings in value-suit order. **AH** represents the ace of hearts. **T, J, Q, K** represent 10, jack, queen and king. The ace has the **lowest rank** in this game: A, 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K."
+      }
+    ]
+  },
+  "acsl-agram-2016-junior": {
+    "sourceHash": "ba6117a2ebff3e2b627be984eac16f76fe697918c8fbd0040289a1b8ab8ff976",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Agram is a card game for 2 players, using the cards from a 36-card pack. The cards are numbered from 1 to 9 and are in the suits Clubs, Diamonds, Hearts and Spades."
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer deals five cards to each player. The opponent player leads any card, playing it face up in the middle of the playing area."
+      },
+      {
+        "type": "prose",
+        "markdown": "For this program the following strategy will be used to determine which card the dealer will play:"
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer must play a card of the same suit if he can."
+      },
+      {
+        "type": "prose",
+        "markdown": "He plays the lowest card in that suit that is of a higher rank than the card the opponent played."
+      },
+      {
+        "type": "prose",
+        "markdown": "If he does not have such a card, he plays his lowest card in that suit."
+      },
+      {
+        "type": "prose",
+        "markdown": "If the dealer has no card of the lead suit, print **NONE**, as shown in the sample."
+      }
+    ]
+  },
+  "acsl-agram-2016-intermediate": {
+    "sourceHash": "12805020bcead18654b370626ee2a637821322d7ff906bd05f535eeef4e830ff",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Agram is a card game for 2 players, using the cards from a standard 52-card pack."
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer deals five cards to each player. The opponent player leads any card, playing it face up in the middle of the playing area."
+      },
+      {
+        "type": "prose",
+        "markdown": "For this program the following strategy will be used to determine which card the dealer will play:"
+      },
+      {
+        "type": "prose",
+        "markdown": "The dealer must play a card of the same suit if he can."
+      },
+      {
+        "type": "prose",
+        "markdown": "He plays the lowest card in that suit that is of a higher rank than the card the opponent played."
+      },
+      {
+        "type": "prose",
+        "markdown": "If he does not have such a card, he plays his lowest card in that suit."
+      },
+      {
+        "type": "prose",
+        "markdown": "If he does not have a card in that suit, he plays the lowest ranking card regardless of suit. We guarantee there will be no ties."
+      },
+      {
+        "type": "prose",
+        "markdown": "Cards use 2-character strings in value-suit order. **AH** represents the ace of hearts. **T, J, Q, K** represent 10, jack, queen and king. The ace has the **lowest rank** in this game: A, 2, 3, 4, 5, 6, 7, 8, 9, T, J, Q, K."
+      }
+    ]
+  },
+  "digit-reassembly-2018-intermediate": {
+    "sourceHash": "5005a52908605bf852c4f93ae313901c1e594241508144a2e8747810aec6b97c",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a number less than 10⁵⁰ and a length n, find the sum of all the n-digit numbers (starting on the left) that are formed such that, after the first n-digit number is formed all others are formed by deleting the leading digit and taking the next n-digits."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**\n\nGiven 1325678905 2, the 2-digit numbers formed are 13, 32, 25, 56, 67, 78, 89, 90, and 05."
+      },
+      {
+        "type": "prose",
+        "markdown": "The sum is **455**."
+      }
+    ]
+  },
+  "digit-reassembly-2018-junior": {
+    "sourceHash": "7c045916b2f0b360020a15a6b0a8f226655621144e0a44ac424d9f613f28a624",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a number less than 10⁵⁰, answer various questions about the number."
+      },
+      {
+        "type": "prose",
+        "markdown": "For each line of input, answer the corresponding question below:\n\n1. For Input Line #1, how many digits are in the number?\n2. For Input Line #2, what is the sum of all of the digits in the number?\n3. For Input Line #3, what is the sum of the digits at the odd locations (the leftmost digit is Location #1)?\n4. For Input Line #4, how many times does the digit 4 appear?\n5. For Input Line #5, what is the middle digit? If the length N is even, use position N/2, counting from the left starting at 1 (the left of the two middle digits)."
+      }
+    ]
+  },
+  "digit-reassembly-2018-senior": {
+    "sourceHash": "d4c3faeccf27da08ec72e6077c9606942264bac696d83b0232dd5e029f2c0bc8",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given a number less than 10⁵⁰ and a length n, starting on the left, form all non-overlapping n-digit numbers. If there are digits remaining on the right, add trailing zeros to ensure that the last number is n digits in length. Print the sum of all of the numbers formed."
+      },
+      {
+        "type": "prose",
+        "markdown": "For example, given 13256709 3, the 3-digit numbers formed from are 132, 567, and 090. The sum of all the numbers is 789."
+      }
+    ]
+  },
+  "next-base-2022-junior": {
+    "sourceHash": "ab268c9704836b2e7c51fa38a4c4e7255006efc1b47cd96352c1dd56d8e87c8f",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given 3 positive integers, n, b, and s, generate the next n numbers in base b starting with s in the given base. We guarantee that the b will be between 2 and 9 inclusive. We guarantee that s is a valid number in base b. Find the base 10 sum of all of the digits in the numbers generated."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**\n\nIf n=15, b=8, and s=2, the base 8 numbers generated are \n\n`2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 20`.\n\n The base 10 sum of all of their digits is 65."
+      }
+    ]
+  },
+  "next-base-2022-senior": {
+    "sourceHash": "40b73228349ad8f29251bbefac024cc4ccca3d158c2b49d1554cb2fe106c363d",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given 3 positive integers, n, b, and s, generate the next n numbers in base b starting with s in the given base. We guarantee that the base will be between 2 and 16 inclusive."
+      },
+      {
+        "type": "prose",
+        "markdown": "We guarantee that s is a valid number in base b. Find all of the digits in the numbers generated and print the number of times, in base 10, that the most frequently found digit occurs."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**\n\nIf n=15, b=8, and s=2, the numbers generated are \n\n`2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 20`.\n\n The digit that occurs most frequently is 1 which occurs 9 times so the output would be 9."
+      },
+      {
+        "type": "prose",
+        "markdown": "For bases above 10, the digits A, B, C, D, E and F have values 10, 11, 12, 13, 14 and 15 respectively."
+      }
+    ]
+  },
+  "next-base-2022-intermediate": {
+    "sourceHash": "7ab8f1f6fa184ff6928b103eee83c5fcee10ec34f4dba2f117abba9772a1f118",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "Given 3 positive integers, n, b, and s, generate the next n numbers in base b starting with s in the given base. We guarantee that the base will be between 2 and 9 inclusive."
+      },
+      {
+        "type": "prose",
+        "markdown": "We guarantee that s is a valid number in base b. Find the base 10 value for the number of times the largest possible digit in the given base is found among all of the digits in the numbers generated."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**\n\nIf n=15, b=8, and s=2, the numbers generated are \n\n`2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15, 16, 17, 20`.\n\n The largest possible digit in base 8 is 7 which occurs 2 times."
+      }
+    ]
+  },
+  "rings-2024-junior": {
+    "sourceHash": "6e14c798f460acdb9a5c3e4e7a95a94f819f7b621314ee3d4f21d732831978a8",
+    "blocks": [
+      {
+        "type": "prose",
+        "markdown": "ACSL Rings is a 2-player game where the object is to score points by tossing a ball through one of the 5 rings. Points are awarded as follows:"
+      },
+      {
+        "type": "figure",
+        "src": "/problems/figures/rings-2024-junior-1.png",
+        "alt": "Rings, Junior: original diagram 1",
+        "width": 401,
+        "height": 307,
+        "displayWidth": 240
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the aqua or red ring - 1 point"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the orange or green ring - 3 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the black ring - 6 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "We will use a single letter to represent each of the colors:"
+      },
+      {
+        "type": "prose",
+        "markdown": "aqua (A), red (R), orange (O), green (G), and black (B)."
+      },
+      {
+        "type": "prose",
+        "markdown": "You will be given 2 strings representing each player’s results for all tosses that go through one of the rings. Output a string containing each player’s score with the larger score first. If both players have the same score, it doesn’t matter which one appears first."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**"
+      },
+      {
+        "type": "example",
+        "input": "BRAG\nBOB",
+        "output": "15 11"
+      },
+      {
+        "type": "prose",
+        "markdown": "The first player’s tosses go through the black, red, aqua, and green rings, and the player has a score of 6 + 1 + 1 + 3 = 11."
+      },
+      {
+        "type": "prose",
+        "markdown": "The second player’s tosses go through the black, orange, and black rings, and the player has a score of 6 + 3 + 6 = 15."
+      },
+      {
+        "type": "prose",
+        "markdown": "Output is the string 15 11 with the larger score first."
+      }
+    ]
+  },
+  "rings-2024-intermediate": {
+    "sourceHash": "5d61b8a9e1bd68db33300b45aff5be37abef1276b9d6c955fdc6762b0094da44",
+    "blocks": [
+      {
+        "type": "figure",
+        "src": "/problems/figures/rings-2024-intermediate-1.png",
+        "alt": "Rings, Intermediate: original diagram 1",
+        "width": 341,
+        "height": 263,
+        "displayWidth": 240
+      },
+      {
+        "type": "prose",
+        "markdown": "ACSL Rings is a 3-player game where the object is to score points by tossing a ball through at least one of the 5 rings. Points are awarded as follows:"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the aqua or red ring - 1 point"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the orange or green ring - 3 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the black ring - 6 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the space where 2 rings overlap - the sum of the points for the 2 rings plus 1"
+      },
+      {
+        "type": "prose",
+        "markdown": "We will use a single letter to represent each of the above colors: aqua (A), red (R), orange (O), green (G) and black (B). The overlapping areas will be given by 2 letters in the order shown:"
+      },
+      {
+        "type": "prose",
+        "markdown": "aqua and orange (AO), orange and black (OB), black and green (BG), and green and red (GR)."
+      },
+      {
+        "type": "prose",
+        "markdown": "You will be given 3 strings representing each player’s results for all tosses that go through at least one ring. The result of each toss will be separated by a single space. Output the 3 players’ scores in descending order separated by a single space. If any of the players have the same score, it doesn’t matter which one of the tied scores appears first."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**"
+      },
+      {
+        "type": "example",
+        "input": "GR A B\nOB BG AO O\nR G",
+        "output": "28 12 4"
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 1’s tosses go through the green & red, aqua, and black rings for a score of (3+1+1) + 1 + 6 = 12."
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 2 has a score of (3+6+1) + (6+3+1) + (1+3+1) + 3 = 28."
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 3 has a score of 1 + 3 = 4."
+      },
+      {
+        "type": "prose",
+        "markdown": "The output is the string 28 12 4, the scores in descending order."
+      }
+    ]
+  },
+  "rings-2024-senior": {
+    "sourceHash": "6c66cdb9e09b63718259f61371e46b041d284e21af9e49791ff4c9f281d75c68",
+    "blocks": [
+      {
+        "type": "figure",
+        "src": "/problems/figures/rings-2024-senior-1.png",
+        "alt": "Rings, Senior: original diagram 1",
+        "width": 341,
+        "height": 263,
+        "displayWidth": 240
+      },
+      {
+        "type": "prose",
+        "markdown": "ACSL Rings is a game where the object is to score points by tossing a ball through one of the 5 rings. Points are awarded as follows:"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the aqua or red ring - 1 point"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the orange or green ring - 3 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the black ring - 6 points"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Through the space where 2 rings overlap - the sum of the points for the 2 rings plus 1"
+      },
+      {
+        "type": "prose",
+        "markdown": "- Any toss that is identified with a “+” at the end of the substring is awarded 2 extra points for having been tossed from a long distance."
+      },
+      {
+        "type": "prose",
+        "markdown": "We will use a single letter to represent each of the above colors: aqua (A), red (R), orange (O), green (G), and black (B). The overlapping areas will be given by 2 letters: aqua and orange (AO or OA), orange and black (OB or BO), black and green (BG or GB), and green and red (GR or RG)."
+      },
+      {
+        "type": "prose",
+        "markdown": "You will be given an integer, n, indicating the number of players, followed by n separate strings representing each player’s results for all tosses that go through at least one ring. Output a string for each player’s score in descending order using the format “player#-score”, each separated by a single space. Ties are broken based on the number of tosses; the fewer the tosses the better.\n\nWe guarantee that all ties will be broken."
+      },
+      {
+        "type": "prose",
+        "markdown": "**Example**"
+      },
+      {
+        "type": "example",
+        "input": "3\nA R AO+\nB+ GR OA B\nG OB+",
+        "output": "2-24 3-15 1-9"
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 1’s tosses go through the aqua, red, and aqua & orange rings for a score of 1 + 1 + (1+3+1+2) = 9."
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 2 has a score of (6+2) + (3+1+1) + (3+1+1) + 6 = 24."
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 3 has a score of 3 + (3+6+1+2) = 15."
+      },
+      {
+        "type": "prose",
+        "markdown": "Player 2 is in first place with 24 points; Player 3 is in second place with 15 points; and Player 1 is in third place with 9 points. The output is the string 2-24 3-15 1-9."
+      }
+    ]
+  }
+}

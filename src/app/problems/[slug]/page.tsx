@@ -6,6 +6,7 @@ import { getAllProblems, getProblemBySlug } from "@/lib/database.server";
 import { problems } from "@/lib/problems";
 import { requireAdmin } from "@/lib/admin.server";
 import { getViewerPreferences } from "@/lib/preferences.server";
+import { withStatementLayout } from "@/lib/statement-layout.server";
 
 export const dynamic = "force-dynamic";
 
@@ -25,5 +26,5 @@ export default async function ProblemPage({ params }: { params: Promise<{ slug: 
   if (!problem) notFound();
   const isAdmin = Boolean(admin);
   const versions = groupProblems(allProblems).find((group) => group.key === problemGroupKey(problem))?.versions.map(({ id, slug, division }) => ({ id, slug, division })) ?? [{ id: problem.id, slug: problem.slug, division: problem.division }];
-  return <CodeWorkspace key={problem.id} problem={problem} isAdmin={isAdmin} versions={versions} preferredLanguage={preferences.preferredLanguage} />;
+  return <CodeWorkspace key={problem.id} problem={withStatementLayout(problem)} isAdmin={isAdmin} versions={versions} preferredLanguage={preferences.preferredLanguage} />;
 }

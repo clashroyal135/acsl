@@ -51,7 +51,7 @@ async function setTheme(page,theme){
  try{
   if(local){
    const directory=path.join(root,'src/app/checks-theme');assert.equal(fs.existsSync(directory),false);fs.mkdirSync(directory);fixtures.push(directory);
-   fs.writeFileSync(path.join(directory,'page.tsx'),`import Fixture from './fixture';import {problems} from '@/lib/problems';export default function Page(){return <Fixture problem={problems[0]} />}`);
+   fs.writeFileSync(path.join(directory,'page.tsx'),`import Fixture from './fixture';import {problems} from '@/lib/problems';import {withStatementLayout} from '@/lib/statement-layout.server';export default function Page(){return <Fixture problem={withStatementLayout(problems.find(p=>p.slug==='draft-picks-2011-senior')!)} />}`);
    fs.writeFileSync(path.join(directory,'fixture.tsx'),`"use client";
 import {useState} from 'react';import {Button} from '@/components/ui/button';import {Badge} from '@/components/ui/badge';import {Card} from '@/components/ui/card';import {ProfileEditor} from '@/components/profile-editor';import {LoginForm} from '@/components/login-form';import {AdminProblemEditor} from '@/components/admin-problem-editor';import {ProblemStatement} from '@/components/problem-statement';import {TestCaseResults} from '@/components/test-case-results';import type {Problem} from '@/lib/types';
 export default function Fixture({problem}:{problem:Problem}){const [draft,setDraft]=useState({...problem,isPublished:false,isBundled:true,tests:[{input:'1',expectedOutput:'1',hidden:true}]});return <main className="mx-auto max-w-6xl space-y-8 p-6">

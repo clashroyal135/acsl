@@ -21,6 +21,7 @@ export type Problem = {
   acceptanceRate: number;
   summary: string;
   statement: string;
+  statementLayout?: StatementBlock[];
   inputSpec: string;
   outputSpec: string;
   constraints: string[];
@@ -30,6 +31,16 @@ export type Problem = {
   timeLimitMs: number;
   memoryLimitKb: number;
 };
+
+export type StatementBlock =
+  | { type: "prose"; markdown: string }
+  | { type: "table"; caption: string; columns: string[]; rows: string[][]; widths?: number[] }
+  | { type: "math"; tex: string; label?: string; html: string }
+  | { type: "figure"; src: string; alt: string; width: number; height: number; displayWidth: number }
+  | { type: "grid" | "triangle"; caption: string; rows: string[][] }
+  | { type: "tiles"; rows: string[][]; discard: string[] }
+  | { type: "clock"; colors: string; time: string }
+  | { type: "example"; input: string; output: string };
 
 export type JudgeVerdict =
   | "Accepted"
